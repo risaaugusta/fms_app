@@ -218,10 +218,10 @@ class _scanSuccessState extends State<scanSuccess> {
                             borderRadius: BorderRadius.circular(30),
                             side: BorderSide(color: Coloring.mainColor)),
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => scanRefueling()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => scanRefueling()),
+                          );
                         },
                         color: Coloring.mainColor,
                         textColor: Colors.white,

@@ -16,6 +16,7 @@ class _LoginState extends State<Login> {
       _obscureText = !_obscureText;
     });
   }
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +67,7 @@ class _LoginState extends State<Login> {
                     filled: true,
                     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   ),
-                  onChanged: (value) {
-                    Global.nik = value;
-                  },
+                  onChanged: (value) {},
                 ),
               ),
             ),
@@ -83,7 +82,7 @@ class _LoginState extends State<Login> {
                 borderRadius: BorderRadius.circular(20),
                 child: TextFormField(
                   autofocus: false,
-                  obscureText: _obscureText,
+                  obscureText: true,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -100,18 +99,9 @@ class _LoginState extends State<Login> {
                     hintText: 'Password',
                     fillColor: Colors.white,
                     filled: true,
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscureText
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: Theme.of(context).primaryColorDark,
-                      ),
-                          onPressed: _toggle,
-                    ),
                     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   ),
-                  onChanged: (text)=> Global.password = text , //dummy value
+                  onChanged: (text)=> password = text , //dummy value
                 ),
               ),
             ),
@@ -125,27 +115,12 @@ class _LoginState extends State<Login> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
-                    onPressed: () async {
-                      // if(password == "testing"){ // d
-                        print(Global.nik);
-                        print(Global.password);
-                        final response = await http
-                            .post(Uri.parse('${Global.host}/backendapimaster/public/api/login'), body: {
-                              "nik": Global.nik,
-                              "password": Global.password
-                        }).then((value) async
-                        {
-                          var res = jsonDecode(value.body);
-                          if (res['status'] == "success") {
-                            print(value.body);
-                            SharedPreferences prefs = await SharedPreferences.getInstance();
-                            await prefs.setString('token', res['content']['access_token']);
-                            _dialogSuccessAlert();
-                          } else {
-                            print(value.body);
-                              _dialogFailedAlert();
-                          }
-                        });
+                    onPressed: () {
+                      if(password == "testing"){ // dummy value
+                        _dialogSuccessAlert();
+                      }else{
+                        _dialogFailedAlert();
+                      }
                     },
                     color: Coloring.mainColor,
                     textColor: Colors.white,
@@ -281,9 +256,9 @@ class _LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(30),
                             side: BorderSide(color: Coloring.mainColor)),
                         onPressed: () {
-                          Navigator.pushAndRemoveUntil(
+                          Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => homeDashboard()),(route)=>false);
+                            MaterialPageRoute(builder: (context) => homeDashboard()),);
                         },
                         color: Coloring.mainColor,
                         textColor: Colors.white,

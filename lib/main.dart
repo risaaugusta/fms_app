@@ -22,15 +22,6 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: Wrapper()),
     );
-
-    // return MaterialApp(
-    //   initialRoute: '/splash',
-    //   routes: {
-    //     '/login': (context)=>Login(),
-    //     '/home': (context)=>homeDashboard(),
-    //     '/profile': (context)=>Profile(),
-    //   },
-    // );
   }
 }
 
