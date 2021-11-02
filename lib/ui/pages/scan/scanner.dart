@@ -35,41 +35,24 @@ class _ScannerState extends State<Scanner> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Stack(
-          key: _gKey,
-          alignment: Alignment.center,
-          children: [
-            buildQrView(context),
-            Container(
-              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/1.3, right: 15, left: 15),
-              width: MediaQuery.of(context).size.width,
-              height: 130,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Colors.white,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              // ToggleButtons(
-              //   children: <Widget>[
-              //     Icon(Icons.ac_unit),
-              //     Icon(Icons.call),
-              //   ],
-              //   onPressed: (int index) {
-              //     setState(() {
-              //       isSelected[index] = !isSelected[index];
-              //     });
-              //   },
-              //   isSelected: isSelected,
-              // ),
-            ),
-            // buildResult(context),
-            // selectedScanner(),
-            (barcode != null ) ? buildResult(context) : dialogFail(),
-            // buildResult(context),
-            // Positioned(bottom: 300, child: buildResult()),
-          ],
-        ),
+        children: [
+          buildQrView(context),
+          FutureBuilder(
+            future: Future.value(barcode),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                /// Success
+                return dialogSuccess(barcode: barcode!.code);
+              } else if (snapshot.hasError) {
+                /// Failed
+                return dialogFail();
+              }
+              /// Idle
+              return selectedScanner();
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -383,32 +366,51 @@ class selectedScanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 170,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/1.3, right: 15, left: 15),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-            side: BorderSide(color: Colors.grey)),
-        onPressed: () {
-            // _dialogFailedAlert();
-        },
-        color: Colors.white,
-        textColor: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(
-              Icons.speed,
-              color: Colors.black,
-              size: 30,
-            ),
-            Text("Input Kode Unit",
-                style: TextStyle(color: Colors.black, fontFamily: Fonts.REGULAR,fontSize: 14)),
-          ],
+    return Stack(
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: EdgeInsets.only(bottom:30),
+                    height: MediaQuery.of(context).size.height/6,
+                    width: MediaQuery.of(context).size.width/1.2,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10))
+                    ),
+                  )),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: MediaQuery.of(context).size.width/2,
+                  margin: EdgeInsets.only(bottom:75),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(color: Colors.grey)),
+                    onPressed: () {
+                        // _dialogFailedAlert();
+                    },
+                    color: Colors.white,
+                    textColor: Colors.white,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(
+                          Icons.speed,
+                          color: Colors.black,
+                          size: 30,
+                        ),
+                        Text("Input Kode Unit",
+                            style: TextStyle(color: Colors.black, fontFamily: Fonts.REGULAR,fontSize: 14)),
+                      ],
+                    ),
+                  ),
         ),
-      ),
-    );
+              ),
+
+            ],
+          );
   }
 }
 

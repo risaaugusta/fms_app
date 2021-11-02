@@ -25,7 +25,7 @@ class _TestingDetailState extends State<TestingDetail> {
 
   Future refreshLansiran() async {
     setState(() => isLoading = true);
-    // this.lansiran = await FmsDatabase.instance.readLansiran(widget.lansiranId);
+    this.lansiran = await FmsDatabase.instance.readLansiran(widget.lansiranId);
     setState(() => isLoading = false);
   }
 

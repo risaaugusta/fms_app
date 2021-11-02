@@ -26,7 +26,7 @@ class _TestingInsertState extends State<TestingInsert> {
 
   Future refreshLansiran() async {
     setState(() => isLoading = true);
-    // this.lansiran = await FmsDatabase.instance.readAllLansiran();
+    this.lansiran = await FmsDatabase.instance.readAllLansiran();
     setState(() => isLoading = false);
   }
 
