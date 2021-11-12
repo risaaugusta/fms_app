@@ -48,6 +48,28 @@ class _homeLansiranState extends State<homeLansiran> {
       volSebelum: 0,
       volTotal: 0);
 
+  TrFuelDistribution trFuelDistribution = TrFuelDistribution(
+    // transactionsId: '',
+    equipment_id: '',
+    // storage_id: '',
+    // site_id: '',
+    // shiftId: '',
+    fuel_filling: '',
+    fuel_totalisator_awal: '',
+    fuel_totalisator_akhir: '',
+    hm_equipment: '',
+    // storage_operator: '',
+    // equipment_operator: '',
+    // equipmentBudget: '',
+    // isActive: '',
+    // createdBy: '',
+    created_at: '',
+    // updatedBy: '',
+    // updatedAt: '',
+    // attendaceId: '',
+  );
+  MsStorage? msStorage;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -206,7 +228,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                     title: headerLansiranValue[index] ==
                                             headerLansiranValue[0]
                                         ? StorageDropdown(callback:(String callback){
-                                          lansiran.storageId = callback;
+                                          // trFuelDistribution.storage_id = callback;
                                     },)
                                         : Container(
                                             width: MediaQuery.of(context)
@@ -242,40 +264,70 @@ class _homeLansiranState extends State<homeLansiran> {
                                                     EdgeInsets.fromLTRB(
                                                         20.0, 10.0, 20.0, 10.0),
                                               ),
+                                              // onChanged: (value) {
+                                              //   if (headerLansiranValue[
+                                              //           index] ==
+                                              //       headerLansiranValue[1]) {
+                                              //     lansiran.nik = value;
+                                              //   } else if (headerLansiranValue[
+                                              //           index] ==
+                                              //       headerLansiranValue[2]) {
+                                              //     lansiran.totalisatorAwal =
+                                              //         int.parse(value);
+                                              //   } else if (headerLansiranValue[
+                                              //           index] ==
+                                              //       headerLansiranValue[3]) {
+                                              //     lansiran.totalisatorAkhir =
+                                              //         int.parse(value);
+                                              //   } else if (headerLansiranValue[
+                                              //           index] ==
+                                              //       headerLansiranValue[4]) {
+                                              //     lansiran.volSebelum =
+                                              //         int.parse(value);
+                                              //   } else if (headerLansiranValue[
+                                              //           index] ==
+                                              //       headerLansiranValue[5]) {
+                                              //     lansiran.jml =
+                                              //         int.parse(value);
+                                              //   } else if (headerLansiranValue[
+                                              //           index] ==
+                                              //       headerLansiranValue[6]) {
+                                              //     lansiran.volTotal =
+                                              //         int.parse(value);
+                                              //   } else {
+                                              //     null;
+                                              //   }
+                                              // }, //dummy value
+                                              ///value tr fuel distribution
                                               onChanged: (value) {
                                                 if (headerLansiranValue[
-                                                        index] ==
+                                                index] ==
                                                     headerLansiranValue[1]) {
-                                                  lansiran.nik = value;
+                                                  // trFuelDistribution.site_id = value;
                                                 } else if (headerLansiranValue[
-                                                        index] ==
+                                                index] ==
                                                     headerLansiranValue[2]) {
-                                                  lansiran.totalisatorAwal =
-                                                      int.parse(value);
+                                                  trFuelDistribution.fuel_totalisator_awal = value;
                                                 } else if (headerLansiranValue[
-                                                        index] ==
+                                                index] ==
                                                     headerLansiranValue[3]) {
-                                                  lansiran.totalisatorAkhir =
-                                                      int.parse(value);
+                                                  trFuelDistribution.fuel_totalisator_akhir = value;
                                                 } else if (headerLansiranValue[
-                                                        index] ==
+                                                index] ==
                                                     headerLansiranValue[4]) {
-                                                  lansiran.volSebelum =
-                                                      int.parse(value);
+                                                  // trFuelDistribution.storage_operator = value;
                                                 } else if (headerLansiranValue[
-                                                        index] ==
+                                                index] ==
                                                     headerLansiranValue[5]) {
-                                                  lansiran.jml =
-                                                      int.parse(value);
+                                                  // trFuelDistribution.equipment_operator = value;
                                                 } else if (headerLansiranValue[
-                                                        index] ==
+                                                index] ==
                                                     headerLansiranValue[6]) {
-                                                  lansiran.volTotal =
-                                                      int.parse(value);
+                                                  trFuelDistribution.fuel_filling = value;
                                                 } else {
                                                   null;
                                                 }
-                                              }, //dummy value
+                                              }, //
                                             ),
                                           ),
                                   ),
@@ -303,10 +355,10 @@ class _homeLansiranState extends State<homeLansiran> {
                                 borderRadius: BorderRadius.circular(30),
                                 side: BorderSide(color: Coloring.mainColor)),
                             onPressed: () {
-                              print(lansiran.toJson());
+                              print(trFuelDistribution.toJson());
                               // FmsDatabase.instance.create(lansiran) == true ?
-                              FmsDatabase.instance.create(lansiran).then((value) => {_dialogAlert()})
-                              ;
+                              // FmsDatabase.instance.create(lansiran).then((value) => {_dialogAlert()})
+                              FmsDatabase.instance.create(trFuelDistribution).then((value) => {_dialogAlert()});
                             },
                             color: Coloring.mainColor,
                             textColor: Colors.white,

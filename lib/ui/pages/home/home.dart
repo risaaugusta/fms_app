@@ -425,7 +425,13 @@ class _HomeState extends State<Home> {
                                       borderRadius: BorderRadius.circular(5),
                                       side: BorderSide(
                                           color: Coloring.mainColor)),
-                                  onPressed: () => Navigator.pop(context),
+                                  onPressed: () {
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //       builder: (context) => scanRefueling(),
+                                    // );
+                                  },
                                   color: Colors.white,
                                   textColor: Colors.white,
                                   child: Text("Detail",
