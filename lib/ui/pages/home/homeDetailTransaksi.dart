@@ -7,7 +7,6 @@ class homeDetailTransaksi extends StatelessWidget {
   String unitType = "Dump Truck";
   String unitCode = "FT1125";
   int budget = 450;
-
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -27,6 +26,26 @@ class homeDetailTransaksi extends StatelessWidget {
     ),
   ];
   var time = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn,':',ss]);
+  TrFuelDistribution trFuelDistribution = TrFuelDistribution(
+    // transactionsId: '',
+    equipment_id: '',
+    // storage_id: '',
+    // site_id: '',
+    // shiftId: '',
+    fuel_filling: '',
+    fuel_totalisator_awal: '',
+    fuel_totalisator_akhir: '',
+    hm_equipment: '',
+    // storage_operator: '',
+    // equipment_operator: '',
+    // equipmentBudget: '',
+    // isActive: '',
+    // createdBy: '',
+    created_at:'',
+    // updatedBy: '',
+    // updatedAt: '',
+    // attendaceId: '',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -273,10 +292,10 @@ class homeDetailTransaksi extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => scanRefueling()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => scanRefueling()),
+                      // );
                     },
                     color: Coloring.mainColor,
                     textColor: Colors.white,

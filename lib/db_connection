@@ -1,0 +1,10 @@
+import 'package:postgres/postgres.dart';
+
+void main(List<String>arguments) async {
+  final conn = PostgreSQLConnection(
+      'localhost', 8083, 'central', username: 'postgres', password: 'root');
+  await conn.open();
+
+  print('Connected to FMS Db');
+  await conn.close();
+}

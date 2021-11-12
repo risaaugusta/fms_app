@@ -535,7 +535,7 @@ class dialogSuccess extends StatelessWidget {
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
                                   Text(
-                                      'Result is ${barcode} ',
+                                      'Result is $barcode ',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(color: Colors.black,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -553,7 +553,7 @@ class dialogSuccess extends StatelessWidget {
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
                                   Text(
-                                      'Result is ${barcode} ',
+                                      'Result is $barcode ',
                                       textAlign: TextAlign.right,
                                       style: TextStyle(color: Colors.black,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -571,7 +571,7 @@ class dialogSuccess extends StatelessWidget {
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
                                   Text(
-                                      'Result is ${barcode} ',
+                                      'Result is $barcode ',
                                       textAlign: TextAlign.right,
                                       style: TextStyle(color: Colors.black,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -638,7 +638,7 @@ class dialogSuccess extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  'Result is ${barcode} ',
+                                  'Result is $barcode ',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -648,19 +648,19 @@ class dialogSuccess extends StatelessWidget {
                               //    thickness: 1.0,
                               //  ),
                               Text(
-                                  'Result is ${barcode} ',
+                                  'Result is $barcode ',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                               Text(
-                                  'Result is ${barcode} ',
+                                  'Result is $barcode ',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                               Text(
-                                  'Result is ${barcode} ',
+                                  'Result is $barcode ',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -687,7 +687,7 @@ class dialogSuccess extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => scanRefueling()),
+                              MaterialPageRoute(builder: (context) => scanRefueling(barcode_id: barcode,)),
                             );
                           },
                           color: Coloring.mainColor,

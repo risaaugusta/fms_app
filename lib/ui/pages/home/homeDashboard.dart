@@ -19,11 +19,10 @@ class _homeDashboardState extends State<homeDashboard> {
   List<Widget> _widgetOptions = <Widget>[
     Home(),
     StorageDropdown(),
-    // Text(
-    //   'Index 1: Manual',
-    //   style: optionStyle,
-    // ),
-    NotesPage(),
+    Text(
+      'Index 2: Notifkasi',
+      style: optionStyle,
+    ),
     Profile()
   ];
 
@@ -216,38 +215,6 @@ class _homeDashboardState extends State<homeDashboard> {
                 ),
               ),
             )
-
-            //   new Stack(
-            //   overflow: Overflow.visible,
-            //   alignment: new FractionalOffset(.5, 1.0),
-            //   children: [
-            //     new BottomNavigationBar(
-            //       type: BottomNavigationBarType.fixed,
-            //       items: const <BottomNavigationBarItem>[
-            //         BottomNavigationBarItem(
-            //           icon: Icon(Icons.home),
-            //           label: 'Home',
-            //         ),
-            //         BottomNavigationBarItem(
-            //           icon: Icon(Icons.article_rounded),
-            //           label: 'Manual',
-            //         ),
-            //         BottomNavigationBarItem(
-            //           icon: Icon(Icons.notifications),
-            //           label: 'Notifikasi',
-            //         ),
-            //         BottomNavigationBarItem(
-            //           icon: Icon(Icons.account_circle),
-            //           label: 'Profile',
-            //         ),
-            //       ],
-            //       currentIndex: _selectedIndex,
-            //       selectedItemColor: Coloring.mainColor,
-            //       onTap: _onItemTapped,
-            //     ),
-            //   ],
-            // ),
-
             ));
   }
 }
