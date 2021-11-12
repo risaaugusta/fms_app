@@ -65,7 +65,7 @@ class _homeLansiranState extends State<homeLansiran> {
     // createdBy: '',
     created_at: '',
     // updatedBy: '',
-    // updatedAt: '',
+    updated_at: '',
     // attendaceId: '',
   );
   MsStorage? msStorage;

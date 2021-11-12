@@ -114,12 +114,9 @@ class FmsDatabase {
         // '${TrFuelDistributionFields.createdBy},'
         '${TrFuelDistributionFields.created_at},'
         // '${TrFuelDistributionFields.updatedBy},'
-        // '${TrFuelDistributionFields.updatedAt},'
+        '${TrFuelDistributionFields.updated_at},'
         // '${TrFuelDistributionFields.attendaceId},'
     ;
-    // final values = '${json[LansiranFields.storageId]},${json[LansiranFields.nik]}, ${json[LansiranFields.totalisatorAwal]}, ${json[LansiranFields.totalisatorAkhir]}, ${json[LansiranFields.volSebelum]}, ${json[LansiranFields.jml]}, ${json[LansiranFields.volTotal]} ';
-    // final id = await db.rawInsert(
-    //     'INSERT INTO lansiran ($columns) VALUES ($values)');
 
     final id = await db.insert(tableName, trFuelDistribution.toJson());
     print(id);
@@ -127,10 +124,10 @@ class FmsDatabase {
   }
 
   ///select storageCode from msstorage
-  Future<List<Map<String, dynamic>>> findObjects(String query) async {
+  Future<List<Map<String, dynamic>>> findRefuelingObjects(String query) async {
     final db = await instance.database;
     final ret = await db.rawQuery(
-        'SELECT storageCode FROM $tableStorage',
+        'SELECT equipment_id FROM $tableStorage',
         ['%$query%']);
     return ret;
   }

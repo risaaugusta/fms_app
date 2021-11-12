@@ -10,7 +10,6 @@ class scanRefueling extends StatefulWidget {
 
 class _scanRefuelingState extends State<scanRefueling> {
   Barcode? barcode;
-  var time = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn,':',ss]);
   List<Item> PhotoItems = generateItems(2);
   List<String> headerPhotoValue=<String>[
     'Photo Meter Fuel',
@@ -24,18 +23,18 @@ class _scanRefuelingState extends State<scanRefueling> {
       // storage_id: '',
       // site_id: '',
       // shiftId: '',
-      fuel_filling: '',
-      fuel_totalisator_awal: '',
-      fuel_totalisator_akhir: '',
-      hm_equipment: '',
+      fuel_filling: Refueling.fFilling,
+      fuel_totalisator_awal: Refueling.fTotalisatorAwal,
+      fuel_totalisator_akhir: Refueling.fTotalisatorAkhir,
+      hm_equipment: Refueling.fHmEquipment,
       // storage_operator: '',
       // equipment_operator: '',
       // equipmentBudget: '',
       // isActive: '',
       // createdBy: '',
-      created_at: time,
+      created_at: Global.time,
       // updatedBy: '',
-      // updatedAt: '',
+      updated_at: Global.time,
       // attendaceId: '',
     );
 
@@ -205,7 +204,7 @@ class _scanRefuelingState extends State<scanRefueling> {
                               contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                             ),
                             onChanged: (value)=> {
-                            trFuelDistribution.hm_equipment = value
+                              Refueling.fHmEquipment = value
                             }, //dummy value
                           ),
                       ),
@@ -234,7 +233,7 @@ class _scanRefuelingState extends State<scanRefueling> {
                             contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                           ),
                           onChanged: (value)=> {
-                            trFuelDistribution.fuel_filling = value
+                            Refueling.fFilling = value
                           }, //dummy value
                         ),
                       ),
@@ -267,7 +266,7 @@ class _scanRefuelingState extends State<scanRefueling> {
                                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                                 ),
                                 onChanged: (value)=> {
-                                  trFuelDistribution.fuel_totalisator_awal = value
+                                  Refueling.fTotalisatorAwal = value
                                 }, //dummy value
                               ),
                             ),
@@ -304,7 +303,7 @@ class _scanRefuelingState extends State<scanRefueling> {
                                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                                 ),
                                 onChanged: (value)=> {
-                                  trFuelDistribution.fuel_totalisator_akhir = value
+                                  Refueling.fTotalisatorAkhir = value
                                 }, //dummy value
                               ),
                             ),

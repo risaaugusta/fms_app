@@ -19,7 +19,7 @@ class TrFuelDistributionFields {
     // createdBy,
     created_at,
     // updatedBy,
-    // updatedAt,
+    updated_at,
     // attendaceId,
   ];
 
@@ -40,7 +40,7 @@ class TrFuelDistributionFields {
   // static final String createdBy = 'createdBy';
   static final String created_at = 'created_at';
   // static final String updatedBy = 'updatedBy';
-  // static final String updatedAt = 'updatedAt';
+  static final String updated_at = 'updated_at';
   // static final String attendaceId = 'attendaceId';
 }
 
@@ -62,7 +62,7 @@ class TrFuelDistribution {
   // String createdBy;
   String created_at;
   // String updatedBy;
-  // String updatedAt;
+  String updated_at;
   // String attendaceId;
 
   TrFuelDistribution({
@@ -83,7 +83,7 @@ class TrFuelDistribution {
     // required this.createdBy,
     required this.created_at,
     // required this.updatedBy,
-    // required this.updatedAt,
+    required this.updated_at,
     // required this.attendaceId,
   });
 
@@ -105,7 +105,7 @@ class TrFuelDistribution {
     // String? createdBy,
     String? created_at,
     // String? updatedBy,
-    // String? updatedAt,
+    String? updated_at,
     // String? attendaceId,
   }) =>
       TrFuelDistribution(
@@ -126,7 +126,7 @@ class TrFuelDistribution {
         // createdBy: createdBy ?? this.createdBy,
         created_at: created_at ?? this.created_at,
         // updatedBy: updatedBy ?? this.updatedBy,
-        // updatedAt: updatedAt ?? this.updatedAt,
+        updated_at: updated_at ?? this.updated_at,
         // attendaceId: attendaceId ?? this.attendaceId,
       );
 
@@ -148,7 +148,7 @@ class TrFuelDistribution {
     // createdBy: json[TrFuelDistributionFields.createdBy] as String,
     created_at: json[TrFuelDistributionFields.created_at] as String,
     // updatedBy: json[TrFuelDistributionFields.updatedBy] as String,
-    // updatedAt: json[TrFuelDistributionFields.updatedAt] as String,
+    updated_at: json[TrFuelDistributionFields.updated_at] as String,
     // attendaceId: json[TrFuelDistributionFields.attendaceId] as String,
   );
 
@@ -170,9 +170,12 @@ class TrFuelDistribution {
     // TrFuelDistributionFields.createdBy: createdBy,
     TrFuelDistributionFields.created_at: created_at,
     // TrFuelDistributionFields.updatedBy: updatedBy,
-    // TrFuelDistributionFields.updatedAt: updatedAt,
+    TrFuelDistributionFields.updated_at: updated_at,
     // TrFuelDistributionFields.attendaceId: attendaceId,
   };
 
+}
 
+class TrailingRefuelingFields{
+  String fFilling='';
 }
