@@ -43,7 +43,7 @@ class homeDetailTransaksi extends StatelessWidget {
     // createdBy: '',
     created_at:'',
     // updatedBy: '',
-    // updatedAt: '',
+    updated_at: '',
     // attendaceId: '',
   );
 

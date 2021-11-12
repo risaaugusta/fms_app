@@ -47,6 +47,7 @@ part 'scan/scanSuccess.dart';
 part 'scan/scanFailed.dart';
 part 'scan/scanRefueling.dart';
 part 'scan/SelectedScanner.dart';
+part '../../global/variable.dart';
 part 'profile/profile.dart';
 part 'testing/testing_insert.dart';
 part 'testing/testing_detail.dart';
