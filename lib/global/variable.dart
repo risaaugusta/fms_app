@@ -1,6 +1,7 @@
 part of '../ui/pages/pages.dart';
 
 class Refueling{
+  static int fTransactionsId= 0;
   static String fFilling='';
   static String fTotalisatorAwal='';
   static String fTotalisatorAkhir='';

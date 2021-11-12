@@ -36,10 +36,6 @@ class FmsDatabase {
      )''');
   }
 
-  Future _dropDB(Database db, int version) async {
-    await db.execute("DROP TABLE $tableLansiran");
-  }
-
   //
   // Future<Lansiran> create(Lansiran lansiran) async {
   //   final db = await instance.database;
@@ -93,7 +89,7 @@ class FmsDatabase {
   //       where: '${LansiranFields.id} =?', whereArgs: [id]);
   // }
 
-  ///tr fuel distribution
+  //tr fuel distribution
   Future<TrFuelDistribution> create(TrFuelDistribution trFuelDistribution) async {
     final db = await instance.database;
     final json = trFuelDistribution.toJson();
@@ -123,7 +119,7 @@ class FmsDatabase {
     return trFuelDistribution.copy(hm_equipment: TrFuelDistributionFields.hm_equipment);
   }
 
-  ///select storageCode from msstorage
+  //select storageCode from msstorage
   Future<List<Map<String, dynamic>>> findRefuelingObjects(String query) async {
     final db = await instance.database;
     final ret = await db.rawQuery(
@@ -131,6 +127,41 @@ class FmsDatabase {
         ['%$query%']);
     return ret;
   }
+
+  //select detail
+  Future<Lansiran?> readRefuelingDetail(int id) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableName,
+      columns: TrFuelDistributionFields.values,
+      where: '${TrFuelDistributionFields.transactions_id} = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Lansiran.fromJson(maps.first);
+    } else {
+      return null;
+    }
+  }
+
+  // Future<List<Lansiran>> readRefueling() async {
+  //   final db = await instance.database;
+  //
+  //   final orderBy = '${TrFuelDistributionFields.transactions_id} ASC';
+  //   // final result = await db.rawQuery('SELECT mse.equipment_id,
+  //   //     model_number,
+  //   //     tank_capacity,
+  //   //     category_desc,
+  //   //     auth_group,
+  //   //     company_code,
+  //   //     operator_id
+  //   //     FROM db_master.msequipment mse
+  //   //     inner join dbfms.tr_fuel_attendance tfa on mse.equipment_id = tfa.equipment_id
+  //   //     where tfa.equipment_id ='EX21103KM'');
+  //   // final result = await db.query(tableLansiran, orderBy: orderBy);
+  //   // return result.map((json) => Lansiran.fromJson(json)).toList();
+  // }
 
   Future close() async {
     final db = await instance.database;

@@ -19,10 +19,6 @@ class _HomeState extends State<Home> {
     'DT22222',
     'DT22222',
   ];
-  var today = DateTime.now();
-  var date = DateFormat.yMd().format(DateTime.now());
-  var time =
-      formatDate(DateTime.now(), [yyyy, '/', mm, '/', dd, ' ', HH, ':', nn]);
 
   @override
   Widget build(BuildContext context) {
@@ -411,7 +407,7 @@ class _HomeState extends State<Home> {
                                           color: Colors.grey,
                                           fontFamily: Fonts.REGULAR,
                                           fontSize: 12)),
-                                  Text('$time',
+                                  Text(Global.time,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.grey,

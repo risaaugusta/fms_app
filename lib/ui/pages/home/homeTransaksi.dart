@@ -8,8 +8,6 @@ class homeTransaksi extends StatefulWidget {
 }
 
 class _homeTransaksiState extends State<homeTransaksi> {
-  var time = formatDate(DateTime.now(), [yyyy, '/', mm, '/', dd, ' ', HH, ':', nn]);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -79,7 +77,7 @@ class _homeTransaksiState extends State<homeTransaksi> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                      'FMS/KDA/000'+'$index',
+                                      Refueling.fHmEquipment+'$index',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(color: Colors.black,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -91,7 +89,7 @@ class _homeTransaksiState extends State<homeTransaksi> {
                                           fontFamily: Fonts.REGULAR,fontSize: 12)
                                   ),
                                   Text(
-                                      '$time',
+                                      Global.time,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(color: Colors.grey,
                                           fontFamily: Fonts.REGULAR,fontSize: 12)
