@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fms_app/model/lansiran.dart';
+import 'package:fms_app/model/msequipment.dart';
 import 'package:fms_app/model/msstorage.dart';
 import 'package:fms_app/model/tr_fuel_distribution.dart';
 import 'package:path/path.dart';
@@ -12,4 +13,3 @@ import 'package:postgres/postgres.dart';
 
 part 'db_local.dart';
 part 'fms_database.dart';
-part '../model/model_equipment.dart';
