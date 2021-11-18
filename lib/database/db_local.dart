@@ -145,23 +145,15 @@ class FmsDatabase {
     }
   }
 
-  // Future<List<Lansiran>> readRefueling() async {
-  //   final db = await instance.database;
-  //
-  //   final orderBy = '${TrFuelDistributionFields.transactions_id} ASC';
-  //   // final result = await db.rawQuery('SELECT mse.equipment_id,
-  //   //     model_number,
-  //   //     tank_capacity,
-  //   //     category_desc,
-  //   //     auth_group,
-  //   //     company_code,
-  //   //     operator_id
-  //   //     FROM db_master.msequipment mse
-  //   //     inner join dbfms.tr_fuel_attendance tfa on mse.equipment_id = tfa.equipment_id
-  //   //     where tfa.equipment_id ='EX21103KM'');
-  //   // final result = await db.query(tableLansiran, orderBy: orderBy);
-  //   // return result.map((json) => Lansiran.fromJson(json)).toList();
-  // }
+  Future<List<Map>> readRefueling() async {
+    final db = await instance.database;
+
+    final orderBy = '${MsEquipmentFields.equipment_id} ASC';
+    final result = await db.rawQuery('SELECT mse.equipment_id, model_number,tank_capacity,category_desc,auth_group,company_code,operator_id,tfd.created_at, fuel_totalisator_awal, fuel_totalisator_akhir, (fuel_totalisator_awal+fuel_totalisator_akhir) as total FROM msequipment mse inner join tr_fuel_attendance tfa join tr_fuel_distribution tfd on mse.equipment_id = tfa.equipment_id and mse.equipment_id = tfd.equipment_id where tfa.equipment_id ="EX21103KM"');
+    print(result);
+    return result;
+
+  }
 
   Future close() async {
     final db = await instance.database;

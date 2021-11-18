@@ -15,6 +15,7 @@ class _scanRefuelingState extends State<scanRefueling> {
     'Photo Meter Fuel',
     'Photo HM Unit'
   ];
+  String value ='';
   @override
   Widget build(BuildContext context) {
     TrFuelDistribution trFuelDistribution = TrFuelDistribution(
@@ -37,6 +38,35 @@ class _scanRefuelingState extends State<scanRefueling> {
       updated_at: Global.time,
       // attendaceId: '',
     );
+    MsEquipment msEquipment = MsEquipment(
+    equipment_id: '',
+    manufacturer:'',
+    model_number:'',
+    tank_capacity:0,
+    category:'',
+    category_desc: '',
+    auth_group: '',
+    auth_text:'',
+    company_code:'',
+    changed_by_system:'',
+    created_by:'',
+    created_at:'',
+    updatedBy:'',
+    updated_at:'',
+    load_category:'',
+    load_category_unit:'',
+    );
+    FmsDatabase.instance.readRefueling().then((value) {
+      setState(() {
+        Equipment.eModelNumber = value[0]['model_number'];
+        Equipment.eTankCapacity = value[0]['tank_capacity'];
+        Equipment.category_desc = value[0]['category_desc'];
+        Equipment.auth_group = value[0]['auth_group'];
+        Equipment.company_code = value[0]['company_code'];
+        Attendance.operator_id = value[0]['operator_id'];
+        print(value);
+      });
+    });
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -100,19 +130,19 @@ class _scanRefuelingState extends State<scanRefueling> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                          'Result is '+ widget.barcode_id,
+                          widget.barcode_id,
                           textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.black,
                               fontFamily: Fonts.REGULAR,fontSize: 18)
                       ),
                       Text(
-                          'Result is '+ widget.barcode_id,
+                          Equipment.eModelNumber,
                           textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.black,
                               fontFamily: Fonts.REGULAR,fontSize: 18)
                       ),
                       Text(
-                          'Result is '+ widget.barcode_id,
+                         Equipment.eTankCapacity.toString(),
                           textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.black,
                               fontFamily: Fonts.REGULAR,fontSize: 18)
