@@ -16,16 +16,46 @@ class _scanRefuelingState extends State<scanRefueling> {
     'Photo HM Unit'
   ];
   String value ='';
+
+  TextEditingController textEditingController = TextEditingController();
+  var velocityEditingController = TextEditingController();
+  var finalValue = TextEditingController();
+
+  int airFlow = 0;
+  int velocity=0;
+  int valueFinal=0;
+  String sam='', sam2='';
+  String airFlowText='', velocityText='', finalText='';
+
+  @override
+  void initState() {
+    super.initState();
+    finalValue.addListener(() => setState(() {}));
+  }
+
+  String totalCalculated() {
+    airFlowText = textEditingController.text;
+    velocityText = velocityEditingController.text;
+    finalText = finalValue.text;
+
+    if (airFlowText != '' && velocityText != '') {
+      Refueling.fTotalisatorAkhir = (Refueling.fFilling + Refueling.fTotalisatorAwal).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: Refueling.fTotalisatorAkhir.toString(),
+      );
+    }
+    return Refueling.fTotalisatorAkhir;
+  }
   @override
   Widget build(BuildContext context) {
     TrFuelDistribution trFuelDistribution = TrFuelDistribution(
-      transactions_id: Refueling.fTransactionsId + 1,
+      transactions_id: Refueling.fTransactionsId,
       equipment_id:  widget.barcode_id,
       // storage_id: '',
       // site_id: '',
       // shiftId: '',
-      fuel_filling: Refueling.fFilling,
-      fuel_totalisator_awal: Refueling.fTotalisatorAwal,
+      fuel_filling: (Refueling.fFilling).toString(),
+      fuel_totalisator_awal: (Refueling.fTotalisatorAwal).toString(),
       fuel_totalisator_akhir: Refueling.fTotalisatorAkhir,
       hm_equipment: Refueling.fHmEquipment,
       // storage_operator: '',
@@ -37,24 +67,6 @@ class _scanRefuelingState extends State<scanRefueling> {
       // updatedBy: '',
       updated_at: Global.time,
       // attendaceId: '',
-    );
-    MsEquipment msEquipment = MsEquipment(
-    equipment_id: '',
-    manufacturer:'',
-    model_number:'',
-    tank_capacity:0,
-    category:'',
-    category_desc: '',
-    auth_group: '',
-    auth_text:'',
-    company_code:'',
-    changed_by_system:'',
-    created_by:'',
-    created_at:'',
-    updatedBy:'',
-    updated_at:'',
-    load_category:'',
-    load_category_unit:'',
     );
     FmsDatabase.instance.readRefueling().then((value) {
       setState(() {
@@ -215,6 +227,10 @@ class _scanRefuelingState extends State<scanRefueling> {
                         decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(20)),
                         child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
                             autofocus: false,
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
@@ -262,9 +278,20 @@ class _scanRefuelingState extends State<scanRefueling> {
                             filled: true,
                             contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                           ),
-                          onChanged: (value)=> {
-                            Refueling.fFilling = value
-                          }, //dummy value
+                          // onChanged: (value)=> {
+                          //   Refueling.fFilling = value
+                          // }, //dummy value
+                          controller: textEditingController,
+                          onChanged: (textEditingController) {
+                            setState(() {
+                              Refueling.fFilling = int.parse(textEditingController.toString());
+                            });
+                          },
+                          onTap: () {
+                            setState(() {
+                              textEditingController.clear();
+                            });
+                          },
                         ),
                       ),
                       Container(
@@ -295,9 +322,15 @@ class _scanRefuelingState extends State<scanRefueling> {
                                   filled: true,
                                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                                 ),
-                                onChanged: (value)=> {
-                                  Refueling.fTotalisatorAwal = value
-                                }, //dummy value
+                                // onChanged: (value)=> {
+                                //   Refueling.fTotalisatorAwal = value
+                                // }, //dummy value
+                                controller: velocityEditingController,
+                                onChanged: (velocityEditingController) {
+                                  setState(() {
+                                    Refueling.fTotalisatorAwal = int.parse(velocityEditingController.toString());
+                                  });
+                                },
                               ),
                             ),
                             Padding(
@@ -332,9 +365,27 @@ class _scanRefuelingState extends State<scanRefueling> {
                                   filled: true,
                                   contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                                 ),
-                                onChanged: (value)=> {
-                                  Refueling.fTotalisatorAkhir = value
-                                }, //dummy value
+                                // onChanged: (value)=> {
+                                //   Refueling.fTotalisatorAkhir = value
+                                // }, //dummy value
+                                key: Key(totalCalculated()),
+                                controller: finalValue,
+                                onChanged: (finalText) {
+                                  setState(() {
+                                    finalValue.value = finalValue.value.copyWith(
+                                      text: (Refueling.fTotalisatorAkhir = finalText.toString()),
+                                    );
+
+                                  });
+                                },
+                                onTap: () {
+                                  setState(() {
+                                    finalValue.clear();
+                                    finalValue.value = finalValue.value.copyWith(
+                                      text: '',
+                                    );
+                                  });
+                                },
                               ),
                             ),
                           ],
@@ -375,15 +426,6 @@ class _scanRefuelingState extends State<scanRefueling> {
             Divider(
               color: Colors.grey[70],
               thickness: 3,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                  'Photo',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(color: Colors.black,
-                      fontFamily: Fonts.REGULAR,fontSize: 18)
-              ),
             ),
             ExpansionPanelList(
               expansionCallback: (int index, bool isExpanded) {

@@ -126,7 +126,7 @@ class _homeTransaksiState extends State<homeTransaksi> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         padding: const EdgeInsets.all(8),
-                        itemCount: snapshot.data!.length < 5 ? snapshot.data!.length : 5,
+                        itemCount: snapshot.data!.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Card(
                             elevation: 0.8,

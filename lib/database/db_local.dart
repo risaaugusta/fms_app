@@ -94,7 +94,7 @@ class FmsDatabase {
     final db = await instance.database;
     final json = trFuelDistribution.toJson();
     final columns = ''
-        // '${TrFuelDistributionFields.transactionsId},'
+        '${TrFuelDistributionFields.transactions_id},'
         '${TrFuelDistributionFields.equipment_id},'
         // '${TrFuelDistributionFields.storage_id},'
         // '${TrFuelDistributionFields.site_id},'
@@ -147,12 +147,18 @@ class FmsDatabase {
 
   Future<List<Map>> readRefueling() async {
     final db = await instance.database;
-
-    final orderBy = '${MsEquipmentFields.equipment_id} ASC';
-    final result = await db.rawQuery('SELECT mse.equipment_id, model_number,tank_capacity,category_desc,auth_group,company_code,operator_id,tfd.created_at, fuel_totalisator_awal, fuel_totalisator_akhir, (fuel_totalisator_awal+fuel_totalisator_akhir) as total FROM msequipment mse inner join tr_fuel_attendance tfa join tr_fuel_distribution tfd on mse.equipment_id = tfa.equipment_id and mse.equipment_id = tfd.equipment_id where tfa.equipment_id ="EX21103KM"');
+    final orderBy = '${TrFuelDistributionFields.created_at} DESC';
+    final result = await db.rawQuery('SELECT mse.equipment_id, model_number,tank_capacity,category_desc,auth_group,company_code,operator_id,tfd.created_at, fuel_totalisator_awal, fuel_totalisator_akhir, (fuel_totalisator_awal+tank_capacity) as ftakhir, (fuel_totalisator_awal+fuel_totalisator_akhir) as total FROM msequipment mse inner join tr_fuel_attendance tfa join tr_fuel_distribution tfd on mse.equipment_id = tfa.equipment_id and mse.equipment_id = tfd.equipment_id where tfa.equipment_id ="EX21103KM" order by tfd.created_at desc');
     print(result);
     return result;
+  }
 
+  Future<List<Map>> readStorage() async {
+    final db = await instance.database;
+    final orderBy = '${MsEquipmentFields.equipment_id} ASC';
+    final result = await db.rawQuery('SELECT mse.equipment_id, model_number,tank_capacity,category_desc,auth_group,company_code,operator_id,tfd.created_at, fuel_totalisator_awal, fuel_totalisator_akhir, (fuel_totalisator_awal+tank_capacity) as ftakhir, (fuel_totalisator_awal+fuel_totalisator_akhir) as total FROM msequipment mse inner join tr_fuel_attendance tfa join tr_fuel_distribution tfd on mse.equipment_id = tfa.equipment_id and mse.equipment_id = tfd.equipment_id where tfa.equipment_id ="EX21103KM"');
+    print(result);
+    return result;
   }
 
   Future close() async {
