@@ -18,8 +18,8 @@ class _ProfileState extends State<Profile> {
     'Shift'
   ];
   List<String> headerFuelValue=<String>[
-    'Fuel Truck ID',
-    'Lansiran Fuel Truck'
+    'Fuel Truck/MT',
+    'Lansiran Fuel Truck',
   ];
   List<String> data=<String>[
     'NIK',
@@ -146,7 +146,7 @@ class _ProfileState extends State<Profile> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-              child: Text('Fuel Truck',
+              child: Text('Storage ID',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.black,
@@ -171,7 +171,11 @@ class _ProfileState extends State<Profile> {
                     );
                   },
                   body: ListTile(
-                    title: Container(
+                    title: headerFuelValue[index] ==
+                        headerFuelValue[0]
+                        ? StorageDropdown(callback:(String callback){
+                      // trFuelDistribution.storage_id = callback;
+                    },) : Container(
                       width: MediaQuery.of(context).size.width / 1.8,
                       margin: EdgeInsets.symmetric(vertical: 10),
                       decoration:

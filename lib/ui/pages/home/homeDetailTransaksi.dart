@@ -96,7 +96,7 @@ class homeDetailTransaksi extends StatelessWidget {
                                   ),
                                   // SizedBox(height: 10),
                                   Text(
-                                      'Budget',
+                                      'Fuel Filling',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(color: Colors.grey,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -120,7 +120,7 @@ class homeDetailTransaksi extends StatelessWidget {
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
                                   Text(
-                                      snapshot.data![index]['tank_capacity'].toString() ,
+                                      snapshot.data![index]['fuel_filling'].toString() ,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(color: Colors.black,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -426,39 +426,52 @@ class homeDetailTransaksi extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MaterialButton(
-                      minWidth:40,
-                      onPressed: () => homeDashboard(),
+                      minWidth: 40,
+                      onPressed: () {
+                          _selectedIndex = 0;
+                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.home,
-                            color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
+                            color: _selectedIndex == 0
+                                ? Coloring.mainColor
+                                : Colors.grey,
                           ),
-                          Text(
-                              'Home',
+                          Text('Home',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
+                              style: TextStyle(
+                                  color: _selectedIndex == 0
+                                      ? Coloring.mainColor
+                                      : Colors.grey,
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 14)),
                         ],
                       ),
                     ),
                     MaterialButton(
-                      onPressed: (){},
+                      onPressed: () {
+                          _selectedIndex = 1;
+
+                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.article_rounded,
-                            color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
+                            color: _selectedIndex == 1
+                                ? Coloring.mainColor
+                                : Colors.grey,
                           ),
-                          Text(
-                              'Manual',
+                          Text('Manual',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
+                              style: TextStyle(
+                                  color: _selectedIndex == 1
+                                      ? Coloring.mainColor
+                                      : Colors.grey,
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 14)),
                         ],
                       ),
                     )
@@ -468,39 +481,54 @@ class homeDetailTransaksi extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MaterialButton(
-                      minWidth:40,
-                      onPressed: (){},
+                      minWidth: 40,
+                      onPressed: () {
+                          _selectedIndex = 2;
+
+                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.notifications,
-                            color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
+                            color: _selectedIndex == 2
+                                ? Coloring.mainColor
+                                : Colors.grey,
                           ),
-                          Text(
-                              'Notifikasi',
+                          Text('Notifikasi',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
+                              style: TextStyle(
+                                  color: _selectedIndex == 2
+                                      ? Coloring.mainColor
+                                      : Colors.grey,
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 14)),
                         ],
                       ),
                     ),
                     MaterialButton(
-                      onPressed: () => Profile(),
+                      onPressed: () {
+
+                          _selectedIndex = 3;
+
+                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.account_circle,
-                            color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
+                            color: _selectedIndex == 3
+                                ? Coloring.mainColor
+                                : Colors.grey,
                           ),
-                          Text(
-                              'Profil',
+                          Text('Profil',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
+                              style: TextStyle(
+                                  color: _selectedIndex == 3
+                                      ? Coloring.mainColor
+                                      : Colors.grey,
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 14)),
                         ],
                       ),
                     )
