@@ -103,7 +103,7 @@ class FmsDatabase {
         '${TrFuelDistributionFields.fuel_totalisator_awal},'
         '${TrFuelDistributionFields.fuel_totalisator_akhir},'
         '${TrFuelDistributionFields.hm_equipment},'
-        // '${TrFuelDistributionFields.storage_operator},'
+        '${TrFuelDistributionFields.storage_operator},'
         // '${TrFuelDistributionFields.equipment_operator},'
         // '${TrFuelDistributionFields.equipmentBudget},'
         // '${TrFuelDistributionFields.isActive},'
@@ -160,6 +160,40 @@ class FmsDatabase {
     print(result);
     return result;
   }
+
+  // Future getImage(TrFuelDistribution imageSource) async {
+  //   var image = await TrFuelDistribution.pickImage(source: imageSource);
+  //   List<int> bytes = await image.readAsBytes();
+  // }
+
+  Future<String> getFilePath() async {
+    Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
+    String appDocumentsPath = appDocumentsDirectory.path;
+    String filePath = '$appDocumentsPath/demoTextFile.txt'; // 3
+
+    return filePath;
+  }
+
+  void saveFile() async {
+    File file = File(await getFilePath()); // 1
+    file.writeAsString("This is my demo text that will be saved to : demoTextFile.txt"); // 2
+  }
+
+  //
+  // static Image imageFromBase64String(String base64String) {
+  //   return Image.memory(
+  //     base64Decode(base64String),
+  //     fit: BoxFit.fill,
+  //   );
+  // }
+  //
+  // static Uint8List dataFromBase64String(String base64String) {
+  //   return base64Decode(base64String);
+  // }
+  //
+  // static String base64String(Uint8List data) {
+  //   return base64Encode(data);
+  // }
 
   Future close() async {
     final db = await instance.database;

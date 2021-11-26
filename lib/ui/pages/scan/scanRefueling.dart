@@ -4,6 +4,7 @@ class scanRefueling extends StatefulWidget {
   final String barcode_id;
   const scanRefueling({required this.barcode_id});
 
+
   @override
   _scanRefuelingState createState() => _scanRefuelingState();
 }
@@ -16,6 +17,9 @@ class _scanRefuelingState extends State<scanRefueling> {
     'Photo HM Unit'
   ];
   String value ='';
+  //
+  // Future<File> imageFile =[] as Future<File>;
+  // late Image image;
 
   TextEditingController textEditingController = TextEditingController();
   var velocityEditingController = TextEditingController();
@@ -58,8 +62,8 @@ class _scanRefuelingState extends State<scanRefueling> {
       fuel_totalisator_awal: (Refueling.fTotalisatorAwal).toString(),
       fuel_totalisator_akhir: Refueling.fTotalisatorAkhir,
       hm_equipment: Refueling.fHmEquipment,
-      // storage_operator: '',
-      // equipment_operator: '',
+      storage_operator: Refueling.fStorageOperator,
+      equipment_operator: Refueling.fEquipmentOperator,
       // equipmentBudget: '',
       // isActive: '',
       // createdBy: '',
@@ -445,7 +449,12 @@ class _scanRefuelingState extends State<scanRefueling> {
                     );
                   },
                   body: ListTile(
-                      title: UploaderDropdown()
+                      title:
+                      UploaderDropdown(callback:(String filePath){
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[0] ?
+                        Refueling.fStorageOperator = filePath :  Refueling.fEquipmentOperator = filePath;
+                      })
                   ),
                   isExpanded: item.isExpanded,
                 ),

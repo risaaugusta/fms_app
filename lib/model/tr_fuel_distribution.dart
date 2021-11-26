@@ -12,8 +12,8 @@ class TrFuelDistributionFields {
     fuel_totalisator_awal,
     fuel_totalisator_akhir,
     hm_equipment,
-    // storage_operator,
-    // equipment_operator,
+    storage_operator,
+    equipment_operator,
     // equipmentBudget,
     // isActive,
     // createdBy,
@@ -33,8 +33,8 @@ class TrFuelDistributionFields {
   static final String fuel_totalisator_awal = 'fuel_totalisator_awal';
   static final String fuel_totalisator_akhir = 'fuel_totalisator_akhir';
   static final String hm_equipment = 'hm_equipment';
-  // static final String storage_operator = 'storage_operator';
-  // static final String equipment_operator = 'equipment_operator';
+  static final String storage_operator = 'storage_operator';
+  static final String equipment_operator = 'equipment_operator';
   // static final String equipmentBudget = 'equipmentBudget';
   // static final String isActive = 'isActive';
   // static final String createdBy = 'createdBy';
@@ -55,8 +55,8 @@ class TrFuelDistribution {
   String fuel_totalisator_awal;
   String fuel_totalisator_akhir;
   String hm_equipment;
-  // String storage_operator;
-  // String equipment_operator;
+  String storage_operator;
+  String equipment_operator;
   // String equipmentBudget;
   // String isActive;
   // String createdBy;
@@ -76,8 +76,8 @@ class TrFuelDistribution {
     required this.fuel_totalisator_awal,
     required this.fuel_totalisator_akhir,
     required this.hm_equipment,
-    // required this.storage_operator,
-    // required this.equipment_operator,
+    required this.storage_operator,
+    required this.equipment_operator,
     // required this.equipmentBudget,
     // required this.isActive,
     // required this.createdBy,
@@ -98,8 +98,8 @@ class TrFuelDistribution {
     String? fuel_totalisator_awal,
     String? fuel_totalisator_akhir,
     String? hm_equipment,
-    // String? storage_operator,
-    // String? equipment_operator,
+    String? storage_operator,
+    String? equipment_operator,
     // String? equipmentBudget,
     // String? isActive,
     // String? createdBy,
@@ -119,8 +119,8 @@ class TrFuelDistribution {
         fuel_totalisator_awal: fuel_totalisator_awal ?? this.fuel_totalisator_awal,
         fuel_totalisator_akhir: fuel_totalisator_akhir ?? this.fuel_totalisator_akhir,
         hm_equipment: hm_equipment ?? this.hm_equipment,
-        // storage_operator: storage_operator ?? this.storage_operator,
-        // equipment_operator: equipment_operator ?? this.equipment_operator,
+        storage_operator: storage_operator ?? this.storage_operator,
+        equipment_operator: equipment_operator ?? this.equipment_operator,
         // equipmentBudget: equipmentBudget ?? this.equipmentBudget,
         // isActive: isActive ?? this.isActive,
         // createdBy: createdBy ?? this.createdBy,
@@ -141,8 +141,8 @@ class TrFuelDistribution {
     fuel_totalisator_awal: json[TrFuelDistributionFields.fuel_totalisator_awal] as String,
     fuel_totalisator_akhir: json[TrFuelDistributionFields.fuel_totalisator_akhir] as String,
     hm_equipment: json[TrFuelDistributionFields.hm_equipment] as String,
-    // storage_operator: json[TrFuelDistributionFields.storage_operator] as String,
-    // equipment_operator: json[TrFuelDistributionFields.equipment_operator] as String,
+    storage_operator: json[TrFuelDistributionFields.storage_operator] as String,
+    equipment_operator: json[TrFuelDistributionFields.equipment_operator] as String,
     // equipmentBudget: json[TrFuelDistributionFields.equipmentBudget] as String,
     // isActive: json[TrFuelDistributionFields.isActive] as String,
     // createdBy: json[TrFuelDistributionFields.createdBy] as String,
@@ -163,8 +163,8 @@ class TrFuelDistribution {
     TrFuelDistributionFields.fuel_totalisator_awal: fuel_totalisator_awal,
     TrFuelDistributionFields.fuel_totalisator_akhir: fuel_totalisator_akhir,
     TrFuelDistributionFields.hm_equipment: hm_equipment,
-    // TrFuelDistributionFields.storage_operator: storage_operator,
-    // TrFuelDistributionFields.equipment_operator: equipment_operator,
+    TrFuelDistributionFields.storage_operator: storage_operator,
+    TrFuelDistributionFields.equipment_operator: equipment_operator,
     // TrFuelDistributionFields.equipmentBudget: equipmentBudget,
     // TrFuelDistributionFields.isActive: isActive,
     // TrFuelDistributionFields.createdBy: createdBy,

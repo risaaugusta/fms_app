@@ -6,6 +6,8 @@ class Refueling{
   static int fTotalisatorAwal=0;
   static String fTotalisatorAkhir='';
   static String fHmEquipment='';
+  static String fStorageOperator='';
+  static String fEquipmentOperator='';
 }
 
 class Equipment{
