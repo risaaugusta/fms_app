@@ -42,6 +42,9 @@ dependencies:
   dio: ^4.0.1
   http: ^0.13.3
   html: ^0.15.0
+  shared_preferences: ^2.0.7
+  image_picker: ^0.8.4
+  path: ^1.8.0
 #  json_annotation: ^4.0.0
 #  json_serializable: ^5.0.0
 #  barcode_scan: ^3.0.1
