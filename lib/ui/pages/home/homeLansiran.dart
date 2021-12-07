@@ -11,6 +11,11 @@ class _homeLansiranState extends State<homeLansiran> {
   String unitType = "Fuel Truck";
   String unitCode = "FT1125";
   int budget = 450;
+  List<Item> PhotoItems = generateItems(2);
+  List<String> headerPhotoValue=<String>[
+    'Photo Meter Fuel',
+    'Photo HM Unit'
+  ];
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -49,25 +54,28 @@ class _homeLansiranState extends State<homeLansiran> {
       volTotal: 0);
 
   TrFuelDistribution trFuelDistribution = TrFuelDistribution(
-    // transactionsId: '',
-    equipment_id: '',
+    transactions_id: Refueling.fTransactionsId,
+    equipment_id:  '',
     // storage_id: '',
-    // site_id: '',
+    site_id: Refueling.fSiteId,
     // shiftId: '',
-    fuel_filling: '',
-    fuel_totalisator_awal: '',
-    fuel_totalisator_akhir: '',
-    hm_equipment: '',
-    storage_operator: '',
-    equipment_operator: '',
-    // equipmentBudget: '',
+    fuel_filling: (Refueling.fFilling).toString(),
+    fuel_totalisator_awal: (Refueling.fTotalisatorAwal).toString(),
+    fuel_totalisator_akhir: Refueling.fTotalisatorAkhir,
+    hm_equipment: Refueling.fHmEquipment,
+    storage_operator: Refueling.fStorageOperator,
+    equipment_operator: Refueling.fEquipmentOperator,
+    image_directory: Refueling.fImageDirectory,
+    image_name: Refueling.fImageName,
+    // equipment_budget: '',
     // isActive: '',
     // createdBy: '',
-    created_at: '',
+    created_at: Global.time,
     // updatedBy: '',
-    updated_at: '',
+    updated_at: Global.time,
     // attendaceId: '',
   );
+
   MsStorage? msStorage;
 
   void _onItemTapped(int index) {
@@ -77,7 +85,35 @@ class _homeLansiranState extends State<homeLansiran> {
   }
 
   ScrollController _controller = new ScrollController();
+  TextEditingController textEditingController = TextEditingController();
+  var velocityEditingController = TextEditingController();
+  var finalValue = TextEditingController();
 
+  int airFlow = 0;
+  int velocity=0;
+  int valueFinal=0;
+  String sam='', sam2='';
+  String airFlowText='', velocityText='', finalText='';
+
+  @override
+  void initState() {
+    super.initState();
+    finalValue.addListener(() => setState(() {}));
+  }
+
+  String totalCalculated() {
+    airFlowText = textEditingController.text;
+    velocityText = velocityEditingController.text;
+    finalText = finalValue.text;
+
+    if (airFlowText != '' && velocityText != '') {
+      Refueling.fTotalisatorAkhir = (Refueling.fFilling + Refueling.fTotalisatorAwal).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: Refueling.fTotalisatorAkhir.toString(),
+      );
+    }
+    return Refueling.fTotalisatorAkhir;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -264,40 +300,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                                     EdgeInsets.fromLTRB(
                                                         20.0, 10.0, 20.0, 10.0),
                                               ),
-                                              // onChanged: (value) {
-                                              //   if (headerLansiranValue[
-                                              //           index] ==
-                                              //       headerLansiranValue[1]) {
-                                              //     lansiran.nik = value;
-                                              //   } else if (headerLansiranValue[
-                                              //           index] ==
-                                              //       headerLansiranValue[2]) {
-                                              //     lansiran.totalisatorAwal =
-                                              //         int.parse(value);
-                                              //   } else if (headerLansiranValue[
-                                              //           index] ==
-                                              //       headerLansiranValue[3]) {
-                                              //     lansiran.totalisatorAkhir =
-                                              //         int.parse(value);
-                                              //   } else if (headerLansiranValue[
-                                              //           index] ==
-                                              //       headerLansiranValue[4]) {
-                                              //     lansiran.volSebelum =
-                                              //         int.parse(value);
-                                              //   } else if (headerLansiranValue[
-                                              //           index] ==
-                                              //       headerLansiranValue[5]) {
-                                              //     lansiran.jml =
-                                              //         int.parse(value);
-                                              //   } else if (headerLansiranValue[
-                                              //           index] ==
-                                              //       headerLansiranValue[6]) {
-                                              //     lansiran.volTotal =
-                                              //         int.parse(value);
-                                              //   } else {
-                                              //     null;
-                                              //   }
-                                              // }, //dummy value
+
                                               ///value tr fuel distribution
                                               onChanged: (value) {
                                                 if (headerLansiranValue[
@@ -307,7 +310,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[2]) {
-                                                  trFuelDistribution.fuel_totalisator_awal = value;
+                                                    Refueling.fTotalisatorAwal = value.toString() as int;
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[3]) {
@@ -319,7 +322,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[5]) {
-                                                  // trFuelDistribution.equipment_operator = value;
+                                                  Refueling.fHmEquipment = value;
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[6]) {
@@ -336,6 +339,35 @@ class _homeLansiranState extends State<homeLansiran> {
                               ))
                           .values
                           .toList(),
+                    ),
+                    ExpansionPanelList(
+                      expansionCallback: (int index, bool isExpanded) {
+                        setState(() {
+                          PhotoItems[index].isExpanded = !isExpanded;
+                        });
+                      },
+                      children: PhotoItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
+                        ExpansionPanel(
+                          headerBuilder: (BuildContext context, bool isExpanded) {
+                            return ListTile(
+                              contentPadding: EdgeInsets.only(left:30),
+                              title: Text('${headerPhotoValue[index]}',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.grey,
+                                      fontFamily: Fonts.REGULAR,fontSize: 14)),
+                            );
+                          },
+                          body: ListTile(
+                              title:
+                              UploaderDropdown(callback:(String filePath){
+                                headerPhotoValue[index] ==
+                                    headerPhotoValue[0] ?
+                                Refueling.fImageDirectory = filePath :  Refueling.fImageName = filePath;
+                              })
+                          ),
+                          isExpanded: item.isExpanded,
+                        ),
+                      )).values.toList(),
                     ),
                     Container(
                       margin: EdgeInsets.only(bottom: 20, top: 15),
@@ -356,8 +388,6 @@ class _homeLansiranState extends State<homeLansiran> {
                                 side: BorderSide(color: Coloring.mainColor)),
                             onPressed: () {
                               print(trFuelDistribution.toJson());
-                              // FmsDatabase.instance.create(lansiran) == true ?
-                              // FmsDatabase.instance.create(lansiran).then((value) => {_dialogAlert()})
                               FmsDatabase.instance.create(trFuelDistribution).then((value) => {_dialogAlert()});
                             },
                             color: Coloring.mainColor,

@@ -56,7 +56,7 @@ class _scanRefuelingState extends State<scanRefueling> {
       transactions_id: Refueling.fTransactionsId,
       equipment_id:  widget.barcode_id,
       // storage_id: '',
-      // site_id: '',
+      site_id: '',
       // shiftId: '',
       fuel_filling: (Refueling.fFilling).toString(),
       fuel_totalisator_awal: (Refueling.fTotalisatorAwal).toString(),
@@ -64,7 +64,9 @@ class _scanRefuelingState extends State<scanRefueling> {
       hm_equipment: Refueling.fHmEquipment,
       storage_operator: Refueling.fStorageOperator,
       equipment_operator: Refueling.fEquipmentOperator,
-      // equipmentBudget: '',
+      image_directory: Refueling.fImageDirectory,
+      image_name: Refueling.fImageName,
+      // equipment_budget: '',
       // isActive: '',
       // createdBy: '',
       created_at: Global.time,
@@ -453,7 +455,7 @@ class _scanRefuelingState extends State<scanRefueling> {
                       UploaderDropdown(callback:(String filePath){
                         headerPhotoValue[index] ==
                             headerPhotoValue[0] ?
-                        Refueling.fStorageOperator = filePath :  Refueling.fEquipmentOperator = filePath;
+                        Refueling.fImageDirectory = filePath :  Refueling.fImageName = filePath;
                       })
                   ),
                   isExpanded: item.isExpanded,

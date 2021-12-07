@@ -8,6 +8,9 @@ class Refueling{
   static String fHmEquipment='';
   static String fStorageOperator='';
   static String fEquipmentOperator='';
+  static String fImageDirectory='';
+  static String fImageName='';
+  static String fSiteId='';
 }
 
 class Equipment{
