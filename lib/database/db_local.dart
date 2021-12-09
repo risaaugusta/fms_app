@@ -121,6 +121,35 @@ class FmsDatabase {
     return trFuelDistribution.copy(hm_equipment: TrFuelDistributionFields.hm_equipment);
   }
 
+  Future<TrFuelTransfer> createTransfer(TrFuelTransfer trFuelTransfer) async {
+    final db = await instance.database;
+    final json = trFuelTransfer.toJson();
+    final columns = ''
+        // '${TrFuelTransferFields.transactions_id},'
+        '${TrFuelTransferFields.site_id},'
+        '${TrFuelTransferFields.flowmeter_dst},'
+        // '${TrFuelTransferFields.shift_id},'
+        '${TrFuelTransferFields.storage_source},'
+        '${TrFuelTransferFields.flowmeter_source},'
+        '${TrFuelTransferFields.totalisator_source_begin},'
+        '${TrFuelTransferFields.totalisator_source_end},'
+        '${TrFuelTransferFields.storage_destination},'
+        '${TrFuelTransferFields.totalisator_dst_begin},'
+        '${TrFuelTransferFields.totalisator_dst_end},'
+        // '${TrFuelTransferFields.attendance_id},'
+        // '${TrFuelTransferFields.approval_id},'
+        // '${TrFuelTransferFields.is_active},'
+        // '${TrFuelTransferFields.created_by},'
+        '${TrFuelTransferFields.created_at},'
+        // '${TrFuelTransferFields.modified_by},'
+        // '${TrFuelTransferFields.created_by},'
+    ;
+
+    final id = await db.insert(tableTransfer, trFuelTransfer.toJson());
+    print(id);
+    return trFuelTransfer.copy(site_id: TrFuelDistributionFields.site_id);
+  }
+
   //select storageCode from msstorage
   Future<List<Map<String, dynamic>>> findRefuelingObjects(String query) async {
     final db = await instance.database;

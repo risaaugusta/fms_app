@@ -76,6 +76,27 @@ class _homeLansiranState extends State<homeLansiran> {
     // attendaceId: '',
   );
 
+  TrFuelTransfer trFuelTransfer = TrFuelTransfer(
+    // transactions_id: FuelTransfer.tTransactionsId,
+    site_id: FuelTransfer.tSiteId,
+    // shift_id: FuelTransfer.tShiftId,
+    storage_source: (FuelTransfer.tStorageSource).toString(),
+    flowmeter_source: (FuelTransfer.tStorageSource).toString(),
+    totalisator_source_begin: (FuelTransfer.tTotalisatorSourceBegin).toString(),
+    totalisator_source_end: (FuelTransfer.tTotalisatorSourceEnd).toString(),
+    storage_destination: (FuelTransfer.tStorageDestination).toString(),
+    flowmeter_dst: (FuelTransfer.tFlowmeterDst).toString(),
+    totalisator_dst_begin: (FuelTransfer.tTotalisatorDstBegin).toString(),
+    totalisator_dst_end: (FuelTransfer.tTotalisatorDstEnd).toString(),
+    // attendance_id: (FuelTransfer.tAttendanceId).toString(),
+    // approval_id: FuelTransfer.tApprovalId,
+    // is_active: FuelTransfer.tIsActive,
+    created_at: Global.time,
+    // created_by: '',
+    // modified_by: '',
+    modified_at: Global.time,
+  );
+
   MsStorage? msStorage;
 
   void _onItemTapped(int index) {
@@ -305,28 +326,32 @@ class _homeLansiranState extends State<homeLansiran> {
                                               onChanged: (value) {
                                                 if (headerLansiranValue[
                                                 index] ==
+                                                    headerLansiranValue[0]) {
+                                                  FuelTransfer.tSiteId=value;
+                                                } else if (headerLansiranValue[
+                                                index] ==
                                                     headerLansiranValue[1]) {
-                                                  // trFuelDistribution.site_id = value;
+                                                    FuelTransfer.tStorageSource = int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[2]) {
-                                                    Refueling.fTotalisatorAwal = value.toString() as int;
+                                                  FuelTransfer.tTotalisatorDstBegin = int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[3]) {
-                                                  trFuelDistribution.fuel_totalisator_akhir = value;
+                                                  FuelTransfer.tTotalisatorDstEnd = int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[4]) {
-                                                  // trFuelDistribution.storage_operator = value;
+                                                  FuelTransfer.tTotalisatorSourceEnd = int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[5]) {
-                                                  Refueling.fHmEquipment = value;
+                                                  FuelTransfer.tTotalisatorSourceBegin = int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[6]) {
-                                                  trFuelDistribution.fuel_filling = value;
+                                                  FuelTransfer.tStorageDestination = int.parse(value.toString());
                                                 } else {
                                                   null;
                                                 }
@@ -362,7 +387,7 @@ class _homeLansiranState extends State<homeLansiran> {
                               UploaderDropdown(callback:(String filePath){
                                 headerPhotoValue[index] ==
                                     headerPhotoValue[0] ?
-                                Refueling.fImageDirectory = filePath :  Refueling.fImageName = filePath;
+                                FuelTransfer.tFlowmeterSource = filePath.toString() as int :  FuelTransfer.tFlowmeterDst = filePath.toString() as int;
                               })
                           ),
                           isExpanded: item.isExpanded,
@@ -387,8 +412,8 @@ class _homeLansiranState extends State<homeLansiran> {
                                 borderRadius: BorderRadius.circular(30),
                                 side: BorderSide(color: Coloring.mainColor)),
                             onPressed: () {
-                              print(trFuelDistribution.toJson());
-                              FmsDatabase.instance.create(trFuelDistribution).then((value) => {_dialogAlert()});
+                              print(trFuelTransfer.toJson());
+                              FmsDatabase.instance.createTransfer(trFuelTransfer).then((value) => {_dialogAlert()});
                             },
                             color: Coloring.mainColor,
                             textColor: Colors.white,

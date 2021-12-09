@@ -13,6 +13,28 @@ class Refueling{
   static String fSiteId='';
 }
 
+class FuelTransfer{
+  static String tTransactionsId='';
+  static String tSiteId='';
+  static String tShiftId='';
+  static int tStorageSource=0;
+  static int tFlowmeterSource=0;
+  static int tTotalisatorSourceBegin=0;
+  static int tTotalisatorSourceEnd=0;
+  static int tStorageDestination=0;
+  static int tFlowmeterDst=0;
+  static int tTotalisatorDstBegin=0;
+  static int tTotalisatorDstEnd=0;
+  static int tAttendanceId=0;
+  static String tApprovalId='';
+  static String tIsActive='';
+  static String tCreatedBy='';
+  static String tCreatedAt='';
+  static String tModifiedBy='';
+  static String tModifiedAt='';
+
+}
+
 class Equipment{
   static String eEquipmentId= '';
   static String eManufacturer='';

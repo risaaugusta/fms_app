@@ -16,6 +16,7 @@ import 'package:fms_app/bloc/blocs.dart';
 import 'package:fms_app/database/db_package.dart';
 import 'package:fms_app/model/lansiran.dart';
 import 'package:fms_app/model/tr_fuel_distribution.dart';
+import 'package:fms_app/model/tr_fuel_transfer.dart';
 import 'package:fms_app/model/msstorage.dart';
 import 'package:fms_app/model/msequipment.dart';
 import 'package:fms_app/model/tr_fuel_attendace.dart';

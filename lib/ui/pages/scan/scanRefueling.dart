@@ -17,9 +17,7 @@ class _scanRefuelingState extends State<scanRefueling> {
     'Photo HM Unit'
   ];
   String value ='';
-  //
-  // Future<File> imageFile =[] as Future<File>;
-  // late Image image;
+
 
   TextEditingController textEditingController = TextEditingController();
   var velocityEditingController = TextEditingController();
