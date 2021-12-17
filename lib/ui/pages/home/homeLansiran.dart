@@ -387,7 +387,7 @@ class _homeLansiranState extends State<homeLansiran> {
                               UploaderDropdown(callback:(String filePath){
                                 headerPhotoValue[index] ==
                                     headerPhotoValue[0] ?
-                                FuelTransfer.tFlowmeterSource = filePath.toString() as int :  FuelTransfer.tFlowmeterDst = filePath.toString() as int;
+                                FuelTransfer.tFlowmeterSource = filePath.toString() as int :  FuelTransfer.tFlowmeterDst = int.parse(filePath.toString()) ;
                               })
                           ),
                           isExpanded: item.isExpanded,

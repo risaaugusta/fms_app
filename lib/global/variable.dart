@@ -32,7 +32,20 @@ class FuelTransfer{
   static String tCreatedAt='';
   static String tModifiedBy='';
   static String tModifiedAt='';
+}
 
+class Baps{
+  static String bBapsId='';
+  static String bSiteId='';
+  static String bShiftId='';
+  static int bOperatorId=0;
+  static String bApprovalId='';
+  static String bNotes='';
+  static String bBapsStatus='';
+  static String bCreatedBy='';
+  static String bCreatedAt='';
+  static String bModifiedBy='';
+  static String bModifiedAt='';
 }
 
 class Equipment{

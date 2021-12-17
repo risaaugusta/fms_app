@@ -29,7 +29,7 @@ class _homeBAPSState extends State<homeBAPS> {
   ];
 
   List<Item> DataItems = generateItems(3);
-  List<Item> DestinationItems = generateItems(4);
+  List<Item> DestinationItems = generateItems(1);
   List<String> headerDataValue=<String>[
     'No. SJ',
     'No. DO Vendor',
@@ -37,6 +37,9 @@ class _homeBAPSState extends State<homeBAPS> {
   ];
   List<String> headerDestinationValue=<String>[
     'Fuel Truck ID',
+  ];
+  List<Item> PhotoItems = generateItems(3);
+  List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
     'Flow Meter'
@@ -50,6 +53,19 @@ class _homeBAPSState extends State<homeBAPS> {
 
   @override
   Widget build(BuildContext context) {
+    TrBaps trBaps = TrBaps(
+      // baps_id: Baps.bBapsId,
+      site_id: (Baps.bSiteId).toString(),
+      // shift_id: Baps.bShiftId,
+      // operator_id: (Baps.bOperatorId).toString(),
+      approval_id: Baps.bApprovalId,
+      notes: Baps.bNotes,
+      baps_status: Baps.bBapsStatus,
+      created_at: Global.time,
+      // created_by:'',
+      // modified_by:'',
+      modified_at: Global.time,
+    );
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: _selectedIndex == 0  ? AppBar(
@@ -256,7 +272,6 @@ class _homeBAPSState extends State<homeBAPS> {
                     },
                     body: ListTile(
                         title:
-                        headerDestinationValue[index] == headerDestinationValue[0] ?
                         Container(
                           width: MediaQuery.of(context).size.width / 1.8,
                           margin: EdgeInsets.symmetric(vertical: 10),
@@ -282,9 +297,44 @@ class _homeBAPSState extends State<homeBAPS> {
                               contentPadding:
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                             ),
-                            onChanged: (value) {}, //dummy value
+                            onChanged: (value)  {
+                                Baps.bSiteId=value;
+                            }, ////dummy value
                           ),
-                        ) : UploaderDropdown()
+                        )
+                    ),
+                    isExpanded: item.isExpanded,
+                  ),
+                )).values.toList(),
+              ),
+              ExpansionPanelList(
+                expansionCallback: (int index, bool isExpanded) {
+                  setState(() {
+                    PhotoItems[index].isExpanded = !isExpanded;
+                  });
+                },
+                children: PhotoItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
+                  ExpansionPanel(
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                        contentPadding: EdgeInsets.only(left:30),
+                        title: Text('${headerPhotoValue[index]}',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(color: Colors.grey,
+                                fontFamily: Fonts.REGULAR,fontSize: 14)),
+                      );
+                    },
+                    body: ListTile(
+                        title:
+                        UploaderDropdown(callback:(String filePath){
+                          if (headerPhotoValue[index] ==
+                              headerPhotoValue[0]) {
+                            Baps.bApprovalId = filePath;
+                          }else if ( headerPhotoValue[index] ==
+                              headerPhotoValue[1]){
+                            Baps.bNotes = filePath;
+                          }else { Baps.bBapsStatus = filePath ;}
+                        })
                     ),
                     isExpanded: item.isExpanded,
                   ),
@@ -307,7 +357,10 @@ class _homeBAPSState extends State<homeBAPS> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide(color: Coloring.mainColor)),
-                      onPressed: () => null,
+                      onPressed: () {
+                        print(trBaps.toJson());
+                        FmsDatabase.instance.createBaps(trBaps).then((value) => {_dialogAlert()});
+                      },
                       color: Coloring.mainColor,
                       textColor: Colors.white,
                       child: Text("Kirim",
@@ -452,7 +505,33 @@ class _homeBAPSState extends State<homeBAPS> {
         )
     );
   }
-
+  ///pop up status
+  Future<void> _dialogAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Berhasil!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Berhasil tambah data"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Oke'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 

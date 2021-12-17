@@ -150,6 +150,27 @@ class FmsDatabase {
     return trFuelTransfer.copy(site_id: TrFuelDistributionFields.site_id);
   }
 
+  Future<TrBaps> createBaps(TrBaps trBaps) async {
+    final db = await instance.database;
+    final json = trBaps.toJson();
+    print(trBaps.toJson());
+    final columns = ''
+        // '${TrBapsFields.baps_id},'
+        '${TrBapsFields.site_id},'
+        // '${TrBapsFields.shift_id},'
+        // '${TrBapsFields.operator_id},'
+        '${TrBapsFields.approval_id},'
+        '${TrBapsFields.notes},'
+        '${TrBapsFields.baps_status},'
+        '${TrFuelTransferFields.created_at},'
+        '${TrFuelTransferFields.modified_at},'
+    ;
+
+    final id = await db.insert(tableBaps, trBaps.toJson());
+    print(id);
+    return trBaps.copy(site_id: trBaps.site_id);
+  }
+
   //select storageCode from msstorage
   Future<List<Map<String, dynamic>>> findRefuelingObjects(String query) async {
     final db = await instance.database;
