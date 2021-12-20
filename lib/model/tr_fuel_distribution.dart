@@ -2,8 +2,7 @@ final String tableName = 'tr_fuel_distribution';
 
 class TrFuelDistributionFields {
   static final List<String> values = [
-    // id
-    transactions_id,
+    // transactions_id,
     equipment_id,
     // storage_id,
     site_id,
@@ -25,8 +24,8 @@ class TrFuelDistributionFields {
     image_name,
   ];
 
-  // static final String id = '_id';
-  static final String transactions_id = 'transactions_id';
+  // // static final String id = '_id';
+  // static final String transactions_id = 'transactions_id';
   static final String equipment_id = 'equipment_id';
   // static final String storage_id = 'storage_id';
   static final String site_id = 'site_id';
@@ -50,7 +49,7 @@ class TrFuelDistributionFields {
 
 class TrFuelDistribution {
   // int? id;
-  int? transactions_id;
+  // int? transactions_id;
   String equipment_id;
   // String storage_id;
   String site_id;
@@ -73,7 +72,7 @@ class TrFuelDistribution {
 
   TrFuelDistribution({
     // this.id,
-    this.transactions_id,
+    // this.transactions_id,
     required this.equipment_id,
     // required this.storage_id,
     required this.site_id,
@@ -97,7 +96,7 @@ class TrFuelDistribution {
 
   TrFuelDistribution copy({
     // int? id,
-    int? transactions_id,
+    // int? transactions_id,
     String? equipment_id,
     // String? storage_id,
     String? site_id,
@@ -120,7 +119,7 @@ class TrFuelDistribution {
   }) =>
       TrFuelDistribution(
         // id: id ?? this.id,
-        transactions_id: transactions_id ?? this.transactions_id,
+        // transactions_id: transactions_id ?? this.transactions_id,
         equipment_id: equipment_id ?? this.equipment_id,
         // storage_id: storage_id ?? this.storage_id,
         site_id: site_id ?? this.site_id,
@@ -144,7 +143,7 @@ class TrFuelDistribution {
 
   static TrFuelDistribution fromJson(Map<String, Object?> json) => TrFuelDistribution(
     // id: json[TrFuelDistributionFields.id] as int?,
-    transactions_id: json[TrFuelDistributionFields.transactions_id] as int?,
+    // transactions_id: json[TrFuelDistributionFields.transactions_id] as int?,
     equipment_id: json[TrFuelDistributionFields.equipment_id] as String,
     // storage_id: json[TrFuelDistributionFields.storage_id] as String,
     site_id: json[TrFuelDistributionFields.site_id] as String,
@@ -168,7 +167,7 @@ class TrFuelDistribution {
 
   Map<String, Object?> toJson() => {
     // TrFuelDistributionFields.id: id,
-    TrFuelDistributionFields.transactions_id: transactions_id,
+    // TrFuelDistributionFields.transactions_id: transactions_id,
     TrFuelDistributionFields.equipment_id: equipment_id,
     // TrFuelDistributionFields.storage_id: storage_id,
     TrFuelDistributionFields.site_id: site_id,

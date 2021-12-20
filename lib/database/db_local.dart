@@ -94,7 +94,7 @@ class FmsDatabase {
     final db = await instance.database;
     final json = trFuelDistribution.toJson();
     final columns = ''
-        '${TrFuelDistributionFields.transactions_id},'
+        // '${TrFuelDistributionFields.transactions_id},'
         '${TrFuelDistributionFields.equipment_id},'
         // '${TrFuelDistributionFields.storage_id},'
         // '${TrFuelDistributionFields.site_id},'
@@ -186,7 +186,7 @@ class FmsDatabase {
     final maps = await db.query(
       tableName,
       columns: TrFuelDistributionFields.values,
-      where: '${TrFuelDistributionFields.transactions_id} = ?',
+      // where: '${TrFuelDistributionFields.transactions_id} = ?',
       whereArgs: [id],
     );
 

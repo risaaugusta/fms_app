@@ -54,7 +54,7 @@ class _homeLansiranState extends State<homeLansiran> {
       volTotal: 0);
 
   TrFuelDistribution trFuelDistribution = TrFuelDistribution(
-    transactions_id: Refueling.fTransactionsId,
+    // transactions_id: Refueling.fTransactionsId,
     equipment_id:  '',
     // storage_id: '',
     site_id: Refueling.fSiteId,

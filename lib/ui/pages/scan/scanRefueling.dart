@@ -51,7 +51,7 @@ class _scanRefuelingState extends State<scanRefueling> {
   @override
   Widget build(BuildContext context) {
     TrFuelDistribution trFuelDistribution = TrFuelDistribution(
-      transactions_id: Refueling.fTransactionsId,
+      // transactions_id: Refueling.fTransactionsId,
       equipment_id:  widget.barcode_id,
       // storage_id: '',
       site_id: '',
