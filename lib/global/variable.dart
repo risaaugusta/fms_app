@@ -48,6 +48,32 @@ class Baps{
   static String bModifiedAt='';
 }
 
+class BapsDetail{
+  static String bdBapsDetailId = '';
+  static String bdSjSolarTransportirNo = '';
+  static String bdDoVendorNo = '';
+  static String bdPrPoNo = '';
+  static String bdSupplierName = '';
+  static String bdDriverName = '';
+  static String bdVehicleNo = '';
+  static String bdVolume = '';
+  static String bdStorageId = '';
+  static String bdSegelBegin = '';
+  static String bdSegelEnd = '';
+  static String bdTotalisatorBegin = '';
+  static String bdTotalisatorEnd = '';
+  static String bdFlowmeter = '';
+  static String bdDeviation = '';
+  static String bdSoundingBegin = '';
+  static String bdSoundingEnd = '';
+  static String bdSgObserved = '';
+  static String bdSgDo = '';
+  static String bdTempObserved = '';
+  static String bdTempDo = '';
+  static String bdOperatorId = '';
+  static String bdBapsId = '';
+}
+
 class Equipment{
   static String eEquipmentId= '';
   static String eManufacturer='';

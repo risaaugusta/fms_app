@@ -22,10 +22,10 @@ class _UploaderDropdownState extends State<UploaderDropdown> {
                   widget.callback!(await this.selectFile());
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.grey),
+                    primary: Coloring.mainColor),
                 child: Text(
                   'Unggah foto',
-                    style: TextStyle(color: Colors.black,
+                    style: TextStyle(color: Colors.white,
                         fontFamily: Fonts.REGULAR,fontSize: 12)
                 )),
             this.path != '' ? Image.file(File(this.path)) : Container()

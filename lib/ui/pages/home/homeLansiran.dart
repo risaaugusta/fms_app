@@ -76,27 +76,6 @@ class _homeLansiranState extends State<homeLansiran> {
     // attendaceId: '',
   );
 
-  TrFuelTransfer trFuelTransfer = TrFuelTransfer(
-    // transactions_id: FuelTransfer.tTransactionsId,
-    site_id: FuelTransfer.tSiteId,
-    // shift_id: FuelTransfer.tShiftId,
-    storage_source: (FuelTransfer.tStorageSource).toString(),
-    flowmeter_source: (FuelTransfer.tStorageSource).toString(),
-    totalisator_source_begin: (FuelTransfer.tTotalisatorSourceBegin).toString(),
-    totalisator_source_end: (FuelTransfer.tTotalisatorSourceEnd).toString(),
-    storage_destination: (FuelTransfer.tStorageDestination).toString(),
-    flowmeter_dst: (FuelTransfer.tFlowmeterDst).toString(),
-    totalisator_dst_begin: (FuelTransfer.tTotalisatorDstBegin).toString(),
-    totalisator_dst_end: (FuelTransfer.tTotalisatorDstEnd).toString(),
-    // attendance_id: (FuelTransfer.tAttendanceId).toString(),
-    // approval_id: FuelTransfer.tApprovalId,
-    // is_active: FuelTransfer.tIsActive,
-    created_at: Global.time,
-    // created_by: '',
-    // modified_by: '',
-    modified_at: Global.time,
-  );
-
   MsStorage? msStorage;
 
   void _onItemTapped(int index) {
@@ -138,6 +117,26 @@ class _homeLansiranState extends State<homeLansiran> {
 
   @override
   Widget build(BuildContext context) {
+    TrFuelTransfer trFuelTransfer = TrFuelTransfer(
+      // transactions_id: FuelTransfer.tTransactionsId,
+      site_id: FuelTransfer.tSiteId,
+      // shift_id: FuelTransfer.tShiftId,
+      storage_source: (FuelTransfer.tStorageSource).toString(),
+      flowmeter_source: (FuelTransfer.tStorageSource).toString(),
+      totalisator_source_begin: (FuelTransfer.tTotalisatorSourceBegin).toString(),
+      totalisator_source_end: (FuelTransfer.tTotalisatorSourceEnd).toString(),
+      storage_destination: (FuelTransfer.tStorageDestination).toString(),
+      flowmeter_dst: (FuelTransfer.tFlowmeterDst).toString(),
+      totalisator_dst_begin: (FuelTransfer.tTotalisatorDstBegin).toString(),
+      totalisator_dst_end: (FuelTransfer.tTotalisatorDstEnd).toString(),
+      // attendance_id: (FuelTransfer.tAttendanceId).toString(),
+      // approval_id: FuelTransfer.tApprovalId,
+      // is_active: FuelTransfer.tIsActive,
+      created_at: Global.time,
+      // created_by: '',
+      // modified_by: '',
+      modified_at: Global.time,
+    );
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: _selectedIndex == 0
@@ -331,7 +330,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[1]) {
-                                                    FuelTransfer.tStorageSource = int.parse(value.toString());
+                                                    FuelTransfer.tStorageSource = value as int;
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[2]) {
@@ -343,11 +342,11 @@ class _homeLansiranState extends State<homeLansiran> {
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[4]) {
-                                                  FuelTransfer.tTotalisatorSourceEnd = int.parse(value.toString());
+                                                  FuelTransfer.tFlowmeterSource= int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[5]) {
-                                                  FuelTransfer.tTotalisatorSourceBegin = int.parse(value.toString());
+                                                  FuelTransfer.tFlowmeterDst = int.parse(value.toString());
                                                 } else if (headerLansiranValue[
                                                 index] ==
                                                     headerLansiranValue[6]) {

@@ -171,6 +171,42 @@ class FmsDatabase {
     return trBaps.copy(site_id: trBaps.site_id);
   }
 
+  Future<TrBapsDetail> createBapsDetail(TrBapsDetail trBapsDetail) async {
+    final db = await instance.database;
+    final json = trBapsDetail.toJson();
+    print(trBapsDetail.toJson());
+    final columns = ''
+        '${TrBapsDetailFields.sj_solar_transportir_no},'
+        '${TrBapsDetailFields.do_vendor_no},'
+        '${TrBapsDetailFields.pr_po_no},'
+        '${TrBapsDetailFields.supplier_name},'
+        '${TrBapsDetailFields.driver_name},'
+        '${TrBapsDetailFields.vehicle_no},'
+        '${TrBapsDetailFields.volume},'
+        '${TrBapsDetailFields.segel_begin},'
+        '${TrBapsDetailFields.segel_end},'
+        '${TrBapsDetailFields.vehicle_no},'
+        '${TrBapsDetailFields.volume},'
+        // '${TrBapsDetailFields.storage_id},'
+        '${TrBapsDetailFields.segel_begin},'
+        '${TrBapsDetailFields.segel_end},'
+        '${TrBapsDetailFields.totalisator_begin},'
+        '${TrBapsDetailFields.totalisator_end},'
+        '${TrBapsDetailFields.flowmeter},'
+        '${TrBapsDetailFields.deviation},'
+        '${TrBapsDetailFields.sounding_begin},'
+        '${TrBapsDetailFields.sounding_end},'
+        '${TrBapsDetailFields.sg_observed},'
+        '${TrBapsDetailFields.sg_do},'
+        '${TrBapsDetailFields.temp_observed},'
+        '${TrBapsDetailFields.temp_do},'
+    ;
+
+    final id = await db.insert(tableBapsDetail, trBapsDetail.toJson());
+    print(id);
+    return trBapsDetail.copy(sj_solar_transportir_no: trBapsDetail.sj_solar_transportir_no);
+  }
+
   //select storageCode from msstorage
   Future<List<Map<String, dynamic>>> findRefuelingObjects(String query) async {
     final db = await instance.database;

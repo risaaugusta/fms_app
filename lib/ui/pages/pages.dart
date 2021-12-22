@@ -18,6 +18,7 @@ import 'package:fms_app/model/lansiran.dart';
 import 'package:fms_app/model/tr_fuel_distribution.dart';
 import 'package:fms_app/model/tr_fuel_transfer.dart';
 import 'package:fms_app/model/tr_baps.dart';
+import 'package:fms_app/model/tr_baps_detail.dart';
 import 'package:fms_app/model/msstorage.dart';
 import 'package:fms_app/model/msequipment.dart';
 import 'package:fms_app/model/tr_fuel_attendace.dart';

@@ -28,12 +28,25 @@ class _homeBAPSState extends State<homeBAPS> {
     Profile(),
   ];
 
-  List<Item> DataItems = generateItems(3);
+  List<Item> DataItems = generateItems(16);
   List<Item> DestinationItems = generateItems(1);
   List<String> headerDataValue=<String>[
     'No. SJ',
     'No. DO Vendor',
-    'Vol SJ/Voucher'
+    'Vol SJ/Voucher',
+    'Nama Supplier',
+    'Nama Driver',
+    'No Vehicle',
+    'Volume',
+    'Segel Awal',
+    'Segel Akhir',
+    'Deviasi',
+    'Sounding Awal',
+    'Sounding Akhir',
+    'Segel Observed',
+    'Segel DO',
+    'Temp Observed',
+    'Temp DO',
   ];
   List<String> headerDestinationValue=<String>[
     'Fuel Truck ID',
@@ -65,6 +78,27 @@ class _homeBAPSState extends State<homeBAPS> {
       // created_by:'',
       // modified_by:'',
       modified_at: Global.time,
+    );
+    TrBapsDetail trBapsDetail = TrBapsDetail(
+      sj_solar_transportir_no: BapsDetail.bdSjSolarTransportirNo,
+      do_vendor_no: BapsDetail.bdDoVendorNo,
+      pr_po_no: BapsDetail.bdPrPoNo,
+      supplier_name: BapsDetail.bdSupplierName,
+      driver_name: BapsDetail.bdDriverName,
+      vehicle_no: BapsDetail.bdVehicleNo,
+      volume: BapsDetail.bdVolume,
+      segel_begin: BapsDetail.bdSegelBegin,
+      segel_end: BapsDetail.bdSegelEnd,
+      totalisator_begin: BapsDetail.bdTotalisatorBegin,
+      totalisator_end: BapsDetail.bdTotalisatorEnd,
+      flowmeter: BapsDetail.bdFlowmeter,
+      deviation: BapsDetail.bdDeviation,
+      sounding_begin: BapsDetail.bdSoundingBegin,
+      sounding_end: BapsDetail.bdSoundingEnd,
+      sg_observed: BapsDetail.bdSgObserved,
+      sg_do: BapsDetail.bdSgDo,
+      temp_observed: BapsDetail.bdTempObserved,
+      temp_do: BapsDetail.bdTempDo,
     );
     return Scaffold(
         backgroundColor: Colors.white,
@@ -186,7 +220,7 @@ class _homeBAPSState extends State<homeBAPS> {
               Padding(
                 padding: EdgeInsets.only(left: 15, bottom: 15),
                 child: Text(
-                    'Data',
+                    'Vendor',
                     textAlign: TextAlign.left,
                     style: TextStyle(color: Colors.black,
                         fontFamily: Fonts.REGULAR,fontSize: 18)
@@ -236,7 +270,54 @@ class _homeBAPSState extends State<homeBAPS> {
                               contentPadding:
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                             ),
-                            onChanged: (value) {}, //dummy value
+                            onChanged: (value) {
+                              if (headerDataValue[index] ==
+                                  headerDataValue[0]) {
+                                BapsDetail.bdSjSolarTransportirNo = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[1]){
+                                BapsDetail.bdDoVendorNo = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[2]){
+                                BapsDetail.bdPrPoNo = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[3]){
+                                BapsDetail.bdSupplierName = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[4]){
+                                BapsDetail.bdDriverName = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[5]){
+                                BapsDetail.bdVehicleNo = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[6]){
+                                BapsDetail.bdVolume = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[7]){
+                                BapsDetail.bdSegelBegin = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[8]){
+                                BapsDetail.bdSegelEnd = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[9]){
+                                BapsDetail.bdDeviation = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[10]){
+                                BapsDetail.bdSoundingBegin = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[11]){
+                                BapsDetail.bdSoundingEnd = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[12]){
+                                BapsDetail.bdSgObserved = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[13]){
+                                BapsDetail.bdSgDo = value;
+                              }else if ( headerDataValue[index] ==
+                                  headerDataValue[14]){
+                                BapsDetail.bdTempObserved = value;
+                              }else { BapsDetail.bdTempDo = value ;}
+                            }, //dummy value
                           ),
                         )
                     ),
@@ -330,10 +411,13 @@ class _homeBAPSState extends State<homeBAPS> {
                           if (headerPhotoValue[index] ==
                               headerPhotoValue[0]) {
                             Baps.bApprovalId = filePath;
+                            BapsDetail.bdTotalisatorBegin = filePath;
                           }else if ( headerPhotoValue[index] ==
                               headerPhotoValue[1]){
                             Baps.bNotes = filePath;
-                          }else { Baps.bBapsStatus = filePath ;}
+                            BapsDetail.bdTotalisatorEnd = filePath;
+                          }else { Baps.bBapsStatus = filePath ;
+                          BapsDetail.bdFlowmeter = filePath;}
                         })
                     ),
                     isExpanded: item.isExpanded,
@@ -358,8 +442,9 @@ class _homeBAPSState extends State<homeBAPS> {
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide(color: Coloring.mainColor)),
                       onPressed: () {
-                        print(trBaps.toJson());
+                        print(trBapsDetail.toJson());
                         FmsDatabase.instance.createBaps(trBaps).then((value) => {_dialogAlert()});
+                        FmsDatabase.instance.createBapsDetail(trBapsDetail).then((value) => {_dialogAlert()});
                       },
                       color: Coloring.mainColor,
                       textColor: Colors.white,
