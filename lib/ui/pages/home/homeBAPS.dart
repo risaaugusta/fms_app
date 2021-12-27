@@ -30,6 +30,7 @@ class _homeBAPSState extends State<homeBAPS> {
 
   List<Item> DataItems = generateItems(16);
   List<Item> DestinationItems = generateItems(1);
+  List<Item> SignatureItems = generateItems(1);
   List<String> headerDataValue=<String>[
     'No. SJ',
     'No. DO Vendor',
@@ -50,12 +51,17 @@ class _homeBAPSState extends State<homeBAPS> {
   ];
   List<String> headerDestinationValue=<String>[
     'Fuel Truck ID',
+    'Tanda Tangan'
   ];
-  List<Item> PhotoItems = generateItems(3);
+  List<String> headerSignatureValue=<String>[
+    'Tanda Tangan'
+  ];
+  List<Item> PhotoItems = generateItems(4);
   List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
-    'Flow Meter'
+    'Flow Meter',
+    'Tanda Tangan'
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -406,7 +412,8 @@ class _homeBAPSState extends State<homeBAPS> {
                       );
                     },
                     body: ListTile(
-                        title:
+                        title: headerPhotoValue[index] ==
+                            headerPhotoValue[3] ? SignaturePad() :
                         UploaderDropdown(callback:(String filePath){
                           if (headerPhotoValue[index] ==
                               headerPhotoValue[0]) {
@@ -424,6 +431,31 @@ class _homeBAPSState extends State<homeBAPS> {
                   ),
                 )).values.toList(),
               ),
+              // ExpansionPanelList(
+              //   expansionCallback: (int index, bool isExpanded) {
+              //     setState(() {
+              //       SignatureItems[index].isExpanded = !isExpanded;
+              //     });
+              //   },
+              //   children: SignatureItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
+              //     ExpansionPanel(
+              //       headerBuilder: (BuildContext context, bool isExpanded) {
+              //         return ListTile(
+              //           contentPadding: EdgeInsets.only(left:30),
+              //           title: Text('${headerSignatureValue[index]}',
+              //               textAlign: TextAlign.left,
+              //               style: TextStyle(color: Colors.grey,
+              //                   fontFamily: Fonts.REGULAR,fontSize: 14)),
+              //         );
+              //       },
+              //       body: ListTile(
+              //           title:
+              //           SignaturePad()
+              //       ),
+              //       isExpanded: item.isExpanded,
+              //     ),
+              //   )).values.toList(),
+              // ),
               Container(
                 margin: EdgeInsets.only(bottom: 20, top: 15),
                 child: Divider(
