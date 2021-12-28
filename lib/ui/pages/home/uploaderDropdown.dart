@@ -41,7 +41,6 @@ class _UploaderDropdownState extends State<UploaderDropdown> {
     if(result == null) return;
     final resPath = result.files.single.path!;
 
-
     file = File(resPath);
     String basename = filePath.basename(file!.path);
 

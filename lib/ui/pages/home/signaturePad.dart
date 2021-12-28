@@ -1,7 +1,9 @@
 part of '../pages.dart';
 
 class SignaturePad extends StatefulWidget {
-  const SignaturePad({Key? key}) : super(key: key);
+  final StringCallback? callback;
+  var signature;
+  SignaturePad({Key? key, required this.signature, this.callback}) : super(key: key);
 
   @override
   _SignaturePadState createState() => _SignaturePadState();
@@ -38,7 +40,7 @@ class _SignaturePadState extends State<SignaturePad> {
             backgroundColor: Colors.grey.shade200,
             height: MediaQuery.of(context).size.height/4,
           ),
-          BuildButtons(context)
+          BuildButtons(context),
         ],
       ),
     );
@@ -92,8 +94,9 @@ class _SignaturePadState extends State<SignaturePad> {
 }
 
 class SignaturePreview extends StatelessWidget {
+  final StringCallback? callback;
   var signature;
-  SignaturePreview({Key? key, required this.signature}) : super(key: key);
+  SignaturePreview({Key? key, required this.signature,this.callback }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -105,16 +108,19 @@ class SignaturePreview extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.done),
-            onPressed: ()=> storeSignature(context),
+            onPressed: () async {
+              var store = await storeSignature(context);
+              store = json.encode(store);
+              store = json.decode(store);
+              print('=========');
+              print(store['filePath']);
+            },
           ),
           const SizedBox(width: 8)
         ],
       ),
       body: Image.memory(signature)
     );
-    // return Container(
-    //   child: Image.memory(signature)
-    // );
   }
 
   Future storeSignature(BuildContext context) async{
@@ -131,25 +137,29 @@ class SignaturePreview extends StatelessWidget {
 
     if(isSuccess){
       Navigator.pop(context);
-      SnackBar(
-        content: const Text('Berhasil disimpan!'),
-        action: SnackBarAction(
-          label: 'Oke',
-          onPressed: () {
-            // Code to execute.
-          },
-        ),
-      );
+      // print(result.filePath);,
+      return result;
+      // Text('Berhasil simpan!');
+      // SnackBar(
+      //   content: const Text('Berhasil disimpan!'),
+      //   action: SnackBarAction(
+      //     label: 'Oke',
+      //     onPressed: () {
+      //       // Code to execute.
+      //     },
+      //   ),
+      // );
     }else{
-      SnackBar(
-        content: const Text('Oops! Silakan ulangi'),
-        action: SnackBarAction(
-          label: 'Oke',
-          onPressed: () {
-            // Code to execute.
-          },
-        ),
-      );
+      Text('Gagal simpan');
+      // SnackBar(
+      //   content: const Text('Oops! Silakan ulangi'),
+      //   action: SnackBarAction(
+      //     label: 'Oke',
+      //     onPressed: () {
+      //       // Code to execute.
+      //     },
+      //   ),
+      // );
     }
 
   }

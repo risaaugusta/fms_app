@@ -413,7 +413,7 @@ class _homeBAPSState extends State<homeBAPS> {
                     },
                     body: ListTile(
                         title: headerPhotoValue[index] ==
-                            headerPhotoValue[3] ? SignaturePad() :
+                            headerPhotoValue[3] ? SignaturePad(signature: null,) :
                         UploaderDropdown(callback:(String filePath){
                           if (headerPhotoValue[index] ==
                               headerPhotoValue[0]) {
