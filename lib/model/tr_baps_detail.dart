@@ -10,7 +10,7 @@ class TrBapsDetailFields {
     driver_name,
     vehicle_no,
     volume,
-    // storage_id,
+    storage_id,
     segel_begin,
     segel_end,
     totalisator_begin,
@@ -35,7 +35,7 @@ class TrBapsDetailFields {
   static final String driver_name = 'driver_name';
   static final String vehicle_no = 'vehicle_no';
   static final String volume = 'volume';
-  // static final String storage_id = 'storage_id';
+  static final String storage_id = 'storage_id';
   static final String segel_begin = 'segel_begin';
   static final String segel_end = 'segel_end';
   static final String totalisator_begin = 'totalisator_begin';
@@ -62,7 +62,7 @@ class TrBapsDetail {
   String driver_name;
   String vehicle_no;
   String volume;
-  // String storage_id;
+  String storage_id;
   String segel_begin;
   String segel_end;
   String totalisator_begin;
@@ -87,7 +87,7 @@ class TrBapsDetail {
     required this.driver_name,
     required this.vehicle_no,
     required this.volume,
-    // required this.storage_id,
+    required this.storage_id,
     required this.segel_end,
     required this.segel_begin,
     required this.totalisator_begin,
@@ -113,7 +113,7 @@ class TrBapsDetail {
     String? driver_name,
     String? vehicle_no,
     String? volume,
-    // String? storage_id,
+    String? storage_id,
     String? segel_begin,
     String? segel_end,
     String? totalisator_begin,
@@ -138,7 +138,7 @@ class TrBapsDetail {
         driver_name: driver_name ?? this.driver_name,
         vehicle_no: vehicle_no ?? this.vehicle_no,
         volume: volume ?? this.volume,
-        // storage_id: storage_id ?? this.storage_id,
+        storage_id: storage_id ?? this.storage_id,
         segel_begin: segel_begin ?? this.segel_begin,
         segel_end: segel_end ?? this.segel_end,
         totalisator_begin: totalisator_begin ?? this.totalisator_begin,
@@ -164,7 +164,7 @@ class TrBapsDetail {
     driver_name: json[TrBapsDetailFields.driver_name] as String,
     vehicle_no: json[TrBapsDetailFields.vehicle_no] as String,
     volume: json[TrBapsDetailFields.volume] as String,
-    // storage_id: json[TrBapsDetailFields.storage_id] as String,
+    storage_id: json[TrBapsDetailFields.storage_id] as String,
     segel_end: json[TrBapsDetailFields.segel_end] as String,
     segel_begin: json[TrBapsDetailFields.segel_begin] as String,
     totalisator_begin: json[TrBapsDetailFields.totalisator_begin] as String,
@@ -190,7 +190,7 @@ class TrBapsDetail {
     TrBapsDetailFields.driver_name: driver_name,
     TrBapsDetailFields.vehicle_no: vehicle_no,
     TrBapsDetailFields.volume: volume,
-    // TrBapsDetailFields.storage_id: storage_id,
+    TrBapsDetailFields.storage_id: storage_id,
     TrBapsDetailFields.segel_begin: segel_begin,
     TrBapsDetailFields.segel_end: segel_end,
     TrBapsDetailFields.totalisator_begin: totalisator_begin,

@@ -98,7 +98,7 @@ class Attendance{
   static String site_id='';
   static String equipment_id='';
   static String shift_id='';
-  static int operator_id=0;
+  static String operator_id='';
   static String login_at='';
   static String updated_by='';
   static String updated_at='';
@@ -120,5 +120,6 @@ class Distribution{
 
 class Global{
   static String time = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn,':',ss]);
+  static String pathTtd='';
 }
 

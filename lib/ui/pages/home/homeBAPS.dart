@@ -56,13 +56,17 @@ class _homeBAPSState extends State<homeBAPS> {
   List<String> headerSignatureValue=<String>[
     'Tanda Tangan'
   ];
-  List<Item> PhotoItems = generateItems(4);
+  List<Item> PhotoItems = generateItems(7);
   List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
     'Flow Meter',
-    'Tanda Tangan'
+    'Tanda Tangan Vendor',
+    'Tanda Tangan PIC Penerima',
+    'Tanda Tangan Leader',
+    'Tanda Tangan PM Site',
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -92,6 +96,7 @@ class _homeBAPSState extends State<homeBAPS> {
       supplier_name: BapsDetail.bdSupplierName,
       driver_name: BapsDetail.bdDriverName,
       vehicle_no: BapsDetail.bdVehicleNo,
+      storage_id: BapsDetail.bdStorageId,
       volume: BapsDetail.bdVolume,
       segel_begin: BapsDetail.bdSegelBegin,
       segel_end: BapsDetail.bdSegelEnd,
@@ -412,8 +417,19 @@ class _homeBAPSState extends State<homeBAPS> {
                       );
                     },
                     body: ListTile(
-                        title: headerPhotoValue[index] ==
-                            headerPhotoValue[3] ? SignaturePad(signature: null,) :
+                        title:
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[3] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[4] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[5] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[6] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
                         UploaderDropdown(callback:(String filePath){
                           if (headerPhotoValue[index] ==
                               headerPhotoValue[0]) {
@@ -431,31 +447,6 @@ class _homeBAPSState extends State<homeBAPS> {
                   ),
                 )).values.toList(),
               ),
-              // ExpansionPanelList(
-              //   expansionCallback: (int index, bool isExpanded) {
-              //     setState(() {
-              //       SignatureItems[index].isExpanded = !isExpanded;
-              //     });
-              //   },
-              //   children: SignatureItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
-              //     ExpansionPanel(
-              //       headerBuilder: (BuildContext context, bool isExpanded) {
-              //         return ListTile(
-              //           contentPadding: EdgeInsets.only(left:30),
-              //           title: Text('${headerSignatureValue[index]}',
-              //               textAlign: TextAlign.left,
-              //               style: TextStyle(color: Colors.grey,
-              //                   fontFamily: Fonts.REGULAR,fontSize: 14)),
-              //         );
-              //       },
-              //       body: ListTile(
-              //           title:
-              //           SignaturePad()
-              //       ),
-              //       isExpanded: item.isExpanded,
-              //     ),
-              //   )).values.toList(),
-              // ),
               Container(
                 margin: EdgeInsets.only(bottom: 20, top: 15),
                 child: Divider(

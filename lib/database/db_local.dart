@@ -187,7 +187,7 @@ class FmsDatabase {
         '${TrBapsDetailFields.segel_end},'
         '${TrBapsDetailFields.vehicle_no},'
         '${TrBapsDetailFields.volume},'
-        // '${TrBapsDetailFields.storage_id},'
+        '${TrBapsDetailFields.storage_id},'
         '${TrBapsDetailFields.segel_begin},'
         '${TrBapsDetailFields.segel_end},'
         '${TrBapsDetailFields.totalisator_begin},'
@@ -205,6 +205,27 @@ class FmsDatabase {
     final id = await db.insert(tableBapsDetail, trBapsDetail.toJson());
     print(id);
     return trBapsDetail.copy(sj_solar_transportir_no: trBapsDetail.sj_solar_transportir_no);
+  }
+
+  Future<TrFuelAttendance> createAttendance(TrFuelAttendance trFuelAttendance) async {
+    final db = await instance.database;
+    final json = trFuelAttendance.toJson();
+    print(trFuelAttendance.toJson());
+    final columns = ''
+        '${TrFuelAttendanceFields.attendance_id},'
+        '${TrFuelAttendanceFields.site_id},'
+        '${TrFuelAttendanceFields.equipment_id},'
+        '${TrFuelAttendanceFields.shift_id},'
+        '${TrFuelAttendanceFields.operator_id},'
+        '${TrFuelAttendanceFields.login_at},'
+        '${TrFuelAttendanceFields.updated_by},'
+        '${TrFuelAttendanceFields.updated_at},'
+        '${TrFuelAttendanceFields.is_active},'
+        '${TrFuelAttendanceFields.phone_id},'
+    ;
+
+    final id = await db.insert(tableAttendance, trFuelAttendance.toJson());
+    return trFuelAttendance.copy(shift_id: trFuelAttendance.shift_id);
   }
 
   //select storageCode from msstorage

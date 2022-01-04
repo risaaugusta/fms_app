@@ -40,30 +40,30 @@ class _SignaturePadState extends State<SignaturePad> {
             backgroundColor: Colors.grey.shade200,
             height: MediaQuery.of(context).size.height/4,
           ),
-          BuildButtons(context),
+          BuildButtons(context,widget.callback),
         ],
       ),
     );
   }
-  Widget BuildButtons(BuildContext context) => Container(
+  Widget BuildButtons(BuildContext context,StringCallback? callback) => Container(
       color: Colors.black,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          buildCheck(context),
+          buildCheck(context,callback),
           buildClear()
         ],
       )
   );
 
-  Widget buildCheck(BuildContext context)=> IconButton(
+  Widget buildCheck(BuildContext context, StringCallback? callback)=> IconButton(
     iconSize: 24,
     icon: Icon(Icons.check,color: Coloring.mainColor),
     onPressed: ()async{
       if(controller.isNotEmpty){
          final signature = await exportSignature();
          await Navigator.of(context).push(MaterialPageRoute(
-           builder: (context) =>  SignaturePreview(signature:signature),
+           builder: (context) =>  SignaturePreview(signature:signature,callback: callback,),
          ));
          // Container(
          //   child: SignaturePreview(signature:signature)
@@ -109,11 +109,9 @@ class SignaturePreview extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.done),
             onPressed: () async {
-              var store = await storeSignature(context);
+              var store = await storeSignature(context,this.callback);
               store = json.encode(store);
               store = json.decode(store);
-              print('=========');
-              print(store['filePath']);
             },
           ),
           const SizedBox(width: 8)
@@ -123,22 +121,26 @@ class SignaturePreview extends StatelessWidget {
     );
   }
 
-  Future storeSignature(BuildContext context) async{
+  Future storeSignature(BuildContext context, StringCallback? callback) async{
     final status = await Permission.storage.status;
     if(!status.isGranted){
       await Permission.storage.request();
     }
 
-    final time = formatDate(DateTime.now(), [yyyy, '/', mm, '/', dd, ' ', HH, ':', nn,':',ss]);
+    final time = formatDate(DateTime.now(), [yyyy, mm,  dd, ' ', HH, ':', nn,':',ss]);
     final name = "approval_$time.png";
 
-    final result = await ImageGallerySaver.saveImage(signature,name:name);
-    final isSuccess = result['isSuccess'];
+    // final result = await ImageGallerySaver.saveImage(signature, name:name);
 
-    if(isSuccess){
+    // getting a directory path for saving
+    Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
+    String appDocumentsPath = appDocumentsDirectory.path;
+    File file = new File('/storage/emulated/0/Download/$name');
+    file.writeAsBytes(signature);
+
+    if(true){
       Navigator.pop(context);
-      // print(result.filePath);,
-      return result;
+      callback!(file.absolute.path);
       // Text('Berhasil simpan!');
       // SnackBar(
       //   content: const Text('Berhasil disimpan!'),

@@ -29,6 +29,18 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    TrFuelAttendance trFuelAttendance = TrFuelAttendance(
+      // attendance_id:  Attendance.attendance_id,
+      equipment_id:  Attendance.equipment_id,
+      site_id: Attendance.site_id,
+      shift_id : Attendance.shift_id,
+      operator_id : Attendance.operator_id,
+      // is_active: Attendance.is_active,
+      // updated_by: Attendance.updated_by,
+      login_at: Global.time,
+      updated_at: Global.time,
+      // phone_id: Attendance.phone_id,
+    );
     return Container(
       color: Colors.white,
       margin: EdgeInsets.all(0),
@@ -201,6 +213,19 @@ class _ProfileState extends State<Profile> {
                           EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
                         onChanged: (value) {
+                          if (headerValue[
+                          index] ==
+                              headerValue[2]) {
+                            Attendance.shift_id=value;
+                          } else if (headerFuelValue[
+                          index] ==
+                              headerFuelValue[0]) {
+                            Attendance.equipment_id = value;
+                          }else if (headerFuelValue[
+                            index] ==
+                            headerFuelValue[1]) {
+                            Attendance.operator_id = value;}
+                          else{null;}
                         }, //dummy value
                       ),
                     ),
@@ -226,7 +251,10 @@ class _ProfileState extends State<Profile> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
-                    onPressed: () => null,
+                    onPressed: () {
+                      print(trFuelAttendance.toJson());
+                      FmsDatabase.instance.createAttendance(trFuelAttendance).then((value) => {_dialogAlert()});
+                    },
                     color: Coloring.mainColor,
                     textColor: Colors.white,
                     child: Text("Kirim",
@@ -239,6 +267,35 @@ class _ProfileState extends State<Profile> {
           ],
         ),
       ),
+    );
+  }
+
+
+  ///pop up status
+  Future<void> _dialogAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Berhasil!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Berhasil tambah data"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Oke'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
