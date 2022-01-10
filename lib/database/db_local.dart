@@ -36,6 +36,34 @@ class FmsDatabase {
      )''');
   }
 
+  // Future _createTrFuelDistribution(Database db, int version) async {
+  //   final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+  //   final integerType = 'INTEGER NOT NULL';
+  //   final textType = 'TEXT';
+  //   await db.execute('''CREATE TABLE $tableName(
+  //     // ${TrFuelDistributionFields.transactions_id} $idType,
+  //     ${TrFuelDistributionFields.equipment_id} $textType,
+  //     // ${TrFuelDistributionFields.storage_id} $textType,
+  //     ${TrFuelDistributionFields.site_id} $textType,
+  //     // ${TrFuelDistributionFields.shift_id} $textType,
+  //     ${TrFuelDistributionFields.fuel_filling} $textType,
+  //     ${TrFuelDistributionFields.fuel_totalisator_awal} $textType,
+  //     ${TrFuelDistributionFields.fuel_totalisator_akhir} $textType,
+  //     ${TrFuelDistributionFields.hm_equipment} $textType,
+  //     ${TrFuelDistributionFields.storage_operator} $textType,
+  //     ${TrFuelDistributionFields.equipment_operator} $textType,
+  //     ${TrFuelDistributionFields.equipment_budget} $textType,
+  //     ${TrFuelDistributionFields.is_active} $textType,
+  //     ${TrFuelDistributionFields.created_by} $textType,
+  //     ${TrFuelDistributionFields.created_at} $textType,
+  //     ${TrFuelDistributionFields.updated_by} $textType,
+  //     ${TrFuelDistributionFields.updated_at} $textType,
+  //     ${TrFuelDistributionFields.attendance_id} $textType,
+  //     ${TrFuelDistributionFields.image_directory} $textType,
+  //     ${TrFuelDistributionFields.image_name} $textType,
+  //    )''');
+  // }
+
   //
   // Future<Lansiran> create(Lansiran lansiran) async {
   //   final db = await instance.database;
@@ -90,6 +118,7 @@ class FmsDatabase {
   // }
 
   //tr fuel distribution
+
   Future<TrFuelDistribution> create(TrFuelDistribution trFuelDistribution) async {
     final db = await instance.database;
     final json = trFuelDistribution.toJson();

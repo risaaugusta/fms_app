@@ -280,13 +280,88 @@ class _HomeState extends State<Home> {
                       });
                 } else if (snapshot.hasError) {
                   return Container(
-                    child: Text('error'),
+                    child: Text('Tidak ada data'),
                   );
                 } else {
                   return Container();
                 }
               },
             ),
+            ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(8),
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    elevation: 0.8,
+                    shadowColor: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: InkWell(
+                        onTap: () {
+                          print('Card tapped.');
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                                height: 70,
+                                width: 50,
+                                child:
+                                new Image.asset('assets/img/truck.png')),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Equipment'+'$index',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 18)),
+                                Text('3'+'$index',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 12)),
+                                Text(Global.time,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 12)),
+                              ],
+                            ),
+                            Container(
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    side: BorderSide(
+                                        color: Coloring.mainColor)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => homeDetailTransaksi(index))
+                                    // builder: (context) => scanRefueling(barcode_id:snapshot.data![index]['equipment_id']),
+                                  );
+                                },
+                                color: Colors.white,
+                                textColor: Colors.white,
+                                child: Text("Detail",
+                                    style: TextStyle(
+                                        color: Coloring.mainColor,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 14)),
+                              ),
+                            ),
+                          ],
+                        )),
+                  );
+                }),
           ],
         ));
   }

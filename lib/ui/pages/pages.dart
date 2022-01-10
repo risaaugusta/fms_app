@@ -56,6 +56,7 @@ part 'home/homeDetailTransaksi.dart';
 part 'home/homeBAPS.dart';
 part 'home/homeTemplate.dart';
 part 'home/homeLansiran.dart';
+part 'home/homeManual.dart';
 part 'home/comboboxDropdown.dart';
 part 'home/uploaderDropdown.dart';
 part 'home/signaturePad.dart';

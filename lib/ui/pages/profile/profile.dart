@@ -26,21 +26,33 @@ class _ProfileState extends State<Profile> {
     'Ubah Password',
     'Shift',
   ];
+  TrFuelAttendance trFuelAttendance = TrFuelAttendance(
+    // attendance_id:  Attendance.attendance_id,
+    equipment_id:  '',
+    site_id: '',
+    shift_id : '',
+    operator_id : '',
+    // is_active: Attendance.is_active,
+    // updated_by: Attendance.updated_by,
+    login_at: Global.time,
+    updated_at: Global.time,
+    // phone_id: Attendance.phone_id,
+  );
 
   @override
   Widget build(BuildContext context) {
-    TrFuelAttendance trFuelAttendance = TrFuelAttendance(
-      // attendance_id:  Attendance.attendance_id,
-      equipment_id:  Attendance.equipment_id,
-      site_id: Attendance.site_id,
-      shift_id : Attendance.shift_id,
-      operator_id : Attendance.operator_id,
-      // is_active: Attendance.is_active,
-      // updated_by: Attendance.updated_by,
-      login_at: Global.time,
-      updated_at: Global.time,
-      // phone_id: Attendance.phone_id,
-    );
+    // TrFuelAttendance trFuelAttendance = TrFuelAttendance(
+    //   // attendance_id:  Attendance.attendance_id,
+    //   equipment_id:  Attendance.equipment_id,
+    //   site_id: Attendance.site_id,
+    //   shift_id : Attendance.shift_id,
+    //   operator_id : Attendance.operator_id,
+    //   // is_active: Attendance.is_active,
+    //   // updated_by: Attendance.updated_by,
+    //   login_at: Global.time,
+    //   updated_at: Global.time,
+    //   // phone_id: Attendance.phone_id,
+    // );
     return Container(
       color: Colors.white,
       margin: EdgeInsets.all(0),
@@ -146,8 +158,10 @@ class _ProfileState extends State<Profile> {
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
                         onChanged: (value) {
-                          data[index] = value;
-                          print(data[index]);
+                          print(index.toString()+' ' + value);
+                          if(index == 2){
+                            trFuelAttendance.shift_id= value;
+                          }
                         }, //dummy value
                       ),
                     )
@@ -213,19 +227,11 @@ class _ProfileState extends State<Profile> {
                           EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
                         onChanged: (value) {
-                          if (headerValue[
-                          index] ==
-                              headerValue[2]) {
-                            Attendance.shift_id=value;
-                          } else if (headerFuelValue[
-                          index] ==
-                              headerFuelValue[0]) {
-                            Attendance.equipment_id = value;
-                          }else if (headerFuelValue[
-                            index] ==
-                            headerFuelValue[1]) {
-                            Attendance.operator_id = value;}
-                          else{null;}
+                          if (index == 1 ){
+                            trFuelAttendance.operator_id = value;
+                          }else{
+                            trFuelAttendance.equipment_id = value;
+                          }
                         }, //dummy value
                       ),
                     ),
@@ -252,8 +258,11 @@ class _ProfileState extends State<Profile> {
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
                     onPressed: () {
-                      print(trFuelAttendance.toJson());
-                      FmsDatabase.instance.createAttendance(trFuelAttendance).then((value) => {_dialogAlert()});
+                      setState(() {
+                        print(trFuelAttendance.shift_id);
+                        FmsDatabase.instance.createAttendance(trFuelAttendance).then((value) => {_dialogAlert()});
+                        _dialogAlert();
+                      });
                     },
                     color: Coloring.mainColor,
                     textColor: Colors.white,

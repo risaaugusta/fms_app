@@ -6,20 +6,20 @@ class TrFuelDistributionFields {
     equipment_id,
     // storage_id,
     site_id,
-    // shiftId,
+    // shift_id,
     fuel_filling,
     fuel_totalisator_awal,
     fuel_totalisator_akhir,
     hm_equipment,
-    storage_operator,
-    equipment_operator,
+    // storage_operator,
+    // equipment_operator,
     // equipment_budget,
-    // isActive,
-    // createdBy,
+    // is_active,
+    // created_by,
     created_at,
-    // updatedBy,
+    // updated_by,
     updated_at,
-    // attendaceId,
+    // attendance_id,
     image_directory,
     image_name,
   ];
@@ -29,22 +29,22 @@ class TrFuelDistributionFields {
   static final String equipment_id = 'equipment_id';
   // static final String storage_id = 'storage_id';
   static final String site_id = 'site_id';
-  // static final String shiftId = 'shiftId';
+  // static final String shift_id = 'shift_id';
   static final String fuel_filling = 'fuel_filling';
   static final String fuel_totalisator_awal = 'fuel_totalisator_awal';
   static final String fuel_totalisator_akhir = 'fuel_totalisator_akhir';
   static final String hm_equipment = 'hm_equipment';
-  static final String storage_operator = 'storage_operator';
-  static final String equipment_operator = 'equipment_operator';
+  // static final String storage_operator = 'storage_operator';
+  // static final String equipment_operator = 'equipment_operator';
   // static final String equipment_budget = 'equipment_budget';
-  // static final String isActive = 'isActive';
-  // static final String createdBy = 'createdBy';
+  // static final String is_active = 'is_active';
+  // static final String created_by = 'created_by';
   static final String created_at = 'created_at';
-  // static final String updatedBy = 'updatedBy';
+  // static final String updated_by = 'updated_by';
   static final String updated_at = 'updated_at';
   static final String image_directory = 'image_directory';
   static final String image_name = 'image_name';
-  // static final String attendaceId = 'attendaceId';
+  // static final String attendance_id = 'attendance_id';
 }
 
 class TrFuelDistribution {
@@ -53,22 +53,22 @@ class TrFuelDistribution {
   String equipment_id;
   // String storage_id;
   String site_id;
-  // String shiftId;
+  // String shift_id;
   String fuel_filling;
   String fuel_totalisator_awal;
   String fuel_totalisator_akhir;
   String hm_equipment;
-  String storage_operator;
-  String equipment_operator;
+  // String storage_operator;
+  // String equipment_operator;
   // String equipment_budget;
-  // String isActive;
-  // String createdBy;
+  // String is_active;
+  // String created_by;
   String created_at;
-  // String updatedBy;
+  // String updated_by;
   String updated_at;
   String image_directory;
   String image_name;
-  // String attendaceId;
+  // String attendance_id;
 
   TrFuelDistribution({
     // this.id,
@@ -81,8 +81,8 @@ class TrFuelDistribution {
     required this.fuel_totalisator_awal,
     required this.fuel_totalisator_akhir,
     required this.hm_equipment,
-    required this.storage_operator,
-    required this.equipment_operator,
+    // required this.storage_operator,
+    // required this.equipment_operator,
     // required this.equipment_budget,
     // required this.isActive,
     // required this.createdBy,
@@ -96,7 +96,7 @@ class TrFuelDistribution {
 
   TrFuelDistribution copy({
     // int? id,
-    // int? transactions_id,
+    int? transactions_id,
     String? equipment_id,
     // String? storage_id,
     String? site_id,
@@ -128,8 +128,8 @@ class TrFuelDistribution {
         fuel_totalisator_awal: fuel_totalisator_awal ?? this.fuel_totalisator_awal,
         fuel_totalisator_akhir: fuel_totalisator_akhir ?? this.fuel_totalisator_akhir,
         hm_equipment: hm_equipment ?? this.hm_equipment,
-        storage_operator: storage_operator ?? this.storage_operator,
-        equipment_operator: equipment_operator ?? this.equipment_operator,
+        // storage_operator: storage_operator ?? this.storage_operator,
+        // equipment_operator: equipment_operator ?? this.equipment_operator,
         // equipment_budget: equipment_budget ?? this.equipment_budget,
         // isActive: isActive ?? this.isActive,
         // createdBy: createdBy ?? this.createdBy,
@@ -152,8 +152,8 @@ class TrFuelDistribution {
     fuel_totalisator_awal: json[TrFuelDistributionFields.fuel_totalisator_awal] as String,
     fuel_totalisator_akhir: json[TrFuelDistributionFields.fuel_totalisator_akhir] as String,
     hm_equipment: json[TrFuelDistributionFields.hm_equipment] as String,
-    storage_operator: json[TrFuelDistributionFields.storage_operator] as String,
-    equipment_operator: json[TrFuelDistributionFields.equipment_operator] as String,
+    // storage_operator: json[TrFuelDistributionFields.storage_operator] as String,
+    // equipment_operator: json[TrFuelDistributionFields.equipment_operator] as String,
     // equipment_budget: json[TrFuelDistributionFields.equipment_budget] as String,
     // isActive: json[TrFuelDistributionFields.isActive] as String,
     // createdBy: json[TrFuelDistributionFields.createdBy] as String,
@@ -176,8 +176,8 @@ class TrFuelDistribution {
     TrFuelDistributionFields.fuel_totalisator_awal: fuel_totalisator_awal,
     TrFuelDistributionFields.fuel_totalisator_akhir: fuel_totalisator_akhir,
     TrFuelDistributionFields.hm_equipment: hm_equipment,
-    TrFuelDistributionFields.storage_operator: storage_operator,
-    TrFuelDistributionFields.equipment_operator: equipment_operator,
+    // TrFuelDistributionFields.storage_operator: storage_operator,
+    // TrFuelDistributionFields.equipment_operator: equipment_operator,
     // TrFuelDistributionFields.equipment_budget: equipment_budget,
     // TrFuelDistributionFields.isActive: isActive,
     // TrFuelDistributionFields.createdBy: createdBy,

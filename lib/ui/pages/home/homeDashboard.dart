@@ -18,7 +18,7 @@ class _homeDashboardState extends State<homeDashboard> {
 
   List<Widget> _widgetOptions = <Widget>[
     Home(),
-    StorageDropdown(),
+    HomeManual(),
     Text(
       'Index 2: Notifkasi',
       style: optionStyle,
@@ -61,8 +61,27 @@ class _homeDashboardState extends State<homeDashboard> {
                             fontFamily: Fonts.REGULAR,
                             fontSize: 18)),
                     backgroundColor: Colors.white,
-                  )
-                : null,
+                  ) : _selectedIndex == 1 ? AppBar(
+                        leading: new IconButton(
+                          icon: new Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => homeDashboard()),
+                            );
+                          },
+                        ),
+                        title: const Text('Syarat & Ketentuan',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: Fonts.REGULAR,
+                                fontSize: 18)),
+                        backgroundColor: Colors.white,
+                      ) : null,
             body: ListView(
               physics: const AlwaysScrollableScrollPhysics(), // new
               controller: _controller,

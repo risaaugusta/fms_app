@@ -58,22 +58,22 @@ class _homeLansiranState extends State<homeLansiran> {
     equipment_id:  '',
     // storage_id: '',
     site_id: Refueling.fSiteId,
-    // shiftId: '',
+    // shift_id: '',
     fuel_filling: (Refueling.fFilling).toString(),
     fuel_totalisator_awal: (Refueling.fTotalisatorAwal).toString(),
     fuel_totalisator_akhir: Refueling.fTotalisatorAkhir,
     hm_equipment: Refueling.fHmEquipment,
-    storage_operator: Refueling.fStorageOperator,
-    equipment_operator: Refueling.fEquipmentOperator,
+    // storage_operator: Refueling.fStorageOperator,
+    // equipment_operator: Refueling.fEquipmentOperator,
     image_directory: Refueling.fImageDirectory,
     image_name: Refueling.fImageName,
     // equipment_budget: '',
-    // isActive: '',
-    // createdBy: '',
+    // is_active: '',
+    // created_by: '',
     created_at: Global.time,
-    // updatedBy: '',
+    // updated_by: '',
     updated_at: Global.time,
-    // attendaceId: '',
+    // attendance_id: '',
   );
 
   MsStorage? msStorage;
@@ -411,8 +411,9 @@ class _homeLansiranState extends State<homeLansiran> {
                                 borderRadius: BorderRadius.circular(30),
                                 side: BorderSide(color: Coloring.mainColor)),
                             onPressed: () {
-                              print(trFuelTransfer.toJson());
-                              FmsDatabase.instance.createTransfer(trFuelTransfer).then((value) => {_dialogAlert()});
+                              // print(trFuelTransfer.toJson());
+                              // FmsDatabase.instance.createTransfer(trFuelTransfer).then((value) => {_dialogAlert()});
+                              _dialogAlert();
                             },
                             color: Coloring.mainColor,
                             textColor: Colors.white,
