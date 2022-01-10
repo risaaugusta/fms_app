@@ -474,9 +474,10 @@ class _homeBAPSState extends State<homeBAPS> {
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide(color: Coloring.mainColor)),
                       onPressed: () {
-                        print(trBapsDetail.toJson());
-                        FmsDatabase.instance.createBaps(trBaps).then((value) => {_dialogAlert()});
-                        FmsDatabase.instance.createBapsDetail(trBapsDetail).then((value) => {_dialogAlert()});
+                        // print(trBapsDetail.toJson());
+                        // FmsDatabase.instance.createBaps(trBaps).then((value) => {_dialogAlert()});
+                        // FmsDatabase.instance.createBapsDetail(trBapsDetail).then((value) => {_dialogAlert()});
+                        _dialogAlert();
                       },
                       color: Coloring.mainColor,
                       textColor: Colors.white,
