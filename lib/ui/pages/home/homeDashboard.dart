@@ -61,27 +61,7 @@ class _homeDashboardState extends State<homeDashboard> {
                             fontFamily: Fonts.REGULAR,
                             fontSize: 18)),
                     backgroundColor: Colors.white,
-                  ) : _selectedIndex == 1 ? AppBar(
-                        leading: new IconButton(
-                          icon: new Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => homeDashboard()),
-                            );
-                          },
-                        ),
-                        title: const Text('Syarat & Ketentuan',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
-                        backgroundColor: Colors.white,
-                      ) : null,
+                  ) : null,
             body: ListView(
               physics: const AlwaysScrollableScrollPhysics(), // new
               controller: _controller,
@@ -158,7 +138,7 @@ class _homeDashboardState extends State<homeDashboard> {
                                     ? Coloring.mainColor
                                     : Colors.grey,
                               ),
-                              Text('Manual',
+                              Text('Sync',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: _selectedIndex == 1

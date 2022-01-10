@@ -22,10 +22,7 @@ class _homeLansiranState extends State<homeLansiran> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     homeLansiran(),
-    Text(
-      'Index 1: Manual',
-      style: optionStyle,
-    ),
+    HomeManual(),
     Text(
       'Index 2: Notif',
       style: optionStyle,
@@ -502,7 +499,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                 ? Coloring.mainColor
                                 : Colors.grey,
                           ),
-                          Text('Manual',
+                          Text('Sync',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: _selectedIndex == 1

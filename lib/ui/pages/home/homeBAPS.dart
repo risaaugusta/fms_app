@@ -17,10 +17,7 @@ class _homeBAPSState extends State<homeBAPS> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     homeLansiran(),
-    Text(
-      'Index 1: Manual',
-      style: optionStyle,
-    ),
+    HomeManual(),
     Text(
       'Index 2: Notif',
       style: optionStyle,
@@ -547,7 +544,7 @@ class _homeBAPSState extends State<homeBAPS> {
                             color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                           ),
                           Text(
-                              'Manual',
+                              'Sync',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                                   fontFamily: Fonts.REGULAR,fontSize: 14)
