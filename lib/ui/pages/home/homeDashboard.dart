@@ -63,17 +63,13 @@ class _homeDashboardState extends State<homeDashboard> {
                     backgroundColor: Colors.white,
                   ) : null,
             body: ListView(
-              physics: const AlwaysScrollableScrollPhysics(), // new
+              physics: _selectedIndex == 1 ? NeverScrollableScrollPhysics() : AlwaysScrollableScrollPhysics(), // new
               controller: _controller,
               children: [
                 _selectedIndex == 0 ? searchBar() : Text(''),
                 _widgetOptions.elementAt(_selectedIndex),
               ],
             ),
-            // body: PageStorage(
-            //   child: _currentScreen,
-            //   bucket: bucket,
-            // ),
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.white,
               child: Icon(Icons.qr_code, color: Coloring.mainColor),

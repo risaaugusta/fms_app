@@ -18,10 +18,12 @@ class HomeManual extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height/1.2,
+      color: Colors.white,
       child: DefaultTabController(
         length: 2,
         child: Scaffold(
+          backgroundColor: Colors.white,
           appBar: AppBar(
             leading: new IconButton(
               icon: new Icon(
@@ -72,7 +74,7 @@ class HomeManual extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   padding: const EdgeInsets.all(8),
-                  itemCount: 5,
+                  itemCount: 9,
                   itemBuilder: (BuildContext context, index) {
                     return Card(
                       elevation: 0.8,
@@ -225,99 +227,99 @@ class HomeManual extends StatelessWidget {
               //     }
               //   },
               // ),
-              Container(
-                height: MediaQuery.of(context).size.height,
-                  margin:  EdgeInsets.symmetric(horizontal: 20),
-                  child:
-                  Column(
-                    children: [
-                      SizedBox(height: 20),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Select All',
-                              style: TextStyle(
-                                  color: Color(0xffF0C419),
-                                  fontFamily: Fonts.REGULAR,
-                                  fontSize: 18)),
-                          Text('Upload All',
-                              style: TextStyle(
-                                  color: Color(0xffF0C419),
-                                  fontFamily: Fonts.REGULAR,
-                                  fontSize: 18)),
-                        ],
-                      ),
-                      ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.all(8),
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, index) {
-                            return Card(
-                              elevation: 0.8,
-                              shadowColor: Colors.grey,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: InkWell(
-                                  onTap: () {
-                                    print('Card tapped.');
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Container(
-                                          height: 70,
-                                          width: 50,
-                                          child: new Image.asset('assets/img/truck.png')
-                                      ),
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              'Equipment'+' $index',
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(color: Colors.black,
-                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
-                                          ),
-                                          Text(
-                                              '10''$index' + 'L',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(color: Colors.grey,
-                                                  fontFamily: Fonts.REGULAR,fontSize: 12)
-                                          ),
-                                          Text(
-                                              Global.time,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(color: Colors.grey,
-                                                  fontFamily: Fonts.REGULAR,fontSize: 12)
-                                          ),
-                                        ],
-                                      ),
-                                      RaisedButton(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(5),
-                                            side: BorderSide(color: Coloring.mainColor)),
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(builder: (context) => homeDetailTransaksi(index)),
-                                          );
-                                        },
-                                        color: Colors.white,
-                                        textColor: Colors.white,
-                                        child: Text("Detail",
-                                            style: TextStyle(color: Coloring.mainColor, fontFamily: Fonts.REGULAR,fontSize: 14)),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                            );
-                          }
-                      ),
-                    ],
-                  )
+              Column(
+                children: [
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Select All',
+                            style: TextStyle(
+                                color: Color(0xffF0C419),
+                                fontFamily: Fonts.REGULAR,
+                                fontSize: 18)),
+                        Text('Upload All',
+                            style: TextStyle(
+                                color: Color(0xffF0C419),
+                                fontFamily: Fonts.REGULAR,
+                                fontSize: 18)),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.all(8),
+                        itemCount: 8,
+                        itemBuilder: (BuildContext context, index) {
+                          return Card(
+                            elevation: 0.8,
+                            shadowColor: Colors.grey,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: InkWell(
+                                onTap: () {
+                                  print('Card tapped.');
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                        height: 70,
+                                        width: 50,
+                                        child: new Image.asset('assets/img/truck.png')
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            'Equipment'+' $index',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                        Text(
+                                            '10''$index' + 'L',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(color: Colors.grey,
+                                                fontFamily: Fonts.REGULAR,fontSize: 12)
+                                        ),
+                                        Text(
+                                            Global.time,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(color: Colors.grey,
+                                                fontFamily: Fonts.REGULAR,fontSize: 12)
+                                        ),
+                                      ],
+                                    ),
+                                    RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(5),
+                                          side: BorderSide(color: Coloring.mainColor)),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => homeDetailTransaksi(index)),
+                                        );
+                                      },
+                                      color: Colors.white,
+                                      textColor: Colors.white,
+                                      child: Text("Detail",
+                                          style: TextStyle(color: Coloring.mainColor, fontFamily: Fonts.REGULAR,fontSize: 14)),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          );
+                        }
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
