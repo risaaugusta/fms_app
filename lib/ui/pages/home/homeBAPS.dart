@@ -53,15 +53,13 @@ class _homeBAPSState extends State<homeBAPS> {
   List<String> headerSignatureValue=<String>[
     'Tanda Tangan'
   ];
-  List<Item> PhotoItems = generateItems(7);
+  List<Item> PhotoItems = generateItems(5);
   List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
     'Flow Meter',
     'Tanda Tangan Vendor',
     'Tanda Tangan PIC Penerima',
-    'Tanda Tangan Leader',
-    'Tanda Tangan PM Site',
   ];
 
   void _onItemTapped(int index) {
@@ -420,13 +418,7 @@ class _homeBAPSState extends State<homeBAPS> {
                         SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
                         headerPhotoValue[index] ==
                             headerPhotoValue[4] ?
-                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
-                        headerPhotoValue[index] ==
-                            headerPhotoValue[5] ?
-                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
-                        headerPhotoValue[index] ==
-                            headerPhotoValue[6] ?
-                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
                         UploaderDropdown(callback:(String filePath){
                           if (headerPhotoValue[index] ==
                               headerPhotoValue[0]) {

@@ -82,7 +82,7 @@ class _LoginState extends State<Login> {
                 borderRadius: BorderRadius.circular(20),
                 child: TextFormField(
                   autofocus: false,
-                  obscureText: true,
+                  obscureText: _obscureText,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -99,6 +99,15 @@ class _LoginState extends State<Login> {
                     hintText: 'Password',
                     fillColor: Colors.white,
                     filled: true,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                          onPressed: _toggle,
+                    ),
                     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   ),
                   onChanged: (text)=> password = text , //dummy value
