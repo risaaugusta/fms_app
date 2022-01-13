@@ -435,141 +435,102 @@ class _homeLansiranState extends State<homeLansiran> {
                   _widgetOptions.elementAt(_selectedIndex),
                 ],
               ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Icon(Icons.qr_code, color: Coloring.mainColor),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Scanner()),
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           child: Container(
             height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
-                        Navigator.pop(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => homeDashboard()),
-                        );
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.home,
-                            color: _selectedIndex == 0
-                                ? Coloring.mainColor
-                                : Colors.grey,
-                          ),
-                          Text('Home',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: _selectedIndex == 0
-                                      ? Coloring.mainColor
-                                      : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,
-                                  fontSize: 14)),
-                        ],
+              children: [
+                MaterialButton(
+                  minWidth:40,
+                  onPressed: (){
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(builder: (context) => homeDashboard()),);
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.home,
+                        color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
                       ),
-                    ),
-                    MaterialButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 1;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.article_rounded,
-                            color: _selectedIndex == 1
-                                ? Coloring.mainColor
-                                : Colors.grey,
-                          ),
-                          Text('Sync',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: _selectedIndex == 1
-                                      ? Coloring.mainColor
-                                      : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,
-                                  fontSize: 14)),
-                        ],
+                      Text(
+                          'Home',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
-                        setState(() {
-                          // screens = searchBar();
-                          _selectedIndex = 2;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.notifications,
-                            color: _selectedIndex == 2
-                                ? Coloring.mainColor
-                                : Colors.grey,
-                          ),
-                          Text('Notifikasi',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: _selectedIndex == 2
-                                      ? Coloring.mainColor
-                                      : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,
-                                  fontSize: 14)),
-                        ],
+                MaterialButton(
+                  onPressed: (){
+                    setState(() {
+                      _selectedIndex = 1;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.article_rounded,
+                        color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                       ),
-                    ),
-                    MaterialButton(
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 3;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.account_circle,
-                            color: _selectedIndex == 3
-                                ? Coloring.mainColor
-                                : Colors.grey,
-                          ),
-                          Text('Profil',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: _selectedIndex == 3
-                                      ? Coloring.mainColor
-                                      : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,
-                                  fontSize: 14)),
-                        ],
+                      Text(
+                          'Sync',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
                       ),
-                    )
-                  ],
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  minWidth:40,
+                  onPressed: (){
+                    setState(() {
+                      // screens = searchBar();
+                      _selectedIndex = 2;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.notifications,
+                        color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
+                      ),
+                      Text(
+                          'Notifikasi',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
+                      ),
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: (){
+                    setState(() {
+                      _selectedIndex = 3;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.account_circle,
+                        color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
+                      ),
+                      Text(
+                          'Profil',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

@@ -55,7 +55,6 @@ part 'login/auth.dart';
 part 'home/homeDashboard.dart';
 part 'home/homeTransaksi.dart';
 part 'home/homeDetailTransaksi.dart';
-part 'home/homeDetail.dart';
 part 'home/homeBAPS.dart';
 part 'home/homeTemplate.dart';
 part 'home/homeLansiran.dart';

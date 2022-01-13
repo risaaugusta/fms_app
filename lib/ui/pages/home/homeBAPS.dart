@@ -482,26 +482,12 @@ class _homeBAPSState extends State<homeBAPS> {
             _widgetOptions.elementAt(_selectedIndex),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Icon(Icons.qr_code, color: Coloring.mainColor),
-          onPressed: ()
-          {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Scanner()),
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           child: Container(
             height: 60,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+            child:
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MaterialButton(
                       minWidth:40,
@@ -547,12 +533,7 @@ class _homeBAPSState extends State<homeBAPS> {
                           ),
                         ],
                       ),
-                    )
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                    ),
                     MaterialButton(
                       minWidth:40,
                       onPressed: (){
@@ -600,9 +581,7 @@ class _homeBAPSState extends State<homeBAPS> {
                       ),
                     )
                   ],
-                )
-              ],
-            ),
+                ),
           ),
         )
     );

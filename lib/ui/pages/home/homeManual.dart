@@ -247,16 +247,27 @@ class HomeManual extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Select All',
-                            style: TextStyle(
-                                color: Color(0xffF0C419),
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
-                        Text('Upload All',
-                            style: TextStyle(
-                                color: Color(0xffF0C419),
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
+                        InkWell(
+                          onTap: () {
+
+                          },
+                          child: Text('Select All',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color(0xffF0C419),
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 18)),
+                        ),
+                        InkWell(
+                          onTap: () {
+
+                          },
+                          child: Text('Upload All',
+                              style: TextStyle(
+                                  color: Color(0xffF0C419),
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 18)),
+                        ),
                       ],
                     ),
                   ),

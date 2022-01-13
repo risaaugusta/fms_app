@@ -19,7 +19,7 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-  Home(),
+  homeDetailTransaksi(index: 0),
   HomeManual(),
   Text(
   'Index 2: Notif',
@@ -43,13 +43,13 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             backgroundColor: Color(0xffF9F9F9),
-            appBar: AppBar(
+            appBar: _selectedIndex == 0  ? AppBar(
               leading: new IconButton(
                 icon: new Icon(Icons.arrow_back,color: Colors.black,),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => homeTransaksi()),
+                    MaterialPageRoute(builder: (context) => homeDashboard()),
                   );
                 },
               ),
@@ -57,7 +57,21 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                   style: TextStyle(color: Colors.black,
                       fontFamily: Fonts.REGULAR,fontSize: 18)),
               backgroundColor: Colors.white,
-            ),
+            ) : _selectedIndex == 3  ? AppBar(
+              leading: new IconButton(
+                icon: new Icon(Icons.arrow_back,color: Colors.black,),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => homeDashboard()),
+                  );
+                },
+              ),
+              title: const Text('Profile Fuelman',
+                  style: TextStyle(color: Colors.black,
+                      fontFamily: Fonts.REGULAR,fontSize: 18)),
+              backgroundColor: Colors.white,
+            ) : null,
             body:
             // FutureBuilder<List>(
             //   future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
@@ -416,366 +430,369 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
             //     }
             //   },
             // ),
-            ListView(
-              physics: _selectedIndex == 1 ? NeverScrollableScrollPhysics() : AlwaysScrollableScrollPhysics(), // new
-              controller: _controller,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(30),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height/7,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(
-                            color: Color(0xffE4E4E4),
-                            width: 1,
-                          )
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              height: 100,
-                              width: 100,
-                              child: new Image.asset('assets/img/truck.png')
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // SizedBox(height: 10),
-                              Text(
-                                  'Unit Code',
+            _selectedIndex == 0  ? SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(30),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height/7,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(
+                          color: Color(0xffE4E4E4),
+                          width: 1,
+                        )
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                            height: 100,
+                            width: 100,
+                            child: new Image.asset('assets/img/truck.png')
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // SizedBox(height: 10),
+                            Text(
+                                'Unit Code',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(color: Colors.grey,
+                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            ),
+                            // SizedBox(height: 10),
+                            Text(
+                                'Unit Type',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(color: Colors.grey,
+                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            ),
+                            // SizedBox(height: 10),
+                            Text(
+                                'Fuel Filling',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(color: Colors.grey,
+                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                '$unitCode',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(color: Colors.black,
+                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            ),
+                            Text(
+                                '$unitType',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(color: Colors.black,
+                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            ),
+                            Text(
+                                '3' ,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(color: Colors.black,
+                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left:30,right:30),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height/5,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(
+                          color: Color(0xffE4E4E4),
+                          width: 1,
+                        )
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10,top:10),
+                              child: Text(
+                                  'Operator',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
-                              // SizedBox(height: 10),
-                              Text(
-                                  'Unit Type',
+                            ),
+                            FutureBuilder<MsEquipment>(
+                              future: data,
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  return Text(snapshot.data!.auth_group);
+                                } else if (snapshot.hasError) {
+                                  return Text('${snapshot.error}');
+                                }
+                                // By default, show a loading spinner.
+                                return const CircularProgressIndicator();
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 70, top: 10),
+                              child: Text(
+                                  'DMI',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[70],
+                          thickness: 1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                  'HM Unit',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
-                              // SizedBox(height: 10),
-                              Text(
-                                  'Fuel Filling',
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 70),
+                              child: Text(
+                                  'Fuel Truck',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[70],
+                          thickness: 1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                  'Site',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 105),
+                              child: Text(
                                   '$unitCode',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
-                              Text(
-                                  '$unitType',
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[70],
+                          thickness: 1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                  'Last Refueling',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text(
+                                  Global.time,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
-                              Text(
-                                  '3' ,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left:30,right:30,top: 30),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height/4,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(
+                          color: Color(0xffE4E4E4),
+                          width: 1,
+                        )
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10,top:10),
+                              child: Text(
+                                  'Last Refueling ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 30, top: 10),
+                              child: Text(
+                                  '3',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[70],
+                          thickness: 1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                  'Totalisator Awal',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text(
+                                  '3',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[70],
+                          thickness: 1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                  'Totalisator Akhir',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text(
+                                  '3',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[70],
+                          thickness: 1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                  'Total L/Month',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.grey,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 40),
+                              child: Text(
+                                  '100' + ' L',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.black,
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    Container(
-                      margin: EdgeInsets.only(left:30,right:30),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height/5,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(
-                            color: Color(0xffE4E4E4),
-                            width: 1,
-                          )
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10,top:10),
-                                child: Text(
-                                    'Operator',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              FutureBuilder<MsEquipment>(
-                                future: data,
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    return Text(snapshot.data!.auth_group);
-                                  } else if (snapshot.hasError) {
-                                    return Text('${snapshot.error}');
-                                  }
-
-                                  // By default, show a loading spinner.
-                                  return const CircularProgressIndicator();
-                                },
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 70, top: 10),
-                                child: Text(
-                                    'DMI',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.grey[70],
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text(
-                                    'HM Unit',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 70),
-                                child: Text(
-                                    'Fuel Truck',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.grey[70],
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text(
-                                    'Site',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 105),
-                                child: Text(
-                                    '$unitCode',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.grey[70],
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text(
-                                    'Last Refueling',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                    Global.time,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left:30,right:30,top: 30),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height/4,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(
-                            color: Color(0xffE4E4E4),
-                            width: 1,
-                          )
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10,top:10),
-                                child: Text(
-                                    'Last Refueling ',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 30, top: 10),
-                                child: Text(
-                                    '3',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.grey[70],
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text(
-                                    'Totalisator Awal',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                    '3',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.grey[70],
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text(
-                                    'Totalisator Akhir',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                    '3',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                          Divider(
-                            color: Colors.grey[70],
-                            thickness: 1,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text(
-                                    'Total L/Month',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.grey,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 40),
-                                child: Text(
-                                    '100' + ' L',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(color: Colors.black,
-                                        decoration: TextDecoration.underline,
-                                        fontFamily: Fonts.REGULAR,fontSize: 18)
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+            ) : ListView(
+              physics: const AlwaysScrollableScrollPhysics(), // new
+              controller: _controller,
+              children: [
+                _selectedIndex == 0 ? searchBar() : Text(''),
+                _widgetOptions.elementAt(_selectedIndex),
               ],
             ),
             floatingActionButton: FloatingActionButton(
@@ -801,7 +818,11 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                         MaterialButton(
                           minWidth: 40,
                           onPressed: () {
-                            _selectedIndex = 0;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Home()),
+                            );
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -825,7 +846,9 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                         ),
                         MaterialButton(
                           onPressed: () {
-                            _selectedIndex = 1;
+                            setState(() {
+                              _selectedIndex = 1;
+                            });
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -855,8 +878,9 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                         MaterialButton(
                           minWidth: 40,
                           onPressed: () {
-                            _selectedIndex = 2;
-
+                            setState(() {
+                              _selectedIndex = 2;
+                            });
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -880,7 +904,9 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                         ),
                         MaterialButton(
                           onPressed: () {
-                            _selectedIndex = 3;
+                            setState(() {
+                              _selectedIndex = 3;
+                            });
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -911,7 +937,6 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
         ),
       );
     }
-
 
   //
   // Future<List<dynamic>> fetchUsers() async {

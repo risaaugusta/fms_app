@@ -198,7 +198,8 @@ class _HomeState extends State<Home> {
                             color: Colors.black,
                             fontFamily: Fonts.REGULAR,
                             fontSize: 18)),
-                  )),
+                  )
+              ),
             ),
             FutureBuilder<List>(
               future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
