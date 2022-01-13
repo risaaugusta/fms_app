@@ -105,7 +105,7 @@ class _homeTransaksiState extends State<homeTransaksi> {
                                   onPressed: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => homeDetailTransaksi(index)),
+                                      MaterialPageRoute(builder: (context) => homeDetailTransaksi(index:index)),
                                     );
                                   },
                                   color: Colors.white,
