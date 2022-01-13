@@ -1,6 +1,13 @@
 part of '../pages.dart';
 
-class HomeManual extends StatelessWidget {
+class HomeManual extends StatefulWidget {
+  const HomeManual({Key? key}) : super(key: key);
+
+  @override
+  _HomeManualState createState() => _HomeManualState();
+}
+
+class _HomeManualState extends State<HomeManual> {
   late final int index;
   int _selectedIndex = 0;
   bool isChecked = false;
@@ -15,6 +22,13 @@ class HomeManual extends StatelessWidget {
     ),
     Profile(),
   ];
+
+  List <bool> checkboxValue = [
+    false, false, false, false, false, false, false, false, false
+  ];
+  // for(i=0; i < 8; i++){
+  //   checkboxValue[i] = "false";
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -284,21 +298,34 @@ class HomeManual extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: InkWell(
-                                onTap: () {
-                                  print('Card tapped.');
-                                },
-                                child: Row(
+                            child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Checkbox(
-                                          checkColor: Colors.white,
-                                          fillColor: MaterialStateProperty.resolveWith(getColor),
-                                          value: isChecked,
-                                          onChanged: (bool? value) {
-                                              isChecked = value!;
-                                          },
-                                        ),
+                                  children: <Widget>[
+                                    // Checkbox(
+                                    //       checkColor: Colors.white,
+                                    //       fillColor: MaterialStateProperty.resolveWith(getColor),
+                                    //       value: isChecked,
+                                    //       onChanged: (bool? value) {
+                                    //         // print('')
+                                    //           isChecked = value!;
+                                    //       },
+                                    //     ),
+                                    SizedBox(
+                                      height: 70,
+                                      width: 30,
+                                      child: CheckboxListTile(
+                                        title: Text(""),
+                                        value: checkboxValue[index],
+                                        onChanged: (bool? value) {
+                                          if(value != null) {
+                                            setState(() {
+                                              checkboxValue[index] = value;
+                                            });
+                                          }
+                                          // print(value);
+                                        },
+                                      ),
+                                    ),
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -340,7 +367,6 @@ class HomeManual extends StatelessWidget {
                                     ),
                                   ],
                                 )
-                            ),
                           );
                         }
                     ),
@@ -354,6 +380,7 @@ class HomeManual extends StatelessWidget {
     );
   }
 }
+
 
 
 
