@@ -3,6 +3,7 @@ part of '../pages.dart';
 class HomeManual extends StatelessWidget {
   late final int index;
   int _selectedIndex = 0;
+  bool isChecked = false;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
@@ -17,6 +18,17 @@ class HomeManual extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.blue;
+    }
     return Container(
       height: MediaQuery.of(context).size.height/1.2,
       color: Colors.white,
@@ -125,7 +137,7 @@ class HomeManual extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => homeDetailTransaksi(index)),
+                                    MaterialPageRoute(builder: (context) => homeDetailTransaksi(index: index)),
                                   );
                                 },
                                 color: Colors.white,
@@ -268,11 +280,14 @@ class HomeManual extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Container(
-                                        height: 70,
-                                        width: 50,
-                                        child: new Image.asset('assets/img/truck.png')
-                                    ),
+                                    Checkbox(
+                                          checkColor: Colors.white,
+                                          fillColor: MaterialStateProperty.resolveWith(getColor),
+                                          value: isChecked,
+                                          onChanged: (bool? value) {
+                                              isChecked = value!;
+                                          },
+                                        ),
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -304,7 +319,7 @@ class HomeManual extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => homeDetailTransaksi(index)),
+                                          MaterialPageRoute(builder: (context) => homeDetailTransaksi(index:index)),
                                         );
                                       },
                                       color: Colors.white,
@@ -328,4 +343,6 @@ class HomeManual extends StatelessWidget {
     );
   }
 }
+
+
 

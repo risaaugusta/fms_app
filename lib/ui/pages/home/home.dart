@@ -8,6 +8,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final String apiUrl = "https://10.10.0.223/backendapimaster/public/api/auth/Equipments";
+
   String name = 'Testing';
   String unitCode = 'DT11123';
   int fuelValue = 980;
@@ -261,8 +263,8 @@ class _HomeState extends State<Home> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => homeDetailTransaksi(index))
-                                              // builder: (context) => scanRefueling(barcode_id:snapshot.data![index]['equipment_id']),
+                                              builder: (context) => homeDetailTransaksi(index:index))
+
                                         );
                                       },
                                       color: Colors.white,
@@ -345,8 +347,7 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => homeDetailTransaksi(index))
-                                    // builder: (context) => scanRefueling(barcode_id:snapshot.data![index]['equipment_id']),
+                                          builder: (context) => homeDetailTransaksi(index:index))
                                   );
                                 },
                                 color: Colors.white,
@@ -364,5 +365,13 @@ class _HomeState extends State<Home> {
                 }),
           ],
         ));
+
   }
+
+  // Future<List<dynamic>> fetchUsers() async {
+  //
+  //   var result = await http.get(apiUrl);
+  //   return json.decode(result.body)['results'];
+  //
+  // }
 }

@@ -30,19 +30,19 @@ class _homeBAPSState extends State<homeBAPS> {
   List<Item> SignatureItems = generateItems(1);
   List<String> headerDataValue=<String>[
     'No. SJ',
-    'No. DO Vendor',
+    'No. PO Vendor',
     'Vol SJ/Voucher',
     'Nama Supplier',
     'Nama Driver',
     'No Vehicle',
-    'Volume',
+    'Volume Pengisian',
     'Segel Awal',
     'Segel Akhir',
     'Deviasi',
     'Sounding Awal',
     'Sounding Akhir',
-    'Segel Observed',
-    'Segel DO',
+    'SG Observed',
+    'SG DO',
     'Temp Observed',
     'Temp DO',
   ];
@@ -53,12 +53,13 @@ class _homeBAPSState extends State<homeBAPS> {
   List<String> headerSignatureValue=<String>[
     'Tanda Tangan'
   ];
-  List<Item> PhotoItems = generateItems(5);
+  List<Item> PhotoItems = generateItems(6);
   List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
     'Flow Meter',
-    'Tanda Tangan Vendor',
+    'Tanda Tangan Driver',
+    'Tanda Tangan Saksi (Serta Nama)',
     'Tanda Tangan PIC Penerima',
   ];
 
@@ -418,6 +419,9 @@ class _homeBAPSState extends State<homeBAPS> {
                         SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
                         headerPhotoValue[index] ==
                             headerPhotoValue[4] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[5] ?
                         SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
                         UploaderDropdown(callback:(String filePath){
                           if (headerPhotoValue[index] ==
