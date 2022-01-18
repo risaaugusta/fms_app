@@ -127,6 +127,10 @@ class _LoginState extends State<Login> {
                     onPressed: () {
                       if(password == "testing"){ // dummy value
                         _dialogSuccessAlert();
+                        final response = await http
+                            .get(Uri.parse('http://10.10.0.223/backendapimaster/public/api/login')), headers: {
+                          HttpHeaders.authorizationHeader: "Bearer $token",
+                        },);
                       }else{
                         _dialogFailedAlert();
                       }

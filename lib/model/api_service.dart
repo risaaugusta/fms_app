@@ -6,6 +6,7 @@ import 'package:fms_app/model/msequipment.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiService{
   Future<String?> getToken() async {
@@ -14,15 +15,18 @@ class ApiService{
   }
 
   Future<MsEquipment> fetchOperator() async{
-    String? token = await ApiService().getToken();
-    // final response = await http.get(url, headers: {
-    //   'Content-Type': 'application/json',
-    //   'Accept': 'application/json',
-    //   'Authorization': 'Bearer $token',
-    // });
+    final storage = FlutterSecureStorage();
+    String? token = await storage.read(key: 'Bearer');
+//    String? token = await ApiService().getToken();
+    print('$token ======');
+////    // final response = await http.get(url, headers: {
+////    //   'Content-Type': 'application/json',
+////    //   'Accept': 'application/json',
+////    //   'Authorization': 'Bearer $token',
+////    // });
 
     final response = await http
-        .get(Uri.parse('https://10.10.0.223/backendapimaster/public/api/auth/Equipments'), headers: {
+        .get(Uri.parse('http://10.10.0.223/backendapimaster/public/api/auth/Equipments'), headers: {
       HttpHeaders.authorizationHeader: "Bearer $token",
     },);
 
@@ -36,5 +40,4 @@ class ApiService{
       throw Exception('Failed to load');
     }
   }
-
 }
