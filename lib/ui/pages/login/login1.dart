@@ -16,7 +16,6 @@ class _LoginState extends State<Login> {
       _obscureText = !_obscureText;
     });
   }
-  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +66,9 @@ class _LoginState extends State<Login> {
                     filled: true,
                     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   ),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    Global.nik = value;
+                  },
                 ),
               ),
             ),
@@ -110,7 +111,7 @@ class _LoginState extends State<Login> {
                     ),
                     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                   ),
-                  onChanged: (text)=> password = text , //dummy value
+                  onChanged: (text)=> Global.password = text , //dummy value
                 ),
               ),
             ),
@@ -124,16 +125,32 @@ class _LoginState extends State<Login> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
-                    onPressed: () {
-                      if(password == "testing"){ // dummy value
-                        _dialogSuccessAlert();
+                    onPressed: () async {
+                      // if(password == "testing"){ // dummy value
+                      //   _dialogSuccessAlert();
+                        print(Global.nik);
+                        print(Global.password);
                         final response = await http
-                            .get(Uri.parse('http://10.10.0.223/backendapimaster/public/api/login')), headers: {
-                          HttpHeaders.authorizationHeader: "Bearer $token",
-                        },);
-                      }else{
-                        _dialogFailedAlert();
-                      }
+                            .post(Uri.parse('${Global.host}/backendapimaster/public/api/login'), body: {
+                              "nik": Global.nik,
+                              "password": Global.password
+                        }).then((value) async
+                        {
+                          var res = jsonDecode(value.body);
+                          if (res['status'] == "success") {
+                            print(value.body);
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            await prefs.setString('token', res['content']['access_token']);
+                            _dialogSuccessAlert();
+                          } else {
+                            print(value.body);
+                              _dialogFailedAlert();
+                          }
+
+                        });
+                      // }else{
+                      //   _dialogFailedAlert();
+                      // }
                     },
                     color: Coloring.mainColor,
                     textColor: Colors.white,

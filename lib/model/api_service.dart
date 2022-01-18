@@ -3,10 +3,11 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fms_app/model/msequipment.dart';
+import 'package:fms_app/ui/pages/pages.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiService{
   Future<String?> getToken() async {
@@ -15,9 +16,9 @@ class ApiService{
   }
 
   Future<MsEquipment> fetchOperator() async{
-    final storage = FlutterSecureStorage();
-    String? token = await storage.read(key: 'Bearer');
-//    String? token = await ApiService().getToken();
+    // final storage = FlutterSecureStorage();
+    // String? token = await storage.read(key: 'Bearer');
+   String? token = await ApiService().getToken();
     print('$token ======');
 ////    // final response = await http.get(url, headers: {
 ////    //   'Content-Type': 'application/json',
@@ -26,7 +27,7 @@ class ApiService{
 ////    // });
 
     final response = await http
-        .get(Uri.parse('http://10.10.0.223/backendapimaster/public/api/auth/Equipments'), headers: {
+        .get(Uri.parse('${Global.host}/backendapimaster/public/api/auth/Equipments'), headers: {
       HttpHeaders.authorizationHeader: "Bearer $token",
     },);
 

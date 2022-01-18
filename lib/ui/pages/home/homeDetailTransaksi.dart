@@ -552,16 +552,16 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                 return const CircularProgressIndicator();
                               },
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 70, top: 10),
-                              child: Text(
-                                  'DMI',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(left: 70, top: 10),
+                            //   child: Text(
+                            //       'DMI',
+                            //       textAlign: TextAlign.left,
+                            //       style: TextStyle(color: Colors.black,
+                            //           decoration: TextDecoration.underline,
+                            //           fontFamily: Fonts.REGULAR,fontSize: 18)
+                            //   ),
+                            // ),
                           ],
                         ),
                         Divider(
