@@ -126,8 +126,7 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
                     onPressed: () async {
-                      // if(password == "testing"){ // dummy value
-                      //   _dialogSuccessAlert();
+                      // if(password == "testing"){ // d
                         print(Global.nik);
                         print(Global.password);
                         final response = await http
@@ -146,11 +145,7 @@ class _LoginState extends State<Login> {
                             print(value.body);
                               _dialogFailedAlert();
                           }
-
                         });
-                      // }else{
-                      //   _dialogFailedAlert();
-                      // }
                     },
                     color: Coloring.mainColor,
                     textColor: Colors.white,
@@ -286,9 +281,9 @@ class _LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(30),
                             side: BorderSide(color: Coloring.mainColor)),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => homeDashboard()),);
+                            MaterialPageRoute(builder: (context) => homeDashboard()),(route)=>false);
                         },
                         color: Coloring.mainColor,
                         textColor: Colors.white,
