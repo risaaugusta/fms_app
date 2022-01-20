@@ -1,0 +1,4 @@
+#Thu Jan 20 10:27:18 WIB 2022
+base.0=/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

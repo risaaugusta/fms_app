@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/flutter_uploader/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/78919c2fa3c1176e258e9281ba5f9ae8/core-1.2.0-alpha04/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/flutter_uploader/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/78919c2fa3c1176e258e9281ba5f9ae8/core-1.2.0-alpha04/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/flutter_uploader/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/78919c2fa3c1176e258e9281ba5f9ae8/core-1.2.0-alpha04/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/flutter_uploader/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/78919c2fa3c1176e258e9281ba5f9ae8/core-1.2.0-alpha04/res/layout-v21/notification_template_custom_big.xml"
+    }
+]
