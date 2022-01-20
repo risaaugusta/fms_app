@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/notification_action.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/custom_dialog.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/notification_template_icon_group.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/notification_action_tombstone.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/notification_template_part_time.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/fluttertoast/intermediates/res/merged/release/layout/toast_custom.xml",
+        "source": "/opt/homebrew/Caskroom/flutter/2.2.3/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8/android/src/main/res/layout/toast_custom.xml"
+    }
+]

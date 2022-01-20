@@ -1,0 +1,364 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.fms_app"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="20"
+8-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.CAMERA" />
+11-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:3:5-65
+11-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:3:22-62
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:4:5-81
+12-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:4:22-78
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:5:5-67
+13-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:5:22-64
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:7:5-80
+14-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:7:22-77
+15
+16    <queries>
+16-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:9:5-15:15
+17        <intent>
+17-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:10:9-14:18
+18            <action android:name="android.intent.action.GET_CONTENT" />
+18-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:11:13-72
+18-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:11:21-69
+19
+20            <data android:mimeType="*/*" />
+20-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:13:13-44
+20-->[:file_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/file_picker/intermediates/library_manifest/release/AndroidManifest.xml:13:19-41
+21        </intent>
+22    </queries>
+23
+24    <uses-permission android:name="android.permission.WAKE_LOCK" />
+24-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:25:5-68
+24-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:25:22-65
+25    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+25-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:26:5-79
+25-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:26:22-76
+26    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+26-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:27:5-81
+26-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:27:22-78
+27    <uses-feature
+27-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:25:5-27:36
+28        android:name="android.hardware.camera"
+28-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:26:9-47
+29        android:required="false" />
+29-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:27:9-33
+30    <uses-feature
+30-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:28:5-30:36
+31        android:name="android.hardware.camera.front"
+31-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:29:9-53
+32        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+32-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:30:9-33
+33    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+34    <uses-feature
+34-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:33:5-35:36
+35        android:name="android.hardware.camera.autofocus"
+35-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:34:9-57
+36        android:required="false" />
+36-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:35:9-33
+37    <uses-feature
+37-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:36:5-38:36
+38        android:name="android.hardware.camera.flash"
+38-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:37:9-53
+39        android:required="false" />
+39-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:38:9-33
+40    <uses-feature
+40-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:39:5-41:36
+41        android:name="android.hardware.screen.landscape"
+41-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:40:9-57
+42        android:required="false" />
+42-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:41:9-33
+43    <uses-feature
+43-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:42:5-44:36
+44        android:name="android.hardware.wifi"
+44-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:43:9-45
+45        android:required="false" />
+45-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:44:9-33
+46
+47    <application
+47-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:6:4-44:19
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.5.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/4d87ed05196533b5ec796c2b8988bfe8/core-1.5.0/AndroidManifest.xml:24:18-86
+49        android:icon="@mipmap/ic_launcher"
+49-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:9:9-43
+50        android:label="fms_app"
+50-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:8:9-32
+51        android:requestLegacyExternalStorage="true" >
+51-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:7:9-52
+52        <activity
+52-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:10:9-38:20
+53            android:name="com.example.fms_app.MainActivity"
+53-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:11:13-41
+54            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+54-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:14:13-163
+55            android:hardwareAccelerated="true"
+55-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:15:13-47
+56            android:launchMode="singleTop"
+56-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:12:13-43
+57            android:theme="@style/LaunchTheme"
+57-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:13:13-47
+58            android:windowSoftInputMode="adjustResize" >
+58-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:16:13-55
+59
+60            <!--
+61                 Specifies an Android theme to apply to this Activity as soon as
+62                 the Android process has started. This theme is visible to the user
+63                 while the Flutter UI initializes. After that, this theme continues
+64                 to determine the Window background behind the Flutter UI.
+65            -->
+66            <meta-data
+66-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:21:13-24:17
+67                android:name="io.flutter.embedding.android.NormalTheme"
+67-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:22:15-70
+68                android:resource="@style/NormalTheme" />
+68-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:23:15-52
+69            <!--
+70                 Displays an Android View that continues showing the launch screen
+71                 Drawable until Flutter paints its first frame, then this splash
+72                 screen fades out. A splash screen is useful to avoid any visual
+73                 gap between the end of Android's launch screen and the painting of
+74                 Flutter's first frame.
+75            -->
+76            <meta-data
+76-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:30:13-33:17
+77                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+77-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:31:15-79
+78                android:resource="@drawable/launch_background" />
+78-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:32:15-61
+79
+80            <intent-filter>
+80-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:34:13-37:29
+81                <action android:name="android.intent.action.MAIN" />
+81-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:35:17-68
+81-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:35:25-66
+82
+83                <category android:name="android.intent.category.LAUNCHER" />
+83-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:36:17-76
+83-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:36:27-74
+84            </intent-filter>
+85        </activity>
+86        <!--
+87             Don't delete the meta-data below.
+88             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+89        -->
+90        <meta-data
+90-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:41:9-43:33
+91            android:name="flutterEmbedding"
+91-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:42:13-44
+92            android:value="2" />
+92-->/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/AndroidManifest.xml:43:13-30
+93
+94        <provider
+94-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:8:9-16:20
+95            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+95-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:9:13-82
+96            android:authorities="com.example.fms_app.flutter.image_provider"
+96-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:10:13-74
+97            android:exported="false"
+97-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:11:13-37
+98            android:grantUriPermissions="true" >
+98-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:12:13-47
+99            <meta-data
+99-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:13:13-15:75
+100                android:name="android.support.FILE_PROVIDER_PATHS"
+100-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:14:17-67
+101                android:resource="@xml/flutter_image_picker_file_paths" />
+101-->[:image_picker] /Users/risaaugusta/Documents/KARIR/fms_app/build/image_picker/intermediates/library_manifest/release/AndroidManifest.xml:15:17-72
+102        </provider>
+103        <provider
+103-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:30:9-36:35
+104            android:name="androidx.work.impl.WorkManagerInitializer"
+104-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:31:13-69
+105            android:authorities="com.example.fms_app.workmanager-init"
+105-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:32:13-68
+106            android:directBootAware="false"
+106-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:33:13-44
+107            android:exported="false"
+107-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:34:13-37
+108            android:multiprocess="true" />
+108-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:35:13-40
+109
+110        <service
+110-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:38:9-43:35
+111            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+111-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:39:13-88
+112            android:directBootAware="false"
+112-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:40:13-44
+113            android:enabled="@bool/enable_system_alarm_service_default"
+113-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:41:13-72
+114            android:exported="false" />
+114-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:42:13-37
+115        <service
+115-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:44:9-50:35
+116            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+116-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:45:13-84
+117            android:directBootAware="false"
+117-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:46:13-44
+118            android:enabled="@bool/enable_system_job_service_default"
+118-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:47:13-70
+119            android:exported="true"
+119-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:48:13-36
+120            android:permission="android.permission.BIND_JOB_SERVICE" />
+120-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:49:13-69
+121
+122        <receiver
+122-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:52:9-57:35
+123            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+123-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:53:13-88
+124            android:directBootAware="false"
+124-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:54:13-44
+125            android:enabled="true"
+125-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:55:13-35
+126            android:exported="false" />
+126-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:56:13-37
+127        <receiver
+127-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:58:9-68:20
+128            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+128-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:59:13-106
+129            android:directBootAware="false"
+129-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:60:13-44
+130            android:enabled="false"
+130-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:61:13-36
+131            android:exported="false" >
+131-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:62:13-37
+132            <intent-filter>
+132-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:64:13-67:29
+133                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+133-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:65:17-87
+133-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:65:25-84
+134                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+134-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:66:17-90
+134-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:66:25-87
+135            </intent-filter>
+136        </receiver>
+137        <receiver
+137-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:69:9-79:20
+138            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+138-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:70:13-104
+139            android:directBootAware="false"
+139-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:71:13-44
+140            android:enabled="false"
+140-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:72:13-36
+141            android:exported="false" >
+141-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:73:13-37
+142            <intent-filter>
+142-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:75:13-78:29
+143                <action android:name="android.intent.action.BATTERY_OKAY" />
+143-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:76:17-77
+143-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:76:25-74
+144                <action android:name="android.intent.action.BATTERY_LOW" />
+144-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:77:17-76
+144-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:77:25-73
+145            </intent-filter>
+146        </receiver>
+147        <receiver
+147-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:80:9-90:20
+148            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+148-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:81:13-104
+149            android:directBootAware="false"
+149-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:82:13-44
+150            android:enabled="false"
+150-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:83:13-36
+151            android:exported="false" >
+151-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:84:13-37
+152            <intent-filter>
+152-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:86:13-89:29
+153                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+153-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:87:17-83
+153-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:87:25-80
+154                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+154-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:88:17-82
+154-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:88:25-79
+155            </intent-filter>
+156        </receiver>
+157        <receiver
+157-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:91:9-100:20
+158            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+158-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:92:13-103
+159            android:directBootAware="false"
+159-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:93:13-44
+160            android:enabled="false"
+160-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:94:13-36
+161            android:exported="false" >
+161-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:95:13-37
+162            <intent-filter>
+162-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:97:13-99:29
+163                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+163-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:98:17-79
+163-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:98:25-76
+164            </intent-filter>
+165        </receiver>
+166        <receiver
+166-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:101:9-112:20
+167            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+167-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:102:13-88
+168            android:directBootAware="false"
+168-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:103:13-44
+169            android:enabled="false"
+169-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:104:13-36
+170            android:exported="false" >
+170-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:105:13-37
+171            <intent-filter>
+171-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:107:13-111:29
+172                <action android:name="android.intent.action.BOOT_COMPLETED" />
+172-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:108:17-79
+172-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:108:25-76
+173                <action android:name="android.intent.action.TIME_SET" />
+173-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:109:17-73
+173-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:109:25-70
+174                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+174-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:110:17-81
+174-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:110:25-78
+175            </intent-filter>
+176        </receiver>
+177        <receiver
+177-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:113:9-122:20
+178            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+178-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:114:13-99
+179            android:directBootAware="false"
+179-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:115:13-44
+180            android:enabled="@bool/enable_system_alarm_service_default"
+180-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:116:13-72
+181            android:exported="false" >
+181-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:117:13-37
+182            <intent-filter>
+182-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:119:13-121:29
+183                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+183-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:120:17-98
+183-->[androidx.work:work-runtime:2.2.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/585fadfb9f3b5e09989b2593a3a6ebfc/work-runtime-2.2.0/AndroidManifest.xml:120:25-95
+184            </intent-filter>
+185        </receiver>
+186
+187        <service
+187-->[androidx.room:room-runtime:2.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/1c0704e2fbf49dd0cec129e6aae43298/room-runtime-2.1.0/AndroidManifest.xml:25:9-27:40
+188            android:name="androidx.room.MultiInstanceInvalidationService"
+188-->[androidx.room:room-runtime:2.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/1c0704e2fbf49dd0cec129e6aae43298/room-runtime-2.1.0/AndroidManifest.xml:26:13-74
+189            android:exported="false" />
+189-->[androidx.room:room-runtime:2.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/1c0704e2fbf49dd0cec129e6aae43298/room-runtime-2.1.0/AndroidManifest.xml:27:13-37
+190
+191        <activity
+191-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:47:9-53:63
+192            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+192-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:48:13-74
+193            android:clearTaskOnLaunch="true"
+193-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:49:13-45
+194            android:screenOrientation="sensorLandscape"
+194-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:50:13-56
+195            android:stateNotNeeded="true"
+195-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:51:13-42
+196            android:theme="@style/zxing_CaptureTheme"
+196-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:52:13-54
+197            android:windowSoftInputMode="stateAlwaysHidden" />
+197-->[com.journeyapps:zxing-android-embedded:4.1.0] /Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d270d3ed13396fa5b8c3771a586e7a3/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:53:13-60
+198    </application>
+199
+200</manifest>

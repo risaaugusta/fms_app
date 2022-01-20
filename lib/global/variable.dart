@@ -121,7 +121,7 @@ class Distribution{
 class Global{
   static String time = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn,':',ss]);
   static String pathTtd='';
-  static String host='http://8a40-110-137-101-141.ngrok.io'; //ganti 10.10.0.223
+  static String host='10.10.0.223'; //ganti 10.10.0.223
   static String nik ='';
   static String password ='';
 }
