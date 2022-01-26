@@ -1,12 +1,16 @@
 part of '../ui/pages/pages.dart';
 
 class Refueling{
-  static String fFilling='';
-  static String fTotalisatorAwal='';
+  static int fTransactionsId= 0;
+  static int fFilling=0;
+  static int fTotalisatorAwal=0;
   static String fTotalisatorAkhir='';
   static String fHmEquipment='';
   static String fStorageOperator='';
   static String fEquipmentOperator='';
+  static String fImageDirectory='';
+  static String fImageName='';
+  static String fSiteId='';
 }
 
 class FuelTransfer{
@@ -94,7 +98,7 @@ class Attendance{
   static String site_id='';
   static String equipment_id='';
   static String shift_id='';
-  static int operator_id=0;
+  static String operator_id='';
   static String login_at='';
   static String updated_by='';
   static String updated_at='';
@@ -116,5 +120,9 @@ class Distribution{
 
 class Global{
   static String time = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn,':',ss]);
+  static String pathTtd='';
+  static String host='http://10.10.0.223'; //ganti 10.10.0.223
+  static String nik ='';
+  static String password ='';
 }
 
