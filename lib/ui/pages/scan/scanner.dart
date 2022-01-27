@@ -176,7 +176,10 @@ class selectedScanner extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                         side: BorderSide(color: Colors.grey)),
                     onPressed: () {
-                        // _dialogFailedAlert();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => inputField()),
+                      );
                     },
                     color: Colors.white,
                     textColor: Colors.white,
@@ -481,6 +484,73 @@ class dialogSuccess extends StatelessWidget {
               ),
             ),);
         }
+    );
+  }
+}
+
+///inputField
+class inputField extends StatelessWidget {
+  const inputField({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height/5,
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  child: TextFormField(
+                    autofocus: false,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(
+                          color: Colors.grey.shade200,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
+                      fillColor: Color(0xffFFFFFF),
+                      filled: true,
+                      hintText: "Masukkan kode unit",
+                      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    ),
+                    onChanged: (value)=> {}, //dummy value
+                  ),
+                ),
+                Container(
+                  margin:  EdgeInsets.symmetric(horizontal: 20),
+                  height: 60,
+                  child: ButtonTheme(
+                    minWidth: 300,
+                    child: Container(
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            side: BorderSide(color: Coloring.mainColor)),
+                        onPressed: () { print('on click');},
+                        color: Coloring.mainColor,
+                        textColor: Colors.white,
+                        child: Text("Kirim",
+                            style: TextStyle(color: Colors.white, fontFamily: Fonts.BOLD,fontSize: 18)),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
     );
   }
 }

@@ -144,6 +144,7 @@ class _LoginState extends State<Login> {
                             print(value.body);
                             SharedPreferences prefs = await SharedPreferences.getInstance();
                             await prefs.setString('token', res['content']['access_token']);
+                            await prefs.setString('nik', Global.nik);
                             _dialogSuccessAlert();
                           } else {
                             print(value.body);

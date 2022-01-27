@@ -49,6 +49,8 @@ dependencies:
   fluttertoast: ^8.0.8
   image_gallery_saver: ^1.7.1
   permission_handler: ^8.0.0
+  skeleton_text: ^3.0.0
+#  flutter_secure_storage: ^3.2.1+1
 #  json_annotation: ^4.0.0
 #  json_serializable: ^5.0.0
 #  barcode_scan: ^3.0.1
@@ -83,7 +85,7 @@ flutter:
     - assets/img/fuel.png
     - assets/img/truck.png
     - assets/img/menu_truck.png
-    - assets/img/menu_newspaper_.png
+#    - assets/img/menu_newspaper_.png
     - assets/img/menu_newspaper.jpeg
 #      - assets/img/logo.png
 

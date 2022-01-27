@@ -29,6 +29,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skeleton_text/skeleton_text.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:async';
@@ -48,6 +49,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:signature/signature.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+
 
 part 'login/welcome.dart';
 part 'login/login1.dart';

@@ -8,13 +8,17 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String nama = 'USMAN ABDUL RAHMAN';
-  String email = 'usman@hpu-mining.com';
-  List<Item> personalItems = generateItems(3);
+  List<BoxShadow> shadowList = [
+    BoxShadow(color: Colors.grey[300]!, blurRadius: 30, offset: Offset(0, 10))
+  ];
+
+  List selectedUserProfile = [];
+  // String nik = "";
+  // String email = 'usman@hpu-mining.com';
+  List<Item> personalItems = generateItems(2);
   List<Item> fuelItems = generateItems(2);
   List<String> headerValue=<String>[
     'NIK',
-    'Ubah Password',
     'Shift'
   ];
   List<String> headerFuelValue=<String>[
@@ -26,6 +30,37 @@ class _ProfileState extends State<Profile> {
     'Ubah Password',
     'Shift',
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ApiService().fetchEmployee().then((value) async {
+      List dataComputed = [];
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? nik = await prefs.getString("nik");
+      print("===============");
+      dataComputed = value.where((element) => element['EmployeeID'] == nik).toList();
+      print(dataComputed);
+      setState(() {
+        // nik = nik;
+        selectedUserProfile = dataComputed;
+      });
+
+      // print(value);
+      // value.map((e) {
+      //   print(e);
+      //   // dataComputed.add(e['auth_group']);
+      // }).toList();
+    });
+    ApiService().fetchStorage().then((value) {
+      List<String> dataComputed = [];
+      value.map((e) {
+        // print(e['auth_group']);
+        dataComputed.add(e['auth_group']);
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,31 +80,18 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.account_circle, color: Coloring.mainColor, size: 50),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text('$nama',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text('$email ',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color(0xffAAAAAA),
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 12)),
-                      ),
-                    ],
-                  ),
+                  selectedUserProfile.isEmpty ?
+                      CircularProgressIndicator() :
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                      child:
+                    Text('${selectedUserProfile.isEmpty ? '' : selectedUserProfile[0]['EmployeeName']}',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: Fonts.REGULAR,
+                            fontSize: 18))
+                  )
                 ],
               ),
             ),
@@ -107,7 +129,16 @@ class _ProfileState extends State<Profile> {
                     );
                   },
                   body: ListTile(
-                    title:
+                    title: !selectedUserProfile.isEmpty
+                        ? Padding(
+                          padding: EdgeInsets.only(left: 15, bottom: 30),
+                          child: Text('${selectedUserProfile.isEmpty ? '' : selectedUserProfile[0]['EmployeeID']}',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: Fonts.REGULAR,
+                                  fontSize: 18)),
+                    ) :
                     Container(
                       width: MediaQuery.of(context).size.width / 1.8,
                       margin: EdgeInsets.symmetric(vertical: 10),

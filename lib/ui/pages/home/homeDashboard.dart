@@ -61,40 +61,16 @@ class _homeDashboardState extends State<homeDashboard> {
                             fontFamily: Fonts.REGULAR,
                             fontSize: 18)),
                     backgroundColor: Colors.white,
-                  ) : _selectedIndex == 1 ? AppBar(
-                        leading: new IconButton(
-                          icon: new Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => homeDashboard()),
-                            );
-                          },
-                        ),
-                        title: const Text('Syarat & Ketentuan',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
-                        backgroundColor: Colors.white,
-                      ) : null,
+                  ) : null,
             body: ListView(
-              physics: const AlwaysScrollableScrollPhysics(), // new
+              physics: _selectedIndex == 1 ? NeverScrollableScrollPhysics() : AlwaysScrollableScrollPhysics(), // new
               controller: _controller,
               children: [
                 _selectedIndex == 0 ? searchBar() : Text(''),
                 _widgetOptions.elementAt(_selectedIndex),
               ],
             ),
-            // body: PageStorage(
-            //   child: _currentScreen,
-            //   bucket: bucket,
-            // ),
-            floatingActionButton: FloatingActionButton(
+            floatingActionButton:  _selectedIndex == 3 ? null :FloatingActionButton(
               backgroundColor: Colors.white,
               child: Icon(Icons.qr_code, color: Coloring.mainColor),
               onPressed: () {
@@ -109,7 +85,127 @@ class _homeDashboardState extends State<homeDashboard> {
             bottomNavigationBar: BottomAppBar(
               child: Container(
                 height: 60,
-                child: Row(
+                child:
+                _selectedIndex == 3 ?
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: () {
+                            setState(() {
+                              // screens = searchBar();
+                              _selectedIndex = 0;
+                            });
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.home,
+                                color: _selectedIndex == 0
+                                    ? Coloring.mainColor
+                                    : Colors.grey,
+                              ),
+                              Text('Home',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: _selectedIndex == 0
+                                          ? Coloring.mainColor
+                                          : Colors.grey,
+                                      fontFamily: Fonts.REGULAR,
+                                      fontSize: 14)),
+                            ],
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 1;
+                            });
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.article_rounded,
+                                color: _selectedIndex == 1
+                                    ? Coloring.mainColor
+                                    : Colors.grey,
+                              ),
+                              Text('Sync',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: _selectedIndex == 1
+                                          ? Coloring.mainColor
+                                          : Colors.grey,
+                                      fontFamily: Fonts.REGULAR,
+                                      fontSize: 14)),
+                            ],
+                          ),
+                        ),
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: () {
+                            setState(() {
+                              // screens = searchBar();
+                              _selectedIndex = 2;
+                            });
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.notifications,
+                                color: _selectedIndex == 2
+                                    ? Coloring.mainColor
+                                    : Colors.grey,
+                              ),
+                              Text('Notifikasi',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: _selectedIndex == 2
+                                          ? Coloring.mainColor
+                                          : Colors.grey,
+                                      fontFamily: Fonts.REGULAR,
+                                      fontSize: 14)),
+                            ],
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 3;
+                            });
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.account_circle,
+                                color: _selectedIndex == 3
+                                    ? Coloring.mainColor
+                                    : Colors.grey,
+                              ),
+                              Text('Profil',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: _selectedIndex == 3
+                                          ? Coloring.mainColor
+                                          : Colors.grey,
+                                      fontFamily: Fonts.REGULAR,
+                                      fontSize: 14)),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                )
+                : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Row(
@@ -158,7 +254,7 @@ class _homeDashboardState extends State<homeDashboard> {
                                     ? Coloring.mainColor
                                     : Colors.grey,
                               ),
-                              Text('Manual',
+                              Text('Sync',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: _selectedIndex == 1
