@@ -1,12 +1,39 @@
 part of'../pages.dart';
 typedef void StringCallback(String val);
 
-class StorageDropdown extends StatelessWidget {
+class StorageDropdown extends StatefulWidget {
   final StringCallback? callback;
-  StorageDropdown({Key? key, this.callback}) : super(key: key);
-  String dropdownvalue = 'AMO';
-  var items =  ['AMO','DMI','DTA','KLU', 'SGU', 'PDU', 'PGA','SMI','SKA'];
+  const StorageDropdown({Key? key, this.callback}) : super(key: key);
+
+  @override
+  _StorageDropdownState createState() => _StorageDropdownState();
+}
+
+class _StorageDropdownState extends State<StorageDropdown> {
+  late final StringCallback? callback;
+  // _StorageDropdownState({Key? key, this.callback}) : super(key: key);
+  // String dropdownvalue = 'AMO';
+  List<String> items =  [];
   MsStorage? msStorage;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ApiService().fetchStorage().then((value) {
+      // items
+      // print("halo");
+      // print(value);
+      List<String> dataComputed = [];
+      value.map((e) {
+        // print(e['auth_group']);
+        dataComputed.add(e['auth_group']);
+      }).toList();
+      setState(() {
+        items = dataComputed;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +84,9 @@ class StorageDropdown extends StatelessWidget {
       //   },
       // ),
       DropdownButton(
-        value: dropdownvalue,
+        // value: '',
         icon: Icon(Icons.keyboard_arrow_down),
-        items:items.map((String items) {
+        items: items.map((String items) {
           return DropdownMenuItem(
               value: items,
               child: Text(items)
@@ -67,9 +94,11 @@ class StorageDropdown extends StatelessWidget {
         }
         ).toList(),
         onChanged: (newValue){
-                   callback!('$newValue');
-                  },
+          callback!('$newValue');
+        },
       ),
     );
   }
 }
+
+

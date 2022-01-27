@@ -17,10 +17,7 @@ class _homeBAPSState extends State<homeBAPS> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     homeLansiran(),
-    Text(
-      'Index 1: Manual',
-      style: optionStyle,
-    ),
+    HomeManual(),
     Text(
       'Index 2: Notif',
       style: optionStyle,
@@ -33,19 +30,19 @@ class _homeBAPSState extends State<homeBAPS> {
   List<Item> SignatureItems = generateItems(1);
   List<String> headerDataValue=<String>[
     'No. SJ',
-    'No. DO Vendor',
+    'No. PO Vendor',
     'Vol SJ/Voucher',
     'Nama Supplier',
     'Nama Driver',
     'No Vehicle',
-    'Volume',
+    'Volume Pengisian',
     'Segel Awal',
     'Segel Akhir',
     'Deviasi',
     'Sounding Awal',
     'Sounding Akhir',
-    'Segel Observed',
-    'Segel DO',
+    'SG Observed',
+    'SG DO',
     'Temp Observed',
     'Temp DO',
   ];
@@ -56,13 +53,16 @@ class _homeBAPSState extends State<homeBAPS> {
   List<String> headerSignatureValue=<String>[
     'Tanda Tangan'
   ];
-  List<Item> PhotoItems = generateItems(4);
+  List<Item> PhotoItems = generateItems(6);
   List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
     'Flow Meter',
-    'Tanda Tangan'
+    'Tanda Tangan Driver',
+    'Tanda Tangan Saksi (Serta Nama)',
+    'Tanda Tangan PIC Penerima',
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -92,6 +92,7 @@ class _homeBAPSState extends State<homeBAPS> {
       supplier_name: BapsDetail.bdSupplierName,
       driver_name: BapsDetail.bdDriverName,
       vehicle_no: BapsDetail.bdVehicleNo,
+      storage_id: BapsDetail.bdStorageId,
       volume: BapsDetail.bdVolume,
       segel_begin: BapsDetail.bdSegelBegin,
       segel_end: BapsDetail.bdSegelEnd,
@@ -385,7 +386,7 @@ class _homeBAPSState extends State<homeBAPS> {
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                             ),
                             onChanged: (value)  {
-                                Baps.bSiteId=value;
+                              Baps.bSiteId=value;
                             }, ////dummy value
                           ),
                         )
@@ -412,8 +413,16 @@ class _homeBAPSState extends State<homeBAPS> {
                       );
                     },
                     body: ListTile(
-                        title: headerPhotoValue[index] ==
-                            headerPhotoValue[3] ? SignaturePad() :
+                        title:
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[3] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[4] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[5] ?
+                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
                         UploaderDropdown(callback:(String filePath){
                           if (headerPhotoValue[index] ==
                               headerPhotoValue[0]) {
@@ -431,31 +440,6 @@ class _homeBAPSState extends State<homeBAPS> {
                   ),
                 )).values.toList(),
               ),
-              // ExpansionPanelList(
-              //   expansionCallback: (int index, bool isExpanded) {
-              //     setState(() {
-              //       SignatureItems[index].isExpanded = !isExpanded;
-              //     });
-              //   },
-              //   children: SignatureItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
-              //     ExpansionPanel(
-              //       headerBuilder: (BuildContext context, bool isExpanded) {
-              //         return ListTile(
-              //           contentPadding: EdgeInsets.only(left:30),
-              //           title: Text('${headerSignatureValue[index]}',
-              //               textAlign: TextAlign.left,
-              //               style: TextStyle(color: Colors.grey,
-              //                   fontFamily: Fonts.REGULAR,fontSize: 14)),
-              //         );
-              //       },
-              //       body: ListTile(
-              //           title:
-              //           SignaturePad()
-              //       ),
-              //       isExpanded: item.isExpanded,
-              //     ),
-              //   )).values.toList(),
-              // ),
               Container(
                 margin: EdgeInsets.only(bottom: 20, top: 15),
                 child: Divider(
@@ -498,124 +482,103 @@ class _homeBAPSState extends State<homeBAPS> {
             _widgetOptions.elementAt(_selectedIndex),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Icon(Icons.qr_code, color: Coloring.mainColor),
-          onPressed: ()
-          {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Scanner()),
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           child: Container(
             height: 60,
-            child: Row(
+            child:
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MaterialButton(
-                      minWidth:40,
-                      onPressed: (){
-                        Navigator.pop(
-                          context,
-                          MaterialPageRoute(builder: (context) => homeDashboard()),);
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.home,
-                            color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
-                          ),
-                          Text(
-                              'Home',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
-                        ],
+              children: [
+                MaterialButton(
+                  minWidth:40,
+                  onPressed: (){
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(builder: (context) => homeDashboard()),);
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.home,
+                        color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
                       ),
-                    ),
-                    MaterialButton(
-                      onPressed: (){
-                        setState(() {
-                          _selectedIndex = 1;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.article_rounded,
-                            color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
-                          ),
-                          Text(
-                              'Manual',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
-                        ],
+                      Text(
+                          'Home',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MaterialButton(
-                      minWidth:40,
-                      onPressed: (){
-                        setState(() {
-                          // screens = searchBar();
-                          _selectedIndex = 2;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.notifications,
-                            color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
-                          ),
-                          Text(
-                              'Notifikasi',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
-                        ],
+                MaterialButton(
+                  onPressed: (){
+                    setState(() {
+                      _selectedIndex = 1;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.article_rounded,
+                        color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                       ),
-                    ),
-                    MaterialButton(
-                      onPressed: (){
-                        setState(() {
-                          _selectedIndex = 3;
-                        });
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.account_circle,
-                            color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
-                          ),
-                          Text(
-                              'Profil',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
-                                  fontFamily: Fonts.REGULAR,fontSize: 14)
-                          ),
-                        ],
+                      Text(
+                          'Sync',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
                       ),
-                    )
-                  ],
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  minWidth:40,
+                  onPressed: (){
+                    setState(() {
+                      // screens = searchBar();
+                      _selectedIndex = 2;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.notifications,
+                        color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
+                      ),
+                      Text(
+                          'Notifikasi',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 2 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
+                      ),
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: (){
+                    setState(() {
+                      _selectedIndex = 3;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.account_circle,
+                        color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
+                      ),
+                      Text(
+                          'Profil',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: _selectedIndex == 3 ? Coloring.mainColor : Colors.grey,
+                              fontFamily: Fonts.REGULAR,fontSize: 14)
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

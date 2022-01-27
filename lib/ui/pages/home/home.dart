@@ -8,6 +8,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final String apiUrl = "https://10.10.0.223/backendapimaster/public/api/auth/Equipments";
+
   String name = 'Testing';
   String unitCode = 'DT11123';
   int fuelValue = 980;
@@ -19,10 +21,6 @@ class _HomeState extends State<Home> {
     'DT22222',
     'DT22222',
   ];
-  var today = DateTime.now();
-  var date = DateFormat.yMd().format(DateTime.now());
-  var time =
-      formatDate(DateTime.now(), [yyyy, '/', mm, '/', dd, ' ', HH, ':', nn]);
 
   @override
   Widget build(BuildContext context) {
@@ -78,174 +76,6 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            // GridView.count(
-            //   shrinkWrap: true,
-            //   childAspectRatio: (4 / 2.5),
-            //   padding: const EdgeInsets.only(top:10),
-            //   crossAxisSpacing: 10,
-            //   mainAxisSpacing: 10,
-            //   crossAxisCount: 2,
-            //   children: <Widget>[
-            //     Card(
-            //       color: Color(0xff179F87),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //       ),
-            //       child: InkWell(
-            //         onTap: () {
-            //           Navigator.push(
-            //             context,
-            //             MaterialPageRoute(builder: (context) => homeBAPS()),
-            //           );
-            //         },
-            //         child: Row(
-            //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //           children: [
-            //             Container(
-            //                 height: 70,
-            //                 width: 50,
-            //                 child: new Image.asset('assets/img/fuel.png')
-            //             ),
-            //             Column(
-            //               mainAxisAlignment: MainAxisAlignment.center,
-            //               children: [
-            //                 Text(
-            //                     '$fuelValue' + ' L',
-            //                     textAlign: TextAlign.center,
-            //                     style: TextStyle(color: Colors.white,
-            //                         fontFamily: Fonts.BOLD,fontSize: 18)
-            //                 ),
-            //                 Text(
-            //                     'Fuel Consumption',
-            //                     textAlign: TextAlign.center,
-            //                     style: TextStyle(color: Colors.white,
-            //                         fontFamily: Fonts.REGULAR,fontSize: 12)
-            //                 ),
-            //               ],
-            //             )
-            //           ],
-            //         )
-            //       ),
-            //     ),
-            //     Card(
-            //       color: Color(0xffFB7B76),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //       ),
-            //       child: InkWell(
-            //           onTap: () {
-            //             Navigator.push(
-            //               context,
-            //               MaterialPageRoute(builder: (context) => homeLansiran()),
-            //             );
-            //           },
-            //           child: Row(
-            //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //             children: [
-            //               Container(
-            //                   height: 70,
-            //                   width: 50,
-            //                   child: new Image.asset('assets/img/fuel.png')
-            //               ),
-            //               Column(
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   Text(
-            //                       '$fuelValue' + ' L',
-            //                       textAlign: TextAlign.center,
-            //                       style: TextStyle(color: Colors.white,
-            //                           fontFamily: Fonts.BOLD,fontSize: 18)
-            //                   ),
-            //                   Text(
-            //                       'Sisa L FuelTruck',
-            //                       textAlign: TextAlign.center,
-            //                       style: TextStyle(color: Colors.white,
-            //                           fontFamily: Fonts.REGULAR,fontSize: 12)
-            //                   ),
-            //                 ],
-            //               )
-            //             ],
-            //           )
-            //       ),
-            //     ),
-            //     Card(
-            //       color: Color(0xff00A0C8),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //       ),
-            //       child: InkWell(
-            //           onTap: () {
-            //             print('Card tapped.');
-            //           },
-            //           child: Row(
-            //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //             children: [
-            //               Container(
-            //                   height: 70,
-            //                   width: 50,
-            //                   child: new Image.asset('assets/img/truck.png')
-            //               ),
-            //               Column(
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   Text(
-            //                       '$unitCode',
-            //                       textAlign: TextAlign.center,
-            //                       style: TextStyle(color: Colors.white,
-            //                           fontFamily: Fonts.BOLD,fontSize: 18)
-            //                   ),
-            //                   Text(
-            //                       'Big Refueling',
-            //                       textAlign: TextAlign.center,
-            //                       style: TextStyle(color: Colors.white,
-            //                           fontFamily: Fonts.REGULAR,fontSize: 12)
-            //                   ),
-            //                 ],
-            //               )
-            //             ],
-            //           )
-            //       ),
-            //     ),
-            //     Card(
-            //       color: Color(0xffE88813),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(15),
-            //       ),
-            //       child: InkWell(
-            //           onTap: () {
-            //             print('Card tapped.');
-            //           },
-            //           child: Row(
-            //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //             children: [
-            //               Container(
-            //                   height: 70,
-            //                   width: 50,
-            //                   child: new Image.asset('assets/img/fuel.png')
-            //               ),
-            //               Column(
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   Text(
-            //                       '$fuelValue' + ' L',
-            //                       textAlign: TextAlign.center,
-            //                       style: TextStyle(color: Colors.white,
-            //                           fontFamily: Fonts.BOLD,fontSize: 18)
-            //                   ),
-            //                   Text(
-            //                       'Fuel Consumption',
-            //                       textAlign: TextAlign.center,
-            //                       style: TextStyle(color: Colors.white,
-            //                           fontFamily: Fonts.REGULAR,fontSize: 12)
-            //                   ),
-            //                 ],
-            //               )
-            //             ],
-            //           )
-            //       ),
-            //     ),
-            //   ],
-            // ),
             SizedBox(height: 30),
             Column(
               children: [
@@ -272,7 +102,7 @@ class _HomeState extends State<Home> {
                                 height: 70,
                                 width: 50,
                                 child:
-                                    new Image.asset('assets/img/menu_truck.png')),
+                                new Image.asset('assets/img/menu_truck.png')),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -315,7 +145,7 @@ class _HomeState extends State<Home> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left:25),
+                                margin: EdgeInsets.only(left:25),
                                 height: 70,
                                 width: 50,
                                 child: new Image.asset(
@@ -368,85 +198,181 @@ class _HomeState extends State<Home> {
                             color: Colors.black,
                             fontFamily: Fonts.REGULAR,
                             fontSize: 18)),
-                  )),
+                  )
+              ),
             ),
-            Container(
-              child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(8),
-                  itemCount: unitCodeList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      elevation: 0.8,
-                      shadowColor: Colors.grey,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: InkWell(
-                          onTap: () {
-                            print('Card tapped.');
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                  height: 70,
-                                  width: 50,
-                                  child:
-                                      new Image.asset('assets/img/truck.png')),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+            FutureBuilder<List>(
+              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                List<Widget> children;
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.all(8),
+                      itemCount: snapshot.data!.length < 5 ? snapshot.data!.length : 5,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          elevation: 0.8,
+                          shadowColor: Colors.grey,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: InkWell(
+                              onTap: () {
+                                print('Card tapped.');
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text('${unitCodeList[index]}',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: Fonts.REGULAR,
-                                          fontSize: 18)),
-                                  Text('$fuelValue' + 'L',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: Fonts.REGULAR,
-                                          fontSize: 12)),
-                                  Text('$time',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: Fonts.REGULAR,
-                                          fontSize: 12)),
+                                  Container(
+                                      height: 70,
+                                      width: 50,
+                                      child:
+                                      new Image.asset('assets/img/truck.png')),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(snapshot.data![index]['equipment_id'],
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontFamily: Fonts.REGULAR,
+                                              fontSize: 18)),
+                                      Text(snapshot.data![index]['tank_capacity'].toString(),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontFamily: Fonts.REGULAR,
+                                              fontSize: 12)),
+                                      Text(snapshot.data![index]['created_at'],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontFamily: Fonts.REGULAR,
+                                              fontSize: 12)),
+                                    ],
+                                  ),
+                                  Container(
+                                    child: RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(5),
+                                          side: BorderSide(
+                                              color: Coloring.mainColor)),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => homeDetailTransaksi(index:index))
+
+                                        );
+                                      },
+                                      color: Colors.white,
+                                      textColor: Colors.white,
+                                      child: Text("Detail",
+                                          style: TextStyle(
+                                              color: Coloring.mainColor,
+                                              fontFamily: Fonts.REGULAR,
+                                              fontSize: 14)),
+                                    ),
+                                  ),
                                 ],
+                              )),
+                        );
+                      });
+                } else if (snapshot.hasError) {
+                  return Container(
+                    child: Text('Tidak ada data'),
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            ),
+            ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(8),
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    elevation: 0.8,
+                    shadowColor: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: InkWell(
+                        onTap: () {
+                          print('Card tapped.');
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                                height: 70,
+                                width: 50,
+                                child:
+                                new Image.asset('assets/img/truck.png')),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Equipment'+'$index',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 18)),
+                                Text('3'+'$index',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 12)),
+                                Text(Global.time,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 12)),
+                              ],
+                            ),
+                            Container(
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                    side: BorderSide(
+                                        color: Coloring.mainColor)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => homeDetailTransaksi(index:index))
+                                  );
+                                },
+                                color: Colors.white,
+                                textColor: Colors.white,
+                                child: Text("Detail",
+                                    style: TextStyle(
+                                        color: Coloring.mainColor,
+                                        fontFamily: Fonts.REGULAR,
+                                        fontSize: 14)),
                               ),
-                              Container(
-                                child: RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      side: BorderSide(
-                                          color: Coloring.mainColor)),
-                                  onPressed: () {
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //       builder: (context) => scanRefueling(),
-                                    // );
-                                  },
-                                  color: Colors.white,
-                                  textColor: Colors.white,
-                                  child: Text("Detail",
-                                      style: TextStyle(
-                                          color: Coloring.mainColor,
-                                          fontFamily: Fonts.REGULAR,
-                                          fontSize: 14)),
-                                ),
-                              ),
-                            ],
-                          )),
-                    );
-                  }),
-            )
+                            ),
+                          ],
+                        )),
+                  );
+                }),
           ],
         ));
+
   }
+
+// Future<List<dynamic>> fetchUsers() async {
+//
+//   var result = await http.get(apiUrl);
+//   return json.decode(result.body)['results'];
+//
+// }
 }
