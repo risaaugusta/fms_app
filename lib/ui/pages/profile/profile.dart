@@ -8,13 +8,17 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String nama = 'USMAN ABDUL RAHMAN';
-  String email = 'usman@hpu-mining.com';
-  List<Item> personalItems = generateItems(3);
+  List<BoxShadow> shadowList = [
+    BoxShadow(color: Colors.grey[300]!, blurRadius: 30, offset: Offset(0, 10))
+  ];
+
+  List selectedUserProfile = [];
+  // String nik = "";
+  // String email = 'usman@hpu-mining.com';
+  List<Item> personalItems = generateItems(2);
   List<Item> fuelItems = generateItems(2);
   List<String> headerValue=<String>[
     'NIK',
-    'Ubah Password',
     'Shift'
   ];
   List<String> headerFuelValue=<String>[
@@ -26,33 +30,40 @@ class _ProfileState extends State<Profile> {
     'Ubah Password',
     'Shift',
   ];
-  TrFuelAttendance trFuelAttendance = TrFuelAttendance(
-    // attendance_id:  Attendance.attendance_id,
-    equipment_id:  '',
-    site_id: '',
-    shift_id : '',
-    operator_id : '',
-    // is_active: Attendance.is_active,
-    // updated_by: Attendance.updated_by,
-    login_at: Global.time,
-    updated_at: Global.time,
-    // phone_id: Attendance.phone_id,
-  );
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ApiService().fetchEmployee().then((value) async {
+      List dataComputed = [];
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? nik = await prefs.getString("nik");
+      print("===============");
+      dataComputed = value.where((element) => element['EmployeeID'] == nik).toList();
+      print(dataComputed);
+      setState(() {
+        // nik = nik;
+        selectedUserProfile = dataComputed;
+      });
+
+      // print(value);
+      // value.map((e) {
+      //   print(e);
+      //   // dataComputed.add(e['auth_group']);
+      // }).toList();
+    });
+    ApiService().fetchStorage().then((value) {
+      List<String> dataComputed = [];
+      value.map((e) {
+        // print(e['auth_group']);
+        dataComputed.add(e['auth_group']);
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TrFuelAttendance trFuelAttendance = TrFuelAttendance(
-    //   // attendance_id:  Attendance.attendance_id,
-    //   equipment_id:  Attendance.equipment_id,
-    //   site_id: Attendance.site_id,
-    //   shift_id : Attendance.shift_id,
-    //   operator_id : Attendance.operator_id,
-    //   // is_active: Attendance.is_active,
-    //   // updated_by: Attendance.updated_by,
-    //   login_at: Global.time,
-    //   updated_at: Global.time,
-    //   // phone_id: Attendance.phone_id,
-    // );
     return Container(
       color: Colors.white,
       margin: EdgeInsets.all(0),
@@ -69,31 +80,18 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.account_circle, color: Coloring.mainColor, size: 50),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text('$nama',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text('$email ',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color(0xffAAAAAA),
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 12)),
-                      ),
-                    ],
-                  ),
+                  selectedUserProfile.isEmpty ?
+                  CircularProgressIndicator() :
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                      child:
+                      Text('${selectedUserProfile.isEmpty ? '' : selectedUserProfile[0]['EmployeeName']}',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: Fonts.REGULAR,
+                              fontSize: 18))
+                  )
                 ],
               ),
             ),
@@ -120,7 +118,7 @@ class _ProfileState extends State<Profile> {
                 });
               },
               children: personalItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
-              ExpansionPanel(
+                ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return ListTile(
                       contentPadding: EdgeInsets.only(left:30),
@@ -131,40 +129,47 @@ class _ProfileState extends State<Profile> {
                     );
                   },
                   body: ListTile(
-                    title:
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.8,
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                      child: TextFormField(
-                        autofocus: false,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade200,
+                      title: !selectedUserProfile.isEmpty
+                          ? Padding(
+                        padding: EdgeInsets.only(left: 15, bottom: 30),
+                        child: Text('${selectedUserProfile.isEmpty ? '' : selectedUserProfile[0]['EmployeeID']}',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: Fonts.REGULAR,
+                                fontSize: 18)),
+                      ) :
+                      Container(
+                        width: MediaQuery.of(context).size.width / 1.8,
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                        child: TextFormField(
+                          autofocus: false,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade200,
+                              ),
                             ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
                             ),
+                            fillColor: Color(0xffFFFFFF),
+                            filled: true,
+                            contentPadding:
+                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                           ),
-                          fillColor: Color(0xffFFFFFF),
-                          filled: true,
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          onChanged: (value) {
+                            data[index] = value;
+                            print(data[index]);
+                          }, //dummy value
                         ),
-                        onChanged: (value) {
-                          print(index.toString()+' ' + value);
-                          if(index == 2){
-                            trFuelAttendance.shift_id= value;
-                          }
-                        }, //dummy value
-                      ),
-                    )
+                      )
                   ),
                   isExpanded: item.isExpanded,
                 ),
@@ -227,11 +232,6 @@ class _ProfileState extends State<Profile> {
                           EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
                         onChanged: (value) {
-                          if (index == 1 ){
-                            trFuelAttendance.operator_id = value;
-                          }else{
-                            trFuelAttendance.equipment_id = value;
-                          }
                         }, //dummy value
                       ),
                     ),
@@ -257,13 +257,7 @@ class _ProfileState extends State<Profile> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
-                    onPressed: () {
-                      setState(() {
-                        print(trFuelAttendance.shift_id);
-                        FmsDatabase.instance.createAttendance(trFuelAttendance).then((value) => {_dialogAlert()});
-                        _dialogAlert();
-                      });
-                    },
+                    onPressed: () => null,
                     color: Coloring.mainColor,
                     textColor: Colors.white,
                     child: Text("Kirim",
@@ -276,35 +270,6 @@ class _ProfileState extends State<Profile> {
           ],
         ),
       ),
-    );
-  }
-
-
-  ///pop up status
-  Future<void> _dialogAlert() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Berhasil!'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text("Berhasil tambah data"),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Oke'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
