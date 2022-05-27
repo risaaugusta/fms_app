@@ -80,6 +80,11 @@ androidx.viewpager.R$integer
 com.google.common.util.concurrent.ExecutionSequencer$RunningState
 com.google.common.collect.AbstractMapBasedMultimap$RandomAccessWrappedList
 com.google.common.reflect.Reflection
+io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature:
+    public java.lang.Integer getValue()
+    public boolean checkIsSupported()
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 kotlin.collections.ArraysKt___ArraysJvmKt:
     private static final java.lang.Object elementAt(java.lang.Object[],int)
     private static final byte elementAt(byte[],int)
@@ -401,6 +406,7 @@ kotlin.UIntKt
 androidx.core.view.animation.PathInterpolatorCompat
 androidx.core.view.WindowInsetsAnimationCompat$Callback
 androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationCallback
+io.flutter.plugins.camera.types.ExposureMode
 androidx.core.view.accessibility.AccessibilityViewCommand$MoveWindowArguments:
     public int getX()
     public int getY()
@@ -475,6 +481,7 @@ com.google.common.collect.ImmutableSortedMap
 androidx.activity.contextaware.ContextAware
 kotlin.DeepRecursiveScopeImpl
 io.flutter.plugins.pathprovider.BuildConfig
+com.jrai.flutter_keyboard_visibility.R$integer
 org.checkerframework.checker.nullness.compatqual.PolyNullType
 androidx.appcompat.app.ToolbarActionBar$1
 com.google.gson.internal.$Gson$Types$WildcardTypeImpl:
@@ -716,6 +723,7 @@ androidx.core.app.NotificationCompat:
     public static final int GROUP_ALERT_SUMMARY
     public static final int GROUP_ALERT_CHILDREN
     public static final java.lang.String GROUP_KEY_SILENT
+com.jrai.flutter_keyboard_visibility.R$style
 io.flutter.embedding.engine.systemchannels.KeyEventChannel:
     private static final java.lang.String TAG
 androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager:
@@ -1003,6 +1011,7 @@ io.flutter.embedding.android.FlutterFragment$ActivityCallThrough
 com.google.common.hash.MacHashFunction
 com.google.common.graph.AbstractNetwork$1
 com.google.common.collect.AbstractMultimap
+io.flutter.plugins.camera.BuildConfig
 com.google.common.util.concurrent.AtomicDouble
 io.github.ponnamkarthik.toast.fluttertoast.FlutterToastPlugin$Companion:
     public final void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
@@ -1216,6 +1225,21 @@ com.google.common.collect.Multimaps$AsMap$EntrySet$1
 androidx.viewpager.widget.PagerTabStrip
 com.google.common.collect.AbstractMapEntry
 com.google.common.primitives.package-info
+io.flutter.plugins.camera.features.CameraFeatures:
+    public io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature getFpsRange()
+    public io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature getNoiseReduction()
+    private static final java.lang.String AUTO_FOCUS
+    private static final java.lang.String EXPOSURE_LOCK
+    private static final java.lang.String EXPOSURE_OFFSET
+    private static final java.lang.String EXPOSURE_POINT
+    private static final java.lang.String FLASH
+    private static final java.lang.String FOCUS_POINT
+    private static final java.lang.String FPS_RANGE
+    private static final java.lang.String NOISE_REDUCTION
+    private static final java.lang.String REGION_BOUNDARIES
+    private static final java.lang.String RESOLUTION
+    private static final java.lang.String SENSOR_ORIENTATION
+    private static final java.lang.String ZOOM_LEVEL
 com.journeyapps.barcodescanner.DefaultDecoderFactory:
     public void <init>(java.util.Collection)
 androidx.work.Operation:
@@ -1257,6 +1281,7 @@ okio.-GzipSinkExtensions
 com.google.common.collect.FilteredEntryMultimap$AsMap$1ValuesImpl
 com.google.common.eventbus.Dispatcher
 kotlin.jvm.internal.IntSpreadBuilder
+com.jrai.flutter_keyboard_visibility.R$dimen
 androidx.cursoradapter.widget.ResourceCursorAdapter:
     public void <init>(android.content.Context,int,android.database.Cursor)
     public void <init>(android.content.Context,int,android.database.Cursor,int)
@@ -1274,6 +1299,7 @@ androidx.arch.core.executor.ArchTaskExecutor:
     public static java.util.concurrent.Executor getMainThreadExecutor()
     public void setDelegate(androidx.arch.core.executor.TaskExecutor)
 com.google.common.util.concurrent.TimeoutFuture$Fire
+io.flutter.plugins.camera.R$attr
 com.google.common.graph.Traverser$TreeTraverser$DepthFirstPreOrderIterator
 okhttp3.internal.http2.Http2:
     public static final int INITIAL_MAX_FRAME_SIZE
@@ -1394,6 +1420,7 @@ kotlin.text.StringsKt___StringsJvmKt:
 com.google.common.util.concurrent.ServiceManager$NoOpService
 androidx.room.FtsOptions
 com.google.common.reflect.Types$ClassOwnership$2
+io.flutter.plugins.camera.R$string
 androidx.annotation.ArrayRes
 com.google.common.util.concurrent.Callables$1
 androidx.core.content.MimeTypeFilter
@@ -1676,9 +1703,13 @@ kotlin.sequences.SubSequence
 okhttp3.internal.platform.android.AndroidSocketAdapter:
     public javax.net.ssl.X509TrustManager trustManager(javax.net.ssl.SSLSocketFactory)
     public boolean matchesSocketFactory(javax.net.ssl.SSLSocketFactory)
+io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager:
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation calculateSensorOrientation(int)
+    int getDeviceDefaultOrientation()
 androidx.appcompat.widget.AppCompatEditText:
     public void <init>(android.content.Context)
 androidx.core.view.NestedScrollingChild3
+com.jrai.flutter_keyboard_visibility.R$string
 com.google.common.net.InetAddresses$TeredoInfo
 kotlin.collections.ArraysKt___ArraysKt:
     private static final java.lang.Object component1(java.lang.Object[])
@@ -3357,6 +3388,7 @@ androidx.work.Constraints$Builder:
     public androidx.work.Constraints$Builder setTriggerContentMaxDelay(long,java.util.concurrent.TimeUnit)
     public androidx.work.Constraints$Builder setTriggerContentMaxDelay(java.time.Duration)
 com.google.zxing.client.result.SMSParsedResult
+io.flutter.plugins.camera.R$styleable
 com.example.imagegallerysaver.BuildConfig
 androidx.core.app.AppComponentFactory
 com.google.gson.internal.bind.TreeTypeAdapter:
@@ -3409,11 +3441,11 @@ kotlin.io.CloseableKt:
     private static final java.lang.Object use(java.io.Closeable,kotlin.jvm.functions.Function1)
 androidx.annotation.IdRes
 com.google.common.io.CharSource$CharSequenceCharSource
-androidx.room.util.CursorUtil:
-    private void <init>()
-com.google.zxing.oned.ITFWriter
 kotlin.jvm.functions.Function10:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
+com.google.zxing.oned.ITFWriter
+androidx.room.util.CursorUtil:
+    private void <init>()
 androidx.appcompat.view.menu.MenuItemWrapperICS:
     static final java.lang.String LOG_TAG
 okhttp3.ConnectionSpec$Builder:
@@ -3479,6 +3511,7 @@ androidx.work.R$style
 androidx.versionedparcelable.VersionedParcelStream$1
 androidx.loader.content.AsyncTaskLoader$LoadTask
 androidx.core.os.LocaleListCompatWrapper
+com.jrai.flutter_keyboard_visibility.R$color
 androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$1
 kotlin.collections.ULongIterator
@@ -3645,6 +3678,9 @@ androidx.fragment.app.FragmentManager$PopBackStackState
 com.google.common.util.concurrent.Striped$6
 kotlin.internal.NoInfer
 com.google.common.io.BaseEncoding$2
+io.flutter.plugins.camera.Camera:
+    private android.view.Display getDefaultDisplay()
+    private static final java.lang.String TAG
 androidx.appcompat.widget.AppCompatCheckBox:
     public void <init>(android.content.Context)
 okio.-Util:
@@ -4192,6 +4228,10 @@ kotlin.jvm.functions.Function22:
 com.google.common.io.MultiInputStream
 androidx.annotation.FloatRange
 com.mr.flutter.plugin.filepicker.R$string
+io.flutter.plugins.camera.features.flash.FlashFeature:
+    public io.flutter.plugins.camera.features.flash.FlashMode getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 androidx.appcompat.graphics.drawable.DrawerArrowDrawable$ArrowDirection
 com.google.common.graph.AbstractDirectedNetworkConnections
 com.google.common.collect.MutableClassToInstanceMap$2$1
@@ -4268,6 +4308,10 @@ kotlin.system.ProcessKt
 com.google.common.io.CountingOutputStream
 okio.InflaterSource:
     public void <init>(okio.Source,java.util.zip.Inflater)
+io.flutter.plugins.camera.features.focuspoint.FocusPointFeature:
+    public io.flutter.plugins.camera.features.Point getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 com.mr.flutter.plugin.filepicker.R$layout
 androidx.customview.widget.ExploreByTouchHelper$2
 kotlin.reflect.KProperty2$Getter
@@ -4299,6 +4343,10 @@ androidx.core.graphics.BlendModeUtils
 okhttp3.internal.http2.PushObserver$Companion:
     static final synthetic okhttp3.internal.http2.PushObserver$Companion $$INSTANCE
 com.google.common.graph.ImmutableNetwork$1
+io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature:
+    public io.flutter.plugins.camera.features.Point getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 kotlin.ranges.ComparableRange
 com.ggichure.github.hexcolor.R$integer
 com.google.common.collect.MapMakerInternalMap$StrongKeyDummyValueEntry$Helper
@@ -5077,8 +5125,8 @@ com.google.common.collect.ImmutableSortedMap$1
 com.google.common.util.concurrent.AbstractCatchingFuture$CatchingFuture
 kotlin.sequences.SequencesKt___SequencesKt$runningFold$1
 com.google.common.collect.TreeRangeSet$ComplementRangesByLowerBound
-kotlin.coroutines.RestrictsSuspension
 com.google.common.io.ByteSource$ByteArrayByteSource
+kotlin.coroutines.RestrictsSuspension
 com.google.common.collect.AbstractSortedSetMultimap
 com.google.common.net.InetAddresses
 androidx.fragment.app.FragmentManager$BackStackEntry
@@ -5216,6 +5264,10 @@ com.google.common.annotations.VisibleForTesting
 com.google.common.util.concurrent.MoreExecutors$ScheduledListeningDecorator$ListenableScheduledTask
 com.google.zxing.oned.rss.expanded.decoders.FieldParser:
     private void <init>()
+io.flutter.plugins.camera.features.CameraFeature:
+    public abstract java.lang.Object getValue()
+    public abstract void setValue(java.lang.Object)
+    public abstract boolean checkIsSupported()
 com.google.common.collect.RegularImmutableMap$KeySet
 com.google.zxing.PlanarYUVLuminanceSource:
     public boolean isCropSupported()
@@ -5549,6 +5601,8 @@ androidx.appcompat.widget.ActionBarOverlayLayout:
     private static final int ACTION_BAR_ANIMATE_DELAY
 com.google.common.collect.MapMakerInternalMap$Strength$2
 com.google.common.collect.AbstractMultiset$ElementSet
+io.flutter.plugins.camera.DartMessenger:
+    private void send(io.flutter.plugins.camera.DartMessenger$DeviceEventType)
 androidx.core.app.ShareCompat$IntentReader
 androidx.annotation.MainThread
 androidx.core.app.BundleCompat$BundleCompatBaseImpl
@@ -5761,7 +5815,9 @@ com.google.common.hash.Funnels
 com.google.common.hash.Funnels$UnencodedCharsFunnel
 com.google.common.collect.ImmutableSetMultimap$EntrySet
 kotlin.jvm.internal.TypeParameterReference
+io.flutter.plugins.camera.R$color
 com.google.common.base.Enums$StringConverter
+com.jrai.flutter_keyboard_visibility.R$attr
 androidx.core.provider.SelfDestructiveThread$1
 kotlin.jvm.internal.markers.KMutableListIterator
 com.google.common.io.FileBackedOutputStream$MemoryOutput
@@ -5776,6 +5832,7 @@ com.google.zxing.oned.ITFReader:
 com.journeyapps.barcodescanner.camera.CameraParametersCallback
 com.google.common.collect.Sets$PowerSet
 com.google.common.collect.StandardTable$RowMap$EntrySet
+io.flutter.plugins.camera.types.FlashMode
 com.google.common.collect.ArrayTable$2
 androidx.core.widget.PopupWindowCompat:
     private void <init>()
@@ -5860,8 +5917,8 @@ com.tekartik.sqflite.operation.ExecuteOperation:
     protected com.tekartik.sqflite.operation.OperationResult getOperationResult()
     public java.lang.String getMethod()
 androidx.core.app.NotificationCompat$DecoratedCustomViewStyle
-com.google.common.collect.CollectPreconditions
 androidx.viewbinding.ViewBinding
+com.google.common.collect.CollectPreconditions
 kotlin.internal.AccessibleLateinitPropertyLiteral
 kotlin.jvm.internal.ShortSpreadBuilder
 com.google.common.hash.Hashing$ChecksumType$2
@@ -5953,6 +6010,7 @@ com.google.common.collect.ImmutableSortedMap$Builder
 kotlin.jvm.internal.AdaptedFunctionReference
 com.google.common.collect.CompactHashMap$MapEntry
 com.google.common.collect.Maps$NavigableAsMapView
+io.flutter.plugins.camera.CameraZoom
 com.google.common.collect.AbstractMapBasedMultimap$WrappedNavigableSet
 com.google.common.cache.Striped64$1
 androidx.activity.result.ActivityResultCaller
@@ -6762,6 +6820,11 @@ com.google.common.collect.ImmutableMap$SerializedForm
 com.google.common.graph.AbstractBaseGraph$IncidentEdgeSet
 androidx.vectordrawable.animated.R$styleable
 com.google.common.util.concurrent.SmoothRateLimiter$SmoothBursty
+io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature:
+    public android.util.Range getValue()
+    public void setValue(android.util.Range)
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 com.google.common.collect.ForwardingBlockingDeque
 kotlin.collections.SlidingWindowKt$windowedIterator$1
 kotlin.jvm.internal.markers.KMutableIterator
@@ -6969,6 +7032,9 @@ com.bluechilli.flutteruploader.R$dimen
 com.google.common.collect.LinkedHashMultimapGwtSerializationDependencies
 com.google.common.collect.ImmutableMultiset$1
 com.google.common.reflect.TypeResolver$1
+io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature:
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 io.flutter.plugins.flutter_plugin_android_lifecycle.R
 androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$2
 androidx.work.impl.constraints.trackers.BatteryNotLowTracker:
@@ -7379,6 +7445,7 @@ okhttp3.internal.http2.Http2Reader$ContinuationSource:
     public final int getStreamId()
     public final int getPadding()
 com.google.common.util.concurrent.DirectExecutor
+com.jrai.flutter_keyboard_visibility.R$id
 com.google.common.reflect.Types$JavaVersion$3
 okio.Utf8
 kotlin.io.FileTreeWalk$FileTreeWalkIterator$TopDownDirectoryState
@@ -7506,6 +7573,8 @@ com.journeyapps.barcodescanner.CameraPreview:
 com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidator
 androidx.viewpager.widget.ViewPager$4
 kotlin.collections.AbstractSet
+io.flutter.plugins.camera.CameraRegionUtils$MeteringRectangleFactory:
+    void <init>()
 com.example.imagegallerysaver.ImageGallerySaverPlugin:
     static synthetic android.net.Uri generateUri$default(com.example.imagegallerysaver.ImageGallerySaverPlugin,java.lang.String,java.lang.String,int,java.lang.Object)
     public static final synthetic void access$onAttachedToEngine(com.example.imagegallerysaver.ImageGallerySaverPlugin,android.content.Context,io.flutter.plugin.common.BinaryMessenger)
@@ -8466,6 +8535,8 @@ androidx.core.graphics.ColorUtils:
     private static final int MIN_ALPHA_SEARCH_PRECISION
 com.google.common.collect.Multisets$DecreasingCount
 com.google.common.collect.Maps$2
+io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode:
+    public static io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode getValueForString(java.lang.String)
 com.bluechilli.flutteruploader.R$xml
 com.google.common.base.Joiner$2
 androidx.core.content.res.ResourcesCompat:
@@ -8677,10 +8748,10 @@ kotlin.text.StringsKt__StringsKt:
     public void <init>()
 com.google.common.reflect.ClassPath$ClassInfo
 com.google.common.collect.FluentIterable$3$1
+com.google.common.collect.Synchronized$SynchronizedSet
 androidx.appcompat.view.menu.BaseMenuPresenter:
     public boolean flagActionItems()
     public int getId()
-com.google.common.collect.Synchronized$SynchronizedSet
 androidx.annotation.ColorLong
 okhttp3.internal.platform.Platform:
     public static final synthetic void access$setPlatform$cp(okhttp3.internal.platform.Platform)
@@ -8942,6 +9013,7 @@ org.checkerframework.checker.nullness.compatqual.MonotonicNonNullType
 com.google.common.reflect.Types$ClassOwnership$1LocalClass
 androidx.work.impl.model.WorkTypeConverters$BackoffPolicyIds
 kotlin.jvm.internal.TypeReference$asString$args$1
+io.flutter.plugins.camera.R$integer
 androidx.viewbinding.BuildConfig
 com.google.common.collect.EnumMultiset
 androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView:
@@ -9613,7 +9685,6 @@ kotlin.ranges.LongProgressionIterator
 com.google.common.collect.Lists$RandomAccessReverseList
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding:
     public io.flutter.embedding.engine.FlutterEngine getFlutterEngine()
-    public io.flutter.view.TextureRegistry getTextureRegistry()
     public io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets getFlutterAssets()
 com.google.common.reflect.TypeVisitor
 com.google.gson.internal.JavaVersion:
@@ -9867,6 +9938,9 @@ androidx.appcompat.app.ActionBarDrawerToggle
 com.google.common.graph.MapIteratorCache$1
 androidx.collection.ContainerHelpers:
     private void <init>()
+io.flutter.plugins.camera.CameraPlugin:
+    public static void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar)
+    private static final java.lang.String TAG
 com.journeyapps.barcodescanner.camera.LegacyPreviewScalingStrategy$1
 com.google.common.cache.LocalCache$EntryFactory$6
 androidx.annotation.experimental.UseExperimental
@@ -10007,6 +10081,8 @@ androidx.room.InvalidationTracker:
 androidx.fragment.app.FragmentTabHost$SavedState
 io.flutter.embedding.android.FlutterFragment$1
 com.google.common.base.CharMatcher$JavaIsoControl
+io.flutter.plugins.camera.CameraRegionUtils$SizeFactory:
+    void <init>()
 com.google.common.collect.FilteredKeySetMultimap
 com.google.common.collect.Iterators$1
 net.touchcapture.qr.flutterqr.R$animator
@@ -10228,6 +10304,7 @@ kotlin.jvm.functions.Function7:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
 com.google.common.base.StandardSystemProperty
 com.tekartik.sqflite.R$drawable
+com.jrai.flutter_keyboard_visibility.R
 androidx.work.impl.model.WorkTypeConverters$NetworkTypeIds
 com.google.common.collect.CompactLinkedHashMap
 com.google.common.util.concurrent.ForwardingListenableFuture
@@ -10326,6 +10403,7 @@ androidx.appcompat.app.AppCompatViewInflater:
     private static final java.lang.String LOG_TAG
 com.google.common.graph.ImmutableValueGraph$1
 com.google.zxing.client.android.R$style
+com.google.common.collect.Iterators
 okhttp3.HttpUrl:
     public static final int defaultPort(java.lang.String)
     public static final okhttp3.HttpUrl get(java.lang.String)
@@ -10375,7 +10453,6 @@ okhttp3.HttpUrl:
     public static final java.lang.String FORM_ENCODE_SET
     public static final java.lang.String FRAGMENT_ENCODE_SET
     public static final java.lang.String FRAGMENT_ENCODE_SET_URI
-com.google.common.collect.Iterators
 com.google.common.primitives.UnsignedInts$LexicographicalComparator
 com.google.common.collect.Maps$UnmodifiableBiMap
 com.google.common.collect.SortedLists$KeyPresentBehavior$1
@@ -10396,6 +10473,8 @@ androidx.appcompat.widget.ActionBarContextView:
     public synthetic bridge boolean isOverflowMenuShowPending()
     public synthetic bridge void postShowOverflowMenu()
     public synthetic bridge void animateToVisibility(int)
+io.flutter.plugins.camera.CameraPermissions:
+    private static final int CAMERA_REQUEST_ID
 io.flutter.plugins.sharedpreferences.R$id
 io.github.ponnamkarthik.toast.fluttertoast.R$style
 kotlin.reflect.KMutableProperty1$Setter
@@ -10476,6 +10555,7 @@ io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineActivit
     public void removeOnUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
     public void addOnSaveStateListener(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanceStateListener)
     public void removeOnSaveStateListener(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding$OnSaveInstanceStateListener)
+com.jrai.flutter_keyboard_visibility.BuildConfig
 androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper:
     public java.lang.String getDatabaseName()
     public androidx.sqlite.db.SupportSQLiteDatabase getReadableDatabase()
@@ -10842,7 +10922,11 @@ androidx.sqlite.db.R
 com.google.common.collect.SetMultimap
 io.flutter.embedding.engine.FlutterEngineGroup$1
 com.google.common.collect.Iterables$8
-androidx.core.math.MathUtils
+androidx.core.math.MathUtils:
+    private void <init>()
+    public static double clamp(double,double,double)
+    public static int clamp(int,int,int)
+    public static long clamp(long,long,long)
 com.google.common.collect.ForwardingMapEntry
 androidx.core.os.TraceCompat
 com.google.common.hash.LongAddable
@@ -11095,6 +11179,9 @@ kotlin.jvm.functions.Function18:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
 com.google.common.cache.ReferenceEntry
 androidx.versionedparcelable.VersionedParcel$ParcelException
+io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature:
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 okhttp3.internal.Util$execute$1
 com.google.common.util.concurrent.AbstractScheduledService$CustomScheduler$Schedule
 kotlin.contracts.CallsInPlace
@@ -11268,6 +11355,7 @@ org.jetbrains.annotations.NonNls
 com.google.common.primitives.Longs$LongConverter
 kotlin.text.FlagEnum
 androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper
+io.flutter.plugins.camera.types.FocusMode
 com.google.common.collect.Collections2$FilteredCollection
 androidx.room.DatabaseConfiguration:
     public void <init>(android.content.Context,java.lang.String,androidx.sqlite.db.SupportSQLiteOpenHelper$Factory,androidx.room.RoomDatabase$MigrationContainer,java.util.List,boolean,androidx.room.RoomDatabase$JournalMode,java.util.concurrent.Executor,boolean,java.util.Set)
@@ -11327,6 +11415,7 @@ androidx.work.impl.model.WorkNameDao_Impl:
     public java.util.List getWorkSpecIdsWithName(java.lang.String)
 com.google.common.collect.Multisets$ElementSet
 com.google.common.eventbus.Subscriber$1
+com.jrai.flutter_keyboard_visibility.R$styleable
 kotlin.collections.UCollectionsKt___UCollectionsKt
 com.google.common.base.Predicates$ObjectPredicate$3
 io.flutter.FlutterInjector:
@@ -11523,6 +11612,7 @@ io.flutter.embedding.engine.systemchannels.PlatformChannel:
 com.google.common.collect.Multisets$FilteredMultiset$1
 androidx.core.graphics.drawable.WrappedDrawableApi21:
     private static final java.lang.String TAG
+io.flutter.plugins.camera.R$dimen
 androidx.core.app.NotificationCompat$Action:
     public void <init>(int,java.lang.CharSequence,android.app.PendingIntent)
     public void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent)
@@ -11981,6 +12071,11 @@ com.google.common.util.concurrent.CycleDetectingLockFactory$Policies$2
 com.google.common.base.CaseFormat
 com.google.common.collect.TreeBasedTable$2
 kotlin.jvm.internal.MutablePropertyReference
+io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature:
+    public java.lang.Float getValue()
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
+    private static final float MINIMUM_ZOOM_LEVEL
 androidx.viewpager.R$string
 com.google.common.collect.MapMakerInternalMap$KeyIterator
 androidx.core.app.ActivityRecreator:
@@ -12003,6 +12098,7 @@ com.google.gson.internal.bind.TypeAdapters$27:
     private static final java.lang.String HOUR_OF_DAY
     private static final java.lang.String MINUTE
     private static final java.lang.String SECOND
+io.flutter.plugins.camera.R$id
 io.flutter.plugin.common.StandardMessageCodec:
     private static final java.lang.String TAG
     private static final byte NULL
@@ -12566,10 +12662,10 @@ io.flutter.Log:
     public static void d(java.lang.String,java.lang.String,java.lang.Throwable)
     public static void wtf(java.lang.String,java.lang.String)
     public static void wtf(java.lang.String,java.lang.String,java.lang.Throwable)
+kotlin.jvm.JvmDefault
+com.google.common.collect.ArrayListMultimapGwtSerializationDependencies
 androidx.sqlite.db.SupportSQLiteQuery:
     public abstract int getArgCount()
-com.google.common.collect.ArrayListMultimapGwtSerializationDependencies
-kotlin.jvm.JvmDefault
 androidx.appcompat.widget.AbsActionBarView:
     void <init>(android.content.Context)
     public void animateToVisibility(int)
@@ -12706,6 +12802,7 @@ kotlin.sequences.DistinctIterator
 kotlin.jvm.internal.markers.KMutableMap
 com.google.common.base.CharMatcher$None
 io.flutter.embedding.engine.loader.FlutterLoader$2$1
+io.flutter.plugins.camera.R$drawable
 androidx.drawerlayout.widget.DrawerLayout$ViewDragCallback$1
 androidx.core.content.pm.ShortcutManagerCompat$Api25Impl
 com.google.common.collect.MapMakerInternalMap$InternalEntry
@@ -12731,10 +12828,10 @@ com.google.common.cache.LocalCache$StrongWriteEntry
 com.google.common.collect.TreeRangeSet
 kotlin.jvm.functions.Function16:
     public abstract java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)
-androidx.core.widget.TextViewOnReceiveContentListener$ApiImpl:
-    private void <init>()
 kotlin.Lazy:
     public abstract boolean isInitialized()
+androidx.core.widget.TextViewOnReceiveContentListener$ApiImpl:
+    private void <init>()
 androidx.core.app.NotificationChannelCompat$Builder
 com.google.common.collect.Sets$3$1
 androidx.customview.widget.ViewDragHelper$2
@@ -13012,6 +13109,7 @@ io.flutter.embedding.engine.plugins.shim.ShimRegistrar:
     public io.flutter.plugin.common.PluginRegistry$Registrar addUserLeaveHintListener(io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener)
     public io.flutter.plugin.common.PluginRegistry$Registrar addViewDestroyListener(io.flutter.plugin.common.PluginRegistry$ViewDestroyListener)
     private static final java.lang.String TAG
+io.flutter.plugins.camera.R$style
 androidx.work.impl.utils.ForceStopRunnable:
     static final java.lang.String ACTION_FORCE_STOP_RESCHEDULE
     private static final int ALARM_ID
@@ -13202,6 +13300,11 @@ androidx.loader.content.ModernAsyncTask$AsyncTaskResult
 com.google.common.util.concurrent.WrappingExecutorService$1
 kotlin.collections.AbstractMap$keys$1$iterator$1
 kotlin.jvm.internal.BooleanCompanionObject
+io.flutter.plugins.camera.features.resolution.ResolutionFeature:
+    public io.flutter.plugins.camera.features.resolution.ResolutionPreset getValue()
+    public void setValue(io.flutter.plugins.camera.features.resolution.ResolutionPreset)
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 com.google.common.collect.Synchronized$SynchronizedQueue
 kotlin.sequences.SequencesKt__SequencesKt$generateSequence$2
 com.google.zxing.InvertedLuminanceSource:
@@ -13328,6 +13431,7 @@ com.google.common.cache.LocalCache$AccessQueue$1
 com.google.gson.JsonStreamParser
 androidx.lifecycle.GenericLifecycleObserver
 kotlin.text.MatchGroup
+io.flutter.plugins.camera.R$layout
 kotlin.text.Regex$Serialized
 com.google.common.cache.LocalCache$LoadingSerializationProxy
 com.google.common.cache.CacheBuilderSpec$RecordStatsParser
@@ -13863,6 +13967,7 @@ com.google.common.collect.Maps$EntryFunction
 com.google.common.hash.Hashing$LinearCongruentialGenerator
 com.google.common.collect.AbstractMapBasedMultimap$AsMap
 com.google.common.util.concurrent.GwtFluentFutureCatchingSpecialization
+com.jrai.flutter_keyboard_visibility.R$layout
 kotlin.reflect.KTypeProjection$WhenMappings
 androidx.annotation.DoNotInline
 android.support.v4.os.ResultReceiver$MyResultReceiver
@@ -13899,6 +14004,8 @@ io.flutter.embedding.engine.dart.DartExecutor:
     private static final java.lang.String TAG
 com.google.common.cache.CacheBuilderSpec$WriteDurationParser
 com.google.zxing.EncodeHintType
+io.flutter.plugins.camera.features.zoomlevel.ZoomUtils:
+    void <init>()
 com.google.common.collect.SortedLists$KeyAbsentBehavior$3
 kotlin.collections.ArraysKt___ArraysKt$withIndex$7
 okio.GzipSink
@@ -13944,6 +14051,9 @@ androidx.appcompat.widget.ThemeUtils:
     public static android.content.res.ColorStateList createDisabledStateList(int,int)
     private void <init>()
     private static final java.lang.String TAG
+io.flutter.plugins.camera.features.autofocus.AutoFocusFeature:
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 com.google.common.base.MoreObjects$ToStringHelper:
     private com.google.common.base.MoreObjects$ToStringHelper addHolder(java.lang.String,java.lang.Object)
     public com.google.common.base.MoreObjects$ToStringHelper omitNullValues()
@@ -14715,8 +14825,8 @@ io.flutter.embedding.engine.loader.FlutterApplicationInfo:
     private static final java.lang.String DEFAULT_ISOLATE_SNAPSHOT_DATA
     private static final java.lang.String DEFAULT_FLUTTER_ASSETS_DIR
 com.google.common.collect.EnumBiMap
-com.google.common.collect.AbstractIterator
 kotlin.reflect.TypesJVMKt$typeToString$unwrap$1
+com.google.common.collect.AbstractIterator
 androidx.drawerlayout.R$layout
 io.flutter.plugins.sharedpreferences.R$styleable
 com.google.common.util.concurrent.AbstractScheduledService$CustomScheduler$ReschedulableCallable
@@ -14999,6 +15109,8 @@ androidx.annotation.LongDef
 kotlin.collections.AbstractMutableList
 com.google.common.collect.ForwardingQueue
 com.google.common.collect.ImmutableRangeSet$AsSet$1
+io.flutter.plugins.camera.CameraCaptureCallback:
+    private static final java.lang.String TAG
 com.google.common.cache.LocalCache$ManualSerializationProxy
 kotlin.PreconditionsKt__AssertionsJVMKt
 androidx.exifinterface.R
@@ -15286,6 +15398,11 @@ kotlin.text.Regex$fromInt$$inlined$apply$lambda$1
 com.google.common.util.concurrent.AggregateFutureState$AtomicHelper
 com.google.common.collect.LinkedListMultimap$NodeIterator
 com.google.common.util.concurrent.AbstractExecutionThreadService$1$2
+io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature:
+    public io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode getValue()
+    public void setValue(io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode)
+    public synthetic bridge void setValue(java.lang.Object)
+    public synthetic bridge java.lang.Object getValue()
 kotlin.Result$Failure
 kotlin.jvm.internal.CallableReference$NoReceiver:
     private java.lang.Object readResolve()
@@ -15335,6 +15452,8 @@ javax.annotation.Signed
 org.intellij.lang.annotations.JdkConstants$PatternFlags
 androidx.sqlite.db.framework.FrameworkSQLiteOpenHelper$OpenHelper:
     synchronized androidx.sqlite.db.SupportSQLiteDatabase getReadableSupportDatabase()
+io.flutter.plugins.camera.CameraUtils:
+    private void <init>()
 com.google.common.util.concurrent.AbstractFuture$SetFuture:
     void <init>(com.google.common.util.concurrent.AbstractFuture,com.google.common.util.concurrent.ListenableFuture)
 kotlin.collections.EmptyMap:
@@ -15454,6 +15573,7 @@ io.flutter.embedding.android.AndroidTouchProcessor$PointerChange
 okhttp3.internal.ws.RealWebSocket$Close
 androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult
 androidx.fragment.app.Fragment$SavedState
+io.flutter.plugins.camera.R
 com.google.common.cache.Cache
 kotlin.io.FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState
 kotlin.DslMarker
@@ -15480,6 +15600,7 @@ androidx.core.widget.CompoundButtonCompat:
     private static final java.lang.String TAG
 kotlin.internal.HidesMembers
 androidx.lifecycle.service.R
+io.flutter.plugins.camera.types.ResolutionPreset
 com.google.common.util.concurrent.ListenableFutureTask
 io.flutter.embedding.engine.FlutterEngineConnectionRegistry$FlutterEngineBroadcastReceiverPluginBinding:
     void <init>(android.content.BroadcastReceiver)
@@ -15630,6 +15751,8 @@ com.google.common.cache.LocalCache
 com.google.common.collect.AbstractMapBasedMultimap$2
 com.google.common.util.concurrent.AbstractService$HasReachedRunningGuard
 com.google.common.collect.RegularImmutableSortedMultiset
+io.flutter.plugins.camera.CameraPropertiesImpl:
+    public int getHardwareLevel()
 androidx.work.R$color
 com.google.common.collect.Interners
 androidx.fragment.app.FragmentManagerViewModel:
@@ -15902,6 +16025,8 @@ io.flutter.embedding.android.FlutterActivityAndFragmentDelegate:
     private static final java.lang.String FRAMEWORK_RESTORATION_BUNDLE_KEY
     private static final java.lang.String PLUGINS_RESTORATION_BUNDLE_KEY
 com.google.common.cache.LocalCache$Segment
+io.flutter.plugins.camera.ImageSaver$FileOutputStreamFactory:
+    void <init>()
 kotlin.io.path.PathRelativizer
 com.google.common.io.BaseEncoding$5
 com.google.zxing.aztec.encoder.Token
@@ -16041,6 +16166,7 @@ androidx.appcompat.app.AppCompatActivity:
     public void setSupportProgress(int)
     public androidx.appcompat.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate()
     private static final java.lang.String DELEGATE_TAG
+com.jrai.flutter_keyboard_visibility.R$drawable
 androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm
 androidx.work.impl.constraints.WorkConstraintsTracker:
     void <init>(androidx.work.impl.constraints.WorkConstraintsCallback,androidx.work.impl.constraints.controllers.ConstraintController[])
@@ -16527,6 +16653,8 @@ kotlin.text.StringsKt__StringBuilderKt:
     private static final java.lang.StringBuilder appendLine(java.lang.StringBuilder,char)
     private static final java.lang.StringBuilder appendLine(java.lang.StringBuilder,boolean)
     public void <init>()
+io.flutter.plugins.camera.CameraProperties:
+    public abstract int getHardwareLevel()
 androidx.appcompat.widget.ActivityChooserModel$PersistHistoryAsyncTask
 com.google.common.hash.AbstractNonStreamingHashFunction$BufferingHasher
 androidx.loader.content.CursorLoader
@@ -16773,6 +16901,8 @@ okhttp3.CipherSuite:
     public static final okhttp3.CipherSuite TLS_AES_128_CCM_8_SHA256
 androidx.activity.ComponentActivity$2:
     final synthetic androidx.activity.ComponentActivity this$0
+io.flutter.plugins.camera.DartMessenger$3:
+    final synthetic io.flutter.plugins.camera.DartMessenger this$0
 androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     private boolean mCreatingLoader
 androidx.loader.app.LoaderManagerImpl$LoaderObserver:
@@ -16895,6 +17025,8 @@ androidx.work.WorkerParameters:
 okhttp3.internal.platform.android.StandardAndroidSocketAdapter:
     private final java.lang.Class sslSocketFactoryClass
     private final java.lang.Class paramClass
+io.flutter.plugins.camera.DartMessenger:
+    static final synthetic boolean $assertionsDisabled
 androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat:
     private final int mId
     public static final androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_FOCUS
@@ -16998,6 +17130,8 @@ androidx.work.impl.model.WorkSpecDao_Impl$7:
     final synthetic androidx.work.impl.model.WorkSpecDao_Impl this$0
 com.journeyapps.barcodescanner.camera.CameraThread:
     private static final java.lang.String TAG
+io.flutter.plugins.camera.DartMessenger$2:
+    final synthetic io.flutter.plugins.camera.DartMessenger this$0
 androidx.loader.content.Loader$OnLoadCompleteListener
 okhttp3.internal.http.RetryAndFollowUpInterceptor:
     public static final okhttp3.internal.http.RetryAndFollowUpInterceptor$Companion Companion
@@ -17029,6 +17163,8 @@ okhttp3.internal.connection.RealConnection:
     public static final okhttp3.internal.connection.RealConnection$Companion Companion
 com.google.zxing.client.android.InactivityTimer:
     private static final java.lang.String TAG
+io.flutter.plugins.camera.MethodCallHandlerImpl:
+    static final synthetic boolean $assertionsDisabled
 io.flutter.embedding.engine.loader.FlutterLoader$InitResult:
     final java.lang.String dataDirPath
 okhttp3.CookieJar$Companion
@@ -17037,6 +17173,8 @@ okhttp3.CookieJar:
 androidx.room.MultiInstanceInvalidationClient$5
 androidx.work.impl.background.systemalarm.WorkTimer$1:
     final synthetic androidx.work.impl.background.systemalarm.WorkTimer this$0
+io.flutter.plugins.camera.DartMessenger$1:
+    final synthetic io.flutter.plugins.camera.DartMessenger this$0
 com.google.zxing.qrcode.decoder.ErrorCorrectionLevel:
     private final int bits
 androidx.core.graphics.ColorUtils:
@@ -17061,7 +17199,6 @@ com.google.gson.internal.ConstructorConstructor$4:
     final synthetic com.google.gson.internal.ConstructorConstructor this$0
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding:
     private final io.flutter.embedding.engine.FlutterEngine flutterEngine
-    private final io.flutter.view.TextureRegistry textureRegistry
     private final io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets flutterAssets
 okhttp3.internal.http2.Http2Connection$Listener:
     public static final okhttp3.internal.http2.Http2Connection$Listener$Companion Companion
@@ -17076,6 +17213,9 @@ androidx.room.InvalidationTracker:
 kotlin.jvm.internal.ClassReference:
     private static final java.util.Map simpleNames
     public static final kotlin.jvm.internal.ClassReference$Companion Companion
+io.flutter.plugins.camera.CameraRegionUtils:
+    public void <init>()
+    static final synthetic boolean $assertionsDisabled
 androidx.room.util.StringUtil:
     public static final java.lang.String[] EMPTY_STRING_ARRAY
 androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments:
@@ -17272,6 +17412,8 @@ com.google.gson.internal.ConstructorConstructor$8:
     final synthetic com.google.gson.internal.ConstructorConstructor this$0
 okhttp3.internal.Util:
     public static final okhttp3.RequestBody EMPTY_REQUEST
+io.flutter.plugins.camera.features.resolution.ResolutionFeature:
+    private io.flutter.plugins.camera.features.resolution.ResolutionPreset currentSetting
 androidx.sqlite.db.framework.FrameworkSQLiteDatabase:
     private static final java.lang.String[] CONFLICT_VALUES
 io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack$FlutterMutator:

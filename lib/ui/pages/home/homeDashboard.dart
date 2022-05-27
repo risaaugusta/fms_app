@@ -9,9 +9,11 @@ class homeDashboard extends StatefulWidget {
 
 class _homeDashboardState extends State<homeDashboard> {
   int _selectedIndex = 0;
+  int? duration;
+  String? token;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> screens = [Home(), searchBar(), Login(), Auth()];
+  List<Widget> screens = [Home(), searchBar(), Login(), ];
 
   final PageStorageBucket bucket = PageStorageBucket();
   Widget _currentScreen = Login();
@@ -19,19 +21,34 @@ class _homeDashboardState extends State<homeDashboard> {
   List<Widget> _widgetOptions = <Widget>[
     Home(),
     HomeManual(),
-    Text(
-      'Index 2: Notifkasi',
-      style: optionStyle,
-    ),
+    homeNotifikasi(),
     Profile()
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.getLocalStorage();
+
+  }
+
+  void getLocalStorage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    duration =  await prefs.getInt('duration');
+    final today = DateTime.now().millisecondsSinceEpoch;
+    if(today >= duration!){
+      _dialogAlert();
+    }
+    print('HARI INI'+(today).toString());
+    print('DURASINE '+duration.toString());
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
   ScrollController _controller = new ScrollController();
 
   @override
@@ -40,8 +57,28 @@ class _homeDashboardState extends State<homeDashboard> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             backgroundColor: Colors.white,
-            appBar: _selectedIndex == 3
+            appBar: _selectedIndex == 2
                 ? AppBar(
+                    leading: new IconButton(
+                      icon: new Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => homeDashboard()),
+                        );
+                      },
+                    ),
+                    title: const Text('Notifikasi',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: Fonts.REGULAR,
+                            fontSize: 18)),
+                    backgroundColor: Colors.white,
+                  ) : _selectedIndex == 3 ? AppBar(
                     leading: new IconButton(
                       icon: new Icon(
                         Icons.arrow_back,
@@ -61,12 +98,11 @@ class _homeDashboardState extends State<homeDashboard> {
                             fontFamily: Fonts.REGULAR,
                             fontSize: 18)),
                     backgroundColor: Colors.white,
-                  ) : null,
+            ) : null,
             body: ListView(
               physics: _selectedIndex == 1 ? NeverScrollableScrollPhysics() : AlwaysScrollableScrollPhysics(), // new
               controller: _controller,
               children: [
-                _selectedIndex == 0 ? searchBar() : Text(''),
                 _widgetOptions.elementAt(_selectedIndex),
               ],
             ),
@@ -108,7 +144,7 @@ class _homeDashboardState extends State<homeDashboard> {
                                     ? Coloring.mainColor
                                     : Colors.grey,
                               ),
-                              Text('Home',
+                              Text('Beranda',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: _selectedIndex == 0
@@ -134,7 +170,7 @@ class _homeDashboardState extends State<homeDashboard> {
                                     ? Coloring.mainColor
                                     : Colors.grey,
                               ),
-                              Text('Sync',
+                              Text('Sinkron',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: _selectedIndex == 1
@@ -212,46 +248,45 @@ class _homeDashboardState extends State<homeDashboard> {
             )
             ));
   }
-}
-
-/// Search Bar
-class searchBar extends StatefulWidget {
-  const searchBar({Key? key}) : super(key: key);
-
-  @override
-  _searchBarState createState() => _searchBarState();
-}
-
-class _searchBarState extends State<searchBar> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15),
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-      child: TextFormField(
-        autofocus: false,
-        decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(
-              color: Color(0xffEFEFEF),
+  ///pop up status
+  Future<void> _dialogAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Oops!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Sesi Anda berakhir. Silakan login kembali."),
+              ],
             ),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(
-              color: Color(0xffEFEFEF),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Oke'),
+              onPressed: () {
+                // Navigator.pop(context);
+                LoadingBar.dialogLoading(context);
+                ApiService.logout().then((value) async {
+                  Global.clearStorage();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => Login()),(route)=>false);
+                }).onError((error, stackTrace) => null);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //       builder: (context) => Login()),
+                // );
+              },
             ),
-          ),
-          // hintText: 'NIK',
-          fillColor: Color(0xffEFEFEF),
-          filled: true,
-          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        ),
-        onChanged: (value) {},
-      ),
+          ],
+        );
+      },
     );
   }
 }
+
+

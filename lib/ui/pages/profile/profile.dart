@@ -13,17 +13,15 @@ class _ProfileState extends State<Profile> {
   ];
 
   List selectedUserProfile = [];
-  // String nik = "";
-  // String email = 'usman@hpu-mining.com';
+  TrFuelAttendance? trFuelAttendance;
   List<Item> personalItems = generateItems(2);
-  List<Item> fuelItems = generateItems(2);
+  List<Item> fuelItems = generateItems(1);
   List<String> headerValue=<String>[
     'NIK',
     'Shift'
   ];
   List<String> headerFuelValue=<String>[
     'Fuel Truck/MT',
-    'Lansiran Fuel Truck',
   ];
   List<String> data=<String>[
     'NIK',
@@ -33,37 +31,13 @@ class _ProfileState extends State<Profile> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    ApiService().fetchEmployee().then((value) async {
-      List dataComputed = [];
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? nik = await prefs.getString("nik");
-      print("===============");
-      dataComputed = value.where((element) => element['EmployeeID'] == nik).toList();
-      print(dataComputed);
-      setState(() {
-        // nik = nik;
-        selectedUserProfile = dataComputed;
-      });
-
-      // print(value);
-      // value.map((e) {
-      //   print(e);
-      //   // dataComputed.add(e['auth_group']);
-      // }).toList();
-    });
-    ApiService().fetchStorage().then((value) {
-      List<String> dataComputed = [];
-      value.map((e) {
-        // print(e['auth_group']);
-        dataComputed.add(e['auth_group']);
-      }).toList();
-    });
+    Global.getLocalStorage();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       color: Colors.white,
       margin: EdgeInsets.all(0),
@@ -80,18 +54,33 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.account_circle, color: Coloring.mainColor, size: 50),
-                  selectedUserProfile.isEmpty ?
+                  Global.username == null ?
                   CircularProgressIndicator() :
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                      child:
-                      Text('${selectedUserProfile.isEmpty ? '' : selectedUserProfile[0]['EmployeeName']}',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: Fonts.REGULAR,
-                              fontSize: 18))
-                  )
+                  FutureBuilder<List>(
+                    future: FmsDatabase.instance.readEmployee(), // a previously-obtained Future<String> or null
+                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                      List<Widget> children;
+                      if (snapshot.hasData) {
+                        return
+                          Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                              child:
+                              Text(Global.username ==  '' ? 'Tidak ada data' : Global.username,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: Fonts.REGULAR,
+                                      fontSize: 18))
+                          );
+                      } else if (snapshot.hasError) {
+                        return Container(
+                          child: Text('Tidak ada data'),
+                        );
+                      } else {
+                        return Container();
+                      }
+                    },
+                  ),
                 ],
               ),
             ),
@@ -129,47 +118,26 @@ class _ProfileState extends State<Profile> {
                     );
                   },
                   body: ListTile(
-                      title: !selectedUserProfile.isEmpty
+                      title: Global.nik != '' && headerValue[index] ==
+                          headerValue[0]
                           ? Padding(
-                        padding: EdgeInsets.only(left: 15, bottom: 30),
-                        child: Text('${selectedUserProfile.isEmpty ? '' : selectedUserProfile[0]['EmployeeID']}',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: Fonts.REGULAR,
-                                fontSize: 18)),
-                      ) :
-                      Container(
-                        width: MediaQuery.of(context).size.width / 1.8,
-                        margin: EdgeInsets.symmetric(vertical: 10),
-                        decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                        child: TextFormField(
-                          autofocus: false,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                color: Colors.grey.shade200,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                color: Colors.white,
-                              ),
-                            ),
-                            fillColor: Color(0xffFFFFFF),
-                            filled: true,
-                            contentPadding:
-                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                          ),
-                          onChanged: (value) {
-                            data[index] = value;
-                            print(data[index]);
-                          }, //dummy value
-                        ),
-                      )
+                            padding: EdgeInsets.only(left: 15, bottom: 30),
+                            child: Text(Global.nik ==  '' ? 'Tidak ada data' : Global.nik,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: Fonts.REGULAR,
+                                    fontSize: 18)),
+                          ) : headerValue[index] ==
+                          headerValue[1]
+                          ?
+                      // ShiftDropdown() :
+                      ShiftDropdown(callback: (MsShift value)
+                      {
+                        Attendance.shift_id = value.ShiftId.toString();
+                        Attendance.shift_desc = value.ShiftName + ' (' + value.ShiftStartTime + ' - ' + value.ShiftEndTime + ') ';
+                      }) :
+                      CircularProgressIndicator()
                   ),
                   isExpanded: item.isExpanded,
                 ),
@@ -202,39 +170,10 @@ class _ProfileState extends State<Profile> {
                     );
                   },
                   body: ListTile(
-                    title: headerFuelValue[index] ==
-                        headerFuelValue[0]
-                        ? StorageDropdown(callback:(String callback){
-                      // trFuelDistribution.storage_id = callback;
-                    },) : Container(
-                      width: MediaQuery.of(context).size.width / 1.8,
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                      child: TextFormField(
-                        autofocus: false,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                            ),
-                          ),
-                          fillColor: Color(0xffFFFFFF),
-                          filled: true,
-                          contentPadding:
-                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                        ),
-                        onChanged: (value) {
-                        }, //dummy value
-                      ),
-                    ),
+                    title:  StorageDropdown(callback: (value)
+                    {
+                      Attendance.storage_id = value;
+                    })
                   ),
                   isExpanded: item.isExpanded,
                 ),
@@ -257,10 +196,22 @@ class _ProfileState extends State<Profile> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
-                    onPressed: () => null,
+                    onPressed: () {
+                      trFuelAttendance = TrFuelAttendance(
+                        site_id: Global.SiteId,
+                        storage_id: Attendance.storage_id ,
+                        shift_id: Attendance.shift_id ,
+                        shift_desc: Attendance.shift_desc ,
+                        nik: Global.nik,
+                        login_at: Global.time,
+                        employee_name: Global.username,
+                      );
+                      FmsDatabase.instance.createAttendance(trFuelAttendance!).then((value)=> {_dialogAlert()});
+                      FmsDatabase.instance.createHistoryAttendance(trFuelAttendance!).then((value)=> {null});
+                    },
                     color: Coloring.mainColor,
                     textColor: Colors.white,
-                    child: Text("Kirim",
+                    child: Text("Simpan",
                         style: TextStyle(color: Colors.white, fontFamily: Fonts.REGULAR,fontSize: 18)),
                   ),
                 ),
@@ -270,6 +221,34 @@ class _ProfileState extends State<Profile> {
           ],
         ),
       ),
+    );
+  }
+
+  ///pop up status
+  Future<void> _dialogAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Berhasil!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Berhasil tambah data"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Oke'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -295,3 +274,4 @@ List<Item> generateItems(int numberOfItems) {
     );
   });
 }
+

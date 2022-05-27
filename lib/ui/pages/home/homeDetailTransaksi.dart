@@ -9,22 +9,11 @@ class homeDetailTransaksi extends StatefulWidget {
 }
 
 class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
-  late Future<MsEquipment> data;
-  ApiService apiService = ApiService();
-  final String apiUrl = "https://10.10.0.223/backendapimaster/public/api/auth/Equipments";
-  String unitType = "Dump Truck";
-  String unitCode = "FT1125";
-  int budget = 450;
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
   homeDetailTransaksi(index: 0),
   HomeManual(),
-  Text(
-  'Index 2: Notif',
-  style: optionStyle,
-  ),
+  homeNotifikasi(),
   Profile(),
   ];
 
@@ -33,7 +22,6 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
   @override
   void initState() {
     super.initState();
-    data = apiService.fetchOperator();
   }
 
     @override
@@ -73,363 +61,6 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
               backgroundColor: Colors.white,
             ) : null,
             body:
-            // FutureBuilder<List>(
-            //   future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
-            //   builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-            //     List<Widget> children;
-            //     if (snapshot.hasData) {
-            //             return Column(
-            //               mainAxisAlignment: MainAxisAlignment.start,
-            //               crossAxisAlignment: CrossAxisAlignment.start,
-            //               children: [
-            //                 Container(
-            //                   margin: EdgeInsets.all(30),
-            //                   width: MediaQuery.of(context).size.width,
-            //                   height: MediaQuery.of(context).size.height/7,
-            //                   decoration: BoxDecoration(
-            //                       color: Colors.white,
-            //                       borderRadius: BorderRadius.all(Radius.circular(10)),
-            //                       border: Border.all(
-            //                         color: Color(0xffE4E4E4),
-            //                         width: 1,
-            //                       )
-            //                   ),
-            //                   child: Row(
-            //                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //                     crossAxisAlignment: CrossAxisAlignment.start,
-            //                     children: [
-            //                       Container(
-            //                           height: 100,
-            //                           width: 100,
-            //                           child: new Image.asset('assets/img/truck.png')
-            //                       ),
-            //                       Column(
-            //                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //                         crossAxisAlignment: CrossAxisAlignment.start,
-            //                         children: [
-            //                           // SizedBox(height: 10),
-            //                           Text(
-            //                               'Unit Code',
-            //                               textAlign: TextAlign.left,
-            //                               style: TextStyle(color: Colors.grey,
-            //                                   fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                           ),
-            //                           // SizedBox(height: 10),
-            //                           Text(
-            //                               'Unit Type',
-            //                               textAlign: TextAlign.left,
-            //                               style: TextStyle(color: Colors.grey,
-            //                                   fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                           ),
-            //                           // SizedBox(height: 10),
-            //                           Text(
-            //                               'Fuel Filling',
-            //                               textAlign: TextAlign.left,
-            //                               style: TextStyle(color: Colors.grey,
-            //                                   fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Column(
-            //                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //                         crossAxisAlignment: CrossAxisAlignment.start,
-            //                         children: [
-            //                           Text(
-            //                               snapshot.data![index]['equipment_id'],
-            //                               textAlign: TextAlign.left,
-            //                               style: TextStyle(color: Colors.black,
-            //                                   fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                           ),
-            //                           Text(
-            //                               snapshot.data![index]['model_number'],
-            //                               textAlign: TextAlign.left,
-            //                               style: TextStyle(color: Colors.black,
-            //                                   fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                           ),
-            //                           Text(
-            //                               snapshot.data![index]['fuel_filling'].toString() ,
-            //                               textAlign: TextAlign.left,
-            //                               style: TextStyle(color: Colors.black,
-            //                                   fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                           ),
-            //                         ],
-            //                       ),
-            //                     ],
-            //                   ),
-            //                 ),
-            //                 Container(
-            //                   margin: EdgeInsets.only(left:30,right:30),
-            //                   width: MediaQuery.of(context).size.width,
-            //                   height: MediaQuery.of(context).size.height/5,
-            //                   decoration: BoxDecoration(
-            //                       color: Colors.white,
-            //                       borderRadius: BorderRadius.all(Radius.circular(10)),
-            //                       border: Border.all(
-            //                         color: Color(0xffE4E4E4),
-            //                         width: 1,
-            //                       )
-            //                   ),
-            //                   child: Column(
-            //                     mainAxisAlignment: MainAxisAlignment.start,
-            //                     crossAxisAlignment: CrossAxisAlignment.center,
-            //                     children: [
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10,top:10),
-            //                             child: Text(
-            //                                 'Operator',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 70, top: 10),
-            //                             child: Text(
-            //                                 snapshot.data![index]['operator_id'].toString(),
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Divider(
-            //                         color: Colors.grey[70],
-            //                         thickness: 1,
-            //                       ),
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10),
-            //                             child: Text(
-            //                                 'HM Unit',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 70),
-            //                             child: Text(
-            //                                 snapshot.data![index]['category_desc'],
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Divider(
-            //                         color: Colors.grey[70],
-            //                         thickness: 1,
-            //                       ),
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10),
-            //                             child: Text(
-            //                                 'Site',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 105),
-            //                             child: Text(
-            //                                 snapshot.data![index]['company_code'],
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Divider(
-            //                         color: Colors.grey[70],
-            //                         thickness: 1,
-            //                       ),
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10),
-            //                             child: Text(
-            //                                 'Last Refueling',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 20),
-            //                             child: Text(
-            //                                 snapshot.data![index]['created_at'],
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                     ],
-            //                   ),
-            //                 ),
-            //                 Container(
-            //                   margin: EdgeInsets.only(left:30,right:30,top: 30),
-            //                   width: MediaQuery.of(context).size.width,
-            //                   height: MediaQuery.of(context).size.height/4,
-            //                   decoration: BoxDecoration(
-            //                       color: Colors.white,
-            //                       borderRadius: BorderRadius.all(Radius.circular(10)),
-            //                       border: Border.all(
-            //                         color: Color(0xffE4E4E4),
-            //                         width: 1,
-            //                       )
-            //                   ),
-            //                   child: Column(
-            //                     mainAxisAlignment: MainAxisAlignment.center,
-            //                     crossAxisAlignment: CrossAxisAlignment.center,
-            //                     children: [
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10,top:10),
-            //                             child: Text(
-            //                                 'Last Refueling ',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 30, top: 10),
-            //                             child: Text(
-            //                                 snapshot.data![index]['operator_id'].toString(),
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Divider(
-            //                         color: Colors.grey[70],
-            //                         thickness: 1,
-            //                       ),
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10),
-            //                             child: Text(
-            //                                 'Totalisator Awal',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 20),
-            //                             child: Text(
-            //                                 snapshot.data![index]['fuel_totalisator_awal'],
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Divider(
-            //                         color: Colors.grey[70],
-            //                         thickness: 1,
-            //                       ),
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10),
-            //                             child: Text(
-            //                                 'Totalisator Akhir',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 20),
-            //                             child: Text(
-            //                                 snapshot.data![index]['fuel_totalisator_akhir'].toString(),
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       Divider(
-            //                         color: Colors.grey[70],
-            //                         thickness: 1,
-            //                       ),
-            //                       Row(
-            //                         mainAxisAlignment: MainAxisAlignment.start,
-            //                         children: [
-            //                           Padding(
-            //                             padding: EdgeInsets.only(left: 10),
-            //                             child: Text(
-            //                                 'Total L/Month',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.grey,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                           Padding(
-            //                             padding: const EdgeInsets.only(left: 40),
-            //                             child: Text(
-            //                                 snapshot.data![index]['total'].toString() + ' L',
-            //                                 textAlign: TextAlign.left,
-            //                                 style: TextStyle(color: Colors.black,
-            //                                     decoration: TextDecoration.underline,
-            //                                     fontFamily: Fonts.REGULAR,fontSize: 18)
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                     ],
-            //                   ),
-            //                 ),
-            //               ],
-            //             );
-            //     } else if (snapshot.hasError) {
-            //       return Container(
-            //         child: Text('Tidak ada data'),
-            //       );
-            //     } else {
-            //       return Container();
-            //     }
-            //   },
-            // ),
             _selectedIndex == 0  ? SingleChildScrollView(
               physics: AlwaysScrollableScrollPhysics(),
               child: Column(
@@ -449,7 +80,7 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                         )
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
@@ -488,23 +119,71 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                                '$unitCode',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(color: Colors.black,
-                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Text(
+                                      snapshot.data![widget.index]['unit_code'] ,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(color: Colors.black,
+                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
-                            Text(
-                                '$unitType',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(color: Colors.black,
-                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Text(
+                                      snapshot.data![widget.index]['unit_type'] ,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(color: Colors.black,
+                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
-                            Text(
-                                '3' ,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(color: Colors.black,
-                                    fontFamily: Fonts.REGULAR,fontSize: 18)
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Text(
+                                      (snapshot.data![widget.index]['fuel_consumption']).toString() + ' L' ,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(color: Colors.black,
+                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -514,7 +193,7 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                   Container(
                     margin: EdgeInsets.only(left:30,right:30),
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height/5,
+                    height: MediaQuery.of(context).size.height/3,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -524,11 +203,12 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                         )
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
                               padding: EdgeInsets.only(left: 10,top:10),
@@ -536,32 +216,40 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                   'Operator',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                             ),
-                            FutureBuilder<MsEquipment>(
-                              future: data,
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData) {
-                                  return Text(snapshot.data!.auth_group);
-                                } else if (snapshot.hasError) {
-                                  return Text('${snapshot.error}');
-                                }
-                                // By default, show a loading spinner.
-                                return const CircularProgressIndicator();
-                              },
+                            SizedBox(
+                              width: 30
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(left: 70, top: 10),
-                            //   child: Text(
-                            //       'DMI',
-                            //       textAlign: TextAlign.left,
-                            //       style: TextStyle(color: Colors.black,
-                            //           decoration: TextDecoration.underline,
-                            //           fontFamily: Fonts.REGULAR,fontSize: 18)
-                            //   ),
-                            // ),
+                            Container(
+                              width: MediaQuery.of(context).size.width/2,
+                              child: FutureBuilder<List>(
+                                future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                                builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                  List<Widget> children;
+                                  if (snapshot.hasData) {
+                                    return  Padding(
+                                      padding: EdgeInsets.only(left: 30,top:10),
+                                      child: Text(
+                                          snapshot.data![widget.index]['nama_operator']  ,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(color: Colors.black,
+                                              fontFamily: Fonts.REGULAR,fontSize: 18)
+                                      ),
+                                    );
+                                  } else if (snapshot.hasError) {
+                                    return Container(
+                                      child: Text('Tidak ada data'),
+                                    );
+                                  } else {
+                                    return Container(
+                                        child: Text('Tidak ada data')
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
                           ],
                         ),
                         Divider(
@@ -577,19 +265,34 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                   'HM Unit',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 70),
-                              child: Text(
-                                  'Fuel Truck',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
+                            SizedBox(width: 30),
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Padding(
+                                    padding: EdgeInsets.only(left: 35),
+                                    child: Text(
+                                        (snapshot.data![widget.index]['hm_input']).toString()  ,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.black,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -606,19 +309,34 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                   'Site',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 105),
-                              child: Text(
-                                  '$unitCode',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
+                            SizedBox(width: 65),
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Padding(
+                                    padding: EdgeInsets.only(left: 35),
+                                    child: Text(
+                                        (snapshot.data![widget.index]['site_id']).toString()  ,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.black,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -630,24 +348,38 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: EdgeInsets.only(left: 10,bottom: 10),
                               child: Text(
                                   'Last Refueling',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(
-                                  Global.time,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Padding(
+                                    padding: EdgeInsets.only(left: 15,bottom: 10),
+                                    child: Text(
+                                        snapshot.data![widget.index]['created_at'],
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.black,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -657,7 +389,7 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                   Container(
                     margin: EdgeInsets.only(left:30,right:30,top: 30),
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height/4,
+                    height: MediaQuery.of(context).size.height/6,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -674,53 +406,38 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(left: 10,top:10),
-                              child: Text(
-                                  'Last Refueling ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 10),
-                              child: Text(
-                                  '3',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          color: Colors.grey[70],
-                          thickness: 1,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
                               padding: EdgeInsets.only(left: 10),
                               child: Text(
                                   'Totalisator Awal',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(
-                                  '3',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Padding(
+                                    padding: EdgeInsets.only(left: 20),
+                                    child: Text(
+                                        (snapshot.data![widget.index]['totalisator_begin']).toString(),
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.black,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -737,51 +454,63 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                   'Totalisator Akhir',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
                                       fontFamily: Fonts.REGULAR,fontSize: 18)
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(
-                                  '3',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          color: Colors.grey[70],
-                          thickness: 1,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Text(
-                                  'Total L/Month',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40),
-                              child: Text(
-                                  '100' + ' L',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
+                            FutureBuilder<List>(
+                              future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+                              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                List<Widget> children;
+                                if (snapshot.hasData) {
+                                  return  Padding(
+                                    padding: EdgeInsets.only(left: 20),
+                                    child: Text(
+                                        (snapshot.data![widget.index]['totalisator_end']).toString(),
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.black,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Container(
+                                    child: Text('Tidak ada data'),
+                                  );
+                                } else {
+                                  return Container(
+                                      child: Text('Tidak ada data')
+                                  );
+                                }
+                              },
                             ),
                           ],
                         ),
+                        // Divider(
+                        //   color: Colors.grey[70],
+                        //   thickness: 1,
+                        // ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //   children: [
+                        //     Padding(
+                        //       padding: EdgeInsets.only(left: 10),
+                        //       child: Text(
+                        //           'Total L/Month',
+                        //           textAlign: TextAlign.left,
+                        //           style: TextStyle(color: Colors.grey,
+                        //               fontFamily: Fonts.REGULAR,fontSize: 18)
+                        //       ),
+                        //     ),
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(left: 40),
+                        //       child: Text(
+                        //           '100' + ' L',
+                        //           textAlign: TextAlign.left,
+                        //           style: TextStyle(color: Colors.black,
+                        //               fontFamily: Fonts.REGULAR,fontSize: 18)
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),
@@ -833,7 +562,7 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                     ? Coloring.mainColor
                                     : Colors.grey,
                               ),
-                              Text('Home',
+                              Text('Beranda',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: _selectedIndex == 0
@@ -859,7 +588,7 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
                                     ? Coloring.mainColor
                                     : Colors.grey,
                               ),
-                              Text('Sync',
+                              Text('Sinkron',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: _selectedIndex == 1
@@ -937,20 +666,6 @@ class _homeDetailTransaksiState extends State<homeDetailTransaksi>{
         ),
       );
     }
-
-  //
-  // Future<List<dynamic>> fetchUsers() async {
-  //   var result = await http.get(apiUrl);
-  //   return json.decode(result.body)['results'];
-  // }
-  //
-  // Future fetchOperator() async {
-  //   var data = await http.get('https://10.10.0.223/backendapimaster/public/api/auth/Equipments');
-  //
-  //   var decoded = jsonDecode(data.body);
-  //   var subdata =  decoded["data"]["modelKewajiban"]["list"]["10"]["detail"];
-  //   return subdata;
-  // }
   }
 
 

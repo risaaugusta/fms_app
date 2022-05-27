@@ -1,15 +1,27 @@
 [
     {
-        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
-        "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/drawable/launch_background.xml"
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-xhdpi_logo.png.flat",
+        "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-xhdpi/logo.png"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_logo.png.flat",
+        "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-xxxhdpi/logo.png"
     },
     {
         "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-xxhdpi_logo.png.flat",
+        "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-xxhdpi/logo.png"
+    },
+    {
         "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
         "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-mdpi_logo.png.flat",
+        "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-mdpi/logo.png"
     },
     {
         "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
@@ -18,6 +30,10 @@
     {
         "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/mipmap-hdpi_logo.png.flat",
+        "source": "/Users/risaaugusta/Documents/KARIR/fms_app/android/app/src/main/res/mipmap-hdpi/logo.png"
     },
     {
         "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/app/intermediates/res/merged/debug/drawable-v21_launch_background.xml.flat",

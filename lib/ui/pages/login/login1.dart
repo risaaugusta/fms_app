@@ -7,28 +7,40 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+
 class _LoginState extends State<Login> {
   bool _obscureText = true;
-
-  // Toggles the password show status
+  DateTime? addTime;
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
     });
   }
+  List selectedUserProfile = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    final today = DateTime.now();
+    addTime = today.add(const Duration(days: 1));
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(Duration.zero, () => showAlert(context));
-
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Container(
+                height: 150,
+                width: 150,
+                child: new Image.asset('assets/img/hpu_logodesc.jpg')
+            ),
             Padding(
-              padding: const EdgeInsets.all(0),
+              padding: const EdgeInsets.only(top: 30),
               child: Text('Sign in',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -116,7 +128,7 @@ class _LoginState extends State<Login> {
               ),
             ),
             Container(
-              margin:  EdgeInsets.only(top: 70,bottom: 60),
+              margin:  EdgeInsets.symmetric(vertical: 50),
               height: 60,
               child: ButtonTheme(
                 minWidth: 300,
@@ -126,26 +138,34 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(color: Coloring.mainColor)),
                     onPressed: () async {
-                      // if(password == "testing"){ // d
-                        print(Global.nik);
-                        print(Global.password);
+                      LoadingBar.dialogLoading(context);
                         final response = await http
-                            .post(Uri.parse('${Global.host}/backendapimaster/public/api/login'), body: {
+                            .post(Uri.parse('${Global.host}/backend-laravel-api/public/api/login'), body: {
                               "nik": Global.nik,
                               "password": Global.password
                         }).then((value) async
                         {
                           var res = jsonDecode(value.body);
                           if (res['status'] == "success") {
-                            print(value.body);
                             SharedPreferences prefs = await SharedPreferences.getInstance();
                             await prefs.setString('token', res['content']['access_token']);
+                            await prefs.setString('username', res['user']['name']);
+                            await prefs.setString('nik', res['user']['nik']);
+                            await prefs.setString('SiteId', res['user']['SiteId']);
+                            await prefs.setInt('duration', addTime!.millisecondsSinceEpoch);
+
+                            LoadingBar.hideLoadingDialog(context);
                             _dialogSuccessAlert();
-                          } else {
+                          } else if(res['status'] == "error" && res['message'] == "Wrong Password") {
+                            _dialogFailedPassword();
+                          }
+                          else {
                             print(value.body);
-                              _dialogFailedAlert();
+                              _dialogFailedNik();
                           }
                         });
+
+                      // _dialogSuccessAlert();
                     },
                     color: Coloring.mainColor,
                     textColor: Colors.white,
@@ -155,38 +175,26 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(0),
-                  child: Text('Belum mempunyai akun?  ',
+            InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ForgotPassword()));
+                  },
+                  child: Text('Lupa password',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color(0xff9F9F9F),
-                          fontSize: 18,
+                          color: Colors.grey,
                           fontFamily: Fonts.REGULAR,
-                      ) ),
+                          fontSize: 14)),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(0),
-                  child: Text(' SignUp',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Coloring.secondColor,
-                        fontSize: 18,
-                        fontFamily: Fonts.BOLD,
-                      ) ),
-                ),
-              ],
-            )
           ],
         ),
       ),
     );
   }
 
-  Future<void> _dialogFailedAlert() async {
+  Future<void> _dialogFailedNik() async {
     return showModalBottomSheet<void>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
@@ -228,7 +236,71 @@ class _LoginState extends State<Login> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                             side: BorderSide(color: Coloring.mainColor)),
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          LoadingBar.hideLoadingDialog(context);
+                          Navigator.pop(context);
+                        },
+                        color: Coloring.mainColor,
+                        textColor: Colors.white,
+                        child: Text("Coba Lagi",
+                            style: TextStyle(color: Colors.white, fontFamily: Fonts.BOLD,fontSize: 18)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _dialogFailedPassword() async {
+    return showModalBottomSheet<void>(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height / 2  ,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: const Text('Password salah!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD,fontSize: 18)),
+                ),
+                Container(
+                    height: 150,
+                    width: 150,
+                    child: new Image.asset('assets/img/man1.png')
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: const Text('Periksa kembali password Anda. Pastikan memasukkan password yang benar',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontFamily: Fonts.REGULAR,fontSize: 14)),
+                ),
+                Container(
+                  // margin:  EdgeInsets.only(top: 20),
+                  height: 60,
+                  child: ButtonTheme(
+                    minWidth: 300,
+                    child: Container(
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            side: BorderSide(color: Coloring.mainColor)),
+                        onPressed: () {
+                          LoadingBar.hideLoadingDialog(context);
+                          Navigator.pop(context);
+                        } ,
                         color: Coloring.mainColor,
                         textColor: Colors.white,
                         child: Text("Coba Lagi",

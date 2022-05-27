@@ -17,11 +17,20 @@ class _WelcomeState extends State<Welcome> {
 
   splashScreenStart() async{
     var duration = const Duration(seconds: 3);
-    return Timer(duration, (){
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context)=>Login()),
-      );
+    return Timer(duration, () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var token = await prefs.getString('token');
+      if(token == null || token.isEmpty){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context)=>Login()),
+        );
+      }else{
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context)=>homeDashboard()),
+        );
+      }
     });
   }
 
@@ -34,23 +43,25 @@ class _WelcomeState extends State<Welcome> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(0),
-              child: Text('Mobile FMS',
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Text('Logistic Interactive',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 36,
+                      fontSize: 30,
                       fontFamily: Fonts.BOLD
                   ) ),
             ),
             Container(
-                height: 350,
-                width: 350,
-                child: new Image.asset('assets/img/logo_fms_1.png')
+                height: 200,
+                width: 200,
+                margin: EdgeInsets.symmetric(vertical: 50),
+                child: new Image.asset('assets/img/excellent_services.png')
             ),
+            // SizedBox(height: MediaQuery.of(context).size.height/10),
             Padding(
               padding: const EdgeInsets.all(0),
-              child: Text('version 4.0',
+              child: Text('version 1.0',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
@@ -58,7 +69,6 @@ class _WelcomeState extends State<Welcome> {
                       fontFamily: Fonts.LIGHT
                   ) ),
             ),
-            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(0),
               child: Text('Powered By:',
@@ -71,7 +81,7 @@ class _WelcomeState extends State<Welcome> {
             ),
             Padding(
               padding: const EdgeInsets.all(0),
-              child: Text('PT Harmoni Panca Utama',
+              child: Text('@2022 PT Harmoni Panca Utama',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,

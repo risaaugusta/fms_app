@@ -8,6 +8,16 @@ class homeTransaksi extends StatefulWidget {
 }
 
 class _homeTransaksiState extends State<homeTransaksi> {
+  List<Map> data = [];
+
+  @override
+  initState(){
+    Global.getHistory().then((value) {
+      setState(() {
+        data = value;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,163 +59,276 @@ class _homeTransaksiState extends State<homeTransaksi> {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children:  <Widget>[
-              ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(8),
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, index) {
-                    return Card(
-                      elevation: 0.8,
-                      shadowColor: Colors.grey,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: InkWell(
-                          onTap: () {
-                            print('Card tapped.');
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                  height: 70,
-                                  width: 50,
-                                  child: new Image.asset('assets/img/truck.png')
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                      'Equipment'+' $index',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(color: Colors.black,
-                                          fontFamily: Fonts.REGULAR,fontSize: 18)
-                                  ),
-                                  Text(
-                                      '10''$index' + 'L',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.grey,
-                                          fontFamily: Fonts.REGULAR,fontSize: 12)
-                                  ),
-                                  Text(
-                                      Global.time,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.grey,
-                                          fontFamily: Fonts.REGULAR,fontSize: 12)
-                                  ),
-                                ],
-                              ),
-                              RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      side: BorderSide(color: Coloring.mainColor)),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => homeDetailTransaksi(index:index)),
-                                    );
-                                  },
-                                  color: Colors.white,
-                                  textColor: Colors.white,
-                                  child: Text("Detail",
-                                      style: TextStyle(color: Coloring.mainColor, fontFamily: Fonts.REGULAR,fontSize: 14)),
-                                ),
-                            ],
-                          )
-                      ),
-                    );
-                  }
-              ),
-              // FutureBuilder<List>(
-              //   future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
-              //   builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-              //     List<Widget> children;
-              //     if (snapshot.hasData) {
-              //       return ListView.builder(
-              //           scrollDirection: Axis.vertical,
-              //           shrinkWrap: true,
-              //           padding: const EdgeInsets.all(8),
-              //           itemCount: snapshot.data!.length,
-              //           itemBuilder: (BuildContext context, int index) {
-              //             return Card(
-              //               elevation: 0.8,
-              //               shadowColor: Colors.grey,
-              //               shape: RoundedRectangleBorder(
-              //                 borderRadius: BorderRadius.circular(10),
-              //               ),
-              //               child: InkWell(
-              //                   onTap: () {
-              //                     print('Card tapped.');
-              //                   },
-              //                   child: Row(
-              //                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //                     children: [
-              //                       Container(
-              //                           height: 70,
-              //                           width: 50,
-              //                           child:
-              //                           new Image.asset('assets/img/truck.png')),
-              //                       Column(
-              //                         mainAxisAlignment: MainAxisAlignment.start,
-              //                         crossAxisAlignment: CrossAxisAlignment.start,
-              //                         children: [
-              //                           Text(snapshot.data![index]['equipment_id'],
-              //                               textAlign: TextAlign.left,
-              //                               style: TextStyle(
-              //                                   color: Colors.black,
-              //                                   fontFamily: Fonts.REGULAR,
-              //                                   fontSize: 18)),
-              //                           Text(snapshot.data![index]['tank_capacity'].toString(),
-              //                               textAlign: TextAlign.center,
-              //                               style: TextStyle(
-              //                                   color: Colors.grey,
-              //                                   fontFamily: Fonts.REGULAR,
-              //                                   fontSize: 12)),
-              //                           Text(snapshot.data![index]['created_at'],
-              //                               textAlign: TextAlign.center,
-              //                               style: TextStyle(
-              //                                   color: Colors.grey,
-              //                                   fontFamily: Fonts.REGULAR,
-              //                                   fontSize: 12)),
-              //                         ],
-              //                       ),
-              //                       Container(
-              //                         child: RaisedButton(
-              //                           shape: RoundedRectangleBorder(
-              //                               borderRadius: BorderRadius.circular(5),
-              //                               side: BorderSide(
-              //                                   color: Coloring.mainColor)),
-              //                           onPressed: () {
-              //                             Navigator.push(
-              //                                 context,
-              //                                 MaterialPageRoute(
-              //                                   builder: (context) => homeDetailTransaksi(index)),
-              //                                 );
-              //                           },
-              //                           color: Colors.white,
-              //                           textColor: Colors.white,
-              //                           child: Text("Detail",
-              //                               style: TextStyle(
-              //                                   color: Coloring.mainColor,
-              //                                   fontFamily: Fonts.REGULAR,
-              //                                   fontSize: 14)),
-              //                         ),
-              //                       ),
-              //                     ],
-              //                   )),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.vertical,
+              //   physics: AlwaysScrollableScrollPhysics(),
+              //   child: Column(
+              //     children: [
+              //       FutureBuilder<List>(
+              //         future: FmsDatabase.instance.readHistoryRefueling(), // a previously-obtained Future<String> or null
+              //         builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+              //           List<Widget> children;
+              //           if (snapshot.hasData) {
+              //             return ListView.builder(
+              //                 scrollDirection: Axis.vertical,
+              //                 shrinkWrap: true,
+              //                 padding: const EdgeInsets.only(top:8,right:8, left:8),
+              //                 itemCount: snapshot.data!.length,
+              //                 itemBuilder: (BuildContext context, int index) {
+              //                   return Card(
+              //                     elevation: 0.8,
+              //                     shadowColor: Colors.grey,
+              //                     shape: RoundedRectangleBorder(
+              //                       borderRadius: BorderRadius.circular(10),
+              //                     ),
+              //                     child: InkWell(
+              //                         onTap: () {
+              //                           print('Card tapped.');
+              //                         },
+              //                         child: Row(
+              //                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //                           children: [
+              //                             Container(
+              //                                 height: 70,
+              //                                 width: 50,
+              //                                 child:
+              //                                 new Image.asset('assets/img/truck.png')),
+              //                             Column(
+              //                               mainAxisAlignment: MainAxisAlignment.start,
+              //                               crossAxisAlignment: CrossAxisAlignment.start,
+              //                               children: [
+              //                                 Text(snapshot.data![index]['unit_code'],
+              //                                     textAlign: TextAlign.left,
+              //                                     style: TextStyle(
+              //                                         color: Colors.black,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 18)),
+              //                                 Text(snapshot.data![index]['fuel_consumption'].toString(),
+              //                                     textAlign: TextAlign.center,
+              //                                     style: TextStyle(
+              //                                         color: Colors.grey,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 12)),
+              //                                 Text(snapshot.data![index]['created_at'],
+              //                                     textAlign: TextAlign.center,
+              //                                     style: TextStyle(
+              //                                         color: Colors.grey,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 12)),
+              //                               ],
+              //                             ),
+              //                             Container(
+              //                               child: RaisedButton(
+              //                                 shape: RoundedRectangleBorder(
+              //                                     borderRadius: BorderRadius.circular(5),
+              //                                     side: BorderSide(
+              //                                         color: Coloring.mainColor)),
+              //                                 onPressed: () {
+              //                                   Navigator.push(
+              //                                       context,
+              //                                       MaterialPageRoute(
+              //                                           builder: (context) => DetailHistoryTransaksi(index:index))
+              //                                   );
+              //                                 },
+              //                                 color: Colors.white,
+              //                                 textColor: Colors.white,
+              //                                 child: Text("Detail",
+              //                                     style: TextStyle(
+              //                                         color: Coloring.mainColor,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 14)),
+              //                               ),
+              //                             ),
+              //                           ],
+              //                         )),
+              //                   );
+              //                 });
+              //           } else if (snapshot.hasError) {
+              //             return Container(
+              //               child: Text('Tidak ada data'),
               //             );
-              //           });
-              //     } else if (snapshot.hasError) {
-              //       return Container(
-              //         child: Text('error'),
-              //       );
-              //     } else {
-              //       return Container();
-              //     }
-              //   },
+              //           } else {
+              //             return Container();
+              //           }
+              //         },
+              //       ),
+              //       FutureBuilder<List>(
+              //         future: FmsDatabase.instance.readRefueling(), // a previously-obtained Future<String> or null
+              //         builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+              //           List<Widget> children;
+              //           if (snapshot.hasData) {
+              //             return ListView.builder(
+              //                 scrollDirection: Axis.vertical,
+              //                 shrinkWrap: true,
+              //                 padding: const EdgeInsets.symmetric(horizontal: 8),
+              //                 itemCount: snapshot.data!.length,
+              //                 itemBuilder: (BuildContext context, int index) {
+              //                   return Card(
+              //                     elevation: 0.8,
+              //                     shadowColor: Colors.grey,
+              //                     shape: RoundedRectangleBorder(
+              //                       borderRadius: BorderRadius.circular(10),
+              //                     ),
+              //                     child: InkWell(
+              //                         onTap: () {
+              //                           print('Card tapped.');
+              //                         },
+              //                         child: Row(
+              //                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //                           children: [
+              //                             Container(
+              //                                 height: 70,
+              //                                 width: 50,
+              //                                 child:
+              //                                 new Image.asset('assets/img/truck.png')),
+              //                             Column(
+              //                               mainAxisAlignment: MainAxisAlignment.start,
+              //                               crossAxisAlignment: CrossAxisAlignment.start,
+              //                               children: [
+              //                                 Text(snapshot.data![index]['unit_code'],
+              //                                     textAlign: TextAlign.left,
+              //                                     style: TextStyle(
+              //                                         color: Colors.black,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 18)),
+              //                                 Text(snapshot.data![index]['fuel_consumption'].toString(),
+              //                                     textAlign: TextAlign.center,
+              //                                     style: TextStyle(
+              //                                         color: Colors.grey,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 12)),
+              //                                 Text(snapshot.data![index]['created_at'],
+              //                                     textAlign: TextAlign.center,
+              //                                     style: TextStyle(
+              //                                         color: Colors.grey,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 12)),
+              //                               ],
+              //                             ),
+              //                             Container(
+              //                               child: RaisedButton(
+              //                                 shape: RoundedRectangleBorder(
+              //                                     borderRadius: BorderRadius.circular(5),
+              //                                     side: BorderSide(
+              //                                         color: Coloring.mainColor)),
+              //                                 onPressed: () {
+              //                                   Navigator.push(
+              //                                       context,
+              //                                       MaterialPageRoute(
+              //                                           builder: (context) => homeDetailTransaksi(index:index))
+              //
+              //                                   );
+              //                                 },
+              //                                 color: Colors.white,
+              //                                 textColor: Colors.white,
+              //                                 child: Text("Detail",
+              //                                     style: TextStyle(
+              //                                         color: Coloring.mainColor,
+              //                                         fontFamily: Fonts.REGULAR,
+              //                                         fontSize: 14)),
+              //                               ),
+              //                             ),
+              //                           ],
+              //                         )),
+              //                   );
+              //                 });
+              //           } else if (snapshot.hasError) {
+              //             return Container(
+              //               child: Text('Tidak ada data'),
+              //             );
+              //           } else {
+              //             return Container();
+              //           }
+              //         },
+              //       ),
+              //     ],
+              //   ),
               // ),
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                physics: AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.all(8),
+                        itemCount: data.length  ,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card(
+                            elevation: 0.8,
+                            shadowColor: Colors.grey,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: InkWell(
+                                onTap: () {
+                                  print('Card tapped.');
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                        height: 70,
+                                        width: 50,
+                                        child:
+                                        new Image.asset('assets/img/truck.png')),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(data[index]['unit_code'],
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,
+                                                fontSize: 18)),
+                                        Text(data[index]['fuel_consumption'].toString(),
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontFamily: Fonts.REGULAR,
+                                                fontSize: 12)),
+                                        Text(data[index]['created_at'],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontFamily: Fonts.REGULAR,
+                                                fontSize: 12)),
+                                      ],
+                                    ),
+                                    Container(
+                                      child: RaisedButton(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(5),
+                                            side: BorderSide(
+                                                color: Coloring.mainColor)),
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => DetailHistoryTransaksi(index:index))
+                                          );
+                                        },
+                                        color: Colors.white,
+                                        textColor: Colors.white,
+                                        child: Text("Detail",
+                                            style: TextStyle(
+                                                color: Coloring.mainColor,
+                                                fontFamily: Fonts.REGULAR,
+                                                fontSize: 14)),
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          );
+                        })
+
+                    //   },
+                    // ),
+                  ],
+                ),
+              ),
               Icon(null),
               Icon(null),
             ],

@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 2.1.62
-# min_api: 20
-# pg_map_id: df5fedc
+# min_api: 21
+# pg_map_id: 0869168
 # common_typos_disable
 $r8$backportedMethods$utility$Boolean$1$hashCode -> a:
     int hashCode(boolean) -> a
@@ -39,25 +39,25 @@ androidx.activity.ComponentActivity$1 -> androidx.activity.ComponentActivity$a:
     androidx.activity.ComponentActivity this$0 -> b
 androidx.activity.ComponentActivity$2 -> androidx.activity.ComponentActivity$b:
 androidx.activity.ComponentActivity$3 -> androidx.activity.ComponentActivity$3:
-    androidx.activity.ComponentActivity this$0 -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.activity.ComponentActivity this$0 -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.activity.ComponentActivity$4 -> androidx.activity.ComponentActivity$4:
-    androidx.activity.ComponentActivity this$0 -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.activity.ComponentActivity this$0 -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.activity.ComponentActivity$5 -> androidx.activity.ComponentActivity$5:
-    androidx.activity.ComponentActivity this$0 -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.activity.ComponentActivity this$0 -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.activity.ComponentActivity$NonConfigurationInstances -> androidx.activity.ComponentActivity$c:
     androidx.lifecycle.ViewModelStore viewModelStore -> b
     java.lang.Object custom -> a
 androidx.activity.ImmLeaksCleaner -> androidx.activity.ImmLeaksCleaner:
-    java.lang.reflect.Field sServedViewField -> d
-    java.lang.reflect.Field sNextServedViewField -> e
-    java.lang.reflect.Field sHField -> c
-    int sReflectedFieldsInitialized -> b
-    android.app.Activity mActivity -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-    void initializeReflectiveFields() -> h
+    java.lang.reflect.Field sNextServedViewField -> f
+    java.lang.reflect.Field sHField -> d
+    java.lang.reflect.Field sServedViewField -> e
+    int sReflectedFieldsInitialized -> c
+    android.app.Activity mActivity -> b
+    void initializeReflectiveFields() -> d
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.activity.OnBackPressedCallback -> androidx.activity.b:
     boolean mEnabled -> a
     java.util.concurrent.CopyOnWriteArrayList mCancellables -> b
@@ -74,14 +74,14 @@ androidx.activity.OnBackPressedDispatcher -> androidx.activity.OnBackPressedDisp
     androidx.activity.Cancellable addCancellableCallback(androidx.activity.OnBackPressedCallback) -> b
     void onBackPressed() -> c
 androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable -> androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable:
-    androidx.lifecycle.Lifecycle mLifecycle -> a
-    androidx.activity.OnBackPressedCallback mOnBackPressedCallback -> b
-    androidx.activity.OnBackPressedDispatcher this$0 -> d
-    androidx.activity.Cancellable mCurrentCancellable -> c
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.activity.OnBackPressedCallback mOnBackPressedCallback -> c
+    androidx.activity.OnBackPressedDispatcher this$0 -> e
+    androidx.activity.Cancellable mCurrentCancellable -> d
+    androidx.lifecycle.Lifecycle mLifecycle -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.activity.OnBackPressedDispatcher$OnBackPressedCancellable -> androidx.activity.OnBackPressedDispatcher$a:
-    androidx.activity.OnBackPressedCallback mOnBackPressedCallback -> a
-    androidx.activity.OnBackPressedDispatcher this$0 -> b
+    androidx.activity.OnBackPressedCallback mOnBackPressedCallback -> b
+    androidx.activity.OnBackPressedDispatcher this$0 -> c
 androidx.activity.OnBackPressedDispatcherOwner -> androidx.activity.c:
     androidx.activity.OnBackPressedDispatcher getOnBackPressedDispatcher() -> j
 androidx.activity.contextaware.ContextAwareHelper -> androidx.activity.d.a:
@@ -124,11 +124,11 @@ androidx.activity.result.ActivityResultRegistry -> androidx.activity.result.d:
     int registerKey(java.lang.String) -> h
     void unregister(java.lang.String) -> i
 androidx.activity.result.ActivityResultRegistry$1 -> androidx.activity.result.ActivityResultRegistry$1:
-    androidx.activity.result.ActivityResultCallback val$callback -> b
-    java.lang.String val$key -> a
-    androidx.activity.result.contract.ActivityResultContract val$contract -> c
-    androidx.activity.result.ActivityResultRegistry this$0 -> d
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.activity.result.contract.ActivityResultContract val$contract -> d
+    androidx.activity.result.ActivityResultCallback val$callback -> c
+    androidx.activity.result.ActivityResultRegistry this$0 -> e
+    java.lang.String val$key -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.activity.result.ActivityResultRegistry$3 -> androidx.activity.result.d$a:
     java.lang.String val$key -> a
     androidx.activity.result.ActivityResultRegistry this$0 -> b
@@ -3998,12 +3998,12 @@ androidx.core.app.ActivityRecreator$3 -> androidx.core.app.c$c:
     java.lang.Object val$activityThread -> b
     java.lang.Object val$token -> c
 androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks -> androidx.core.app.c$d:
-    boolean mDestroyed -> e
-    boolean mStopQueued -> f
-    java.lang.Object currentlyRecreatingToken -> a
-    int mRecreatingHashCode -> c
-    android.app.Activity mActivity -> b
-    boolean mStarted -> d
+    java.lang.Object currentlyRecreatingToken -> b
+    boolean mStarted -> e
+    boolean mDestroyed -> f
+    int mRecreatingHashCode -> d
+    boolean mStopQueued -> g
+    android.app.Activity mActivity -> c
 androidx.core.app.AppOpsManagerCompat -> androidx.core.app.d:
     int noteProxyOpNoThrow(android.content.Context,java.lang.String,java.lang.String) -> a
     java.lang.String permissionToOp(java.lang.String) -> b
@@ -4609,11 +4609,13 @@ androidx.core.internal.view.SupportMenuItem -> c.d.f.a.b:
     androidx.core.internal.view.SupportMenuItem setSupportActionProvider(androidx.core.view.ActionProvider) -> a
     androidx.core.view.ActionProvider getSupportActionProvider() -> b
 androidx.core.internal.view.SupportSubMenu -> c.d.f.a.c:
-androidx.core.net.ConnectivityManagerCompat -> c.d.g.a:
+androidx.core.math.MathUtils -> c.d.g.a:
+    float clamp(float,float,float) -> a
+androidx.core.net.ConnectivityManagerCompat -> c.d.h.a:
     boolean isActiveNetworkMetered(android.net.ConnectivityManager) -> a
-androidx.core.os.BuildCompat -> c.d.h.a:
+androidx.core.os.BuildCompat -> c.d.i.a:
     boolean isAtLeastR() -> a
-androidx.core.os.CancellationSignal -> c.d.h.b:
+androidx.core.os.CancellationSignal -> c.d.i.b:
     java.lang.Object mCancellationSignalObj -> c
     boolean mIsCanceled -> a
     androidx.core.os.CancellationSignal$OnCancelListener mOnCancelListener -> b
@@ -4622,23 +4624,23 @@ androidx.core.os.CancellationSignal -> c.d.h.b:
     boolean isCanceled() -> b
     void setOnCancelListener(androidx.core.os.CancellationSignal$OnCancelListener) -> c
     void waitForCancelFinishedLocked() -> d
-androidx.core.os.CancellationSignal$OnCancelListener -> c.d.h.b$a:
+androidx.core.os.CancellationSignal$OnCancelListener -> c.d.i.b$a:
     void onCancel() -> a
-androidx.core.provider.CallbackWithHandler -> c.d.i.a:
+androidx.core.provider.CallbackWithHandler -> c.d.j.a:
     androidx.core.provider.FontsContractCompat$FontRequestCallback mCallback -> a
     android.os.Handler mCallbackHandler -> b
     void onTypefaceRequestFailed(int) -> a
     void onTypefaceResult(androidx.core.provider.FontRequestWorker$TypefaceResult) -> b
     void onTypefaceRetrieved(android.graphics.Typeface) -> c
-androidx.core.provider.CallbackWithHandler$1 -> c.d.i.a$a:
+androidx.core.provider.CallbackWithHandler$1 -> c.d.j.a$a:
     androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback -> b
     android.graphics.Typeface val$typeface -> c
-androidx.core.provider.CallbackWithHandler$2 -> c.d.i.a$b:
+androidx.core.provider.CallbackWithHandler$2 -> c.d.j.a$b:
     androidx.core.provider.FontsContractCompat$FontRequestCallback val$callback -> b
     int val$reason -> c
-androidx.core.provider.CalleeHandler -> c.d.i.b:
+androidx.core.provider.CalleeHandler -> c.d.j.b:
     android.os.Handler create() -> a
-androidx.core.provider.FontProvider -> c.d.i.c:
+androidx.core.provider.FontProvider -> c.d.j.c:
     java.util.Comparator sByteArrayComparator -> a
     java.util.List convertToByteArrayList(android.content.pm.Signature[]) -> a
     boolean equalsByteArrayList(java.util.List,java.util.List) -> b
@@ -4646,9 +4648,9 @@ androidx.core.provider.FontProvider -> c.d.i.c:
     androidx.core.provider.FontsContractCompat$FontFamilyResult getFontFamilyResult(android.content.Context,androidx.core.provider.FontRequest,android.os.CancellationSignal) -> d
     android.content.pm.ProviderInfo getProvider(android.content.pm.PackageManager,androidx.core.provider.FontRequest,android.content.res.Resources) -> e
     androidx.core.provider.FontsContractCompat$FontInfo[] query(android.content.Context,androidx.core.provider.FontRequest,java.lang.String,android.os.CancellationSignal) -> f
-androidx.core.provider.FontProvider$1 -> c.d.i.c$a:
+androidx.core.provider.FontProvider$1 -> c.d.j.c$a:
     int compare(byte[],byte[]) -> a
-androidx.core.provider.FontRequest -> c.d.i.d:
+androidx.core.provider.FontRequest -> c.d.j.d:
     java.lang.String mIdentifier -> f
     java.util.List mCertificates -> d
     java.lang.String mProviderAuthority -> a
@@ -4662,7 +4664,7 @@ androidx.core.provider.FontRequest -> c.d.i.d:
     java.lang.String getProviderAuthority() -> e
     java.lang.String getProviderPackage() -> f
     java.lang.String getQuery() -> g
-androidx.core.provider.FontRequestWorker -> c.d.i.e:
+androidx.core.provider.FontRequestWorker -> c.d.j.e:
     androidx.collection.SimpleArrayMap PENDING_REPLIES -> d
     androidx.collection.LruCache sTypefaceCache -> a
     java.lang.Object LOCK -> c
@@ -4672,39 +4674,39 @@ androidx.core.provider.FontRequestWorker -> c.d.i.e:
     androidx.core.provider.FontRequestWorker$TypefaceResult getFontSync(java.lang.String,android.content.Context,androidx.core.provider.FontRequest,int) -> c
     android.graphics.Typeface requestFontAsync(android.content.Context,androidx.core.provider.FontRequest,int,java.util.concurrent.Executor,androidx.core.provider.CallbackWithHandler) -> d
     android.graphics.Typeface requestFontSync(android.content.Context,androidx.core.provider.FontRequest,androidx.core.provider.CallbackWithHandler,int,int) -> e
-androidx.core.provider.FontRequestWorker$1 -> c.d.i.e$a:
+androidx.core.provider.FontRequestWorker$1 -> c.d.j.e$a:
     android.content.Context val$context -> b
     java.lang.String val$id -> a
     int val$style -> d
     androidx.core.provider.FontRequest val$request -> c
     androidx.core.provider.FontRequestWorker$TypefaceResult call() -> a
-androidx.core.provider.FontRequestWorker$2 -> c.d.i.e$b:
+androidx.core.provider.FontRequestWorker$2 -> c.d.j.e$b:
     androidx.core.provider.CallbackWithHandler val$callback -> a
     void accept(java.lang.Object) -> a
     void accept(androidx.core.provider.FontRequestWorker$TypefaceResult) -> b
-androidx.core.provider.FontRequestWorker$3 -> c.d.i.e$c:
+androidx.core.provider.FontRequestWorker$3 -> c.d.j.e$c:
     android.content.Context val$context -> b
     java.lang.String val$id -> a
     int val$style -> d
     androidx.core.provider.FontRequest val$request -> c
     androidx.core.provider.FontRequestWorker$TypefaceResult call() -> a
-androidx.core.provider.FontRequestWorker$4 -> c.d.i.e$d:
+androidx.core.provider.FontRequestWorker$4 -> c.d.j.e$d:
     java.lang.String val$id -> a
     void accept(java.lang.Object) -> a
     void accept(androidx.core.provider.FontRequestWorker$TypefaceResult) -> b
-androidx.core.provider.FontRequestWorker$TypefaceResult -> c.d.i.e$e:
+androidx.core.provider.FontRequestWorker$TypefaceResult -> c.d.j.e$e:
     android.graphics.Typeface mTypeface -> a
     int mResult -> b
     boolean isSuccess() -> a
-androidx.core.provider.FontsContractCompat -> c.d.i.f:
+androidx.core.provider.FontsContractCompat -> c.d.j.f:
     android.graphics.Typeface requestFont(android.content.Context,androidx.core.provider.FontRequest,int,boolean,int,android.os.Handler,androidx.core.provider.FontsContractCompat$FontRequestCallback) -> a
-androidx.core.provider.FontsContractCompat$FontFamilyResult -> c.d.i.f$a:
+androidx.core.provider.FontsContractCompat$FontFamilyResult -> c.d.j.f$a:
     int mStatusCode -> a
     androidx.core.provider.FontsContractCompat$FontInfo[] mFonts -> b
     androidx.core.provider.FontsContractCompat$FontFamilyResult create(int,androidx.core.provider.FontsContractCompat$FontInfo[]) -> a
     androidx.core.provider.FontsContractCompat$FontInfo[] getFonts() -> b
     int getStatusCode() -> c
-androidx.core.provider.FontsContractCompat$FontInfo -> c.d.i.f$b:
+androidx.core.provider.FontsContractCompat$FontInfo -> c.d.j.f$b:
     int mResultCode -> e
     int mTtcIndex -> b
     int mWeight -> c
@@ -4716,32 +4718,32 @@ androidx.core.provider.FontsContractCompat$FontInfo -> c.d.i.f$b:
     android.net.Uri getUri() -> d
     int getWeight() -> e
     boolean isItalic() -> f
-androidx.core.provider.FontsContractCompat$FontRequestCallback -> c.d.i.f$c:
+androidx.core.provider.FontsContractCompat$FontRequestCallback -> c.d.j.f$c:
     void onTypefaceRequestFailed(int) -> a
     void onTypefaceRetrieved(android.graphics.Typeface) -> b
-androidx.core.provider.RequestExecutor -> c.d.i.g:
+androidx.core.provider.RequestExecutor -> c.d.j.g:
     java.util.concurrent.ThreadPoolExecutor createDefaultExecutor(java.lang.String,int,int) -> a
     void execute(java.util.concurrent.Executor,java.util.concurrent.Callable,androidx.core.util.Consumer) -> b
     java.lang.Object submit(java.util.concurrent.ExecutorService,java.util.concurrent.Callable,int) -> c
-androidx.core.provider.RequestExecutor$DefaultThreadFactory -> c.d.i.g$a:
+androidx.core.provider.RequestExecutor$DefaultThreadFactory -> c.d.j.g$a:
     java.lang.String mThreadName -> a
     int mPriority -> b
-androidx.core.provider.RequestExecutor$DefaultThreadFactory$ProcessPriorityThread -> c.d.i.g$a$a:
+androidx.core.provider.RequestExecutor$DefaultThreadFactory$ProcessPriorityThread -> c.d.j.g$a$a:
     int mPriority -> b
-androidx.core.provider.RequestExecutor$ReplyRunnable -> c.d.i.g$b:
+androidx.core.provider.RequestExecutor$ReplyRunnable -> c.d.j.g$b:
     android.os.Handler mHandler -> d
     java.util.concurrent.Callable mCallable -> b
     androidx.core.util.Consumer mConsumer -> c
-androidx.core.provider.RequestExecutor$ReplyRunnable$1 -> c.d.i.g$b$a:
+androidx.core.provider.RequestExecutor$ReplyRunnable$1 -> c.d.j.g$b$a:
     java.lang.Object val$result -> c
     androidx.core.util.Consumer val$consumer -> b
-androidx.core.text.PrecomputedTextCompat -> c.d.j.a:
+androidx.core.text.PrecomputedTextCompat -> c.d.k.a:
     android.text.Spannable mText -> b
     androidx.core.text.PrecomputedTextCompat$Params mParams -> c
     android.text.PrecomputedText mWrapped -> d
     androidx.core.text.PrecomputedTextCompat$Params getParams() -> a
     android.text.PrecomputedText getPrecomputedText() -> b
-androidx.core.text.PrecomputedTextCompat$Params -> c.d.j.a$a:
+androidx.core.text.PrecomputedTextCompat$Params -> c.d.k.a$a:
     android.text.TextPaint mPaint -> a
     int mHyphenationFrequency -> d
     android.text.TextDirectionHeuristic mTextDir -> b
@@ -4751,7 +4753,7 @@ androidx.core.text.PrecomputedTextCompat$Params -> c.d.j.a$a:
     int getHyphenationFrequency() -> c
     android.text.TextDirectionHeuristic getTextDirection() -> d
     android.text.TextPaint getTextPaint() -> e
-androidx.core.text.PrecomputedTextCompat$Params$Builder -> c.d.j.a$a$a:
+androidx.core.text.PrecomputedTextCompat$Params$Builder -> c.d.k.a$a$a:
     android.text.TextPaint mPaint -> a
     int mHyphenationFrequency -> d
     android.text.TextDirectionHeuristic mTextDir -> b
@@ -4760,20 +4762,20 @@ androidx.core.text.PrecomputedTextCompat$Params$Builder -> c.d.j.a$a$a:
     androidx.core.text.PrecomputedTextCompat$Params$Builder setBreakStrategy(int) -> b
     androidx.core.text.PrecomputedTextCompat$Params$Builder setHyphenationFrequency(int) -> c
     androidx.core.text.PrecomputedTextCompat$Params$Builder setTextDirection(android.text.TextDirectionHeuristic) -> d
-androidx.core.util.Consumer -> c.d.k.a:
+androidx.core.util.Consumer -> c.d.l.a:
     void accept(java.lang.Object) -> a
-androidx.core.util.DebugUtils -> c.d.k.b:
+androidx.core.util.DebugUtils -> c.d.l.b:
     void buildShortClassTag(java.lang.Object,java.lang.StringBuilder) -> a
-androidx.core.util.ObjectsCompat -> c.d.k.c:
+androidx.core.util.ObjectsCompat -> c.d.l.c:
     boolean equals(java.lang.Object,java.lang.Object) -> a
     int hash(java.lang.Object[]) -> b
-androidx.core.util.Preconditions -> c.d.k.d:
+androidx.core.util.Preconditions -> c.d.l.d:
     int checkArgumentInRange(int,int,int,java.lang.String) -> a
     int checkArgumentNonnegative(int) -> b
     int checkFlagsArgument(int,int) -> c
     java.lang.Object checkNotNull(java.lang.Object) -> d
     java.lang.Object checkNotNull(java.lang.Object,java.lang.Object) -> e
-androidx.core.view.AccessibilityDelegateCompat -> c.d.l.a:
+androidx.core.view.AccessibilityDelegateCompat -> c.d.m.a:
     android.view.View$AccessibilityDelegate mOriginalDelegate -> a
     android.view.View$AccessibilityDelegate mBridge -> b
     android.view.View$AccessibilityDelegate DEFAULT_DELEGATE -> c
@@ -4790,9 +4792,9 @@ androidx.core.view.AccessibilityDelegateCompat -> c.d.l.a:
     boolean performClickableSpanAction(int,android.view.View) -> k
     void sendAccessibilityEvent(android.view.View,int) -> l
     void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> m
-androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter -> c.d.l.a$a:
+androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter -> c.d.m.a$a:
     androidx.core.view.AccessibilityDelegateCompat mCompat -> a
-androidx.core.view.ActionProvider -> c.d.l.b:
+androidx.core.view.ActionProvider -> c.d.m.b:
     androidx.core.view.ActionProvider$VisibilityListener mVisibilityListener -> a
     boolean hasSubMenu() -> a
     boolean isVisible() -> b
@@ -4804,9 +4806,9 @@ androidx.core.view.ActionProvider -> c.d.l.b:
     void reset() -> h
     void setSubUiVisibilityListener(androidx.core.view.ActionProvider$SubUiVisibilityListener) -> i
     void setVisibilityListener(androidx.core.view.ActionProvider$VisibilityListener) -> j
-androidx.core.view.ActionProvider$SubUiVisibilityListener -> c.d.l.b$a:
-androidx.core.view.ActionProvider$VisibilityListener -> c.d.l.b$b:
-androidx.core.view.ContentInfoCompat -> c.d.l.c:
+androidx.core.view.ActionProvider$SubUiVisibilityListener -> c.d.m.b$a:
+androidx.core.view.ActionProvider$VisibilityListener -> c.d.m.b$b:
+androidx.core.view.ContentInfoCompat -> c.d.m.c:
     android.content.ClipData mClip -> a
     android.os.Bundle mExtras -> e
     int mSource -> b
@@ -4817,7 +4819,7 @@ androidx.core.view.ContentInfoCompat -> c.d.l.c:
     int getFlags() -> c
     int getSource() -> d
     java.lang.String sourceToString(int) -> e
-androidx.core.view.ContentInfoCompat$Builder -> c.d.l.c$a:
+androidx.core.view.ContentInfoCompat$Builder -> c.d.m.c$a:
     android.content.ClipData mClip -> a
     android.os.Bundle mExtras -> e
     int mSource -> b
@@ -4827,12 +4829,12 @@ androidx.core.view.ContentInfoCompat$Builder -> c.d.l.c$a:
     androidx.core.view.ContentInfoCompat$Builder setExtras(android.os.Bundle) -> b
     androidx.core.view.ContentInfoCompat$Builder setFlags(int) -> c
     androidx.core.view.ContentInfoCompat$Builder setLinkUri(android.net.Uri) -> d
-androidx.core.view.DisplayCutoutCompat -> c.d.l.d:
+androidx.core.view.DisplayCutoutCompat -> c.d.m.d:
     java.lang.Object mDisplayCutout -> a
     androidx.core.view.DisplayCutoutCompat wrap(java.lang.Object) -> a
-androidx.core.view.GravityCompat -> c.d.l.e:
+androidx.core.view.GravityCompat -> c.d.m.e:
     int getAbsoluteGravity(int,int) -> a
-androidx.core.view.KeyEventDispatcher -> c.d.l.f:
+androidx.core.view.KeyEventDispatcher -> c.d.m.f:
     java.lang.reflect.Field sDialogKeyListenerField -> d
     boolean sActionBarFieldsFetched -> a
     boolean sDialogFieldsFetched -> c
@@ -4843,17 +4845,17 @@ androidx.core.view.KeyEventDispatcher -> c.d.l.f:
     boolean dispatchBeforeHierarchy(android.view.View,android.view.KeyEvent) -> d
     boolean dispatchKeyEvent(androidx.core.view.KeyEventDispatcher$Component,android.view.View,android.view.Window$Callback,android.view.KeyEvent) -> e
     android.content.DialogInterface$OnKeyListener getDialogKeyListenerPre28(android.app.Dialog) -> f
-androidx.core.view.KeyEventDispatcher$Component -> c.d.l.f$a:
+androidx.core.view.KeyEventDispatcher$Component -> c.d.m.f$a:
     boolean superDispatchKeyEvent(android.view.KeyEvent) -> d
-androidx.core.view.LayoutInflaterCompat -> c.d.l.g:
+androidx.core.view.LayoutInflaterCompat -> c.d.m.g:
     java.lang.reflect.Field sLayoutInflaterFactory2Field -> a
     boolean sCheckedField -> b
     void forceSetFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2) -> a
     void setFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2) -> b
-androidx.core.view.MarginLayoutParamsCompat -> c.d.l.h:
+androidx.core.view.MarginLayoutParamsCompat -> c.d.m.h:
     int getMarginEnd(android.view.ViewGroup$MarginLayoutParams) -> a
     int getMarginStart(android.view.ViewGroup$MarginLayoutParams) -> b
-androidx.core.view.MenuItemCompat -> c.d.l.i:
+androidx.core.view.MenuItemCompat -> c.d.m.i:
     android.view.MenuItem setActionProvider(android.view.MenuItem,androidx.core.view.ActionProvider) -> a
     void setAlphabeticShortcut(android.view.MenuItem,char,int) -> b
     void setContentDescription(android.view.MenuItem,java.lang.CharSequence) -> c
@@ -4861,8 +4863,8 @@ androidx.core.view.MenuItemCompat -> c.d.l.i:
     void setIconTintMode(android.view.MenuItem,android.graphics.PorterDuff$Mode) -> e
     void setNumericShortcut(android.view.MenuItem,char,int) -> f
     void setTooltipText(android.view.MenuItem,java.lang.CharSequence) -> g
-androidx.core.view.NestedScrollingChild -> c.d.l.j:
-androidx.core.view.NestedScrollingChildHelper -> c.d.l.k:
+androidx.core.view.NestedScrollingChild -> c.d.m.j:
+androidx.core.view.NestedScrollingChildHelper -> c.d.m.k:
     android.view.ViewParent mNestedScrollingParentTouch -> a
     int[] mTempNestedScrollConsumed -> e
     android.view.View mView -> c
@@ -4882,36 +4884,36 @@ androidx.core.view.NestedScrollingChildHelper -> c.d.l.k:
     void setNestedScrollingParentForType(int,android.view.ViewParent) -> l
     boolean startNestedScroll(int,int) -> m
     void stopNestedScroll(int) -> n
-androidx.core.view.NestedScrollingParent -> c.d.l.n:
-androidx.core.view.NestedScrollingParent2 -> c.d.l.l:
+androidx.core.view.NestedScrollingParent -> c.d.m.n:
+androidx.core.view.NestedScrollingParent2 -> c.d.m.l:
     void onNestedScrollAccepted(android.view.View,android.view.View,int,int) -> d
     void onStopNestedScroll(android.view.View,int) -> i
     void onNestedPreScroll(android.view.View,int,int,int[],int) -> j
     void onNestedScroll(android.view.View,int,int,int,int,int) -> n
     boolean onStartNestedScroll(android.view.View,android.view.View,int,int) -> o
-androidx.core.view.NestedScrollingParent3 -> c.d.l.m:
+androidx.core.view.NestedScrollingParent3 -> c.d.m.m:
     void onNestedScroll(android.view.View,int,int,int,int,int,int[]) -> m
-androidx.core.view.NestedScrollingParentHelper -> c.d.l.o:
+androidx.core.view.NestedScrollingParentHelper -> c.d.m.o:
     int mNestedScrollAxesNonTouch -> b
     int mNestedScrollAxesTouch -> a
     int getNestedScrollAxes() -> a
     void onNestedScrollAccepted(android.view.View,android.view.View,int) -> b
     void onNestedScrollAccepted(android.view.View,android.view.View,int,int) -> c
     void onStopNestedScroll(android.view.View,int) -> d
-androidx.core.view.OnApplyWindowInsetsListener -> c.d.l.p:
+androidx.core.view.OnApplyWindowInsetsListener -> c.d.m.p:
     androidx.core.view.WindowInsetsCompat onApplyWindowInsets(android.view.View,androidx.core.view.WindowInsetsCompat) -> a
-androidx.core.view.OnReceiveContentListener -> c.d.l.q:
+androidx.core.view.OnReceiveContentListener -> c.d.m.q:
     androidx.core.view.ContentInfoCompat onReceiveContent(android.view.View,androidx.core.view.ContentInfoCompat) -> a
-androidx.core.view.OnReceiveContentViewBehavior -> c.d.l.r:
+androidx.core.view.OnReceiveContentViewBehavior -> c.d.m.r:
     androidx.core.view.ContentInfoCompat onReceiveContent(androidx.core.view.ContentInfoCompat) -> a
-androidx.core.view.OneShotPreDrawListener -> c.d.l.s:
+androidx.core.view.OneShotPreDrawListener -> c.d.m.s:
     java.lang.Runnable mRunnable -> d
     android.view.ViewTreeObserver mViewTreeObserver -> c
     android.view.View mView -> b
     androidx.core.view.OneShotPreDrawListener add(android.view.View,java.lang.Runnable) -> a
     void removeListener() -> b
-androidx.core.view.TintableBackgroundView -> c.d.l.t:
-androidx.core.view.ViewCompat -> c.d.l.u:
+androidx.core.view.TintableBackgroundView -> c.d.m.t:
+androidx.core.view.ViewCompat -> c.d.m.u:
     androidx.core.view.OnReceiveContentViewBehavior NO_OP_ON_RECEIVE_CONTENT_VIEW_BEHAVIOR -> g
     java.lang.reflect.Field sAccessibilityDelegateField -> e
     boolean sAccessibilityDelegateCheckFailed -> f
@@ -4967,25 +4969,25 @@ androidx.core.view.ViewCompat -> c.d.l.u:
     boolean isAttachedToWindow(android.view.View) -> x
     boolean isLaidOut(android.view.View) -> y
     boolean isScreenReaderFocusable(android.view.View) -> z
-androidx.core.view.ViewCompat$1 -> c.d.l.u$a:
+androidx.core.view.ViewCompat$1 -> c.d.m.u$a:
     androidx.core.view.ContentInfoCompat onReceiveContent(androidx.core.view.ContentInfoCompat) -> a
-androidx.core.view.ViewCompat$2 -> c.d.l.u$b:
+androidx.core.view.ViewCompat$2 -> c.d.m.u$b:
     java.lang.Object frameworkGet(android.view.View) -> c
     java.lang.Boolean frameworkGet(android.view.View) -> e
-androidx.core.view.ViewCompat$3 -> c.d.l.u$c:
+androidx.core.view.ViewCompat$3 -> c.d.m.u$c:
     java.lang.Object frameworkGet(android.view.View) -> c
     java.lang.CharSequence frameworkGet(android.view.View) -> e
-androidx.core.view.ViewCompat$4 -> c.d.l.u$d:
+androidx.core.view.ViewCompat$4 -> c.d.m.u$d:
     java.lang.Object frameworkGet(android.view.View) -> c
     java.lang.CharSequence frameworkGet(android.view.View) -> e
-androidx.core.view.ViewCompat$5 -> c.d.l.u$e:
+androidx.core.view.ViewCompat$5 -> c.d.m.u$e:
     java.lang.Object frameworkGet(android.view.View) -> c
     java.lang.Boolean frameworkGet(android.view.View) -> e
-androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager -> c.d.l.u$f:
+androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager -> c.d.m.u$f:
     java.util.WeakHashMap mPanesToVisible -> b
     void checkPaneVisibility(android.view.View,boolean) -> a
     void registerForLayoutCallback(android.view.View) -> b
-androidx.core.view.ViewCompat$AccessibilityViewProperty -> c.d.l.u$g:
+androidx.core.view.ViewCompat$AccessibilityViewProperty -> c.d.m.u$g:
     java.lang.Class mType -> b
     int mFrameworkMinimumSdk -> c
     int mTagKey -> a
@@ -4993,22 +4995,22 @@ androidx.core.view.ViewCompat$AccessibilityViewProperty -> c.d.l.u$g:
     boolean frameworkAvailable() -> b
     java.lang.Object frameworkGet(android.view.View) -> c
     java.lang.Object get(android.view.View) -> d
-androidx.core.view.ViewCompat$Api21Impl -> c.d.l.u$h:
+androidx.core.view.ViewCompat$Api21Impl -> c.d.m.u$h:
     void callCompatInsetAnimationCallback(android.view.WindowInsets,android.view.View) -> a
     androidx.core.view.WindowInsetsCompat computeSystemWindowInsets(android.view.View,androidx.core.view.WindowInsetsCompat,android.graphics.Rect) -> b
     androidx.core.view.WindowInsetsCompat getRootWindowInsets(android.view.View) -> c
     void setOnApplyWindowInsetsListener(android.view.View,androidx.core.view.OnApplyWindowInsetsListener) -> d
-androidx.core.view.ViewCompat$Api21Impl$1 -> c.d.l.u$h$a:
+androidx.core.view.ViewCompat$Api21Impl$1 -> c.d.m.u$h$a:
     androidx.core.view.OnApplyWindowInsetsListener val$listener -> c
     android.view.View val$v -> b
     androidx.core.view.WindowInsetsCompat mLastInsets -> a
-androidx.core.view.ViewCompat$Api23Impl -> c.d.l.u$i:
+androidx.core.view.ViewCompat$Api23Impl -> c.d.m.u$i:
     androidx.core.view.WindowInsetsCompat getRootWindowInsets(android.view.View) -> a
-androidx.core.view.ViewCompat$Api29Impl -> c.d.l.u$j:
+androidx.core.view.ViewCompat$Api29Impl -> c.d.m.u$j:
     void saveAttributeDataForStyleable(android.view.View,android.content.Context,int[],android.util.AttributeSet,android.content.res.TypedArray,int,int) -> a
-androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat -> c.d.l.u$k:
+androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat -> c.d.m.u$k:
     boolean onUnhandledKeyEvent(android.view.View,android.view.KeyEvent) -> a
-androidx.core.view.ViewCompat$UnhandledKeyEventManager -> c.d.l.u$l:
+androidx.core.view.ViewCompat$UnhandledKeyEventManager -> c.d.m.u$l:
     android.util.SparseArray mCapturedKeys -> b
     java.lang.ref.WeakReference mLastDispatchedPreViewKeyEvent -> c
     java.util.ArrayList sViewsWithListeners -> d
@@ -5020,12 +5022,12 @@ androidx.core.view.ViewCompat$UnhandledKeyEventManager -> c.d.l.u$l:
     boolean onUnhandledKeyEvent(android.view.View,android.view.KeyEvent) -> e
     boolean preDispatch(android.view.KeyEvent) -> f
     void recalcViewsWithUnhandled() -> g
-androidx.core.view.ViewConfigurationCompat -> c.d.l.v:
+androidx.core.view.ViewConfigurationCompat -> c.d.m.v:
     int getScaledHoverSlop(android.view.ViewConfiguration) -> a
     boolean shouldShowMenuShortcutsWhenKeyboardPresent(android.view.ViewConfiguration,android.content.Context) -> b
-androidx.core.view.ViewGroupCompat -> c.d.l.w:
+androidx.core.view.ViewGroupCompat -> c.d.m.w:
     boolean isTransitionGroup(android.view.ViewGroup) -> a
-androidx.core.view.ViewParentCompat -> c.d.l.x:
+androidx.core.view.ViewParentCompat -> c.d.m.x:
     boolean onNestedFling(android.view.ViewParent,android.view.View,float,float,boolean) -> a
     boolean onNestedPreFling(android.view.ViewParent,android.view.View,float,float) -> b
     void onNestedPreScroll(android.view.ViewParent,android.view.View,int,int,int[],int) -> c
@@ -5033,7 +5035,7 @@ androidx.core.view.ViewParentCompat -> c.d.l.x:
     void onNestedScrollAccepted(android.view.ViewParent,android.view.View,android.view.View,int,int) -> e
     boolean onStartNestedScroll(android.view.ViewParent,android.view.View,android.view.View,int,int) -> f
     void onStopNestedScroll(android.view.ViewParent,android.view.View,int) -> g
-androidx.core.view.ViewPropertyAnimatorCompat -> c.d.l.y:
+androidx.core.view.ViewPropertyAnimatorCompat -> c.d.m.y:
     java.lang.Runnable mEndAction -> c
     java.lang.Runnable mStartAction -> b
     int mOldLayerType -> d
@@ -5049,28 +5051,28 @@ androidx.core.view.ViewPropertyAnimatorCompat -> c.d.l.y:
     androidx.core.view.ViewPropertyAnimatorCompat setUpdateListener(androidx.core.view.ViewPropertyAnimatorUpdateListener) -> i
     void start() -> j
     androidx.core.view.ViewPropertyAnimatorCompat translationY(float) -> k
-androidx.core.view.ViewPropertyAnimatorCompat$1 -> c.d.l.y$a:
+androidx.core.view.ViewPropertyAnimatorCompat$1 -> c.d.m.y$a:
     androidx.core.view.ViewPropertyAnimatorListener val$listener -> a
     android.view.View val$view -> b
-androidx.core.view.ViewPropertyAnimatorCompat$2 -> c.d.l.y$b:
+androidx.core.view.ViewPropertyAnimatorCompat$2 -> c.d.m.y$b:
     androidx.core.view.ViewPropertyAnimatorUpdateListener val$listener -> a
     android.view.View val$view -> b
-androidx.core.view.ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14 -> c.d.l.y$c:
+androidx.core.view.ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14 -> c.d.m.y$c:
     androidx.core.view.ViewPropertyAnimatorCompat mVpa -> a
     boolean mAnimEndCalled -> b
     void onAnimationEnd(android.view.View) -> a
     void onAnimationStart(android.view.View) -> b
     void onAnimationCancel(android.view.View) -> c
-androidx.core.view.ViewPropertyAnimatorListener -> c.d.l.z:
+androidx.core.view.ViewPropertyAnimatorListener -> c.d.m.z:
     void onAnimationEnd(android.view.View) -> a
     void onAnimationStart(android.view.View) -> b
     void onAnimationCancel(android.view.View) -> c
-androidx.core.view.ViewPropertyAnimatorListenerAdapter -> c.d.l.a0:
+androidx.core.view.ViewPropertyAnimatorListenerAdapter -> c.d.m.a0:
     void onAnimationStart(android.view.View) -> b
     void onAnimationCancel(android.view.View) -> c
-androidx.core.view.ViewPropertyAnimatorUpdateListener -> c.d.l.b0:
+androidx.core.view.ViewPropertyAnimatorUpdateListener -> c.d.m.b0:
     void onAnimationUpdate(android.view.View) -> a
-androidx.core.view.WindowInsetsCompat -> c.d.l.c0:
+androidx.core.view.WindowInsetsCompat -> c.d.m.c0:
     androidx.core.view.WindowInsetsCompat$Impl mImpl -> a
     androidx.core.view.WindowInsetsCompat CONSUMED -> b
     androidx.core.view.WindowInsetsCompat consumeDisplayCutout() -> a
@@ -5092,18 +5094,18 @@ androidx.core.view.WindowInsetsCompat -> c.d.l.c0:
     android.view.WindowInsets toWindowInsets() -> q
     androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets) -> r
     androidx.core.view.WindowInsetsCompat toWindowInsetsCompat(android.view.WindowInsets,android.view.View) -> s
-androidx.core.view.WindowInsetsCompat$Api21ReflectionHolder -> c.d.l.c0$a:
+androidx.core.view.WindowInsetsCompat$Api21ReflectionHolder -> c.d.m.c0$a:
     java.lang.reflect.Field sStableInsets -> b
     java.lang.reflect.Field sContentInsets -> c
     java.lang.reflect.Field sViewAttachInfoField -> a
     boolean sReflectionSucceeded -> d
     androidx.core.view.WindowInsetsCompat getRootWindowInsets(android.view.View) -> a
-androidx.core.view.WindowInsetsCompat$Builder -> c.d.l.c0$b:
+androidx.core.view.WindowInsetsCompat$Builder -> c.d.m.c0$b:
     androidx.core.view.WindowInsetsCompat$BuilderImpl mImpl -> a
     androidx.core.view.WindowInsetsCompat build() -> a
     androidx.core.view.WindowInsetsCompat$Builder setStableInsets(androidx.core.graphics.Insets) -> b
     androidx.core.view.WindowInsetsCompat$Builder setSystemWindowInsets(androidx.core.graphics.Insets) -> c
-androidx.core.view.WindowInsetsCompat$BuilderImpl -> c.d.l.c0$f:
+androidx.core.view.WindowInsetsCompat$BuilderImpl -> c.d.m.c0$f:
     androidx.core.graphics.Insets[] mInsetsTypeMask -> b
     androidx.core.view.WindowInsetsCompat mInsets -> a
     void applyInsetTypes() -> a
@@ -5113,7 +5115,7 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl -> c.d.l.c0$f:
     void setSystemGestureInsets(androidx.core.graphics.Insets) -> e
     void setSystemWindowInsets(androidx.core.graphics.Insets) -> f
     void setTappableElementInsets(androidx.core.graphics.Insets) -> g
-androidx.core.view.WindowInsetsCompat$BuilderImpl20 -> c.d.l.c0$c:
+androidx.core.view.WindowInsetsCompat$BuilderImpl20 -> c.d.m.c0$c:
     java.lang.reflect.Constructor sConstructor -> g
     java.lang.reflect.Field sConsumedField -> e
     boolean sConsumedFieldFetched -> f
@@ -5124,7 +5126,7 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl20 -> c.d.l.c0$c:
     void setStableInsets(androidx.core.graphics.Insets) -> d
     void setSystemWindowInsets(androidx.core.graphics.Insets) -> f
     android.view.WindowInsets createWindowInsetsInstance() -> h
-androidx.core.view.WindowInsetsCompat$BuilderImpl29 -> c.d.l.c0$d:
+androidx.core.view.WindowInsetsCompat$BuilderImpl29 -> c.d.m.c0$d:
     android.view.WindowInsets$Builder mPlatBuilder -> c
     androidx.core.view.WindowInsetsCompat build() -> b
     void setMandatorySystemGestureInsets(androidx.core.graphics.Insets) -> c
@@ -5132,8 +5134,8 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl29 -> c.d.l.c0$d:
     void setSystemGestureInsets(androidx.core.graphics.Insets) -> e
     void setSystemWindowInsets(androidx.core.graphics.Insets) -> f
     void setTappableElementInsets(androidx.core.graphics.Insets) -> g
-androidx.core.view.WindowInsetsCompat$BuilderImpl30 -> c.d.l.c0$e:
-androidx.core.view.WindowInsetsCompat$Impl -> c.d.l.c0$l:
+androidx.core.view.WindowInsetsCompat$BuilderImpl30 -> c.d.m.c0$e:
+androidx.core.view.WindowInsetsCompat$Impl -> c.d.m.c0$l:
     androidx.core.view.WindowInsetsCompat CONSUMED -> b
     androidx.core.view.WindowInsetsCompat mHost -> a
     androidx.core.view.WindowInsetsCompat consumeDisplayCutout() -> a
@@ -5151,7 +5153,7 @@ androidx.core.view.WindowInsetsCompat$Impl -> c.d.l.c0$l:
     void setRootViewData(androidx.core.graphics.Insets) -> m
     void setRootWindowInsets(androidx.core.view.WindowInsetsCompat) -> n
     void setStableInsets(androidx.core.graphics.Insets) -> o
-androidx.core.view.WindowInsetsCompat$Impl20 -> c.d.l.c0$g:
+androidx.core.view.WindowInsetsCompat$Impl20 -> c.d.m.c0$g:
     java.lang.reflect.Field sAttachInfoField -> l
     java.lang.reflect.Field sVisibleInsetsField -> k
     java.lang.Class sAttachInfoClass -> j
@@ -5172,29 +5174,29 @@ androidx.core.view.WindowInsetsCompat$Impl20 -> c.d.l.c0$g:
     void setRootWindowInsets(androidx.core.view.WindowInsetsCompat) -> n
     androidx.core.graphics.Insets getVisibleInsets(android.view.View) -> p
     void loadReflectionField() -> q
-androidx.core.view.WindowInsetsCompat$Impl21 -> c.d.l.c0$h:
+androidx.core.view.WindowInsetsCompat$Impl21 -> c.d.m.c0$h:
     androidx.core.graphics.Insets mStableInsets -> m
     androidx.core.view.WindowInsetsCompat consumeStableInsets() -> b
     androidx.core.view.WindowInsetsCompat consumeSystemWindowInsets() -> c
     androidx.core.graphics.Insets getStableInsets() -> g
     boolean isConsumed() -> j
     void setStableInsets(androidx.core.graphics.Insets) -> o
-androidx.core.view.WindowInsetsCompat$Impl28 -> c.d.l.c0$i:
+androidx.core.view.WindowInsetsCompat$Impl28 -> c.d.m.c0$i:
     androidx.core.view.WindowInsetsCompat consumeDisplayCutout() -> a
     androidx.core.view.DisplayCutoutCompat getDisplayCutout() -> f
-androidx.core.view.WindowInsetsCompat$Impl29 -> c.d.l.c0$j:
+androidx.core.view.WindowInsetsCompat$Impl29 -> c.d.m.c0$j:
     androidx.core.view.WindowInsetsCompat inset(int,int,int,int) -> i
     void setStableInsets(androidx.core.graphics.Insets) -> o
-androidx.core.view.WindowInsetsCompat$Impl30 -> c.d.l.c0$k:
+androidx.core.view.WindowInsetsCompat$Impl30 -> c.d.m.c0$k:
     androidx.core.view.WindowInsetsCompat CONSUMED -> n
     void copyRootViewBounds(android.view.View) -> d
-androidx.core.view.WindowInsetsCompat$Type -> c.d.l.c0$m:
+androidx.core.view.WindowInsetsCompat$Type -> c.d.m.c0$m:
     int indexOf(int) -> a
-androidx.core.view.accessibility.AccessibilityClickableSpanCompat -> c.d.l.d0.a:
+androidx.core.view.accessibility.AccessibilityClickableSpanCompat -> c.d.m.d0.a:
     androidx.core.view.accessibility.AccessibilityNodeInfoCompat mNodeInfoCompat -> c
     int mClickableSpanActionId -> d
     int mOriginalClickableSpanId -> b
-androidx.core.view.accessibility.AccessibilityNodeInfoCompat -> c.d.l.d0.b:
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat -> c.d.m.d0.b:
     android.view.accessibility.AccessibilityNodeInfo mInfo -> a
     int sClickableSpanId -> d
     int mParentVirtualDescendantId -> b
@@ -5241,7 +5243,7 @@ androidx.core.view.accessibility.AccessibilityNodeInfoCompat -> c.d.l.d0.b:
     boolean isClickable() -> x
     boolean isEnabled() -> y
     boolean isFocusable() -> z
-androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat -> c.d.l.d0.b$a:
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat -> c.d.m.d0.b$a:
     androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_SCROLL_UP -> f
     androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_SCROLL_DOWN -> g
     androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_SCROLL_FORWARD -> d
@@ -5252,24 +5254,24 @@ androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityAction
     int getId() -> a
     java.lang.CharSequence getLabel() -> b
     boolean perform(android.view.View,android.os.Bundle) -> c
-androidx.core.view.accessibility.AccessibilityNodeProviderCompat -> c.d.l.d0.c:
+androidx.core.view.accessibility.AccessibilityNodeProviderCompat -> c.d.m.d0.c:
     java.lang.Object mProvider -> a
     java.lang.Object getProvider() -> a
-androidx.core.view.accessibility.AccessibilityRecordCompat -> c.d.l.d0.d:
+androidx.core.view.accessibility.AccessibilityRecordCompat -> c.d.m.d0.d:
     void setMaxScrollX(android.view.accessibility.AccessibilityRecord,int) -> a
     void setMaxScrollY(android.view.accessibility.AccessibilityRecord,int) -> b
-androidx.core.view.accessibility.AccessibilityViewCommand -> c.d.l.d0.e:
+androidx.core.view.accessibility.AccessibilityViewCommand -> c.d.m.d0.e:
     boolean perform(android.view.View,androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments) -> a
-androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments -> c.d.l.d0.e$a:
+androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments -> c.d.m.d0.e$a:
     void setBundle(android.os.Bundle) -> a
-androidx.core.view.accessibility.AccessibilityViewCommand$MoveAtGranularityArguments -> c.d.l.d0.e$b:
-androidx.core.view.accessibility.AccessibilityViewCommand$MoveHtmlArguments -> c.d.l.d0.e$c:
-androidx.core.view.accessibility.AccessibilityViewCommand$MoveWindowArguments -> c.d.l.d0.e$d:
-androidx.core.view.accessibility.AccessibilityViewCommand$ScrollToPositionArguments -> c.d.l.d0.e$e:
-androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments -> c.d.l.d0.e$f:
-androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments -> c.d.l.d0.e$g:
-androidx.core.view.accessibility.AccessibilityViewCommand$SetTextArguments -> c.d.l.d0.e$h:
-androidx.core.view.inputmethod.EditorInfoCompat -> c.d.l.e0.a:
+androidx.core.view.accessibility.AccessibilityViewCommand$MoveAtGranularityArguments -> c.d.m.d0.e$b:
+androidx.core.view.accessibility.AccessibilityViewCommand$MoveHtmlArguments -> c.d.m.d0.e$c:
+androidx.core.view.accessibility.AccessibilityViewCommand$MoveWindowArguments -> c.d.m.d0.e$d:
+androidx.core.view.accessibility.AccessibilityViewCommand$ScrollToPositionArguments -> c.d.m.d0.e$e:
+androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments -> c.d.m.d0.e$f:
+androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments -> c.d.m.d0.e$g:
+androidx.core.view.accessibility.AccessibilityViewCommand$SetTextArguments -> c.d.m.d0.e$h:
+androidx.core.view.inputmethod.EditorInfoCompat -> c.d.m.e0.a:
     java.lang.String[] EMPTY_STRING_ARRAY -> a
     java.lang.String[] getContentMimeTypes(android.view.inputmethod.EditorInfo) -> a
     boolean isCutOnSurrogate(java.lang.CharSequence,int,int) -> b
@@ -5279,18 +5281,18 @@ androidx.core.view.inputmethod.EditorInfoCompat -> c.d.l.e0.a:
     void setInitialSurroundingText(android.view.inputmethod.EditorInfo,java.lang.CharSequence) -> f
     void setSurroundingText(android.view.inputmethod.EditorInfo,java.lang.CharSequence,int,int) -> g
     void trimLongSurroundingText(android.view.inputmethod.EditorInfo,java.lang.CharSequence,int,int) -> h
-androidx.core.view.inputmethod.EditorInfoCompat$Impl30 -> c.d.l.e0.a$a:
+androidx.core.view.inputmethod.EditorInfoCompat$Impl30 -> c.d.m.e0.a$a:
     void setInitialSurroundingSubText(android.view.inputmethod.EditorInfo,java.lang.CharSequence,int) -> a
-androidx.core.view.inputmethod.InputConnectionCompat -> c.d.l.e0.b:
+androidx.core.view.inputmethod.InputConnectionCompat -> c.d.m.e0.b:
     android.view.inputmethod.InputConnection createWrapper(android.view.inputmethod.InputConnection,android.view.inputmethod.EditorInfo,androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener) -> a
     boolean handlePerformPrivateCommand(java.lang.String,android.os.Bundle,androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener) -> b
-androidx.core.view.inputmethod.InputConnectionCompat$1 -> c.d.l.e0.b$a:
+androidx.core.view.inputmethod.InputConnectionCompat$1 -> c.d.m.e0.b$a:
     androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener val$listener -> a
-androidx.core.view.inputmethod.InputConnectionCompat$2 -> c.d.l.e0.b$b:
+androidx.core.view.inputmethod.InputConnectionCompat$2 -> c.d.m.e0.b$b:
     androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener val$listener -> a
-androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener -> c.d.l.e0.b$c:
+androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener -> c.d.m.e0.b$c:
     boolean onCommitContent(androidx.core.view.inputmethod.InputContentInfoCompat,int,android.os.Bundle) -> a
-androidx.core.view.inputmethod.InputContentInfoCompat -> c.d.l.e0.c:
+androidx.core.view.inputmethod.InputContentInfoCompat -> c.d.m.e0.c:
     androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl mImpl -> a
     android.net.Uri getContentUri() -> a
     android.content.ClipDescription getDescription() -> b
@@ -5298,14 +5300,14 @@ androidx.core.view.inputmethod.InputContentInfoCompat -> c.d.l.e0.c:
     void requestPermission() -> d
     java.lang.Object unwrap() -> e
     androidx.core.view.inputmethod.InputContentInfoCompat wrap(java.lang.Object) -> f
-androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl -> c.d.l.e0.c$a:
+androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl -> c.d.m.e0.c$a:
     android.view.inputmethod.InputContentInfo mObject -> a
     void requestPermission() -> a
     android.net.Uri getLinkUri() -> b
     android.content.ClipDescription getDescription() -> c
     java.lang.Object getInputContentInfo() -> d
     android.net.Uri getContentUri() -> e
-androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl -> c.d.l.e0.c$b:
+androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl -> c.d.m.e0.c$b:
     android.content.ClipDescription mDescription -> b
     android.net.Uri mLinkUri -> c
     android.net.Uri mContentUri -> a
@@ -5314,7 +5316,7 @@ androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBase
     android.content.ClipDescription getDescription() -> c
     java.lang.Object getInputContentInfo() -> d
     android.net.Uri getContentUri() -> e
-androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl -> c.d.l.e0.c$c:
+androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl -> c.d.m.e0.c$c:
     void requestPermission() -> a
     android.net.Uri getLinkUri() -> b
     android.content.ClipDescription getDescription() -> c
@@ -6080,8 +6082,8 @@ androidx.fragment.app.Fragment$4 -> androidx.fragment.app.Fragment$c:
     android.view.View onFindViewById(int) -> e
     boolean onHasView() -> f
 androidx.fragment.app.Fragment$5 -> androidx.fragment.app.Fragment$5:
-    androidx.fragment.app.Fragment this$0 -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.fragment.app.Fragment this$0 -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.fragment.app.Fragment$AnimationInfo -> androidx.fragment.app.Fragment$d:
     androidx.core.app.SharedElementCallback mEnterTransitionCallback -> s
     int mNextTransition -> h
@@ -6440,11 +6442,11 @@ androidx.fragment.app.FragmentManager$4 -> androidx.fragment.app.m$f:
 androidx.fragment.app.FragmentManager$5 -> androidx.fragment.app.m$g:
     androidx.fragment.app.FragmentManager this$0 -> b
 androidx.fragment.app.FragmentManager$6 -> androidx.fragment.app.FragmentManager$6:
-    androidx.fragment.app.FragmentManager this$0 -> d
-    androidx.fragment.app.FragmentResultListener val$listener -> b
-    java.lang.String val$requestKey -> a
-    androidx.lifecycle.Lifecycle val$lifecycle -> c
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.fragment.app.FragmentManager this$0 -> e
+    androidx.fragment.app.FragmentResultListener val$listener -> c
+    java.lang.String val$requestKey -> b
+    androidx.lifecycle.Lifecycle val$lifecycle -> d
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.fragment.app.FragmentManager$7 -> androidx.fragment.app.m$h:
     android.view.ViewGroup val$container -> a
     android.view.View val$animatingView -> b
@@ -6925,19 +6927,19 @@ androidx.lifecycle.ClassesInfoCache$MethodReference -> androidx.lifecycle.a$b:
     java.lang.reflect.Method mMethod -> b
     void invokeCallback(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event,java.lang.Object) -> a
 androidx.lifecycle.CompositeGeneratedAdaptersObserver -> androidx.lifecycle.CompositeGeneratedAdaptersObserver:
-    androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.FullLifecycleObserver -> androidx.lifecycle.b:
     void onResume(androidx.lifecycle.LifecycleOwner) -> a
     void onDestroy(androidx.lifecycle.LifecycleOwner) -> b
     void onCreate(androidx.lifecycle.LifecycleOwner) -> c
-    void onPause(androidx.lifecycle.LifecycleOwner) -> e
-    void onStop(androidx.lifecycle.LifecycleOwner) -> f
-    void onStart(androidx.lifecycle.LifecycleOwner) -> g
+    void onPause(androidx.lifecycle.LifecycleOwner) -> f
+    void onStop(androidx.lifecycle.LifecycleOwner) -> g
+    void onStart(androidx.lifecycle.LifecycleOwner) -> i
 androidx.lifecycle.FullLifecycleObserverAdapter -> androidx.lifecycle.FullLifecycleObserverAdapter:
-    androidx.lifecycle.FullLifecycleObserver mFullLifecycleObserver -> a
-    androidx.lifecycle.LifecycleEventObserver mLifecycleEventObserver -> b
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.lifecycle.FullLifecycleObserver mFullLifecycleObserver -> b
+    androidx.lifecycle.LifecycleEventObserver mLifecycleEventObserver -> c
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.FullLifecycleObserverAdapter$1 -> androidx.lifecycle.FullLifecycleObserverAdapter$a:
     int[] $SwitchMap$androidx$lifecycle$Lifecycle$Event -> a
 androidx.lifecycle.GeneratedAdapter -> androidx.lifecycle.c:
@@ -6962,7 +6964,7 @@ androidx.lifecycle.Lifecycle$State -> androidx.lifecycle.d$c:
     androidx.lifecycle.Lifecycle$State INITIALIZED -> c
     boolean isAtLeast(androidx.lifecycle.Lifecycle$State) -> a
 androidx.lifecycle.LifecycleEventObserver -> androidx.lifecycle.e:
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.LifecycleObserver -> androidx.lifecycle.f:
 androidx.lifecycle.LifecycleOwner -> androidx.lifecycle.g:
     androidx.lifecycle.Lifecycle getLifecycle() -> a
@@ -7011,8 +7013,8 @@ androidx.lifecycle.Lifecycling -> androidx.lifecycle.k:
     androidx.lifecycle.LifecycleEventObserver lifecycleEventObserver(java.lang.Object) -> f
     int resolveObserverCallbackType(java.lang.Class) -> g
 androidx.lifecycle.Lifecycling$1 -> androidx.lifecycle.Lifecycling$1:
-    androidx.lifecycle.LifecycleEventObserver val$observer -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.lifecycle.LifecycleEventObserver val$observer -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.LiveData -> androidx.lifecycle.LiveData:
     java.lang.Object NOT_SET -> k
     java.lang.Object mPendingData -> f
@@ -7043,19 +7045,19 @@ androidx.lifecycle.LiveData$1 -> androidx.lifecycle.LiveData$a:
 androidx.lifecycle.LiveData$AlwaysActiveObserver -> androidx.lifecycle.LiveData$b:
     boolean shouldBeActive() -> k
 androidx.lifecycle.LiveData$LifecycleBoundObserver -> androidx.lifecycle.LiveData$LifecycleBoundObserver:
-    androidx.lifecycle.LiveData this$0 -> f
-    androidx.lifecycle.LifecycleOwner mOwner -> e
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-    void detachObserver() -> i
+    androidx.lifecycle.LiveData this$0 -> g
+    androidx.lifecycle.LifecycleOwner mOwner -> f
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
+    void detachObserver() -> h
     boolean isAttachedTo(androidx.lifecycle.LifecycleOwner) -> j
     boolean shouldBeActive() -> k
 androidx.lifecycle.LiveData$ObserverWrapper -> androidx.lifecycle.LiveData$c:
-    androidx.lifecycle.Observer mObserver -> a
-    androidx.lifecycle.LiveData this$0 -> d
-    boolean mActive -> b
-    int mLastVersion -> c
-    void activeStateChanged(boolean) -> h
-    void detachObserver() -> i
+    androidx.lifecycle.Observer mObserver -> b
+    androidx.lifecycle.LiveData this$0 -> e
+    int mLastVersion -> d
+    boolean mActive -> c
+    void activeStateChanged(boolean) -> d
+    void detachObserver() -> h
     boolean isAttachedTo(androidx.lifecycle.LifecycleOwner) -> j
     boolean shouldBeActive() -> k
 androidx.lifecycle.MediatorLiveData -> androidx.lifecycle.l:
@@ -7078,9 +7080,9 @@ androidx.lifecycle.Observer -> androidx.lifecycle.o:
     void onChanged(java.lang.Object) -> a
 androidx.lifecycle.OnLifecycleEvent -> androidx.lifecycle.p:
 androidx.lifecycle.ReflectiveGenericLifecycleObserver -> androidx.lifecycle.ReflectiveGenericLifecycleObserver:
-    androidx.lifecycle.ClassesInfoCache$CallbackInfo mInfo -> b
-    java.lang.Object mWrapped -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    java.lang.Object mWrapped -> b
+    androidx.lifecycle.ClassesInfoCache$CallbackInfo mInfo -> c
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.ReportFragment -> androidx.lifecycle.q:
     androidx.lifecycle.ReportFragment$ActivityInitializationListener mProcessListener -> b
     void dispatch(android.app.Activity,androidx.lifecycle.Lifecycle$Event) -> a
@@ -7097,16 +7099,16 @@ androidx.lifecycle.ReportFragment$LifecycleCallbacks -> androidx.lifecycle.q$b:
 androidx.lifecycle.SavedStateHandle -> androidx.lifecycle.r:
     androidx.savedstate.SavedStateRegistry$SavedStateProvider savedStateProvider() -> a
 androidx.lifecycle.SavedStateHandleController -> androidx.lifecycle.SavedStateHandleController:
-    androidx.lifecycle.SavedStateHandle mHandle -> b
-    boolean mIsAttached -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-    void attachHandleIfNeeded(androidx.lifecycle.ViewModel,androidx.savedstate.SavedStateRegistry,androidx.lifecycle.Lifecycle) -> h
-    void attachToLifecycle(androidx.savedstate.SavedStateRegistry,androidx.lifecycle.Lifecycle) -> i
+    androidx.lifecycle.SavedStateHandle mHandle -> c
+    boolean mIsAttached -> b
+    void attachHandleIfNeeded(androidx.lifecycle.ViewModel,androidx.savedstate.SavedStateRegistry,androidx.lifecycle.Lifecycle) -> d
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
+    void attachToLifecycle(androidx.savedstate.SavedStateRegistry,androidx.lifecycle.Lifecycle) -> h
     boolean isAttached() -> j
 androidx.lifecycle.SavedStateHandleController$1 -> androidx.lifecycle.SavedStateHandleController$1:
-    androidx.lifecycle.Lifecycle val$lifecycle -> a
-    androidx.savedstate.SavedStateRegistry val$registry -> b
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.savedstate.SavedStateRegistry val$registry -> c
+    androidx.lifecycle.Lifecycle val$lifecycle -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.SavedStateHandleController$OnRecreation -> androidx.lifecycle.SavedStateHandleController$a:
     void onRecreated(androidx.savedstate.SavedStateRegistryOwner) -> a
 androidx.lifecycle.ServiceLifecycleDispatcher -> androidx.lifecycle.s:
@@ -7124,8 +7126,8 @@ androidx.lifecycle.ServiceLifecycleDispatcher$DispatchRunnable -> androidx.lifec
     androidx.lifecycle.LifecycleRegistry mRegistry -> b
     boolean mWasExecuted -> d
 androidx.lifecycle.SingleGeneratedAdapterObserver -> androidx.lifecycle.SingleGeneratedAdapterObserver:
-    androidx.lifecycle.GeneratedAdapter mGeneratedAdapter -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.lifecycle.GeneratedAdapter mGeneratedAdapter -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.lifecycle.ViewModel -> androidx.lifecycle.t:
     java.util.Map mBagOfTags -> a
     void clear() -> a
@@ -7550,9 +7552,9 @@ androidx.room.util.TableInfo$Index -> androidx.room.q.d$d:
 androidx.savedstate.R$id -> androidx.savedstate.a:
     int view_tree_saved_state_registry_owner -> a
 androidx.savedstate.Recreator -> androidx.savedstate.Recreator:
-    androidx.savedstate.SavedStateRegistryOwner mOwner -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
-    void reflectiveNew(java.lang.String) -> h
+    androidx.savedstate.SavedStateRegistryOwner mOwner -> b
+    void reflectiveNew(java.lang.String) -> d
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.savedstate.Recreator$SavedStateProvider -> androidx.savedstate.Recreator$a:
     java.util.Set mClasses -> a
     android.os.Bundle saveState() -> a
@@ -7569,8 +7571,8 @@ androidx.savedstate.SavedStateRegistry -> androidx.savedstate.SavedStateRegistry
     void registerSavedStateProvider(java.lang.String,androidx.savedstate.SavedStateRegistry$SavedStateProvider) -> d
     void runOnNextRecreation(java.lang.Class) -> e
 androidx.savedstate.SavedStateRegistry$1 -> androidx.savedstate.SavedStateRegistry$1:
-    androidx.savedstate.SavedStateRegistry this$0 -> a
-    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> d
+    androidx.savedstate.SavedStateRegistry this$0 -> b
+    void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event) -> e
 androidx.savedstate.SavedStateRegistry$AutoRecreated -> androidx.savedstate.SavedStateRegistry$a:
     void onRecreated(androidx.savedstate.SavedStateRegistryOwner) -> a
 androidx.savedstate.SavedStateRegistry$SavedStateProvider -> androidx.savedstate.SavedStateRegistry$b:
@@ -9196,23 +9198,23 @@ com.baseflow.permissionhandler.AppSettingsManager$OpenAppSettingsSuccessCallback
 com.baseflow.permissionhandler.ErrorCallback -> d.a.a.k:
     void onError(java.lang.String,java.lang.String) -> a
 com.baseflow.permissionhandler.MethodCallHandlerImpl -> d.a.a.l:
-    android.content.Context applicationContext -> a
-    android.app.Activity activity -> e
-    com.baseflow.permissionhandler.AppSettingsManager appSettingsManager -> b
-    com.baseflow.permissionhandler.PermissionManager permissionManager -> c
-    com.baseflow.permissionhandler.ServiceManager serviceManager -> d
+    android.content.Context applicationContext -> b
+    android.app.Activity activity -> f
+    com.baseflow.permissionhandler.ServiceManager serviceManager -> e
+    com.baseflow.permissionhandler.AppSettingsManager appSettingsManager -> c
+    com.baseflow.permissionhandler.PermissionManager permissionManager -> d
     void lambda$onMethodCall$0(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> a
     void lambda$onMethodCall$1(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> b
     void lambda$onMethodCall$2(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> c
     void lambda$onMethodCall$3(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> d
     void setActivity(android.app.Activity) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 com.baseflow.permissionhandler.PermissionHandlerPlugin -> d.a.a.m:
-    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding pluginBinding -> d
-    com.baseflow.permissionhandler.PermissionManager permissionManager -> a
-    io.flutter.plugin.common.PluginRegistry$Registrar pluginRegistrar -> c
-    com.baseflow.permissionhandler.MethodCallHandlerImpl methodCallHandler -> e
-    io.flutter.plugin.common.MethodChannel methodChannel -> b
+    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding pluginBinding -> e
+    io.flutter.plugin.common.PluginRegistry$Registrar pluginRegistrar -> d
+    io.flutter.plugin.common.MethodChannel methodChannel -> c
+    com.baseflow.permissionhandler.PermissionManager permissionManager -> b
+    com.baseflow.permissionhandler.MethodCallHandlerImpl methodCallHandler -> f
     void deregisterListeners() -> a
     void registerListeners() -> b
     void startListening(android.content.Context,io.flutter.plugin.common.BinaryMessenger) -> c
@@ -9226,10 +9228,10 @@ com.baseflow.permissionhandler.PermissionHandlerPlugin -> d.a.a.m:
     void onDetachedFromActivityForConfigChanges() -> k
     void stopListeningToActivity() -> l
 com.baseflow.permissionhandler.PermissionManager -> d.a.a.n:
-    java.util.Map requestResults -> c
-    com.baseflow.permissionhandler.PermissionManager$RequestPermissionsSuccessCallback successCallback -> a
-    android.app.Activity activity -> b
-    boolean ongoing -> d
+    java.util.Map requestResults -> d
+    com.baseflow.permissionhandler.PermissionManager$RequestPermissionsSuccessCallback successCallback -> b
+    boolean ongoing -> e
+    android.app.Activity activity -> c
     boolean onActivityResult(int,int,android.content.Intent) -> a
     int checkBluetoothPermissionStatus(android.content.Context) -> b
     int checkNotificationPermissionStatus(android.content.Context) -> c
@@ -9289,28 +9291,28 @@ com.bluechilli.flutteruploader.FileItem -> com.bluechilli.flutteruploader.c:
 com.bluechilli.flutteruploader.FlutterUploaderInitializer -> com.bluechilli.flutteruploader.d:
     int getConnectionTimeout(android.content.Context) -> a
 com.bluechilli.flutteruploader.FlutterUploaderPlugin -> com.bluechilli.flutteruploader.e:
-    com.google.gson.Gson gson -> f
-    com.bluechilli.flutteruploader.FlutterUploaderPlugin$UploadCompletedObserver uploadCompletedObserver -> j
-    java.util.Map completedTasks -> d
-    java.lang.String[] validHttpMethods -> h
-    com.bluechilli.flutteruploader.FlutterUploaderPlugin$UploadProgressObserver uploadProgressObserver -> i
-    io.flutter.plugin.common.PluginRegistry$Registrar register -> b
-    int taskIdKey -> g
-    java.util.Map tasks -> e
-    int connectionTimeout -> c
-    io.flutter.plugin.common.MethodChannel channel -> a
+    com.bluechilli.flutteruploader.FlutterUploaderPlugin$UploadCompletedObserver uploadCompletedObserver -> k
+    java.lang.String[] validHttpMethods -> i
+    int taskIdKey -> h
+    io.flutter.plugin.common.PluginRegistry$Registrar register -> c
+    int connectionTimeout -> d
+    com.bluechilli.flutteruploader.FlutterUploaderPlugin$UploadProgressObserver uploadProgressObserver -> j
+    java.util.Map completedTasks -> e
+    java.util.Map tasks -> f
+    io.flutter.plugin.common.MethodChannel channel -> b
+    com.google.gson.Gson gson -> g
     void access$000(com.bluechilli.flutteruploader.FlutterUploaderPlugin,java.lang.String,int,int) -> a
     java.util.Map access$100(com.bluechilli.flutteruploader.FlutterUploaderPlugin) -> b
     void access$200(com.bluechilli.flutteruploader.FlutterUploaderPlugin,java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String[]) -> c
     com.google.gson.Gson access$300(com.bluechilli.flutteruploader.FlutterUploaderPlugin) -> d
     void access$400(com.bluechilli.flutteruploader.FlutterUploaderPlugin,java.lang.String,int,java.lang.String,java.util.Map) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    androidx.work.WorkRequest buildRequest(com.bluechilli.flutteruploader.UploadTask) -> g
-    void cancel(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> h
-    void cancelAll(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> i
-    void enqueue(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> j
-    void enqueueBinary(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> k
-    void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar) -> l
+    androidx.work.WorkRequest buildRequest(com.bluechilli.flutteruploader.UploadTask) -> f
+    void cancel(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> g
+    void cancelAll(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> h
+    void enqueue(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> i
+    void enqueueBinary(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> j
+    void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar) -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
     void sendCompleted(java.lang.String,int,java.lang.String,java.util.Map) -> m
     void sendFailed(java.lang.String,int,int,java.lang.String,java.lang.String,java.lang.String[]) -> n
     void sendUpdateProgress(java.lang.String,int,int) -> o
@@ -9402,25 +9404,25 @@ com.bluechilli.flutteruploader.UploadWorker -> com.bluechilli.flutteruploader.Up
 com.bluechilli.flutteruploader.UploadWorker$1 -> com.bluechilli.flutteruploader.UploadWorker$a:
 com.bluechilli.flutteruploader.UploadWorker$2 -> com.bluechilli.flutteruploader.UploadWorker$b:
 com.example.imagegallerysaver.ImageGallerySaverPlugin -> d.b.a.a:
-    android.content.Context applicationContext -> a
-    io.flutter.plugin.common.MethodChannel methodChannel -> b
+    android.content.Context applicationContext -> b
+    io.flutter.plugin.common.MethodChannel methodChannel -> c
     android.net.Uri generateUri(java.lang.String,java.lang.String) -> a
     java.lang.String getMIMEType(java.lang.String) -> b
     void onAttachedToEngine(android.content.Context,io.flutter.plugin.common.BinaryMessenger) -> c
     java.util.HashMap saveFileToGallery(java.lang.String,java.lang.String) -> d
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    java.util.HashMap saveImageToGallery(android.graphics.Bitmap,int,java.lang.String) -> g
+    java.util.HashMap saveImageToGallery(android.graphics.Bitmap,int,java.lang.String) -> f
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 com.example.imagegallerysaver.SaveResultModel -> d.b.a.b:
     boolean isSuccess -> a
     java.lang.String errorMessage -> c
     java.lang.String filePath -> b
     java.util.HashMap toHashMap() -> a
 com.ggichure.github.hexcolor.HexcolorPlugin -> d.c.a.a.a:
-    com.ggichure.github.hexcolor.HexcolorPlugin$Companion Companion -> a
+    com.ggichure.github.hexcolor.HexcolorPlugin$Companion Companion -> b
     void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar) -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 com.ggichure.github.hexcolor.HexcolorPlugin$Companion -> d.c.a.a.a$a:
     void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar) -> a
 com.google.common.base.MoreObjects -> d.d.a.a.a:
@@ -12533,6 +12535,21 @@ com.journeyapps.barcodescanner.camera.PreviewScalingStrategy$1 -> com.journeyapp
     com.journeyapps.barcodescanner.Size val$desired -> b
     com.journeyapps.barcodescanner.camera.PreviewScalingStrategy this$0 -> c
     int compare(com.journeyapps.barcodescanner.Size,com.journeyapps.barcodescanner.Size) -> a
+com.jrai.flutter_keyboard_visibility.FlutterKeyboardVisibilityPlugin -> d.e.a.a:
+    io.flutter.plugin.common.EventChannel$EventSink eventSink -> b
+    android.view.View mainView -> c
+    boolean isVisible -> d
+    void onCancel(java.lang.Object) -> a
+    void onListen(java.lang.Object,io.flutter.plugin.common.EventChannel$EventSink) -> b
+    void init(io.flutter.plugin.common.BinaryMessenger) -> c
+    void onAttachedToActivity(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> d
+    void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
+    void listenForKeyboard(android.app.Activity) -> f
+    void unregisterListener() -> g
+    void onDetachedFromActivity() -> h
+    void onReattachedToActivityForConfigChanges(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> i
+    void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
+    void onDetachedFromActivityForConfigChanges() -> k
 com.mr.flutter.plugin.filepicker.FileInfo -> com.mr.flutter.plugin.filepicker.a:
     java.lang.String path -> a
     long size -> d
@@ -12553,15 +12570,15 @@ com.mr.flutter.plugin.filepicker.FileInfo$Builder -> com.mr.flutter.plugin.filep
     com.mr.flutter.plugin.filepicker.FileInfo$Builder withSize(long) -> e
     com.mr.flutter.plugin.filepicker.FileInfo$Builder withUri(android.net.Uri) -> f
 com.mr.flutter.plugin.filepicker.FilePickerDelegate -> com.mr.flutter.plugin.filepicker.b:
-    java.lang.String type -> f
-    com.mr.flutter.plugin.filepicker.FilePickerDelegate$PermissionManager permissionManager -> b
-    int REQUEST_CODE -> i
-    boolean loadDataToMemory -> e
-    java.lang.String[] allowedExtensions -> g
-    io.flutter.plugin.common.EventChannel$EventSink eventSink -> h
-    android.app.Activity activity -> a
-    io.flutter.plugin.common.MethodChannel$Result pendingResult -> c
-    boolean isMultipleSelection -> d
+    com.mr.flutter.plugin.filepicker.FilePickerDelegate$PermissionManager permissionManager -> c
+    java.lang.String type -> g
+    int REQUEST_CODE -> j
+    java.lang.String[] allowedExtensions -> h
+    boolean isMultipleSelection -> e
+    boolean loadDataToMemory -> f
+    io.flutter.plugin.common.MethodChannel$Result pendingResult -> d
+    io.flutter.plugin.common.EventChannel$EventSink eventSink -> i
+    android.app.Activity activity -> b
     boolean onActivityResult(int,int,android.content.Intent) -> a
     android.app.Activity access$000(com.mr.flutter.plugin.filepicker.FilePickerDelegate) -> b
     boolean access$100(com.mr.flutter.plugin.filepicker.FilePickerDelegate) -> c
@@ -12592,40 +12609,40 @@ com.mr.flutter.plugin.filepicker.FilePickerDelegate$PermissionManager -> com.mr.
     boolean isPermissionGranted(java.lang.String) -> a
     void askForPermission(java.lang.String,int) -> b
 com.mr.flutter.plugin.filepicker.FilePickerPlugin -> com.mr.flutter.plugin.filepicker.FilePickerPlugin:
-    android.app.Application application -> c
-    com.mr.flutter.plugin.filepicker.FilePickerPlugin$LifeCycleObserver observer -> f
-    java.lang.String fileType -> i
-    android.app.Activity activity -> g
-    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding pluginBinding -> d
-    boolean isMultipleSelection -> j
-    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityBinding -> a
-    boolean withData -> k
-    io.flutter.plugin.common.MethodChannel channel -> h
-    androidx.lifecycle.Lifecycle lifecycle -> e
-    com.mr.flutter.plugin.filepicker.FilePickerDelegate delegate -> b
+    android.app.Application application -> d
+    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityBinding -> b
+    com.mr.flutter.plugin.filepicker.FilePickerPlugin$LifeCycleObserver observer -> g
+    java.lang.String fileType -> j
+    android.app.Activity activity -> h
+    boolean isMultipleSelection -> k
+    io.flutter.plugin.common.MethodChannel channel -> i
+    boolean withData -> l
+    com.mr.flutter.plugin.filepicker.FilePickerDelegate delegate -> c
+    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding pluginBinding -> e
+    androidx.lifecycle.Lifecycle lifecycle -> f
     com.mr.flutter.plugin.filepicker.FilePickerDelegate access$100(com.mr.flutter.plugin.filepicker.FilePickerPlugin) -> a
     java.lang.String resolveType(java.lang.String) -> b
     void setup(io.flutter.plugin.common.BinaryMessenger,android.app.Application,android.app.Activity,io.flutter.plugin.common.PluginRegistry$Registrar,io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> c
     void onAttachedToActivity(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> d
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    void tearDown() -> g
+    void tearDown() -> f
     void onDetachedFromActivity() -> h
     void onReattachedToActivityForConfigChanges(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> i
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
     void onDetachedFromActivityForConfigChanges() -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 com.mr.flutter.plugin.filepicker.FilePickerPlugin$1 -> com.mr.flutter.plugin.filepicker.FilePickerPlugin$a:
-    com.mr.flutter.plugin.filepicker.FilePickerPlugin this$0 -> a
+    com.mr.flutter.plugin.filepicker.FilePickerPlugin this$0 -> b
     void onCancel(java.lang.Object) -> a
     void onListen(java.lang.Object,io.flutter.plugin.common.EventChannel$EventSink) -> b
 com.mr.flutter.plugin.filepicker.FilePickerPlugin$LifeCycleObserver -> com.mr.flutter.plugin.filepicker.FilePickerPlugin$LifeCycleObserver:
-    android.app.Activity thisActivity -> a
+    android.app.Activity thisActivity -> b
     void onResume(androidx.lifecycle.LifecycleOwner) -> a
     void onDestroy(androidx.lifecycle.LifecycleOwner) -> b
     void onCreate(androidx.lifecycle.LifecycleOwner) -> c
-    void onPause(androidx.lifecycle.LifecycleOwner) -> e
-    void onStop(androidx.lifecycle.LifecycleOwner) -> f
-    void onStart(androidx.lifecycle.LifecycleOwner) -> g
+    void onPause(androidx.lifecycle.LifecycleOwner) -> f
+    void onStop(androidx.lifecycle.LifecycleOwner) -> g
+    void onStart(androidx.lifecycle.LifecycleOwner) -> i
 com.mr.flutter.plugin.filepicker.FilePickerPlugin$MethodResultWrapper -> com.mr.flutter.plugin.filepicker.FilePickerPlugin$b:
     io.flutter.plugin.common.MethodChannel$Result methodResult -> a
     android.os.Handler handler -> b
@@ -12655,7 +12672,7 @@ com.mr.flutter.plugin.filepicker.FileUtils -> com.mr.flutter.plugin.filepicker.c
     boolean isDownloadsDocument(android.net.Uri) -> i
     void loadData(java.io.File,com.mr.flutter.plugin.filepicker.FileInfo$Builder) -> j
     com.mr.flutter.plugin.filepicker.FileInfo openFileStream(android.content.Context,android.net.Uri,boolean) -> k
-com.tekartik.sqflite.Database -> d.e.a.a:
+com.tekartik.sqflite.Database -> d.f.a.a:
     android.database.sqlite.SQLiteDatabase sqliteDatabase -> e
     boolean inTransaction -> f
     int logLevel -> d
@@ -12670,25 +12687,25 @@ com.tekartik.sqflite.Database -> d.e.a.a:
     android.database.sqlite.SQLiteDatabase getWritableDatabase() -> f
     void open() -> g
     void openReadOnly() -> h
-com.tekartik.sqflite.Database$1 -> d.e.a.a$a:
-com.tekartik.sqflite.LogLevel -> d.e.a.b:
+com.tekartik.sqflite.Database$1 -> d.f.a.a$a:
+com.tekartik.sqflite.LogLevel -> d.f.a.b:
     java.lang.Integer getLogLevel(io.flutter.plugin.common.MethodCall) -> a
     boolean hasSqlLevel(int) -> b
     boolean hasVerboseLevel(int) -> c
-com.tekartik.sqflite.SqflitePlugin -> d.e.a.c:
-    android.content.Context context -> a
-    java.lang.Object openCloseLocker -> h
-    java.lang.String databasesPath -> i
-    android.os.HandlerThread handlerThread -> k
-    int databaseId -> j
-    java.util.Map databaseMap -> m
-    java.lang.Object databaseMapLocker -> g
-    int logLevel -> f
-    int THREAD_PRIORITY -> e
-    java.util.Map _singleInstancesByPath -> c
-    android.os.Handler handler -> l
-    boolean QUERY_AS_MAP_LIST -> d
-    io.flutter.plugin.common.MethodChannel methodChannel -> b
+com.tekartik.sqflite.SqflitePlugin -> d.f.a.c:
+    android.os.HandlerThread handlerThread -> l
+    java.lang.Object databaseMapLocker -> h
+    java.lang.Object openCloseLocker -> i
+    android.content.Context context -> b
+    java.lang.String databasesPath -> j
+    int databaseId -> k
+    java.util.Map databaseMap -> n
+    int THREAD_PRIORITY -> f
+    int logLevel -> g
+    java.util.Map _singleInstancesByPath -> d
+    boolean QUERY_AS_MAP_LIST -> e
+    android.os.Handler handler -> m
+    io.flutter.plugin.common.MethodChannel methodChannel -> c
     boolean isInMemoryPath(java.lang.String) -> A
     java.util.Map makeOpenResult(int,boolean,boolean) -> B
     void onAttachedToEngine(android.content.Context,io.flutter.plugin.common.BinaryMessenger) -> C
@@ -12712,13 +12729,13 @@ com.tekartik.sqflite.SqflitePlugin -> d.e.a.c:
     boolean access$200(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database,com.tekartik.sqflite.operation.Operation) -> c
     boolean access$300(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database,com.tekartik.sqflite.operation.Operation) -> d
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    boolean access$400(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database,com.tekartik.sqflite.operation.Operation) -> g
-    com.tekartik.sqflite.Database access$500(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database,io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> h
-    java.lang.Object access$600() -> i
+    boolean access$400(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database,com.tekartik.sqflite.operation.Operation) -> f
+    com.tekartik.sqflite.Database access$500(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database,io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> g
+    java.lang.Object access$600() -> h
+    void access$700(com.tekartik.sqflite.SqflitePlugin,java.lang.Exception,com.tekartik.sqflite.operation.Operation,com.tekartik.sqflite.Database) -> i
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
-    void access$700(com.tekartik.sqflite.SqflitePlugin,java.lang.Exception,com.tekartik.sqflite.operation.Operation,com.tekartik.sqflite.Database) -> k
-    java.lang.Object access$800() -> l
+    java.lang.Object access$800() -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
     void access$900(com.tekartik.sqflite.SqflitePlugin,com.tekartik.sqflite.Database) -> m
     void closeDatabase(com.tekartik.sqflite.Database) -> n
     java.util.List cursorRowToList(android.database.Cursor,int) -> o
@@ -12733,32 +12750,32 @@ com.tekartik.sqflite.SqflitePlugin -> d.e.a.c:
     com.tekartik.sqflite.SqlCommand getSqlCommand(io.flutter.plugin.common.MethodCall) -> x
     void handleException(java.lang.Exception,com.tekartik.sqflite.operation.Operation,com.tekartik.sqflite.Database) -> y
     boolean insert(com.tekartik.sqflite.Database,com.tekartik.sqflite.operation.Operation) -> z
-com.tekartik.sqflite.SqflitePlugin$1 -> d.e.a.c$a:
+com.tekartik.sqflite.SqflitePlugin$1 -> d.f.a.c$a:
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> c
     com.tekartik.sqflite.Database val$database -> d
     com.tekartik.sqflite.SqflitePlugin this$0 -> e
     io.flutter.plugin.common.MethodCall val$call -> b
-com.tekartik.sqflite.SqflitePlugin$2 -> d.e.a.c$b:
+com.tekartik.sqflite.SqflitePlugin$2 -> d.f.a.c$b:
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> c
     com.tekartik.sqflite.Database val$database -> d
     com.tekartik.sqflite.SqflitePlugin this$0 -> e
     io.flutter.plugin.common.MethodCall val$call -> b
-com.tekartik.sqflite.SqflitePlugin$3 -> d.e.a.c$c:
+com.tekartik.sqflite.SqflitePlugin$3 -> d.f.a.c$c:
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> c
     com.tekartik.sqflite.Database val$database -> d
     com.tekartik.sqflite.SqflitePlugin this$0 -> e
     io.flutter.plugin.common.MethodCall val$call -> b
-com.tekartik.sqflite.SqflitePlugin$4 -> d.e.a.c$d:
+com.tekartik.sqflite.SqflitePlugin$4 -> d.f.a.c$d:
     com.tekartik.sqflite.Database val$database -> b
     com.tekartik.sqflite.SqflitePlugin this$0 -> e
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> d
     io.flutter.plugin.common.MethodCall val$call -> c
-com.tekartik.sqflite.SqflitePlugin$5 -> d.e.a.c$e:
+com.tekartik.sqflite.SqflitePlugin$5 -> d.f.a.c$e:
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> c
     com.tekartik.sqflite.Database val$database -> d
     com.tekartik.sqflite.SqflitePlugin this$0 -> e
     io.flutter.plugin.common.MethodCall val$call -> b
-com.tekartik.sqflite.SqflitePlugin$6 -> d.e.a.c$f:
+com.tekartik.sqflite.SqflitePlugin$6 -> d.f.a.c$f:
     java.lang.Boolean val$readOnly -> e
     com.tekartik.sqflite.Database val$database -> f
     int val$databaseId -> i
@@ -12768,33 +12785,33 @@ com.tekartik.sqflite.SqflitePlugin$6 -> d.e.a.c$f:
     java.lang.String val$path -> c
     boolean val$inMemory -> b
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> d
-com.tekartik.sqflite.SqflitePlugin$7 -> d.e.a.c$g:
+com.tekartik.sqflite.SqflitePlugin$7 -> d.f.a.c$g:
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> c
     com.tekartik.sqflite.Database val$database -> b
     com.tekartik.sqflite.SqflitePlugin this$0 -> d
-com.tekartik.sqflite.SqflitePlugin$8 -> d.e.a.c$h:
+com.tekartik.sqflite.SqflitePlugin$8 -> d.f.a.c$h:
     com.tekartik.sqflite.Database val$openedDatabase -> b
     java.lang.String val$path -> c
     com.tekartik.sqflite.SqflitePlugin this$0 -> e
     com.tekartik.sqflite.SqflitePlugin$BgResult val$bgResult -> d
-com.tekartik.sqflite.SqflitePlugin$BgResult -> d.e.a.c$i:
+com.tekartik.sqflite.SqflitePlugin$BgResult -> d.f.a.c$i:
     android.os.Handler handler -> a
     io.flutter.plugin.common.MethodChannel$Result result -> b
     void success(java.lang.Object) -> a
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
     void notImplemented() -> c
     io.flutter.plugin.common.MethodChannel$Result access$1100(com.tekartik.sqflite.SqflitePlugin$BgResult) -> d
-com.tekartik.sqflite.SqflitePlugin$BgResult$1 -> d.e.a.c$i$a:
+com.tekartik.sqflite.SqflitePlugin$BgResult$1 -> d.f.a.c$i$a:
     com.tekartik.sqflite.SqflitePlugin$BgResult this$1 -> c
     java.lang.Object val$results -> b
-com.tekartik.sqflite.SqflitePlugin$BgResult$2 -> d.e.a.c$i$b:
+com.tekartik.sqflite.SqflitePlugin$BgResult$2 -> d.f.a.c$i$b:
     java.lang.Object val$data -> d
     java.lang.String val$errorMessage -> c
     com.tekartik.sqflite.SqflitePlugin$BgResult this$1 -> e
     java.lang.String val$errorCode -> b
-com.tekartik.sqflite.SqflitePlugin$BgResult$3 -> d.e.a.c$i$c:
+com.tekartik.sqflite.SqflitePlugin$BgResult$3 -> d.f.a.c$i$c:
     com.tekartik.sqflite.SqflitePlugin$BgResult this$1 -> b
-com.tekartik.sqflite.SqlCommand -> d.e.a.d:
+com.tekartik.sqflite.SqlCommand -> d.f.a.d:
     java.util.List rawArguments -> b
     java.lang.String sql -> a
     java.util.Map fixMap(java.util.Map) -> a
@@ -12808,15 +12825,15 @@ com.tekartik.sqflite.SqlCommand -> d.e.a.d:
     com.tekartik.sqflite.SqlCommand sanitizeForQuery() -> i
     java.lang.String toString(java.lang.Object) -> j
     java.lang.Object toValue(java.lang.Object) -> k
-com.tekartik.sqflite.dev.Debug -> d.e.a.e.a:
+com.tekartik.sqflite.dev.Debug -> d.f.a.e.a:
     boolean LOGV -> a
     boolean _EXTRA_LOGV -> b
     boolean EXTRA_LOGV -> c
-com.tekartik.sqflite.operation.BaseOperation -> d.e.a.f.a:
+com.tekartik.sqflite.operation.BaseOperation -> d.f.a.f.a:
     void success(java.lang.Object) -> a
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
     com.tekartik.sqflite.operation.OperationResult getOperationResult() -> k
-com.tekartik.sqflite.operation.BaseReadOperation -> d.e.a.f.b:
+com.tekartik.sqflite.operation.BaseReadOperation -> d.f.a.f.b:
     com.tekartik.sqflite.SqlCommand getSqlCommand() -> d
     boolean getNoResult() -> e
     java.lang.Boolean getInTransaction() -> f
@@ -12824,7 +12841,7 @@ com.tekartik.sqflite.operation.BaseReadOperation -> d.e.a.f.b:
     boolean getContinueOnError() -> h
     java.lang.String getSql() -> i
     java.util.List getSqlArguments() -> j
-com.tekartik.sqflite.operation.BatchOperation -> d.e.a.f.c:
+com.tekartik.sqflite.operation.BatchOperation -> d.f.a.f.c:
     java.util.Map map -> a
     com.tekartik.sqflite.operation.BatchOperation$BatchOperationResult operationResult -> b
     boolean noResult -> c
@@ -12837,14 +12854,14 @@ com.tekartik.sqflite.operation.BatchOperation -> d.e.a.f.c:
     void handleError(io.flutter.plugin.common.MethodChannel$Result) -> o
     void handleErrorContinue(java.util.List) -> p
     void handleSuccess(java.util.List) -> q
-com.tekartik.sqflite.operation.BatchOperation$BatchOperationResult -> d.e.a.f.c$a:
+com.tekartik.sqflite.operation.BatchOperation$BatchOperationResult -> d.f.a.f.c$a:
     java.lang.Object errorData -> d
     java.lang.Object result -> a
     java.lang.String errorMessage -> c
     java.lang.String errorCode -> b
     void success(java.lang.Object) -> a
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
-com.tekartik.sqflite.operation.ExecuteOperation -> d.e.a.f.d:
+com.tekartik.sqflite.operation.ExecuteOperation -> d.f.a.f.d:
     com.tekartik.sqflite.SqlCommand command -> a
     java.lang.Boolean inTransaction -> c
     io.flutter.plugin.common.MethodChannel$Result result -> b
@@ -12853,24 +12870,24 @@ com.tekartik.sqflite.operation.ExecuteOperation -> d.e.a.f.d:
     java.lang.Object getArgument(java.lang.String) -> c
     com.tekartik.sqflite.SqlCommand getSqlCommand() -> d
     java.lang.Boolean getInTransaction() -> f
-com.tekartik.sqflite.operation.MethodCallOperation -> d.e.a.f.e:
+com.tekartik.sqflite.operation.MethodCallOperation -> d.f.a.f.e:
     io.flutter.plugin.common.MethodCall methodCall -> a
     com.tekartik.sqflite.operation.MethodCallOperation$Result result -> b
     java.lang.Object getArgument(java.lang.String) -> c
     com.tekartik.sqflite.operation.OperationResult getOperationResult() -> k
-com.tekartik.sqflite.operation.MethodCallOperation$Result -> d.e.a.f.e$a:
+com.tekartik.sqflite.operation.MethodCallOperation$Result -> d.f.a.f.e$a:
     io.flutter.plugin.common.MethodChannel$Result result -> a
     void success(java.lang.Object) -> a
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
-com.tekartik.sqflite.operation.Operation -> d.e.a.f.f:
+com.tekartik.sqflite.operation.Operation -> d.f.a.f.f:
     java.lang.Object getArgument(java.lang.String) -> c
     com.tekartik.sqflite.SqlCommand getSqlCommand() -> d
     boolean getNoResult() -> e
     java.lang.Boolean getInTransaction() -> f
-com.tekartik.sqflite.operation.OperationResult -> d.e.a.f.g:
+com.tekartik.sqflite.operation.OperationResult -> d.f.a.f.g:
     void success(java.lang.Object) -> a
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
-com.tekartik.sqflite.operation.SqlErrorInfo -> d.e.a.f.h:
+com.tekartik.sqflite.operation.SqlErrorInfo -> d.f.a.f.h:
     java.util.Map getMap(com.tekartik.sqflite.operation.Operation) -> a
 io.flutter.FlutterInjector -> e.a.a:
     io.flutter.embedding.engine.loader.FlutterLoader flutterLoader -> a
@@ -13520,11 +13537,13 @@ io.flutter.embedding.engine.plugins.FlutterPlugin -> io.flutter.embedding.engine
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets -> io.flutter.embedding.engine.h.a$a:
 io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding -> io.flutter.embedding.engine.h.a$b:
     android.content.Context applicationContext -> a
-    io.flutter.plugin.platform.PlatformViewRegistry platformViewRegistry -> c
+    io.flutter.plugin.platform.PlatformViewRegistry platformViewRegistry -> d
+    io.flutter.view.TextureRegistry textureRegistry -> c
     io.flutter.plugin.common.BinaryMessenger binaryMessenger -> b
     android.content.Context getApplicationContext() -> a
     io.flutter.plugin.common.BinaryMessenger getBinaryMessenger() -> b
     io.flutter.plugin.platform.PlatformViewRegistry getPlatformViewRegistry() -> c
+    io.flutter.view.TextureRegistry getTextureRegistry() -> d
 io.flutter.embedding.engine.plugins.PluginRegistry -> io.flutter.embedding.engine.h.b:
     void add(io.flutter.embedding.engine.plugins.FlutterPlugin) -> h
 io.flutter.embedding.engine.plugins.activity.ActivityAware -> io.flutter.embedding.engine.h.c.a:
@@ -13574,9 +13593,9 @@ io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry -> io.flutter.embedd
     io.flutter.plugin.common.PluginRegistry$Registrar registrarFor(java.lang.String) -> a
 io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry$1 -> io.flutter.embedding.engine.h.g.a$a:
 io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry$ShimRegistrarAggregate -> io.flutter.embedding.engine.h.g.a$b:
-    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityPluginBinding -> c
-    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding flutterPluginBinding -> b
-    java.util.Set shimRegistrars -> a
+    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityPluginBinding -> d
+    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding flutterPluginBinding -> c
+    java.util.Set shimRegistrars -> b
     void addPlugin(io.flutter.embedding.engine.plugins.shim.ShimRegistrar) -> a
     void onAttachedToActivity(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> d
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
@@ -13585,13 +13604,13 @@ io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry$ShimRegistrarAggrega
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
     void onDetachedFromActivityForConfigChanges() -> k
 io.flutter.embedding.engine.plugins.shim.ShimRegistrar -> io.flutter.embedding.engine.h.g.b:
-    java.util.Set activityResultListeners -> c
-    java.util.Set newIntentListeners -> d
-    java.util.Set userLeaveHintListeners -> e
-    java.util.Set viewDestroyListeners -> a
-    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding pluginBinding -> f
-    java.util.Set requestPermissionsResultListeners -> b
-    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityPluginBinding -> g
+    java.util.Set requestPermissionsResultListeners -> c
+    java.util.Set activityResultListeners -> d
+    java.util.Set newIntentListeners -> e
+    java.util.Set userLeaveHintListeners -> f
+    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding pluginBinding -> g
+    java.util.Set viewDestroyListeners -> b
+    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityPluginBinding -> h
     android.content.Context context() -> a
     io.flutter.plugin.common.PluginRegistry$Registrar addActivityResultListener(io.flutter.plugin.common.PluginRegistry$ActivityResultListener) -> b
     io.flutter.plugin.common.PluginRegistry$Registrar addRequestPermissionsResultListener(io.flutter.plugin.common.PluginRegistry$RequestPermissionsResultListener) -> c
@@ -13705,8 +13724,8 @@ io.flutter.embedding.engine.systemchannels.DeferredComponentChannel -> io.flutte
     java.util.Map access$100(io.flutter.embedding.engine.systemchannels.DeferredComponentChannel) -> b
     void setDeferredComponentManager(io.flutter.embedding.engine.deferredcomponents.DeferredComponentManager) -> c
 io.flutter.embedding.engine.systemchannels.DeferredComponentChannel$1 -> io.flutter.embedding.engine.i.c$a:
-    io.flutter.embedding.engine.systemchannels.DeferredComponentChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    io.flutter.embedding.engine.systemchannels.DeferredComponentChannel this$0 -> b
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.KeyEventChannel -> io.flutter.embedding.engine.i.d:
     io.flutter.embedding.engine.systemchannels.KeyEventChannel$EventResponseHandler eventResponseHandler -> a
     io.flutter.plugin.common.BasicMessageChannel channel -> b
@@ -13737,8 +13756,8 @@ io.flutter.embedding.engine.systemchannels.LocalizationChannel -> io.flutter.emb
     void sendLocales(java.util.List) -> b
     void setLocalizationMessageHandler(io.flutter.embedding.engine.systemchannels.LocalizationChannel$LocalizationMessageHandler) -> c
 io.flutter.embedding.engine.systemchannels.LocalizationChannel$1 -> io.flutter.embedding.engine.i.f$a:
-    io.flutter.embedding.engine.systemchannels.LocalizationChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    io.flutter.embedding.engine.systemchannels.LocalizationChannel this$0 -> b
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.LocalizationChannel$LocalizationMessageHandler -> io.flutter.embedding.engine.i.f$b:
     java.lang.String getStringResource(java.lang.String,java.lang.String) -> a
 io.flutter.embedding.engine.systemchannels.MouseCursorChannel -> io.flutter.embedding.engine.i.g:
@@ -13748,8 +13767,8 @@ io.flutter.embedding.engine.systemchannels.MouseCursorChannel -> io.flutter.embe
     io.flutter.embedding.engine.systemchannels.MouseCursorChannel$MouseCursorMethodHandler access$000(io.flutter.embedding.engine.systemchannels.MouseCursorChannel) -> a
     void setMethodHandler(io.flutter.embedding.engine.systemchannels.MouseCursorChannel$MouseCursorMethodHandler) -> b
 io.flutter.embedding.engine.systemchannels.MouseCursorChannel$1 -> io.flutter.embedding.engine.i.g$a:
-    io.flutter.embedding.engine.systemchannels.MouseCursorChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    io.flutter.embedding.engine.systemchannels.MouseCursorChannel this$0 -> b
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.MouseCursorChannel$MouseCursorMethodHandler -> io.flutter.embedding.engine.i.g$b:
     void activateSystemCursor(java.lang.String) -> a
 io.flutter.embedding.engine.systemchannels.NavigationChannel -> io.flutter.embedding.engine.i.h:
@@ -13772,8 +13791,8 @@ io.flutter.embedding.engine.systemchannels.PlatformChannel -> io.flutter.embeddi
     java.util.List decodeSystemUiOverlays(org.json.JSONArray) -> i
     void setPlatformMessageHandler(io.flutter.embedding.engine.systemchannels.PlatformChannel$PlatformMessageHandler) -> j
 io.flutter.embedding.engine.systemchannels.PlatformChannel$1 -> io.flutter.embedding.engine.i.i$a:
-    io.flutter.embedding.engine.systemchannels.PlatformChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    io.flutter.embedding.engine.systemchannels.PlatformChannel this$0 -> b
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.PlatformChannel$2 -> io.flutter.embedding.engine.i.i$b:
     int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$SystemUiOverlay -> b
     int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$DeviceOrientation -> a
@@ -13848,14 +13867,14 @@ io.flutter.embedding.engine.systemchannels.PlatformViewsChannel -> io.flutter.em
     void invokeViewFocused(int) -> d
     void setPlatformViewsHandler(io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewsHandler) -> e
 io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$1 -> io.flutter.embedding.engine.i.j$a:
-    io.flutter.embedding.engine.systemchannels.PlatformViewsChannel this$0 -> a
+    io.flutter.embedding.engine.systemchannels.PlatformViewsChannel this$0 -> b
     void clearFocus(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
     void create(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> b
     void dispose(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> c
     void resize(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> d
     void setDirection(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    void touch(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> g
+    void touch(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$1$1 -> io.flutter.embedding.engine.i.j$a$a:
     io.flutter.plugin.common.MethodChannel$Result val$result -> b
 io.flutter.embedding.engine.systemchannels.PlatformViewsChannel$PlatformViewCreationRequest -> io.flutter.embedding.engine.i.j$b:
@@ -13920,8 +13939,8 @@ io.flutter.embedding.engine.systemchannels.RestorationChannel$1 -> io.flutter.em
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
     void notImplemented() -> c
 io.flutter.embedding.engine.systemchannels.RestorationChannel$2 -> io.flutter.embedding.engine.i.k$b:
-    io.flutter.embedding.engine.systemchannels.RestorationChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    io.flutter.embedding.engine.systemchannels.RestorationChannel this$0 -> b
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.SettingsChannel -> io.flutter.embedding.engine.i.l:
     io.flutter.plugin.common.BasicMessageChannel channel -> a
     io.flutter.embedding.engine.systemchannels.SettingsChannel$MessageBuilder startMessage() -> a
@@ -13960,8 +13979,8 @@ io.flutter.embedding.engine.systemchannels.TextInputChannel -> io.flutter.embedd
     void updateEditingState(int,java.lang.String,int,int,int,int) -> n
     void updateEditingStateWithTag(int,java.util.HashMap) -> o
 io.flutter.embedding.engine.systemchannels.TextInputChannel$1 -> io.flutter.embedding.engine.i.n$a:
-    io.flutter.embedding.engine.systemchannels.TextInputChannel this$0 -> a
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    io.flutter.embedding.engine.systemchannels.TextInputChannel this$0 -> b
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.embedding.engine.systemchannels.TextInputChannel$Configuration -> io.flutter.embedding.engine.i.n$b:
     java.lang.String actionLabel -> g
     java.lang.Integer inputAction -> f
@@ -14138,7 +14157,7 @@ io.flutter.plugin.common.MethodChannel$IncomingResultHandler -> e.a.c.a.j$b:
     io.flutter.plugin.common.MethodChannel this$0 -> b
     void reply(java.nio.ByteBuffer) -> a
 io.flutter.plugin.common.MethodChannel$MethodCallHandler -> e.a.c.a.j$c:
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.plugin.common.MethodChannel$Result -> e.a.c.a.j$d:
     void success(java.lang.Object) -> a
     void error(java.lang.String,java.lang.String,java.lang.Object) -> b
@@ -14430,7 +14449,7 @@ io.flutter.plugin.platform.PlatformView -> io.flutter.plugin.platform.f:
     void onFlutterViewDetached() -> c
     void onInputConnectionUnlocked() -> d
     void onInputConnectionLocked() -> e
-    android.view.View getView() -> g
+    android.view.View getView() -> f
 io.flutter.plugin.platform.PlatformView$-CC -> io.flutter.plugin.platform.e:
     void io.flutter.plugin.platform.PlatformView.onFlutterViewAttached(android.view.View) -> a
     void io.flutter.plugin.platform.PlatformView.onFlutterViewDetached() -> b
@@ -14605,6 +14624,640 @@ io.flutter.plugin.platform.VirtualDisplayController$OneTimeOnDrawListener -> io.
     void schedule(android.view.View,java.lang.Runnable) -> a
 io.flutter.plugin.platform.VirtualDisplayController$OneTimeOnDrawListener$1 -> io.flutter.plugin.platform.l$b$a:
     io.flutter.plugin.platform.VirtualDisplayController$OneTimeOnDrawListener this$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$0UhJ0543i0eH5eYJoHRmd-vbtWs -> io.flutter.plugins.camera.a:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$2$cMc8E_yGhF_4_XK7eEob2cVXELE -> io.flutter.plugins.camera.b:
+    io.flutter.plugins.camera.Camera$2 f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$2GuhFQdDUNBaxfndFJREJNTXdUo -> io.flutter.plugins.camera.c:
+    io.flutter.plugins.camera.Camera f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$3_pRoeHXamqumwxdhOR-rJ5cxM8 -> io.flutter.plugins.camera.d:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$3iTOQpQsYCWFLcoVisDobPBpW6A -> io.flutter.plugins.camera.e:
+    io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature f$1 -> c
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$4EI-2vqNcyhe8bZK3fp4yQZADhI -> io.flutter.plugins.camera.f:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$7ZovC7s6GA15a8baCNTU0eZWt-g -> io.flutter.plugins.camera.g:
+    io.flutter.plugin.common.EventChannel$EventSink f$1 -> c
+    io.flutter.plugins.camera.Camera f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$AEngr0L9f7EE9j80G-tcmlBjG4I -> io.flutter.plugins.camera.h:
+    io.flutter.plugins.camera.Camera f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$XuGXiQZuU3BbmK74rmzUdgvngnk -> io.flutter.plugins.camera.i:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$ZesZ7wmYnD3VHY2d9OW3iFqGlLU -> io.flutter.plugins.camera.j:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$_PNg4o6g6FzKx0u103WoE-p_kVA -> io.flutter.plugins.camera.k:
+    java.util.Map f$1 -> c
+    io.flutter.plugin.common.EventChannel$EventSink f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$bDwUXHeOJQq6-mq16cOumOYLyqs -> io.flutter.plugins.camera.l:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$ddZzx2Tof2B0mSQcMPW8NGOk2Bw -> io.flutter.plugins.camera.m:
+    io.flutter.plugins.camera.Camera f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$gsiU17kydcqJaU5ARtrVjvEg9RU -> io.flutter.plugins.camera.n:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$oq0YfArfCiSov5SOEJey6gDg6jY -> io.flutter.plugins.camera.o:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$r89FN3RQrF-0aJXKBS2H__JCMr0 -> io.flutter.plugins.camera.p:
+    io.flutter.plugins.camera.Camera f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$sQp2s1rDIQISGzWNuU3gEt3S1Vw -> io.flutter.plugins.camera.q:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Camera$wMgVKdOQn5o7VETD8st2a6A07Vs -> io.flutter.plugins.camera.r:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$Camera$yMTMuXG83SoyA98PPYhWRdIl5EA -> io.flutter.plugins.camera.s:
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$CameraPermissions$IhmZy8WSUCwcg_h9O1MddE1ucIA -> io.flutter.plugins.camera.t:
+    io.flutter.plugins.camera.CameraPermissions$ResultCallback f$1 -> b
+    io.flutter.plugins.camera.CameraPermissions f$0 -> a
+    void onResult(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$CameraRegionUtils$0er5LS1UdeMloF11zDuC7aYcZsA -> io.flutter.plugins.camera.u:
+    io.flutter.plugins.camera.-$$Lambda$CameraRegionUtils$0er5LS1UdeMloF11zDuC7aYcZsA INSTANCE -> a
+io.flutter.plugins.camera.-$$Lambda$DartMessenger$krbe0U6WyCV-abVIr3C49ocj43E -> io.flutter.plugins.camera.v:
+    java.lang.Object f$3 -> e
+    java.lang.String f$1 -> c
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+    java.lang.String f$2 -> d
+io.flutter.plugins.camera.-$$Lambda$DartMessenger$yk0k9KGkU5ydIf5kqVUjSItn8SE -> io.flutter.plugins.camera.w:
+    java.lang.Object f$1 -> c
+    io.flutter.plugin.common.MethodChannel$Result f$0 -> b
+io.flutter.plugins.camera.-$$Lambda$MethodCallHandlerImpl$kQOHgMggqzdMNqkzF-YukQrdRi8 -> io.flutter.plugins.camera.x:
+    io.flutter.plugins.camera.MethodCallHandlerImpl f$0 -> a
+    io.flutter.plugin.common.MethodCall f$1 -> b
+    io.flutter.plugin.common.MethodChannel$Result f$2 -> c
+    void onResult(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.-$$Lambda$Vf2JLpSWIioZM6xM0Zq7C88SFaA -> io.flutter.plugins.camera.y:
+    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding f$0 -> a
+    void addListener(io.flutter.plugin.common.PluginRegistry$RequestPermissionsResultListener) -> a
+io.flutter.plugins.camera.Camera -> io.flutter.plugins.camera.Camera:
+    android.os.HandlerThread backgroundHandlerThread -> l
+    io.flutter.plugins.camera.features.CameraFeatureFactory cameraFeatureFactory -> h
+    io.flutter.plugins.camera.CameraCaptureCallback cameraCaptureCallback -> j
+    android.hardware.camera2.CameraCaptureSession captureSession -> n
+    io.flutter.plugins.camera.features.CameraFeatures cameraFeatures -> b
+    io.flutter.plugin.common.MethodChannel$Result flutterResult -> x
+    android.content.Context applicationContext -> e
+    android.hardware.camera2.CameraDevice cameraDevice -> m
+    boolean recordingVideo -> s
+    boolean pausedPreview -> t
+    android.media.MediaRecorder mediaRecorder -> r
+    java.util.HashMap supportedImageFormats -> y
+    android.app.Activity activity -> i
+    java.io.File captureFile -> u
+    io.flutter.plugins.camera.CameraProperties cameraProperties -> g
+    android.hardware.camera2.CaptureRequest$Builder previewRequestBuilder -> q
+    android.media.ImageReader pictureImageReader -> o
+    android.media.ImageReader imageStreamReader -> p
+    io.flutter.plugins.camera.types.CaptureTimeoutsWrapper captureTimeouts -> v
+    android.os.Handler backgroundHandler -> k
+    io.flutter.view.TextureRegistry$SurfaceTextureEntry flutterTexture -> c
+    boolean enableAudio -> d
+    io.flutter.plugins.camera.DartMessenger dartMessenger -> f
+    io.flutter.plugins.camera.types.CameraCaptureProperties captureProps -> w
+    void createCaptureSession(java.util.List,android.hardware.camera2.CameraCaptureSession$StateCallback) -> A
+    void startPreview() -> A0
+    void createCaptureSessionWithSessionConfig(java.util.List,android.hardware.camera2.CameraCaptureSession$StateCallback) -> B
+    void startPreviewWithImageStream(io.flutter.plugin.common.EventChannel) -> B0
+    void dispose() -> C
+    void startVideoRecording(io.flutter.plugin.common.MethodChannel$Result) -> C0
+    io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager getDeviceOrientationManager() -> D
+    void stopVideoRecording(io.flutter.plugin.common.MethodChannel$Result) -> D0
+    double getExposureOffsetStepSize() -> E
+    void takePicture(io.flutter.plugin.common.MethodChannel$Result) -> E0
+    double getMaxExposureOffset() -> F
+    void takePictureAfterPrecapture() -> F0
+    float getMaxZoomLevel() -> G
+    void unlockAutoFocus() -> G0
+    double getMinExposureOffset() -> H
+    void unlockCaptureOrientation() -> H0
+    float getMinZoomLevel() -> I
+    void updateBuilderSettings(android.hardware.camera2.CaptureRequest$Builder) -> I0
+    android.media.CamcorderProfile getRecordingProfile() -> J
+    void lambda$resumePreview$15(java.lang.String,java.lang.String) -> K
+    void lambda$resumePreview$15$Camera(java.lang.String,java.lang.String) -> L
+    void lambda$runPrecaptureSequence$0(java.lang.String,java.lang.String) -> M
+    void lambda$runPrecaptureSequence$0$Camera(java.lang.String,java.lang.String) -> N
+    void lambda$setExposureMode$5(io.flutter.plugin.common.MethodChannel$Result) -> O
+    void lambda$setExposureMode$6(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> P
+    void lambda$setExposureOffset$11(io.flutter.plugin.common.MethodChannel$Result,io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature) -> Q
+    void lambda$setExposureOffset$12(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> R
+    void lambda$setExposurePoint$7(io.flutter.plugin.common.MethodChannel$Result) -> S
+    void lambda$setExposurePoint$8(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> T
+    void lambda$setFlashMode$3(io.flutter.plugin.common.MethodChannel$Result) -> U
+    void lambda$setFlashMode$4(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> V
+    void lambda$setFocusPoint$10(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> W
+    void lambda$setFocusPoint$9(io.flutter.plugin.common.MethodChannel$Result) -> X
+    void lambda$setImageStreamImageAvailableListener$16(io.flutter.plugin.common.EventChannel$EventSink,java.util.Map) -> Y
+    void lambda$setImageStreamImageAvailableListener$17(io.flutter.plugin.common.EventChannel$EventSink,android.media.ImageReader) -> Z
+    void lambda$setImageStreamImageAvailableListener$17$Camera(io.flutter.plugin.common.EventChannel$EventSink,android.media.ImageReader) -> a0
+    void lambda$setZoomLevel$13(io.flutter.plugin.common.MethodChannel$Result) -> b0
+    void lambda$setZoomLevel$14(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> c0
+    void onConverged() -> d
+    void lambda$startVideoRecording$2() -> d0
+    void lambda$startVideoRecording$2$Camera() -> e0
+    void lambda$unlockAutoFocus$1(java.lang.String,java.lang.String) -> f0
+    void lambda$unlockAutoFocus$1$Camera(java.lang.String,java.lang.String) -> g0
+    void onPrecapture() -> h
+    void lockAutoFocus() -> h0
+    void lockCaptureOrientation(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> i0
+    android.hardware.camera2.CameraDevice access$000(io.flutter.plugins.camera.Camera) -> j
+    void open(java.lang.String) -> j0
+    android.hardware.camera2.CameraDevice access$002(io.flutter.plugins.camera.Camera,android.hardware.camera2.CameraDevice) -> k
+    void pausePreview() -> k0
+    io.flutter.plugins.camera.features.CameraFeatures access$100(io.flutter.plugins.camera.Camera) -> l
+    void pauseVideoRecording(io.flutter.plugin.common.MethodChannel$Result) -> l0
+    android.media.ImageReader access$1000(io.flutter.plugins.camera.Camera) -> m
+    void prepareMediaRecorder(java.lang.String) -> m0
+    io.flutter.plugin.common.MethodChannel$Result access$1100(io.flutter.plugins.camera.Camera) -> n
+    void refreshPreviewCaptureSession(java.lang.Runnable,io.flutter.plugins.camera.ErrorCallback) -> n0
+    io.flutter.plugins.camera.DartMessenger access$200(io.flutter.plugins.camera.Camera) -> o
+    void resumePreview() -> o0
+    android.hardware.camera2.CameraCaptureSession access$302(io.flutter.plugins.camera.Camera,android.hardware.camera2.CameraCaptureSession) -> p
+    void resumeVideoRecording(io.flutter.plugin.common.MethodChannel$Result) -> p0
+    android.hardware.camera2.CaptureRequest$Builder access$400(io.flutter.plugins.camera.Camera) -> q
+    void runPictureAutoFocus() -> q0
+    void access$500(io.flutter.plugins.camera.Camera,android.hardware.camera2.CaptureRequest$Builder) -> r
+    void runPrecaptureSequence() -> r0
+    void access$600(io.flutter.plugins.camera.Camera,java.lang.Runnable,io.flutter.plugins.camera.ErrorCallback) -> s
+    void setExposureMode(io.flutter.plugin.common.MethodChannel$Result,io.flutter.plugins.camera.features.exposurelock.ExposureMode) -> s0
+    void access$700(io.flutter.plugins.camera.Camera) -> t
+    void setExposureOffset(io.flutter.plugin.common.MethodChannel$Result,double) -> t0
+    void access$800(io.flutter.plugins.camera.Camera,io.flutter.plugin.common.EventChannel$EventSink) -> u
+    void setExposurePoint(io.flutter.plugin.common.MethodChannel$Result,io.flutter.plugins.camera.features.Point) -> u0
+    android.os.Handler access$900(io.flutter.plugins.camera.Camera) -> v
+    void setFlashMode(io.flutter.plugin.common.MethodChannel$Result,io.flutter.plugins.camera.features.flash.FlashMode) -> v0
+    void close() -> w
+    void setFocusMode(io.flutter.plugin.common.MethodChannel$Result,io.flutter.plugins.camera.features.autofocus.FocusMode) -> w0
+    void closeCaptureSession() -> x
+    void setFocusPoint(io.flutter.plugin.common.MethodChannel$Result,io.flutter.plugins.camera.features.Point) -> x0
+    void createCaptureSession(int,java.lang.Runnable,android.view.Surface[]) -> y
+    void setImageStreamImageAvailableListener(io.flutter.plugin.common.EventChannel$EventSink) -> y0
+    void createCaptureSession(int,android.view.Surface[]) -> z
+    void setZoomLevel(io.flutter.plugin.common.MethodChannel$Result,float) -> z0
+io.flutter.plugins.camera.Camera$1 -> io.flutter.plugins.camera.Camera$a:
+    io.flutter.plugins.camera.Camera this$0 -> b
+    io.flutter.plugins.camera.features.resolution.ResolutionFeature val$resolutionFeature -> a
+io.flutter.plugins.camera.Camera$2 -> io.flutter.plugins.camera.Camera$b:
+    io.flutter.plugins.camera.Camera this$0 -> b
+    java.lang.Runnable val$onSuccessCallback -> a
+    void lambda$onConfigured$0(java.lang.String,java.lang.String) -> a
+    void lambda$onConfigured$0$Camera$2(java.lang.String,java.lang.String) -> b
+io.flutter.plugins.camera.Camera$3 -> io.flutter.plugins.camera.Camera$c:
+    io.flutter.plugins.camera.Camera this$0 -> a
+io.flutter.plugins.camera.Camera$4 -> io.flutter.plugins.camera.Camera$d:
+    io.flutter.plugins.camera.Camera this$0 -> b
+    void onCancel(java.lang.Object) -> a
+    void onListen(java.lang.Object,io.flutter.plugin.common.EventChannel$EventSink) -> b
+io.flutter.plugins.camera.Camera$5 -> io.flutter.plugins.camera.Camera$e:
+    io.flutter.plugins.camera.Camera this$0 -> a
+    void onError(java.lang.String,java.lang.String) -> a
+    void onComplete(java.lang.String) -> b
+io.flutter.plugins.camera.Camera$6 -> io.flutter.plugins.camera.Camera$f:
+    int[] $SwitchMap$io$flutter$plugins$camera$features$autofocus$FocusMode -> a
+io.flutter.plugins.camera.CameraCaptureCallback -> io.flutter.plugins.camera.z:
+    io.flutter.plugins.camera.types.CameraCaptureProperties captureProps -> d
+    io.flutter.plugins.camera.CameraCaptureCallback$CameraCaptureStateListener cameraStateListener -> a
+    io.flutter.plugins.camera.CameraState cameraState -> b
+    io.flutter.plugins.camera.types.CaptureTimeoutsWrapper captureTimeouts -> c
+    io.flutter.plugins.camera.CameraCaptureCallback create(io.flutter.plugins.camera.CameraCaptureCallback$CameraCaptureStateListener,io.flutter.plugins.camera.types.CaptureTimeoutsWrapper,io.flutter.plugins.camera.types.CameraCaptureProperties) -> a
+    io.flutter.plugins.camera.CameraState getCameraState() -> b
+    void handleWaitingFocusState(java.lang.Integer) -> c
+    void process(android.hardware.camera2.CaptureResult) -> d
+    void setCameraState(io.flutter.plugins.camera.CameraState) -> e
+io.flutter.plugins.camera.CameraCaptureCallback$1 -> io.flutter.plugins.camera.z$a:
+    int[] $SwitchMap$io$flutter$plugins$camera$CameraState -> a
+io.flutter.plugins.camera.CameraCaptureCallback$CameraCaptureStateListener -> io.flutter.plugins.camera.z$b:
+    void onConverged() -> d
+    void onPrecapture() -> h
+io.flutter.plugins.camera.CameraPermissions -> io.flutter.plugins.camera.a0:
+    boolean ongoing -> a
+    boolean hasAudioPermission(android.app.Activity) -> a
+    boolean hasCameraPermission(android.app.Activity) -> b
+    void lambda$requestPermissions$0(io.flutter.plugins.camera.CameraPermissions$ResultCallback,java.lang.String,java.lang.String) -> c
+    void lambda$requestPermissions$0$CameraPermissions(io.flutter.plugins.camera.CameraPermissions$ResultCallback,java.lang.String,java.lang.String) -> d
+    void requestPermissions(android.app.Activity,io.flutter.plugins.camera.CameraPermissions$PermissionsRegistry,boolean,io.flutter.plugins.camera.CameraPermissions$ResultCallback) -> e
+io.flutter.plugins.camera.CameraPermissions$CameraRequestPermissionsListener -> io.flutter.plugins.camera.a0$a:
+    io.flutter.plugins.camera.CameraPermissions$ResultCallback callback -> c
+    boolean alreadyCalled -> b
+io.flutter.plugins.camera.CameraPermissions$PermissionsRegistry -> io.flutter.plugins.camera.a0$b:
+    void addListener(io.flutter.plugin.common.PluginRegistry$RequestPermissionsResultListener) -> a
+io.flutter.plugins.camera.CameraPermissions$ResultCallback -> io.flutter.plugins.camera.a0$c:
+    void onResult(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.CameraPlugin -> io.flutter.plugins.camera.b0:
+    io.flutter.plugins.camera.MethodCallHandlerImpl methodCallHandler -> c
+    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding flutterPluginBinding -> b
+    void maybeStartListening(android.app.Activity,io.flutter.plugin.common.BinaryMessenger,io.flutter.plugins.camera.CameraPermissions$PermissionsRegistry,io.flutter.view.TextureRegistry,androidx.lifecycle.Lifecycle) -> a
+    void onAttachedToActivity(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> d
+    void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
+    void onDetachedFromActivity() -> h
+    void onReattachedToActivityForConfigChanges(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> i
+    void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
+    void onDetachedFromActivityForConfigChanges() -> k
+io.flutter.plugins.camera.CameraProperties -> io.flutter.plugins.camera.c0:
+    int getLensFacing() -> a
+    java.lang.Integer getControlMaxRegionsAutoExposure() -> b
+    int[] getAvailableNoiseReductionModes() -> c
+    android.util.Range getControlAutoExposureCompensationRange() -> d
+    int[] getControlAutoFocusAvailableModes() -> e
+    int[] getDistortionCorrectionAvailableModes() -> f
+    double getControlAutoExposureCompensationStep() -> g
+    java.lang.Float getLensInfoMinimumFocusDistance() -> h
+    android.graphics.Rect getSensorInfoPreCorrectionActiveArraySize() -> i
+    android.util.Size getSensorInfoPixelArraySize() -> j
+    java.lang.Boolean getFlashInfoAvailable() -> k
+    android.util.Range[] getControlAutoExposureAvailableTargetFpsRanges() -> l
+    java.lang.Float getScalerAvailableMaxDigitalZoom() -> m
+    android.graphics.Rect getSensorInfoActiveArraySize() -> n
+    java.lang.Integer getControlMaxRegionsAutoFocus() -> o
+    java.lang.String getCameraName() -> p
+    int getSensorOrientation() -> q
+io.flutter.plugins.camera.CameraPropertiesImpl -> io.flutter.plugins.camera.d0:
+    android.hardware.camera2.CameraCharacteristics cameraCharacteristics -> a
+    java.lang.String cameraName -> b
+    int getLensFacing() -> a
+    java.lang.Integer getControlMaxRegionsAutoExposure() -> b
+    int[] getAvailableNoiseReductionModes() -> c
+    android.util.Range getControlAutoExposureCompensationRange() -> d
+    int[] getControlAutoFocusAvailableModes() -> e
+    int[] getDistortionCorrectionAvailableModes() -> f
+    double getControlAutoExposureCompensationStep() -> g
+    java.lang.Float getLensInfoMinimumFocusDistance() -> h
+    android.graphics.Rect getSensorInfoPreCorrectionActiveArraySize() -> i
+    android.util.Size getSensorInfoPixelArraySize() -> j
+    java.lang.Boolean getFlashInfoAvailable() -> k
+    android.util.Range[] getControlAutoExposureAvailableTargetFpsRanges() -> l
+    java.lang.Float getScalerAvailableMaxDigitalZoom() -> m
+    android.graphics.Rect getSensorInfoActiveArraySize() -> n
+    java.lang.Integer getControlMaxRegionsAutoFocus() -> o
+    java.lang.String getCameraName() -> p
+    int getSensorOrientation() -> q
+io.flutter.plugins.camera.CameraRegionUtils -> io.flutter.plugins.camera.e0:
+    android.hardware.camera2.params.MeteringRectangle convertPointToMeteringRectangle(android.util.Size,double,double,io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> a
+    android.util.Size getCameraBoundaries(io.flutter.plugins.camera.CameraProperties,android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean lambda$supportsDistortionCorrection$0(int) -> c
+    boolean supportsDistortionCorrection(io.flutter.plugins.camera.CameraProperties) -> d
+io.flutter.plugins.camera.CameraRegionUtils$1 -> io.flutter.plugins.camera.e0$a:
+    int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$DeviceOrientation -> a
+io.flutter.plugins.camera.CameraRegionUtils$MeteringRectangleFactory -> io.flutter.plugins.camera.e0$b:
+    android.hardware.camera2.params.MeteringRectangle create(int,int,int,int,int) -> a
+io.flutter.plugins.camera.CameraRegionUtils$SizeFactory -> io.flutter.plugins.camera.e0$c:
+    android.util.Size create(int,int) -> a
+io.flutter.plugins.camera.CameraState -> io.flutter.plugins.camera.f0:
+    io.flutter.plugins.camera.CameraState STATE_WAITING_PRECAPTURE_START -> d
+    io.flutter.plugins.camera.CameraState STATE_WAITING_PRECAPTURE_DONE -> e
+    io.flutter.plugins.camera.CameraState STATE_CAPTURING -> f
+    io.flutter.plugins.camera.CameraState[] $VALUES -> g
+    io.flutter.plugins.camera.CameraState STATE_PREVIEW -> b
+    io.flutter.plugins.camera.CameraState STATE_WAITING_FOCUS -> c
+io.flutter.plugins.camera.CameraUtils -> io.flutter.plugins.camera.g0:
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation deserializeDeviceOrientation(java.lang.String) -> a
+    java.util.List getAvailableCameras(android.app.Activity) -> b
+    android.hardware.camera2.CameraManager getCameraManager(android.content.Context) -> c
+    java.lang.String serializeDeviceOrientation(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> d
+io.flutter.plugins.camera.CameraUtils$1 -> io.flutter.plugins.camera.g0$a:
+    int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$DeviceOrientation -> a
+io.flutter.plugins.camera.DartMessenger -> io.flutter.plugins.camera.h0:
+    android.os.Handler handler -> a
+    io.flutter.plugin.common.MethodChannel deviceChannel -> c
+    io.flutter.plugin.common.MethodChannel cameraChannel -> b
+    io.flutter.plugin.common.MethodChannel access$100(io.flutter.plugins.camera.DartMessenger) -> a
+    io.flutter.plugin.common.MethodChannel access$300(io.flutter.plugins.camera.DartMessenger) -> b
+    void error(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String,java.lang.Object) -> c
+    void finish(io.flutter.plugin.common.MethodChannel$Result,java.lang.Object) -> d
+    void lambda$error$1(io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String,java.lang.Object) -> e
+    void lambda$finish$0(io.flutter.plugin.common.MethodChannel$Result,java.lang.Object) -> f
+    void send(io.flutter.plugins.camera.DartMessenger$CameraEventType) -> g
+    void send(io.flutter.plugins.camera.DartMessenger$CameraEventType,java.util.Map) -> h
+    void send(io.flutter.plugins.camera.DartMessenger$DeviceEventType,java.util.Map) -> i
+    void sendCameraClosingEvent() -> j
+    void sendCameraErrorEvent(java.lang.String) -> k
+    void sendCameraInitializedEvent(java.lang.Integer,java.lang.Integer,io.flutter.plugins.camera.features.exposurelock.ExposureMode,io.flutter.plugins.camera.features.autofocus.FocusMode,java.lang.Boolean,java.lang.Boolean) -> l
+    void sendDeviceOrientationChangeEvent(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> m
+io.flutter.plugins.camera.DartMessenger$1 -> io.flutter.plugins.camera.h0$a:
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation val$orientation -> b
+io.flutter.plugins.camera.DartMessenger$2 -> io.flutter.plugins.camera.h0$b:
+    java.lang.Integer val$previewHeight -> c
+    java.lang.Boolean val$focusPointSupported -> g
+    java.lang.Boolean val$exposurePointSupported -> f
+    io.flutter.plugins.camera.features.autofocus.FocusMode val$focusMode -> e
+    java.lang.Integer val$previewWidth -> b
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode val$exposureMode -> d
+io.flutter.plugins.camera.DartMessenger$3 -> io.flutter.plugins.camera.h0$c:
+    java.lang.String val$description -> b
+io.flutter.plugins.camera.DartMessenger$4 -> io.flutter.plugins.camera.h0$d:
+    java.util.Map val$args -> c
+    io.flutter.plugins.camera.DartMessenger$CameraEventType val$eventType -> b
+    io.flutter.plugins.camera.DartMessenger this$0 -> d
+io.flutter.plugins.camera.DartMessenger$5 -> io.flutter.plugins.camera.h0$e:
+    java.util.Map val$args -> c
+    io.flutter.plugins.camera.DartMessenger$DeviceEventType val$eventType -> b
+    io.flutter.plugins.camera.DartMessenger this$0 -> d
+io.flutter.plugins.camera.DartMessenger$CameraEventType -> io.flutter.plugins.camera.h0$f:
+    io.flutter.plugins.camera.DartMessenger$CameraEventType CLOSING -> d
+    io.flutter.plugins.camera.DartMessenger$CameraEventType ERROR -> c
+    io.flutter.plugins.camera.DartMessenger$CameraEventType INITIALIZED -> e
+    io.flutter.plugins.camera.DartMessenger$CameraEventType[] $VALUES -> f
+    java.lang.String method -> b
+    java.lang.String access$000(io.flutter.plugins.camera.DartMessenger$CameraEventType) -> a
+io.flutter.plugins.camera.DartMessenger$DeviceEventType -> io.flutter.plugins.camera.h0$g:
+    io.flutter.plugins.camera.DartMessenger$DeviceEventType ORIENTATION_CHANGED -> c
+    io.flutter.plugins.camera.DartMessenger$DeviceEventType[] $VALUES -> d
+    java.lang.String method -> b
+    java.lang.String access$200(io.flutter.plugins.camera.DartMessenger$DeviceEventType) -> a
+io.flutter.plugins.camera.ErrorCallback -> io.flutter.plugins.camera.i0:
+    void onError(java.lang.String,java.lang.String) -> a
+io.flutter.plugins.camera.ImageSaver -> io.flutter.plugins.camera.j0:
+    java.io.File file -> c
+    android.media.Image image -> b
+    io.flutter.plugins.camera.ImageSaver$Callback callback -> d
+io.flutter.plugins.camera.ImageSaver$Callback -> io.flutter.plugins.camera.j0$a:
+    void onError(java.lang.String,java.lang.String) -> a
+    void onComplete(java.lang.String) -> b
+io.flutter.plugins.camera.ImageSaver$FileOutputStreamFactory -> io.flutter.plugins.camera.j0$b:
+    java.io.FileOutputStream create(java.io.File) -> a
+io.flutter.plugins.camera.MethodCallHandlerImpl -> io.flutter.plugins.camera.MethodCallHandlerImpl:
+    io.flutter.view.TextureRegistry textureRegistry -> f
+    io.flutter.plugins.camera.Camera camera -> j
+    io.flutter.plugins.camera.CameraPermissions$PermissionsRegistry permissionsRegistry -> e
+    io.flutter.plugin.common.MethodChannel methodChannel -> g
+    androidx.lifecycle.Lifecycle lifecycle -> i
+    io.flutter.plugin.common.BinaryMessenger messenger -> c
+    io.flutter.plugins.camera.CameraPermissions cameraPermissions -> d
+    io.flutter.plugin.common.EventChannel imageStreamChannel -> h
+    android.app.Activity activity -> b
+    void handleException(java.lang.Exception,io.flutter.plugin.common.MethodChannel$Result) -> d
+    void instantiateCamera(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> h
+    void lambda$onMethodCall$0(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> j
+    void lambda$onMethodCall$0$MethodCallHandlerImpl(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result,java.lang.String,java.lang.String) -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
+    void stopListening() -> m
+io.flutter.plugins.camera.features.CameraFeature -> io.flutter.plugins.camera.k0.a:
+    io.flutter.plugins.camera.CameraProperties cameraProperties -> a
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+io.flutter.plugins.camera.features.CameraFeatureFactory -> io.flutter.plugins.camera.k0.b:
+    io.flutter.plugins.camera.features.flash.FlashFeature createFlashFeature(io.flutter.plugins.camera.CameraProperties) -> a
+    io.flutter.plugins.camera.features.resolution.ResolutionFeature createResolutionFeature(io.flutter.plugins.camera.CameraProperties,io.flutter.plugins.camera.features.resolution.ResolutionPreset,java.lang.String) -> b
+    io.flutter.plugins.camera.features.autofocus.AutoFocusFeature createAutoFocusFeature(io.flutter.plugins.camera.CameraProperties,boolean) -> c
+    io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature createExposureOffsetFeature(io.flutter.plugins.camera.CameraProperties) -> d
+    io.flutter.plugins.camera.features.focuspoint.FocusPointFeature createFocusPointFeature(io.flutter.plugins.camera.CameraProperties,io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature) -> e
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature createNoiseReductionFeature(io.flutter.plugins.camera.CameraProperties) -> f
+    io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature createExposurePointFeature(io.flutter.plugins.camera.CameraProperties,io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature) -> g
+    io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature createSensorOrientationFeature(io.flutter.plugins.camera.CameraProperties,android.app.Activity,io.flutter.plugins.camera.DartMessenger) -> h
+    io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature createFpsRangeFeature(io.flutter.plugins.camera.CameraProperties) -> i
+    io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature createExposureLockFeature(io.flutter.plugins.camera.CameraProperties) -> j
+    io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature createZoomLevelFeature(io.flutter.plugins.camera.CameraProperties) -> k
+io.flutter.plugins.camera.features.CameraFeatureFactoryImpl -> io.flutter.plugins.camera.k0.c:
+    io.flutter.plugins.camera.features.flash.FlashFeature createFlashFeature(io.flutter.plugins.camera.CameraProperties) -> a
+    io.flutter.plugins.camera.features.resolution.ResolutionFeature createResolutionFeature(io.flutter.plugins.camera.CameraProperties,io.flutter.plugins.camera.features.resolution.ResolutionPreset,java.lang.String) -> b
+    io.flutter.plugins.camera.features.autofocus.AutoFocusFeature createAutoFocusFeature(io.flutter.plugins.camera.CameraProperties,boolean) -> c
+    io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature createExposureOffsetFeature(io.flutter.plugins.camera.CameraProperties) -> d
+    io.flutter.plugins.camera.features.focuspoint.FocusPointFeature createFocusPointFeature(io.flutter.plugins.camera.CameraProperties,io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature) -> e
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature createNoiseReductionFeature(io.flutter.plugins.camera.CameraProperties) -> f
+    io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature createExposurePointFeature(io.flutter.plugins.camera.CameraProperties,io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature) -> g
+    io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature createSensorOrientationFeature(io.flutter.plugins.camera.CameraProperties,android.app.Activity,io.flutter.plugins.camera.DartMessenger) -> h
+    io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature createFpsRangeFeature(io.flutter.plugins.camera.CameraProperties) -> i
+    io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature createExposureLockFeature(io.flutter.plugins.camera.CameraProperties) -> j
+    io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature createZoomLevelFeature(io.flutter.plugins.camera.CameraProperties) -> k
+io.flutter.plugins.camera.features.CameraFeatures -> io.flutter.plugins.camera.k0.d:
+    java.util.Map featureMap -> a
+    java.util.Collection getAllFeatures() -> a
+    io.flutter.plugins.camera.features.autofocus.AutoFocusFeature getAutoFocus() -> b
+    io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature getExposureLock() -> c
+    io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature getExposureOffset() -> d
+    io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature getExposurePoint() -> e
+    io.flutter.plugins.camera.features.flash.FlashFeature getFlash() -> f
+    io.flutter.plugins.camera.features.focuspoint.FocusPointFeature getFocusPoint() -> g
+    io.flutter.plugins.camera.features.resolution.ResolutionFeature getResolution() -> h
+    io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature getSensorOrientation() -> i
+    io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature getZoomLevel() -> j
+    io.flutter.plugins.camera.features.CameraFeatures init(io.flutter.plugins.camera.features.CameraFeatureFactory,io.flutter.plugins.camera.CameraProperties,android.app.Activity,io.flutter.plugins.camera.DartMessenger,io.flutter.plugins.camera.features.resolution.ResolutionPreset) -> k
+    void setAutoFocus(io.flutter.plugins.camera.features.autofocus.AutoFocusFeature) -> l
+    void setExposureLock(io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature) -> m
+    void setExposureOffset(io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature) -> n
+    void setExposurePoint(io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature) -> o
+    void setFlash(io.flutter.plugins.camera.features.flash.FlashFeature) -> p
+    void setFocusPoint(io.flutter.plugins.camera.features.focuspoint.FocusPointFeature) -> q
+    void setFpsRange(io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature) -> r
+    void setNoiseReduction(io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature) -> s
+    void setResolution(io.flutter.plugins.camera.features.resolution.ResolutionFeature) -> t
+    void setSensorOrientation(io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature) -> u
+    void setZoomLevel(io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature) -> v
+io.flutter.plugins.camera.features.Point -> io.flutter.plugins.camera.k0.e:
+    java.lang.Double y -> b
+    java.lang.Double x -> a
+io.flutter.plugins.camera.features.autofocus.AutoFocusFeature -> io.flutter.plugins.camera.k0.f.a:
+    io.flutter.plugins.camera.features.autofocus.FocusMode currentSetting -> b
+    boolean recordingVideo -> c
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    io.flutter.plugins.camera.features.autofocus.FocusMode getValue() -> d
+    void setValue(io.flutter.plugins.camera.features.autofocus.FocusMode) -> e
+io.flutter.plugins.camera.features.autofocus.AutoFocusFeature$1 -> io.flutter.plugins.camera.k0.f.a$a:
+    int[] $SwitchMap$io$flutter$plugins$camera$features$autofocus$FocusMode -> a
+io.flutter.plugins.camera.features.autofocus.FocusMode -> io.flutter.plugins.camera.k0.f.b:
+    io.flutter.plugins.camera.features.autofocus.FocusMode locked -> d
+    io.flutter.plugins.camera.features.autofocus.FocusMode auto -> c
+    io.flutter.plugins.camera.features.autofocus.FocusMode[] $VALUES -> e
+    java.lang.String strValue -> b
+    io.flutter.plugins.camera.features.autofocus.FocusMode getValueForString(java.lang.String) -> a
+io.flutter.plugins.camera.features.exposurelock.ExposureLockFeature -> io.flutter.plugins.camera.k0.g.a:
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode currentSetting -> b
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode getValue() -> d
+    void setValue(io.flutter.plugins.camera.features.exposurelock.ExposureMode) -> e
+io.flutter.plugins.camera.features.exposurelock.ExposureMode -> io.flutter.plugins.camera.k0.g.b:
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode[] $VALUES -> e
+    java.lang.String strValue -> b
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode auto -> c
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode locked -> d
+    io.flutter.plugins.camera.features.exposurelock.ExposureMode getValueForString(java.lang.String) -> a
+io.flutter.plugins.camera.features.exposureoffset.ExposureOffsetFeature -> io.flutter.plugins.camera.k0.h.a:
+    double currentSetting -> b
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    double getExposureOffsetStepSize() -> d
+    double getMaxExposureOffset() -> e
+    double getMinExposureOffset() -> f
+    java.lang.Double getValue() -> g
+    void setValue(java.lang.Double) -> h
+io.flutter.plugins.camera.features.exposurepoint.ExposurePointFeature -> io.flutter.plugins.camera.k0.i.a:
+    android.hardware.camera2.params.MeteringRectangle exposureRectangle -> d
+    android.util.Size cameraBoundaries -> b
+    io.flutter.plugins.camera.features.Point exposurePoint -> c
+    io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature sensorOrientationFeature -> e
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    void buildExposureRectangle() -> c
+    boolean checkIsSupported() -> d
+    void setCameraBoundaries(android.util.Size) -> e
+    void setValue(io.flutter.plugins.camera.features.Point) -> f
+io.flutter.plugins.camera.features.flash.FlashFeature -> io.flutter.plugins.camera.k0.j.a:
+    io.flutter.plugins.camera.features.flash.FlashMode currentSetting -> b
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    void setValue(io.flutter.plugins.camera.features.flash.FlashMode) -> d
+io.flutter.plugins.camera.features.flash.FlashFeature$1 -> io.flutter.plugins.camera.k0.j.a$a:
+    int[] $SwitchMap$io$flutter$plugins$camera$features$flash$FlashMode -> a
+io.flutter.plugins.camera.features.flash.FlashMode -> io.flutter.plugins.camera.k0.j.b:
+    io.flutter.plugins.camera.features.flash.FlashMode torch -> f
+    io.flutter.plugins.camera.features.flash.FlashMode[] $VALUES -> g
+    io.flutter.plugins.camera.features.flash.FlashMode off -> c
+    io.flutter.plugins.camera.features.flash.FlashMode auto -> d
+    io.flutter.plugins.camera.features.flash.FlashMode always -> e
+    java.lang.String strValue -> b
+    io.flutter.plugins.camera.features.flash.FlashMode getValueForString(java.lang.String) -> a
+io.flutter.plugins.camera.features.focuspoint.FocusPointFeature -> io.flutter.plugins.camera.k0.k.a:
+    android.hardware.camera2.params.MeteringRectangle focusRectangle -> d
+    android.util.Size cameraBoundaries -> b
+    io.flutter.plugins.camera.features.Point focusPoint -> c
+    io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature sensorOrientationFeature -> e
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    void buildFocusRectangle() -> c
+    boolean checkIsSupported() -> d
+    void setCameraBoundaries(android.util.Size) -> e
+    void setValue(io.flutter.plugins.camera.features.Point) -> f
+io.flutter.plugins.camera.features.fpsrange.FpsRangeFeature -> io.flutter.plugins.camera.k0.l.a:
+    android.util.Range MAX_PIXEL4A_RANGE -> c
+    android.util.Range currentSetting -> b
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    boolean isPixel4A() -> d
+io.flutter.plugins.camera.features.noisereduction.NoiseReductionFeature -> io.flutter.plugins.camera.k0.m.a:
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode currentSetting -> b
+    java.util.HashMap NOISE_REDUCTION_MODES -> c
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode -> io.flutter.plugins.camera.k0.m.b:
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode fast -> d
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode highQuality -> e
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode off -> c
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode minimal -> f
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode zeroShutterLag -> g
+    java.lang.String strValue -> b
+    io.flutter.plugins.camera.features.noisereduction.NoiseReductionMode[] $VALUES -> h
+io.flutter.plugins.camera.features.resolution.ResolutionFeature -> io.flutter.plugins.camera.k0.n.a:
+    android.media.CamcorderProfile recordingProfile -> d
+    android.util.Size previewSize -> c
+    int cameraId -> e
+    android.util.Size captureSize -> b
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    android.util.Size computeBestPreviewSize(int,io.flutter.plugins.camera.features.resolution.ResolutionPreset) -> d
+    void configureResolution(io.flutter.plugins.camera.features.resolution.ResolutionPreset,int) -> e
+    android.media.CamcorderProfile getBestAvailableCamcorderProfileForResolutionPreset(int,io.flutter.plugins.camera.features.resolution.ResolutionPreset) -> f
+    android.util.Size getCaptureSize() -> g
+    android.util.Size getPreviewSize() -> h
+    android.media.CamcorderProfile getRecordingProfile() -> i
+io.flutter.plugins.camera.features.resolution.ResolutionFeature$1 -> io.flutter.plugins.camera.k0.n.a$a:
+    int[] $SwitchMap$io$flutter$plugins$camera$features$resolution$ResolutionPreset -> a
+io.flutter.plugins.camera.features.resolution.ResolutionPreset -> io.flutter.plugins.camera.k0.n.b:
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset high -> d
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset veryHigh -> e
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset low -> b
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset medium -> c
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset[] $VALUES -> h
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset ultraHigh -> f
+    io.flutter.plugins.camera.features.resolution.ResolutionPreset max -> g
+io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager -> io.flutter.plugins.camera.k0.o.a:
+    android.content.IntentFilter orientationIntentFilter -> g
+    io.flutter.plugins.camera.DartMessenger messenger -> b
+    android.content.BroadcastReceiver broadcastReceiver -> f
+    int sensorOrientation -> d
+    android.app.Activity activity -> a
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation lastOrientation -> e
+    boolean isFrontFacing -> c
+    io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager create(android.app.Activity,io.flutter.plugins.camera.DartMessenger,boolean,int) -> a
+    android.view.Display getDisplay() -> b
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation getLastUIOrientation() -> c
+    int getPhotoOrientation() -> d
+    int getPhotoOrientation(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> e
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation getUIOrientation() -> f
+    int getVideoOrientation() -> g
+    int getVideoOrientation(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> h
+    void handleOrientationChange(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation,io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation,io.flutter.plugins.camera.DartMessenger) -> i
+    void handleUIOrientationChange() -> j
+    void start() -> k
+    void stop() -> l
+io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager$1 -> io.flutter.plugins.camera.k0.o.a$a:
+    io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager this$0 -> a
+io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager$2 -> io.flutter.plugins.camera.k0.o.a$b:
+    int[] $SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$DeviceOrientation -> a
+io.flutter.plugins.camera.features.sensororientation.SensorOrientationFeature -> io.flutter.plugins.camera.k0.o.b:
+    io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager deviceOrientationListener -> c
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation lockedCaptureOrientation -> d
+    java.lang.Integer currentSetting -> b
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    io.flutter.plugins.camera.features.sensororientation.DeviceOrientationManager getDeviceOrientationManager() -> c
+    io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation getLockedCaptureOrientation() -> d
+    void lockCaptureOrientation(io.flutter.embedding.engine.systemchannels.PlatformChannel$DeviceOrientation) -> e
+    void setValue(java.lang.Integer) -> f
+    void unlockCaptureOrientation() -> g
+io.flutter.plugins.camera.features.zoomlevel.ZoomLevelFeature -> io.flutter.plugins.camera.k0.p.a:
+    java.lang.Float maximumZoomLevel -> e
+    android.graphics.Rect sensorArraySize -> c
+    boolean hasSupport -> b
+    java.lang.Float currentSetting -> d
+    java.lang.String getDebugName() -> a
+    void updateBuilder(android.hardware.camera2.CaptureRequest$Builder) -> b
+    boolean checkIsSupported() -> c
+    float getMaximumZoomLevel() -> d
+    float getMinimumZoomLevel() -> e
+    void setValue(java.lang.Float) -> f
+io.flutter.plugins.camera.features.zoomlevel.ZoomUtils -> io.flutter.plugins.camera.k0.p.b:
+    android.graphics.Rect computeZoom(float,android.graphics.Rect,float,float) -> a
+io.flutter.plugins.camera.media.MediaRecorderBuilder -> io.flutter.plugins.camera.l0.a:
+    android.media.CamcorderProfile recordingProfile -> b
+    io.flutter.plugins.camera.media.MediaRecorderBuilder$MediaRecorderFactory recorderFactory -> c
+    java.lang.String outputFilePath -> a
+    int mediaOrientation -> e
+    boolean enableAudio -> d
+    android.media.MediaRecorder build() -> a
+    io.flutter.plugins.camera.media.MediaRecorderBuilder setEnableAudio(boolean) -> b
+    io.flutter.plugins.camera.media.MediaRecorderBuilder setMediaOrientation(int) -> c
+io.flutter.plugins.camera.media.MediaRecorderBuilder$MediaRecorderFactory -> io.flutter.plugins.camera.l0.a$a:
+    android.media.MediaRecorder makeMediaRecorder() -> a
+io.flutter.plugins.camera.types.CameraCaptureProperties -> io.flutter.plugins.camera.m0.a:
+    java.lang.Integer lastSensorSensitivity -> c
+    java.lang.Long lastSensorExposureTime -> b
+    java.lang.Float lastLensAperture -> a
+    java.lang.Float getLastLensAperture() -> a
+    java.lang.Long getLastSensorExposureTime() -> b
+    java.lang.Integer getLastSensorSensitivity() -> c
+    void setLastLensAperture(java.lang.Float) -> d
+    void setLastSensorExposureTime(java.lang.Long) -> e
+    void setLastSensorSensitivity(java.lang.Integer) -> f
+io.flutter.plugins.camera.types.CaptureTimeoutsWrapper -> io.flutter.plugins.camera.m0.b:
+    long preCaptureMeteringTimeoutMs -> d
+    long preCaptureFocusingTimeoutMs -> c
+    io.flutter.plugins.camera.types.Timeout preCaptureFocusing -> a
+    io.flutter.plugins.camera.types.Timeout preCaptureMetering -> b
+    io.flutter.plugins.camera.types.Timeout getPreCaptureFocusing() -> a
+    io.flutter.plugins.camera.types.Timeout getPreCaptureMetering() -> b
+    void reset() -> c
+io.flutter.plugins.camera.types.Timeout -> io.flutter.plugins.camera.m0.c:
+    long timeStarted -> b
+    long timeoutMs -> a
+    io.flutter.plugins.camera.types.Timeout create(long) -> a
+    boolean getIsExpired() -> b
 io.flutter.plugins.flutter_plugin_android_lifecycle.FlutterAndroidLifecyclePlugin -> io.flutter.plugins.a.a:
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
@@ -14631,18 +15284,18 @@ io.flutter.plugins.imagepicker.ImagePickerCache -> io.flutter.plugins.imagepicke
     void setMaxDimension(java.lang.Double,java.lang.Double,int) -> h
     void setType(java.lang.String) -> i
 io.flutter.plugins.imagepicker.ImagePickerDelegate -> io.flutter.plugins.imagepicker.e:
-    io.flutter.plugins.imagepicker.FileUtils fileUtils -> h
-    io.flutter.plugins.imagepicker.CameraDevice cameraDevice -> i
-    java.io.File externalFilesDirectory -> c
-    io.flutter.plugins.imagepicker.ImagePickerDelegate$FileUriResolver fileUriResolver -> g
-    io.flutter.plugins.imagepicker.ImagePickerCache cache -> e
-    io.flutter.plugin.common.MethodCall methodCall -> l
-    io.flutter.plugins.imagepicker.ImageResizer imageResizer -> d
-    android.net.Uri pendingCameraMediaUri -> j
-    io.flutter.plugin.common.MethodChannel$Result pendingResult -> k
-    java.lang.String fileProviderName -> a
-    io.flutter.plugins.imagepicker.ImagePickerDelegate$PermissionManager permissionManager -> f
-    android.app.Activity activity -> b
+    io.flutter.plugins.imagepicker.ImageResizer imageResizer -> e
+    java.io.File externalFilesDirectory -> d
+    io.flutter.plugins.imagepicker.CameraDevice cameraDevice -> j
+    io.flutter.plugins.imagepicker.ImagePickerDelegate$FileUriResolver fileUriResolver -> h
+    io.flutter.plugin.common.MethodChannel$Result pendingResult -> l
+    io.flutter.plugin.common.MethodCall methodCall -> m
+    io.flutter.plugins.imagepicker.ImagePickerCache cache -> f
+    android.net.Uri pendingCameraMediaUri -> k
+    java.lang.String fileProviderName -> b
+    io.flutter.plugins.imagepicker.ImagePickerDelegate$PermissionManager permissionManager -> g
+    io.flutter.plugins.imagepicker.FileUtils fileUtils -> i
+    android.app.Activity activity -> c
     void launchPickVideoFromGalleryIntent() -> A
     void launchTakeImageWithCameraIntent() -> B
     void launchTakeVideoWithCameraIntent() -> C
@@ -14707,34 +15360,34 @@ io.flutter.plugins.imagepicker.ImagePickerDelegate$PermissionManager -> io.flutt
     void askForPermission(java.lang.String,int) -> b
     boolean needRequestCameraPermission() -> c
 io.flutter.plugins.imagepicker.ImagePickerPlugin -> io.flutter.plugins.imagepicker.ImagePickerPlugin:
-    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityBinding -> d
-    io.flutter.plugins.imagepicker.ImagePickerPlugin$LifeCycleObserver observer -> h
-    android.app.Activity activity -> f
-    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding pluginBinding -> c
-    androidx.lifecycle.Lifecycle lifecycle -> g
-    io.flutter.plugins.imagepicker.ImagePickerDelegate delegate -> b
-    io.flutter.plugin.common.MethodChannel channel -> a
-    android.app.Application application -> e
+    io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding activityBinding -> e
+    io.flutter.plugins.imagepicker.ImagePickerPlugin$LifeCycleObserver observer -> i
+    android.app.Activity activity -> g
+    io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding pluginBinding -> d
+    androidx.lifecycle.Lifecycle lifecycle -> h
+    io.flutter.plugins.imagepicker.ImagePickerDelegate delegate -> c
+    io.flutter.plugin.common.MethodChannel channel -> b
+    android.app.Application application -> f
     io.flutter.plugins.imagepicker.ImagePickerDelegate access$000(io.flutter.plugins.imagepicker.ImagePickerPlugin) -> a
     io.flutter.plugins.imagepicker.ImagePickerDelegate constructDelegate(android.app.Activity) -> b
     void setup(io.flutter.plugin.common.BinaryMessenger,android.app.Application,android.app.Activity,io.flutter.plugin.common.PluginRegistry$Registrar,io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> c
     void onAttachedToActivity(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> d
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    void tearDown() -> g
+    void tearDown() -> f
     void onDetachedFromActivity() -> h
     void onReattachedToActivityForConfigChanges(io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding) -> i
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
     void onDetachedFromActivityForConfigChanges() -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.plugins.imagepicker.ImagePickerPlugin$LifeCycleObserver -> io.flutter.plugins.imagepicker.ImagePickerPlugin$LifeCycleObserver:
-    io.flutter.plugins.imagepicker.ImagePickerPlugin this$0 -> b
-    android.app.Activity thisActivity -> a
+    io.flutter.plugins.imagepicker.ImagePickerPlugin this$0 -> c
+    android.app.Activity thisActivity -> b
     void onResume(androidx.lifecycle.LifecycleOwner) -> a
     void onDestroy(androidx.lifecycle.LifecycleOwner) -> b
     void onCreate(androidx.lifecycle.LifecycleOwner) -> c
-    void onPause(androidx.lifecycle.LifecycleOwner) -> e
-    void onStop(androidx.lifecycle.LifecycleOwner) -> f
-    void onStart(androidx.lifecycle.LifecycleOwner) -> g
+    void onPause(androidx.lifecycle.LifecycleOwner) -> f
+    void onStop(androidx.lifecycle.LifecycleOwner) -> g
+    void onStart(androidx.lifecycle.LifecycleOwner) -> i
 io.flutter.plugins.imagepicker.ImagePickerPlugin$MethodResultWrapper -> io.flutter.plugins.imagepicker.ImagePickerPlugin$a:
     io.flutter.plugin.common.MethodChannel$Result methodResult -> a
     android.os.Handler handler -> b
@@ -14784,22 +15437,22 @@ io.flutter.plugins.pathprovider.-$$Lambda$PathProviderPlugin$bvBk1bNR9bsJIR36rB5
 io.flutter.plugins.pathprovider.-$$Lambda$PathProviderPlugin$jnrabx82K3N5SzKW3joSakgMXrA -> io.flutter.plugins.b.g:
     io.flutter.plugins.pathprovider.PathProviderPlugin f$0 -> a
 io.flutter.plugins.pathprovider.PathProviderPlugin -> io.flutter.plugins.b.h:
-    android.content.Context context -> a
-    java.util.concurrent.Executor uiThreadExecutor -> c
-    java.util.concurrent.Executor executor -> d
-    io.flutter.plugin.common.MethodChannel channel -> b
+    android.content.Context context -> b
+    java.util.concurrent.Executor uiThreadExecutor -> d
+    java.util.concurrent.Executor executor -> e
+    io.flutter.plugin.common.MethodChannel channel -> c
     void executeInBackground(java.util.concurrent.Callable,io.flutter.plugin.common.MethodChannel$Result) -> a
     java.lang.String getApplicationSupportDirectory() -> b
     java.lang.String getPathProviderApplicationDocumentsDirectory() -> c
     java.util.List getPathProviderExternalCacheDirectories() -> d
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    java.util.List getPathProviderExternalStorageDirectories(java.lang.String) -> g
-    java.lang.String getPathProviderStorageDirectory() -> h
-    java.lang.String getPathProviderTemporaryDirectory() -> i
+    java.util.List getPathProviderExternalStorageDirectories(java.lang.String) -> f
+    java.lang.String getPathProviderStorageDirectory() -> g
+    java.lang.String getPathProviderTemporaryDirectory() -> h
+    void lambda$executeInBackground$0(com.google.common.util.concurrent.SettableFuture,java.util.concurrent.Callable) -> i
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
-    void lambda$executeInBackground$0(com.google.common.util.concurrent.SettableFuture,java.util.concurrent.Callable) -> k
-    java.lang.String lambda$onMethodCall$1() -> l
+    java.lang.String lambda$onMethodCall$1() -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
     java.lang.String lambda$onMethodCall$1$PathProviderPlugin() -> m
     java.lang.String lambda$onMethodCall$2() -> n
     java.lang.String lambda$onMethodCall$2$PathProviderPlugin() -> o
@@ -14820,16 +15473,16 @@ io.flutter.plugins.pathprovider.PathProviderPlugin$UiThreadExecutor -> io.flutte
 io.flutter.plugins.pathprovider.StorageDirectoryMapper -> io.flutter.plugins.b.i:
     java.lang.String androidType(java.lang.Integer) -> a
 io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl -> io.flutter.plugins.c.a:
-    android.os.Handler handler -> c
-    android.content.SharedPreferences preferences -> a
-    java.util.concurrent.ExecutorService executor -> b
+    android.os.Handler handler -> d
+    android.content.SharedPreferences preferences -> b
+    java.util.concurrent.ExecutorService executor -> c
     android.os.Handler access$000(io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl) -> a
     void commitAsync(android.content.SharedPreferences$Editor,io.flutter.plugin.common.MethodChannel$Result) -> b
     java.util.List decodeList(java.lang.String) -> c
     java.lang.String encodeList(java.util.List) -> d
     java.util.Map getAllPrefs() -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    void teardown() -> g
+    void teardown() -> f
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl$1 -> io.flutter.plugins.c.a$a:
     android.content.SharedPreferences$Editor val$editor -> b
     io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl this$0 -> d
@@ -14838,8 +15491,8 @@ io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl$1$1 -> io.flutter.plu
     io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl$1 this$1 -> c
     boolean val$response -> b
 io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin -> io.flutter.plugins.c.b:
-    io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl handler -> b
-    io.flutter.plugin.common.MethodChannel channel -> a
+    io.flutter.plugins.sharedpreferences.MethodCallHandlerImpl handler -> c
+    io.flutter.plugin.common.MethodChannel channel -> b
     void setupChannel(io.flutter.plugin.common.BinaryMessenger,android.content.Context) -> a
     void teardownChannel() -> b
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
@@ -15179,17 +15832,17 @@ io.flutter.view.VsyncWaiter$1$1 -> io.flutter.view.f$a$a:
     long val$cookie -> a
     io.flutter.view.VsyncWaiter$1 this$1 -> b
 io.github.ponnamkarthik.toast.fluttertoast.FlutterToastPlugin -> e.b.a.a.a.a:
-    io.flutter.plugin.common.MethodChannel channel -> a
+    io.flutter.plugin.common.MethodChannel channel -> b
     void setupChannel(io.flutter.plugin.common.BinaryMessenger,android.content.Context) -> a
     void teardownChannel() -> b
     void onAttachedToEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> e
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
 io.github.ponnamkarthik.toast.fluttertoast.MethodCallHandlerImpl -> e.b.a.a.a.b:
-    android.widget.Toast mToast -> a
-    android.content.Context context -> b
+    android.widget.Toast mToast -> b
+    android.content.Context context -> c
     android.widget.Toast access$getMToast$p(io.github.ponnamkarthik.toast.fluttertoast.MethodCallHandlerImpl) -> a
     void resetToast() -> b
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
 io.github.ponnamkarthik.toast.fluttertoast.MethodCallHandlerImpl$onMethodCall$1 -> e.b.a.a.a.b$a:
     io.github.ponnamkarthik.toast.fluttertoast.MethodCallHandlerImpl this$0 -> b
 io.github.ponnamkarthik.toast.fluttertoast.MethodCallHandlerImpl$resetToast$2 -> e.b.a.a.a.b$b:
@@ -15785,12 +16438,12 @@ net.touchcapture.qr.flutterqr.FlutterQrPlugin -> g.a.a.a.a:
     void onDetachedFromEngine(io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterPluginBinding) -> j
     void onDetachedFromActivityForConfigChanges() -> k
 net.touchcapture.qr.flutterqr.QRView -> g.a.a.a.b:
-    com.journeyapps.barcodescanner.BarcodeView barcodeView -> c
-    boolean permissionGranted -> e
-    boolean isTorchOn -> a
-    java.util.HashMap params -> f
-    boolean isPaused -> b
-    io.flutter.plugin.common.MethodChannel channel -> d
+    com.journeyapps.barcodescanner.BarcodeView barcodeView -> d
+    java.util.HashMap params -> g
+    boolean permissionGranted -> f
+    io.flutter.plugin.common.MethodChannel channel -> e
+    boolean isTorchOn -> b
+    boolean isPaused -> c
     void stopScan() -> A
     void toggleFlash(io.flutter.plugin.common.MethodChannel$Result) -> B
     void dispose() -> a
@@ -15798,13 +16451,13 @@ net.touchcapture.qr.flutterqr.QRView -> g.a.a.a.b:
     void onFlutterViewDetached() -> c
     void onInputConnectionUnlocked() -> d
     void onInputConnectionLocked() -> e
-    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> f
-    android.view.View getView() -> g
-    com.journeyapps.barcodescanner.BarcodeView access$getBarcodeView$p(net.touchcapture.qr.flutterqr.QRView) -> h
-    io.flutter.plugin.common.MethodChannel access$getChannel$p(net.touchcapture.qr.flutterqr.QRView) -> i
-    boolean access$hasCameraPermission(net.touchcapture.qr.flutterqr.QRView) -> j
-    boolean access$isPaused$p(net.touchcapture.qr.flutterqr.QRView) -> k
-    void barCodeViewNotSet(io.flutter.plugin.common.MethodChannel$Result) -> l
+    android.view.View getView() -> f
+    com.journeyapps.barcodescanner.BarcodeView access$getBarcodeView$p(net.touchcapture.qr.flutterqr.QRView) -> g
+    io.flutter.plugin.common.MethodChannel access$getChannel$p(net.touchcapture.qr.flutterqr.QRView) -> h
+    boolean access$hasCameraPermission(net.touchcapture.qr.flutterqr.QRView) -> i
+    boolean access$isPaused$p(net.touchcapture.qr.flutterqr.QRView) -> j
+    void barCodeViewNotSet(io.flutter.plugin.common.MethodChannel$Result) -> k
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> l
     void checkAndRequestPermission(io.flutter.plugin.common.MethodChannel$Result) -> m
     void flipCamera(io.flutter.plugin.common.MethodChannel$Result) -> n
     void getCameraInfo(io.flutter.plugin.common.MethodChannel$Result) -> o
@@ -15820,7 +16473,7 @@ net.touchcapture.qr.flutterqr.QRView -> g.a.a.a.b:
     void resumeCamera(io.flutter.plugin.common.MethodChannel$Result) -> y
     void startScan(java.util.List,io.flutter.plugin.common.MethodChannel$Result) -> z
 net.touchcapture.qr.flutterqr.QRView$1 -> g.a.a.a.b$a:
-    net.touchcapture.qr.flutterqr.QRView this$0 -> a
+    net.touchcapture.qr.flutterqr.QRView this$0 -> b
 net.touchcapture.qr.flutterqr.QRView$startScan$2 -> g.a.a.a.b$b:
     java.util.List $allowedBarcodeTypes -> b
     net.touchcapture.qr.flutterqr.QRView this$0 -> a

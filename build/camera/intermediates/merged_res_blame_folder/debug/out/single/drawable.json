@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/camera/intermediates/res/merged/debug/drawable/notification_bg.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/camera/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/camera/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/Users/risaaugusta/Documents/KARIR/fms_app/build/camera/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
+        "source": "/Users/risaaugusta/.gradle/caches/transforms-2/files-2.1/2d7cf3d26896fbdea41fbefd697f5584/core-1.1.0/res/drawable/notification_bg_low.xml"
+    }
+]

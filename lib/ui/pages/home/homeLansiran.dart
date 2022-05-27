@@ -8,132 +8,52 @@ class homeLansiran extends StatefulWidget {
 }
 
 class _homeLansiranState extends State<homeLansiran> {
-  String unitType = "Fuel Truck";
-  String unitCode = "FT1125";
-  int budget = 450;
-  List<Item> PhotoItems = generateItems(2);
-  List<String> headerPhotoValue=<String>[
-    'Photo Meter Fuel',
-    'Photo HM Unit'
-  ];
-
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  String? imagePath;
+  TrFuelTransfer? trFuelTransfer;
   List<Widget> _widgetOptions = <Widget>[
     homeLansiran(),
     HomeManual(),
-    Text(
-      'Index 2: Notif',
-      style: optionStyle,
-    ),
+    homeNotifikasi(),
     Profile(),
   ];
 
-  List<Item> lansiranItems = generateItems(7);
-  List<String> headerLansiranValue = <String>[
+  List<Item> sourceItems = generateItems(7);
+  List<Item> destinationItems = generateItems(3);
+  List<String> headerSourceValue = <String>[
     'Storage ID',
-    'Operator Unit',
+    'Sounding Awal',
     'Totalisator Awal',
-    'Totalisator Akhir',
-    'Volume Sebelum',
     'Jumlah Liter Pengisian',
-    'Total Volume'
+    'Totalisator Akhir',
+    'Sounding Akhir',
+    'Photo Flowmeter',
   ];
-
-  Lansiran lansiran = Lansiran(
-      storageId: '',
-      nik: '',
-      jml: 0,
-      totalisatorAwal: 0,
-      totalisatorAkhir: 0,
-      volSebelum: 0,
-      volTotal: 0);
-
-  TrFuelDistribution trFuelDistribution = TrFuelDistribution(
-    // transactions_id: Refueling.fTransactionsId,
-    equipment_id:  '',
-    // storage_id: '',
-    site_id: Refueling.fSiteId,
-    // shift_id: '',
-    fuel_filling: (Refueling.fFilling).toString(),
-    fuel_totalisator_awal: (Refueling.fTotalisatorAwal).toString(),
-    fuel_totalisator_akhir: Refueling.fTotalisatorAkhir,
-    hm_equipment: Refueling.fHmEquipment,
-    // storage_operator: Refueling.fStorageOperator,
-    // equipment_operator: Refueling.fEquipmentOperator,
-    image_directory: Refueling.fImageDirectory,
-    image_name: Refueling.fImageName,
-    // equipment_budget: '',
-    // is_active: '',
-    // created_by: '',
-    created_at: Global.time,
-    // updated_by: '',
-    updated_at: Global.time,
-    // attendance_id: '',
-  );
+  List<String> headerDestinationValue = <String>[
+    'Storage ID',
+    'Sounding Awal',
+    'Sounding Akhir',
+  ];
 
   MsStorage? msStorage;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   ScrollController _controller = new ScrollController();
   TextEditingController textEditingController = TextEditingController();
-  var velocityEditingController = TextEditingController();
-  var finalValue = TextEditingController();
-
-  int airFlow = 0;
-  int velocity=0;
-  int valueFinal=0;
-  String sam='', sam2='';
-  String airFlowText='', velocityText='', finalText='';
+  // void camInit() async {
+  //   final cameras = await availableCameras();
+  //   final firstCamera = cameras.first;
+  // }
 
   @override
-  void initState() {
+  void initState()  {
     super.initState();
-    finalValue.addListener(() => setState(() {}));
+    Global.getLocalStorage();
   }
 
-  String totalCalculated() {
-    airFlowText = textEditingController.text;
-    velocityText = velocityEditingController.text;
-    finalText = finalValue.text;
-
-    if (airFlowText != '' && velocityText != '') {
-      Refueling.fTotalisatorAkhir = (Refueling.fFilling + Refueling.fTotalisatorAwal).toString();
-      finalValue.value = finalValue.value.copyWith(
-        text: Refueling.fTotalisatorAkhir.toString(),
-      );
-    }
-    return Refueling.fTotalisatorAkhir;
-  }
 
   @override
   Widget build(BuildContext context) {
-    TrFuelTransfer trFuelTransfer = TrFuelTransfer(
-      // transactions_id: FuelTransfer.tTransactionsId,
-      site_id: FuelTransfer.tSiteId,
-      // shift_id: FuelTransfer.tShiftId,
-      storage_source: (FuelTransfer.tStorageSource).toString(),
-      flowmeter_source: (FuelTransfer.tStorageSource).toString(),
-      totalisator_source_begin: (FuelTransfer.tTotalisatorSourceBegin).toString(),
-      totalisator_source_end: (FuelTransfer.tTotalisatorSourceEnd).toString(),
-      storage_destination: (FuelTransfer.tStorageDestination).toString(),
-      flowmeter_dst: (FuelTransfer.tFlowmeterDst).toString(),
-      totalisator_dst_begin: (FuelTransfer.tTotalisatorDstBegin).toString(),
-      totalisator_dst_end: (FuelTransfer.tTotalisatorDstEnd).toString(),
-      // attendance_id: (FuelTransfer.tAttendanceId).toString(),
-      // approval_id: FuelTransfer.tApprovalId,
-      // is_active: FuelTransfer.tIsActive,
-      created_at: Global.time,
-      // created_by: '',
-      // modified_by: '',
-      modified_at: Global.time,
-    );
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: _selectedIndex == 0
@@ -165,45 +85,40 @@ class _homeLansiranState extends State<homeLansiran> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 20, bottom: 20),
+                      margin: EdgeInsets.only(top:20, bottom:20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                              height: 70,
+                              width: 70,
+                              decoration:
+                              BoxDecoration(borderRadius: BorderRadius.circular(10),
                                   border: Border.all(
                                     color: Color(0xffE4E4E4),
-                                  )),
-                              child: new Image.asset('assets/img/truck.png')),
+                                  )
+                              ),
+                              child: new Image.asset('assets/img/truck.png')
+                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(height: 10),
-                              Text('Unit Code',
+                              Text(
+                                  'Tanggal',
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,
-                                      fontSize: 18)),
+                                  style: TextStyle(color: Colors.grey,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
                               SizedBox(height: 10),
-                              Text('Unit Type',
+                              Text(
+                                  'Shift',
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,
-                                      fontSize: 18)),
-                              SizedBox(height: 10),
-                              Text('Budget',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,
-                                      fontSize: 18)),
+                                  style: TextStyle(color: Colors.grey,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
                             ],
                           ),
                           Column(
@@ -211,40 +126,207 @@ class _homeLansiranState extends State<homeLansiran> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(height: 10),
-                              Text('$unitCode',
+                              Text(
+                                  Global.time,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,
-                                      fontSize: 18)),
+                                  style: TextStyle(color: Colors.black,
+                                      fontFamily: Fonts.REGULAR,fontSize: 18)
+                              ),
                               SizedBox(height: 10),
-                              Text('$unitType ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,
-                                      fontSize: 18)),
-                              SizedBox(height: 10),
-                              Text('$budget ' + 'L',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,
-                                      fontSize: 18)),
+                              FutureBuilder<List>(
+                                future: FmsDatabase.instance.readAttendance(), // a previously-obtained Future<String> or null
+                                builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                  List<Widget> children;
+                                  if (snapshot.hasData) {
+                                    return  snapshot.data!.length > 0 ?
+                                    Text(
+                                        snapshot.data![0]['shift_desc'] ,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.black,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    ) : Text(
+                                        'Silakan input attendance' ,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(color: Colors.grey,
+                                            fontStyle: FontStyle. italic,
+                                            fontFamily: Fonts.REGULAR,fontSize: 18)
+                                    );
+                                  } else if (snapshot.hasError) {
+                                    return Container(
+                                      child: Text('Tidak ada data'),
+                                    );
+                                  } else {
+                                    return Container(
+                                        child: Text('Tidak ada data')
+                                    );
+                                  }
+                                },
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Divider(
-                        color: Color(0xffF5F5F5),
-                        thickness: 20,
-                      ),
+                    Divider(
+                      color: Colors.grey[70],
+                      thickness: 3,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 15, bottom: 15),
+                      padding: EdgeInsets.only(left: 15, bottom: 15, top: 5),
+                      child: Text('Source',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: Fonts.REGULAR,
+                              fontSize: 18)),
+                    ),
+                    ExpansionPanelList(
+                      expansionCallback: (int index, bool isExpanded) {
+                        setState(() {
+                          sourceItems[index].isExpanded = !isExpanded;
+                        });
+                      },
+                      children: sourceItems
+                          .asMap()
+                          .map<int, ExpansionPanel>((index, Item item) =>
+                          MapEntry(
+                            index,
+                            ExpansionPanel(
+                              headerBuilder:
+                                  (BuildContext context, bool isExpanded) {
+                                return ListTile(
+                                  contentPadding: EdgeInsets.only(left: 30),
+                                  title: Text(
+                                      '${headerSourceValue[index]}',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontFamily: Fonts.REGULAR,
+                                          fontSize: 14)),
+                                );
+                              },
+                              body: ListTile(
+                                title: headerSourceValue[index] ==
+                                    headerSourceValue[0]
+                                    ?  StorageDropdown(callback: (value)
+                                {
+                                  FuelTransfer.storage_source = value;
+                                })
+                                    : headerSourceValue[index] ==
+                                    headerSourceValue[6]
+                                    ?
+                                Column(
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed:  () async{
+                                          String? url = await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => TakePictureScreen(camera: getCamera(), callback: (String val) {
+                                                  setState(() {
+                                                    imagePath = val;
+                                                  });
+                                                },)),
+                                          );
+                                          if(url == null ){
+                                            return;
+                                          }else{
+                                            setState(() {
+                                              FuelTransfer.flowmeter_source = url;
+                                            });
+                                          }
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            primary: Coloring.mainColor),
+                                        child: Text(
+                                            'Ambil foto',
+                                            style: TextStyle(color: Colors.white,
+                                                fontFamily: Fonts.REGULAR,fontSize: 12)
+                                        )),
+                                    FuelTransfer.flowmeter_source == '' ? Container() :
+                                    Image.file(File(FuelTransfer.flowmeter_source))
+                                  ],
+                                )
+                                // UploaderDropdown(callback:(String filePath){
+                                //   FuelTransfer.flowmeter_source = filePath;
+                                // })
+                                    : headerSourceValue[index] ==
+                                    headerSourceValue[4]
+                                    ? Container(
+                                      width: MediaQuery.of(context).size.width / 1.8,
+                                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                                      decoration:
+                                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                                      child: Text(
+                                          FuelTransfer.totalisator_source_end,
+                                          style: TextStyle(color: Colors.black, fontFamily: Fonts.REGULAR,fontSize: 18))
+                                  )
+                                    : Container(
+                                  width: MediaQuery.of(context)
+                                      .size
+                                      .width /
+                                      1.8,
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: 10),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.circular(20)),
+                                      child: TextFormField(
+                                        autofocus: false,
+                                        decoration: InputDecoration(
+                                          enabledBorder:
+                                          OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(20),
+                                            borderSide: BorderSide(
+                                              color: Colors.grey.shade200,
+                                            ),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(20),
+                                            borderSide: BorderSide(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          fillColor: Color(0xffFFFFFF),
+                                          filled: true,
+                                          contentPadding:
+                                          EdgeInsets.fromLTRB(
+                                              20.0, 10.0, 20.0, 10.0),
+                                        ),
+                                        onChanged: (value) {
+                                          if (headerSourceValue[
+                                          index] ==
+                                              headerSourceValue[1]) {
+                                            FuelTransfer.sounding_source_begin=value;
+                                          } else if (headerSourceValue[
+                                          index] ==
+                                              headerSourceValue[2]) {
+                                            FuelTransfer.totalisator_source_begin = value;
+                                          } else if (headerSourceValue[
+                                          index] ==
+                                              headerSourceValue[3]) {
+                                            FuelTransfer.volume_pengisian = value;
+                                          }  else if (headerSourceValue[
+                                          index] ==
+                                              headerSourceValue[5]) {
+                                            FuelTransfer.sounding_source_end= value;
+                                          } else {
+                                            null;
+                                          }
+                                        }, //
+                                  ),
+                                ),
+                              ),
+                              isExpanded: item.isExpanded,
+                            ),
+                          ))
+                          .values
+                          .toList(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 15, bottom: 15, top: 15),
                       child: Text('Destination',
                           textAlign: TextAlign.left,
                           style: TextStyle(
@@ -255,10 +337,10 @@ class _homeLansiranState extends State<homeLansiran> {
                     ExpansionPanelList(
                       expansionCallback: (int index, bool isExpanded) {
                         setState(() {
-                          lansiranItems[index].isExpanded = !isExpanded;
+                          destinationItems[index].isExpanded = !isExpanded;
                         });
                       },
-                      children: lansiranItems
+                      children: destinationItems
                           .asMap()
                           .map<int, ExpansionPanel>((index, Item item) =>
                               MapEntry(
@@ -269,7 +351,7 @@ class _homeLansiranState extends State<homeLansiran> {
                                     return ListTile(
                                       contentPadding: EdgeInsets.only(left: 30),
                                       title: Text(
-                                          '${headerLansiranValue[index]}',
+                                          '${headerDestinationValue[index]}',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                               color: Colors.grey,
@@ -278,11 +360,12 @@ class _homeLansiranState extends State<homeLansiran> {
                                     );
                                   },
                                   body: ListTile(
-                                    title: headerLansiranValue[index] ==
-                                            headerLansiranValue[0]
-                                        ? StorageDropdown(callback:(String callback){
-                                          // trFuelDistribution.storage_id = callback;
-                                    },)
+                                    title: headerDestinationValue[index] ==
+                                            headerDestinationValue[0]
+                                        ? StorageDropdown(callback: (value)
+                                    {
+                                      FuelTransfer.storage_dst = value;
+                                    })
                                         : Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -317,39 +400,13 @@ class _homeLansiranState extends State<homeLansiran> {
                                                     EdgeInsets.fromLTRB(
                                                         20.0, 10.0, 20.0, 10.0),
                                               ),
-
-                                              ///value tr fuel distribution
                                               onChanged: (value) {
-                                                if (headerLansiranValue[
+                                                if (headerDestinationValue[
                                                 index] ==
-                                                    headerLansiranValue[0]) {
-                                                  FuelTransfer.tSiteId=value;
-                                                } else if (headerLansiranValue[
-                                                index] ==
-                                                    headerLansiranValue[1]) {
-                                                    FuelTransfer.tStorageSource = value as int;
-                                                } else if (headerLansiranValue[
-                                                index] ==
-                                                    headerLansiranValue[2]) {
-                                                  FuelTransfer.tTotalisatorDstBegin = int.parse(value.toString());
-                                                } else if (headerLansiranValue[
-                                                index] ==
-                                                    headerLansiranValue[3]) {
-                                                  FuelTransfer.tTotalisatorDstEnd = int.parse(value.toString());
-                                                } else if (headerLansiranValue[
-                                                index] ==
-                                                    headerLansiranValue[4]) {
-                                                  FuelTransfer.tFlowmeterSource= int.parse(value.toString());
-                                                } else if (headerLansiranValue[
-                                                index] ==
-                                                    headerLansiranValue[5]) {
-                                                  FuelTransfer.tFlowmeterDst = int.parse(value.toString());
-                                                } else if (headerLansiranValue[
-                                                index] ==
-                                                    headerLansiranValue[6]) {
-                                                  FuelTransfer.tStorageDestination = int.parse(value.toString());
-                                                } else {
-                                                  null;
+                                                    headerDestinationValue[1]) {
+                                                  FuelTransfer.sounding_dst_begin=value;
+                                                }  else {
+                                                  FuelTransfer.sounding_dst_end=value;
                                                 }
                                               }, //
                                             ),
@@ -360,35 +417,6 @@ class _homeLansiranState extends State<homeLansiran> {
                               ))
                           .values
                           .toList(),
-                    ),
-                    ExpansionPanelList(
-                      expansionCallback: (int index, bool isExpanded) {
-                        setState(() {
-                          PhotoItems[index].isExpanded = !isExpanded;
-                        });
-                      },
-                      children: PhotoItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
-                        ExpansionPanel(
-                          headerBuilder: (BuildContext context, bool isExpanded) {
-                            return ListTile(
-                              contentPadding: EdgeInsets.only(left:30),
-                              title: Text('${headerPhotoValue[index]}',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,fontSize: 14)),
-                            );
-                          },
-                          body: ListTile(
-                              title:
-                              UploaderDropdown(callback:(String filePath){
-                                headerPhotoValue[index] ==
-                                    headerPhotoValue[0] ?
-                                FuelTransfer.tFlowmeterSource = filePath.toString() as int :  FuelTransfer.tFlowmeterDst = int.parse(filePath.toString()) ;
-                              })
-                          ),
-                          isExpanded: item.isExpanded,
-                        ),
-                      )).values.toList(),
                     ),
                     Container(
                       margin: EdgeInsets.only(bottom: 20, top: 15),
@@ -407,10 +435,25 @@ class _homeLansiranState extends State<homeLansiran> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 side: BorderSide(color: Coloring.mainColor)),
-                            onPressed: () {
-                              // print(trFuelTransfer.toJson());
-                              // FmsDatabase.instance.createTransfer(trFuelTransfer).then((value) => {_dialogAlert()});
-                              _dialogAlert();
+                            onPressed: () async {
+                              trFuelTransfer = TrFuelTransfer(
+                                storage_source: FuelTransfer.storage_source,
+                                sounding_begin_source: FuelTransfer.sounding_source_begin,
+                                sounding_end_source: FuelTransfer.sounding_source_end,
+                                totalisator_begin_source: FuelTransfer.totalisator_source_begin,
+                                totalisator_end_source: FuelTransfer.totalisator_source_end,
+                                photo_flowmeter: FuelTransfer.flowmeter_source,
+                                volume: FuelTransfer.volume_pengisian,
+                                storage_dst: FuelTransfer.storage_dst,
+                                sounding_begin_dst: FuelTransfer.sounding_dst_begin,
+                                sounding_end_dst: FuelTransfer.sounding_dst_end,
+                                shift_id: (await FmsDatabase.instance.readAttendance())[0]['shift_id'].toString(),
+                                site_id: (await FmsDatabase.instance.readAttendance())[0]['site_id'].toString(),
+                                material_number: 'SOLAR',
+                                created_at: Global.time,
+                                created_by: (await FmsDatabase.instance.readAttendance())[0]['employee_name'].toString(),
+                              );
+                              FmsDatabase.instance.createTransfer(trFuelTransfer!).then((value) => {_dialogAlert()});
                             },
                             color: Coloring.mainColor,
                             textColor: Colors.white,
@@ -456,7 +499,7 @@ class _homeLansiranState extends State<homeLansiran> {
                         color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
                       ),
                       Text(
-                          'Home',
+                          'Beranda',
                           textAlign: TextAlign.center,
                           style: TextStyle(color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
                               fontFamily: Fonts.REGULAR,fontSize: 14)
@@ -478,7 +521,7 @@ class _homeLansiranState extends State<homeLansiran> {
                         color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                       ),
                       Text(
-                          'Sync',
+                          'Sinkron',
                           textAlign: TextAlign.center,
                           style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                               fontFamily: Fonts.REGULAR,fontSize: 14)
@@ -564,5 +607,14 @@ class _homeLansiranState extends State<homeLansiran> {
         );
       },
     );
+  }
+
+  ///camera
+  Future<CameraDescription> getCamera() async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    final cameras = await availableCameras();
+    final firstCamera = cameras.first;
+    return firstCamera;
   }
 }

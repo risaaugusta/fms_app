@@ -1,36 +1,34 @@
 part of '../pages.dart';
 
 class homeBAPS extends StatefulWidget {
-  const homeBAPS({Key? key}) : super(key: key);
+  const homeBAPS({Key? key})
+      : super(key: key);
+  // const homeBAPS({Key? key}) : super(key: key);
 
   @override
   _homeBAPSState createState() => _homeBAPSState();
 }
 
 class _homeBAPSState extends State<homeBAPS> {
-  String unitType = "Fuel Truck";
-  String unitCode = "FT1125";
-  int budget = 450;
-
+  double totalisatorAkhir = 0;
+  final formKey = GlobalKey<FormState>();
+  String? imagePath;
+  List selectedUserProfile = [];
+  TrBaps? trBaps;
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     homeLansiran(),
     HomeManual(),
-    Text(
-      'Index 2: Notif',
-      style: optionStyle,
-    ),
+    homeNotifikasi(),
     Profile(),
   ];
 
-  List<Item> DataItems = generateItems(16);
+  List<Item> DataItems = generateItems(17);
   List<Item> DestinationItems = generateItems(1);
-  List<Item> SignatureItems = generateItems(1);
   List<String> headerDataValue=<String>[
     'No. SJ',
-    'No. PO Vendor',
+    'No. DO Vendor',
+    'No. PO',
     'Vol SJ/Voucher',
     'Nama Supplier',
     'Nama Driver',
@@ -38,75 +36,42 @@ class _homeBAPSState extends State<homeBAPS> {
     'Volume Pengisian',
     'Segel Awal',
     'Segel Akhir',
-    'Deviasi',
+    'Kapasitas Tangki',
+    // 'Penerimaan Solar Tangki',
     'Sounding Awal',
     'Sounding Akhir',
     'SG Observed',
     'SG DO',
-    'Temp Observed',
-    'Temp DO',
+    'Temperatur Observed',
+    'Temperatur DO',
   ];
   List<String> headerDestinationValue=<String>[
-    'Fuel Truck ID',
-    'Tanda Tangan'
+    'Storage ID',
   ];
-  List<String> headerSignatureValue=<String>[
-    'Tanda Tangan'
-  ];
-  List<Item> PhotoItems = generateItems(6);
+  List<Item> PhotoItems = generateItems(9);
   List<String> headerPhotoValue=<String>[
     'Totalisator Awal',
     'Totalisator Akhir',
-    'Flow Meter',
+    'Photo Totalisator Awal',
+    'Photo Totalisator Akhir',
     'Tanda Tangan Driver',
-    'Tanda Tangan Saksi (Serta Nama)',
+    'Tanda Tangan Saksi',
+    'Nama Saksi',
     'Tanda Tangan PIC Penerima',
+    'Nama PIC Penerima',
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
   ScrollController _controller = new ScrollController();
 
   @override
+  void initState() {
+    super.initState();
+    Global.getLocalStorage();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TrBaps trBaps = TrBaps(
-      // baps_id: Baps.bBapsId,
-      site_id: (Baps.bSiteId).toString(),
-      // shift_id: Baps.bShiftId,
-      // operator_id: (Baps.bOperatorId).toString(),
-      approval_id: Baps.bApprovalId,
-      notes: Baps.bNotes,
-      baps_status: Baps.bBapsStatus,
-      created_at: Global.time,
-      // created_by:'',
-      // modified_by:'',
-      modified_at: Global.time,
-    );
-    TrBapsDetail trBapsDetail = TrBapsDetail(
-      sj_solar_transportir_no: BapsDetail.bdSjSolarTransportirNo,
-      do_vendor_no: BapsDetail.bdDoVendorNo,
-      pr_po_no: BapsDetail.bdPrPoNo,
-      supplier_name: BapsDetail.bdSupplierName,
-      driver_name: BapsDetail.bdDriverName,
-      vehicle_no: BapsDetail.bdVehicleNo,
-      storage_id: BapsDetail.bdStorageId,
-      volume: BapsDetail.bdVolume,
-      segel_begin: BapsDetail.bdSegelBegin,
-      segel_end: BapsDetail.bdSegelEnd,
-      totalisator_begin: BapsDetail.bdTotalisatorBegin,
-      totalisator_end: BapsDetail.bdTotalisatorEnd,
-      flowmeter: BapsDetail.bdFlowmeter,
-      deviation: BapsDetail.bdDeviation,
-      sounding_begin: BapsDetail.bdSoundingBegin,
-      sounding_end: BapsDetail.bdSoundingEnd,
-      sg_observed: BapsDetail.bdSgObserved,
-      sg_do: BapsDetail.bdSgDo,
-      temp_observed: BapsDetail.bdTempObserved,
-      temp_do: BapsDetail.bdTempDo,
-    );
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: _selectedIndex == 0  ? AppBar(
@@ -143,89 +108,8 @@ class _homeBAPSState extends State<homeBAPS> {
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: EdgeInsets.only(top:20, bottom:20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        height: 100,
-                        width: 100,
-                        decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Color(0xffE4E4E4),
-                            )
-                        ),
-                        child: new Image.asset('assets/img/truck.png')
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 10),
-                        Text(
-                            'Unit Code',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.grey,
-                                fontFamily: Fonts.REGULAR,fontSize: 18)
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            'Unit Type',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.grey,
-                                fontFamily: Fonts.REGULAR,fontSize: 18)
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            'Budget',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.grey,
-                                fontFamily: Fonts.REGULAR,fontSize: 18)
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 10),
-                        Text(
-                            '$unitCode',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.black,
-                                fontFamily: Fonts.REGULAR,fontSize: 18)
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            '$unitType ',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.black,
-                                fontFamily: Fonts.REGULAR,fontSize: 18)
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                            '$budget ' + 'L' ,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.black,
-                                fontFamily: Fonts.REGULAR,fontSize: 18)
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(bottom: 20),
-                child: Divider(
-                  color: Color(0xffF5F5F5),
-                  thickness: 5,
-                ),
-              ),
               Padding(
-                padding: EdgeInsets.only(left: 15, bottom: 15),
+                padding: EdgeInsets.only(left: 15, bottom: 15, top: 15),
                 child: Text(
                     'Vendor',
                     textAlign: TextAlign.left,
@@ -251,82 +135,91 @@ class _homeBAPSState extends State<homeBAPS> {
                       );
                     },
                     body: ListTile(
-                        title:
-                        Container(
-                          width: MediaQuery.of(context).size.width / 1.8,
-                          margin: EdgeInsets.symmetric(vertical: 10),
-                          decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                          child: TextFormField(
-                            autofocus: false,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade200,
+                        title: Container(
+                            width: MediaQuery.of(context).size.width / 1.8,
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            decoration:
+                            BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                            child: TextFormField(
+                                autofocus: false,
+                                decoration: InputDecoration(
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide(
+                                      color: Colors.grey.shade200,
+                                    ),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  fillColor: Color(0xffFFFFFF),
+                                  filled: true,
+                                  contentPadding:
+                                  EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                                 ),
+                                onChanged: (value) {
+                                  if (headerDataValue[index] ==
+                                      headerDataValue[0]) {
+                                    Baps.sj_solar_transportir_no = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[1]){
+                                    Baps.do_vendor_no = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[2]){
+                                    Baps.no_po = value;
+                                  } else if ( headerDataValue[index] ==
+                                      headerDataValue[3]){
+                                    Baps.volume_sj_voucher = value;
+                                  }
+                                  else if ( headerDataValue[index] ==
+                                      headerDataValue[4]){
+                                    Baps.supplier_name = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[5]){
+                                    Baps.driver_name = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[6]){
+                                    Baps.vehicle_no = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[7]){
+                                    setState(() {
+                                      Baps.volume_pengisian = value;
+                                      Baps.deviation;
+                                    });
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[8]){
+                                    Baps.segel_begin = value;
+                                  } else if ( headerDataValue[index] ==
+                                      headerDataValue[9]){
+                                    Baps.segel_end = value;
+                                  }
+                                  else if ( headerDataValue[index] ==
+                                      headerDataValue[10]){
+                                    Baps.capacity = value;
+                                  }
+                                  else if ( headerDataValue[index] ==
+                                      headerDataValue[11]){
+                                    Baps.sounding_begin = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[12]){
+                                    Baps.sounding_end = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[13]){
+                                    Baps.sg_observed = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[14]){
+                                    Baps.sg_do = value;
+                                  }else if ( headerDataValue[index] ==
+                                      headerDataValue[15]){
+                                    Baps.temp_observed = value;
+                                  }
+                                  else { Baps.temp_do = value ;}
+                                }
                               ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              fillColor: Color(0xffFFFFFF),
-                              filled: true,
-                              contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                            ),
-                            onChanged: (value) {
-                              if (headerDataValue[index] ==
-                                  headerDataValue[0]) {
-                                BapsDetail.bdSjSolarTransportirNo = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[1]){
-                                BapsDetail.bdDoVendorNo = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[2]){
-                                BapsDetail.bdPrPoNo = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[3]){
-                                BapsDetail.bdSupplierName = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[4]){
-                                BapsDetail.bdDriverName = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[5]){
-                                BapsDetail.bdVehicleNo = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[6]){
-                                BapsDetail.bdVolume = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[7]){
-                                BapsDetail.bdSegelBegin = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[8]){
-                                BapsDetail.bdSegelEnd = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[9]){
-                                BapsDetail.bdDeviation = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[10]){
-                                BapsDetail.bdSoundingBegin = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[11]){
-                                BapsDetail.bdSoundingEnd = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[12]){
-                                BapsDetail.bdSgObserved = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[13]){
-                                BapsDetail.bdSgDo = value;
-                              }else if ( headerDataValue[index] ==
-                                  headerDataValue[14]){
-                                BapsDetail.bdTempObserved = value;
-                              }else { BapsDetail.bdTempDo = value ;}
-                            }, //dummy value
                           ),
-                        )
                     ),
                     isExpanded: item.isExpanded,
                   ),
@@ -360,6 +253,37 @@ class _homeBAPSState extends State<homeBAPS> {
                     },
                     body: ListTile(
                         title:
+                        StorageDropdown(callback: (value)
+                        {
+                           // trBaps!.storage_id = value;
+                           Baps.storage_id = value;
+                        })
+                    ),
+                    isExpanded: item.isExpanded,
+                  ),
+                )).values.toList(),
+              ),
+              ExpansionPanelList(
+                expansionCallback: (int index, bool isExpanded) {
+                  setState(() {
+                    PhotoItems[index].isExpanded = !isExpanded;
+                  });
+                },
+                children: PhotoItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
+                  ExpansionPanel(
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                        contentPadding: EdgeInsets.only(left:30),
+                        title: Text('${headerPhotoValue[index]}',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(color: Colors.grey,
+                                fontFamily: Fonts.REGULAR,fontSize: 14)),
+                      );
+                    },
+                    body: ListTile(
+                        title:
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[0] ?
                         Container(
                           width: MediaQuery.of(context).size.width / 1.8,
                           margin: EdgeInsets.symmetric(vertical: 10),
@@ -386,55 +310,180 @@ class _homeBAPSState extends State<homeBAPS> {
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                             ),
                             onChanged: (value)  {
-                                Baps.bSiteId=value;
+                              setState(() {
+                                Baps.totalisator_begin = value;
+                              });
                             }, ////dummy value
                           ),
-                        )
-                    ),
-                    isExpanded: item.isExpanded,
-                  ),
-                )).values.toList(),
-              ),
-              ExpansionPanelList(
-                expansionCallback: (int index, bool isExpanded) {
-                  setState(() {
-                    PhotoItems[index].isExpanded = !isExpanded;
-                  });
-                },
-                children: PhotoItems.asMap().map<int,ExpansionPanel>((index, Item item) => MapEntry(index,
-                  ExpansionPanel(
-                    headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
-                        contentPadding: EdgeInsets.only(left:30),
-                        title: Text('${headerPhotoValue[index]}',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.grey,
-                                fontFamily: Fonts.REGULAR,fontSize: 14)),
-                      );
-                    },
-                    body: ListTile(
-                        title:
+                        ) :
                         headerPhotoValue[index] ==
-                            headerPhotoValue[3] ?
-                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd) :
+                            headerPhotoValue[1] ?
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                          child: Text(
+                              Baps.totalisator_end,
+                              style: TextStyle(color: Colors.black, fontFamily: Fonts.REGULAR,fontSize: 18))
+                        ) :
                         headerPhotoValue[index] ==
                             headerPhotoValue[4] ?
-                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
+                        SignaturePad(signature: null,callback: (ttd) => Baps.driver_signing = ttd)
+                          :
                         headerPhotoValue[index] ==
                             headerPhotoValue[5] ?
-                        SignaturePad(signature: null,callback: (ttd)=> trBapsDetail.storage_id = ttd)  :
-                        UploaderDropdown(callback:(String filePath){
-                          if (headerPhotoValue[index] ==
-                              headerPhotoValue[0]) {
-                            Baps.bApprovalId = filePath;
-                            BapsDetail.bdTotalisatorBegin = filePath;
-                          }else if ( headerPhotoValue[index] ==
-                              headerPhotoValue[1]){
-                            Baps.bNotes = filePath;
-                            BapsDetail.bdTotalisatorEnd = filePath;
-                          }else { Baps.bBapsStatus = filePath ;
-                          BapsDetail.bdFlowmeter = filePath;}
-                        })
+                        SignaturePad(signature: null,callback: (ttd)=> Baps.witness_signing  = ttd)  :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[6] ?
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                          child: TextFormField(
+                            autofocus: false,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                  color: Colors.grey.shade200,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              fillColor: Color(0xffFFFFFF),
+                              filled: true,
+                              contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                            ),
+                            onChanged: (value)  {
+                              Baps.witness_name = value;
+                            }, ////dummy value
+                          ),
+                        ) :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[7] ?
+                        SignaturePad(signature: null,callback: (ttd)=> Baps.receiver_signing  = ttd,
+                        )  :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[8] ?
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.8,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                          child: TextFormField(
+                            autofocus: false,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                  color: Colors.grey.shade200,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              fillColor: Color(0xffFFFFFF),
+                              filled: true,
+                              contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                            ),
+                            onChanged: (value)  {
+                              Baps.receiver_name = value;
+                            }, ////dummy value
+                          ),
+                        ) :
+                        headerPhotoValue[index] ==
+                            headerPhotoValue[2] ?
+                          ///camera future builder
+                      Column(
+                        children: [
+                          ElevatedButton(
+                          onPressed:  () async{
+                              String? url = await Navigator.push(
+                              context,
+                                MaterialPageRoute(
+                                builder: (context) => TakePictureScreen(camera: getCamera(), callback: (String val) {
+                                  setState(() {
+                                    imagePath = val;
+                                  });
+                                },)),
+                                );
+                              if(url == null ){
+                                return;
+                              }else{
+                                setState(() {
+                                  // imagePath = url;
+                                    Baps.photo_totalisator_begin = url;
+                                });
+                              }
+                              },
+                             style: ElevatedButton.styleFrom(
+                            primary: Coloring.mainColor),
+                            child: Text(
+                            'Ambil foto',
+                            style: TextStyle(color: Colors.white,
+                                fontFamily: Fonts.REGULAR,fontSize: 12)
+                        )),
+                          Baps.photo_totalisator_begin == '' ? Container() :
+                          Image.file(File(Baps.photo_totalisator_begin))
+                        ],
+                      ) :
+                        Column(
+                          children: [
+                            ElevatedButton(
+                                onPressed:  () async{
+                                  String? url = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => TakePictureScreen(camera: getCamera(), callback: (String val) {
+                                          setState(() {
+                                            imagePath = val;
+                                          });
+                                        },)),
+                                  );
+                                  if(url == null ){
+                                    return;
+                                  }else{
+                                    setState(() {
+                                      // imagePath = url;
+                                        Baps.photo_totalisator_end = url;
+                                    });
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    primary: Coloring.mainColor),
+                                child: Text(
+                                    'Ambil foto',
+                                    style: TextStyle(color: Colors.white,
+                                        fontFamily: Fonts.REGULAR,fontSize: 12)
+                                )),
+                            Baps.photo_totalisator_end == '' ? Container() :
+                            Image.file(File(Baps.photo_totalisator_end))
+                            // Text(Baps.photo_totalisator_end)
+                          ],
+                        )
+                      //       :
+                      // UploaderDropdown(callback:(String filePath)
+                      // {
+                      //   if (headerPhotoValue[index] ==
+                      //       headerPhotoValue[2]) {
+                      //     Baps.photo_totalisator_begin = filePath;
+                      //   }else if ( headerPhotoValue[index] ==
+                      //       headerPhotoValue[3]){
+                      //     Baps.photo_totalisator_end = filePath;
+                      //   }else {
+                      //     null;}
+                      // })
                     ),
                     isExpanded: item.isExpanded,
                   ),
@@ -457,11 +506,56 @@ class _homeBAPSState extends State<homeBAPS> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide(color: Coloring.mainColor)),
-                      onPressed: () {
-                        // print(trBapsDetail.toJson());
-                        // FmsDatabase.instance.createBaps(trBaps).then((value) => {_dialogAlert()});
-                        // FmsDatabase.instance.createBapsDetail(trBapsDetail).then((value) => {_dialogAlert()});
-                        _dialogAlert();
+                      onPressed: () async {
+                        trBaps = TrBaps(
+                          baps_no: (await FmsDatabase.instance.readAttendance())[0]['site_id'].toString() + '/' + 'BAPS' + '/' + Global.bapsTime ,
+                          site_id: null,
+                          storage_id: Baps.storage_id ,
+                          transaction_time: Global.time,
+                          sj_solar_transportir_no: Baps.sj_solar_transportir_no,
+                          do_vendor_no: Baps.do_vendor_no,
+                          no_po: Baps.no_po,
+                          volume_sj_voucher: Baps.volume_sj_voucher,
+                          supplier_name: Baps.supplier_name,
+                          driver_name: Baps.driver_name,
+                          vehicle_no: Baps.vehicle_no,
+                          capacity: Baps.capacity,
+                          segel_begin: Baps.segel_begin,
+                          segel_end: Baps.segel_end,
+                          totalisator_begin: Baps.totalisator_begin,
+                          totalisator_end: Baps.totalisator_end,
+                          photo_totalisator_begin: Baps.photo_totalisator_begin,
+                          photo_totalisator_end: Baps.photo_totalisator_end,
+                          sounding_begin: Baps.sounding_begin,
+                          sounding_end: Baps.sounding_end,
+                          volume_pengisian: Baps.volume_pengisian,
+                          sg_observed: Baps.sg_observed,
+                          sg_do: Baps.sg_do,
+                          deviation: Baps.deviation ,
+                          temp_observed: Baps.temp_observed,
+                          temp_do: Baps.temp_do,
+                          driver_signing: Baps.driver_signing,
+                          witness_signing: Baps.witness_signing,
+                          witness_name: Baps.witness_name,
+                          receiver_signing: Baps.receiver_signing,
+                          receiver_name: Baps.receiver_name,
+                          created_at: Global.time,
+                          created_by:(await FmsDatabase.instance.readAttendance())[0]['employee_name'].toString(),
+                          modified_by: (await FmsDatabase.instance.readAttendance())[0]['employee_name'].toString(),
+                          modified_at: Global.time,
+                          status_approval: null,
+                          material_number: 'SOLAR',
+                        );
+                        if( Baps.sj_solar_transportir_no.isEmpty || Baps.do_vendor_no.isEmpty ||
+                            Baps.no_po.isEmpty || Baps.volume_sj_voucher.isEmpty || Baps.supplier_name.isEmpty ||
+                            Baps.driver_name.isEmpty || Baps.vehicle_no.isEmpty || Baps.capacity.isEmpty ||
+                            Baps.segel_begin.isEmpty || Baps.segel_end.isEmpty ||
+                            Baps.totalisator_begin.isEmpty || Baps.totalisator_end.isEmpty || Baps.volume_pengisian.isEmpty ||
+                            Baps.sounding_begin.isEmpty || Baps.sounding_end.isEmpty || Baps.sg_observed.isEmpty || Baps.temp_observed.isEmpty){
+                          _dialogMandatory();
+                        }else{
+                          FmsDatabase.instance.createBaps(trBaps!).then((value)=> {_dialogAlert()});
+                        }
                       },
                       color: Coloring.mainColor,
                       textColor: Colors.white,
@@ -504,7 +598,7 @@ class _homeBAPSState extends State<homeBAPS> {
                             color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
                           ),
                           Text(
-                              'Home',
+                              'Beranda',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: _selectedIndex == 0 ? Coloring.mainColor : Colors.grey,
                                   fontFamily: Fonts.REGULAR,fontSize: 14)
@@ -526,7 +620,7 @@ class _homeBAPSState extends State<homeBAPS> {
                             color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                           ),
                           Text(
-                              'Sync',
+                              'Sinkron',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: _selectedIndex == 1 ? Coloring.mainColor : Colors.grey,
                                   fontFamily: Fonts.REGULAR,fontSize: 14)
@@ -586,6 +680,7 @@ class _homeBAPSState extends State<homeBAPS> {
         )
     );
   }
+
   ///pop up status
   Future<void> _dialogAlert() async {
     return showDialog<void>(
@@ -613,6 +708,281 @@ class _homeBAPSState extends State<homeBAPS> {
       },
     );
   }
+
+  ///pop up mandatory
+  Future<void> _dialogMandatory() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Oops!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Baps.sj_solar_transportir_no.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'No. SJ ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.do_vendor_no.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'No. DO Vendor ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.no_po.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'No. PO ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.volume_sj_voucher.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'Volume SJ/Voucher ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.supplier_name.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'nama supplier ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.driver_name.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'nama driver ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.vehicle_no.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'no. vehicle ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.capacity.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'kapasitas tangki ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.segel_begin.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'segel awal ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.segel_end.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'segel akhir ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.totalisator_begin.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'totalisator awal ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.totalisator_end.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'totalisator akhir ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.volume_pengisian.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'volume pengisian ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.sounding_begin.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'sounding awal ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.sounding_end.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'sounding akhir ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                Baps.sg_observed.isEmpty ?
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'SG observed ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                ) :
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Data '),
+                      TextSpan(text: 'Temperatur observed ', style: const TextStyle(fontWeight: FontWeight.bold)) ,
+                      TextSpan(text: 'harus diisi!'),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Oke'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  ///camera
+  Future<CameraDescription> getCamera() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final cameras = await availableCameras();
+  final firstCamera = cameras.first;
+  return firstCamera;
+  }
+
 }
+
 
 

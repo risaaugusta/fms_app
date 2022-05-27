@@ -895,6 +895,7 @@ layout toast_custom
 layout zxing_barcode_scanner
 layout zxing_capture
 mipmap ic_launcher
+mipmap logo
 raw zxing_beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description

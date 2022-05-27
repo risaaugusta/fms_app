@@ -19,7 +19,7 @@ class TrFuelDistributionFields {
     created_at,
     // updated_by,
     updated_at,
-    // attendance_id,
+    attendance_id,
     image_directory,
     image_name,
   ];
@@ -44,7 +44,7 @@ class TrFuelDistributionFields {
   static final String updated_at = 'updated_at';
   static final String image_directory = 'image_directory';
   static final String image_name = 'image_name';
-  // static final String attendance_id = 'attendance_id';
+  static final String attendance_id = 'attendance_id';
 }
 
 class TrFuelDistribution {
@@ -68,7 +68,7 @@ class TrFuelDistribution {
   String updated_at;
   String image_directory;
   String image_name;
-  // String attendance_id;
+  String attendance_id;
 
   TrFuelDistribution({
     // this.id,
@@ -91,7 +91,7 @@ class TrFuelDistribution {
     required this.updated_at,
     required this.image_directory,
     required this.image_name,
-    // required this.attendaceId,
+    required this.attendance_id,
   });
 
   TrFuelDistribution copy({
@@ -115,7 +115,7 @@ class TrFuelDistribution {
     String? updated_at,
     String? image_directory,
     String? image_name,
-    // String? attendaceId,
+    String? attendance_id,
   }) =>
       TrFuelDistribution(
         // id: id ?? this.id,
@@ -138,7 +138,7 @@ class TrFuelDistribution {
         updated_at: updated_at ?? this.updated_at,
         image_directory: updated_at ?? this.image_directory,
         image_name: updated_at ?? this.image_name,
-        // attendaceId: attendaceId ?? this.attendaceId,
+        attendance_id: attendance_id ?? this.attendance_id,
       );
 
   static TrFuelDistribution fromJson(Map<String, Object?> json) => TrFuelDistribution(
@@ -162,7 +162,7 @@ class TrFuelDistribution {
     updated_at: json[TrFuelDistributionFields.updated_at] as String,
     image_directory: json[TrFuelDistributionFields.image_directory] as String,
     image_name: json[TrFuelDistributionFields.image_name] as String,
-    // attendaceId: json[TrFuelDistributionFields.attendaceId] as String,
+    attendance_id: json[TrFuelDistributionFields.attendance_id] as String,
   );
 
   Map<String, Object?> toJson() => {
@@ -186,7 +186,7 @@ class TrFuelDistribution {
     TrFuelDistributionFields.updated_at: updated_at,
     TrFuelDistributionFields.image_directory: image_directory,
     TrFuelDistributionFields.image_name: image_name,
-    // TrFuelDistributionFields.attendaceId: attendaceId,
+    TrFuelDistributionFields.attendance_id: attendance_id,
   };
 
 }

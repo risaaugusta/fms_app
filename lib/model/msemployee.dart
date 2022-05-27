@@ -1,4 +1,4 @@
-final String tableEmployee = 'MsEmployee';
+final String tableEmployee = 'msemployee';
 
 class MsEmployeeFields {
   static final List<String> values = [
@@ -35,7 +35,7 @@ class MsEmployee {
   String EmployeeID;
   String EmployeeName;
   String EmployeeAddress;
-  double EmployeePhone;
+  String EmployeePhone;
   String positionID;
   String SiteId;
   String DeptID;
@@ -64,7 +64,7 @@ class MsEmployee {
     String? EmployeeID,
     String? EmployeeName,
     String? EmployeeAddress,
-    double? EmployeePhone,
+    String? EmployeePhone,
     String? positionID,
     String? SiteId,
     String? DeptID,
@@ -93,7 +93,7 @@ class MsEmployee {
     EmployeeID: json[MsEmployeeFields.EmployeeID] as String,
     EmployeeName: json[MsEmployeeFields.EmployeeName] as String,
     EmployeeAddress: json[MsEmployeeFields.EmployeeAddress] as String,
-    EmployeePhone: json[MsEmployeeFields.EmployeePhone] as double,
+    EmployeePhone: json[MsEmployeeFields.EmployeePhone] as String,
     positionID: json[MsEmployeeFields.positionID] as String,
     SiteId: json[MsEmployeeFields.SiteId] as String,
     DeptID: json[MsEmployeeFields.DeptID] as String,

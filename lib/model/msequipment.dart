@@ -1,4 +1,4 @@
-final String tableEquipment = 'MsEquipment';
+final String tableEquipment = 'msequipment';
 
 class MsEquipmentFields {
   static final List<String> values = [
@@ -12,12 +12,14 @@ class MsEquipmentFields {
    auth_text,
    company_code,
     changed_by_system,
-    created_by,
+     createdBy,
    created_at,
     updatedBy,
     updated_at,
-   load_category,
-   load_category_unit,
+   load_capacity,
+   load_capacity_unit,
+   planner_group,
+   main_work_center
   ];
 
   static final String equipment_id = 'equipment_id';
@@ -30,31 +32,35 @@ class MsEquipmentFields {
   static final String auth_text = 'auth_text';
   static final String company_code = 'company_code';
   static final String changed_by_system = 'changed_by_system';
-  static final String created_by = 'created_by';
+  static final String  createdBy = ' createdBy';
   static final String created_at = 'created_at';
   static final String updatedBy = 'updatedBy';
   static final String updated_at = 'updated_at';
-  static final String load_category = 'load_category';
-  static final String load_category_unit = 'load_category_unit';
+  static final String load_capacity = 'load_capacity';
+  static final String load_capacity_unit = 'load_capacity_unit';
+  static final String planner_group = 'planner_group';
+  static final String main_work_center = 'main_work_center';
 }
 
 class MsEquipment {
   String equipment_id;
   String manufacturer;
   String model_number;
-  double tank_capacity;
+  String tank_capacity;
   String category;
   String category_desc;
   String auth_group;
   String auth_text;
   String company_code;
   String changed_by_system;
-  String created_by;
+  String  createdBy;
   String created_at;
   String updatedBy;
   String updated_at;
-  String load_category;
-  String load_category_unit;
+  String load_capacity;
+  String load_capacity_unit;
+  String planner_group;
+  String main_work_center;
 
   MsEquipment({
     required this.equipment_id,
@@ -67,31 +73,35 @@ class MsEquipment {
     required this.auth_text,
     required this.company_code,
     required this.changed_by_system,
-    required this.created_by,
+    required this. createdBy,
     required this.created_at,
     required this.updatedBy,
     required this.updated_at,
-    required this.load_category,
-    required this.load_category_unit,
+    required this.load_capacity,
+    required this.load_capacity_unit,
+    required this.planner_group,
+    required this.main_work_center
   });
 
   MsEquipment copy({
     String? equipment_id,
     String? manufacturer,
     String? model_number,
-    double? tank_capacity,
+    String? tank_capacity,
     String? category,
     String? category_desc,
     String? auth_group,
     String? auth_text,
     String? company_code,
     String? changed_by_system,
-    String? created_by,
+    String?  createdBy,
     String? created_at,
     String? updatedBy,
     String? updated_at,
-    String? load_category,
-    String? load_category_unit,
+    String? load_capacity,
+    String? load_capacity_unit,
+    String? planner_group,
+    String? main_work_center
   }) =>
       MsEquipment(
         equipment_id: equipment_id ?? this.equipment_id,
@@ -104,31 +114,35 @@ class MsEquipment {
         auth_text: auth_text ?? this.auth_text,
         company_code: company_code ?? this.company_code,
         changed_by_system: changed_by_system ?? this.changed_by_system,
-        created_by: created_by ?? this.created_by,
+         createdBy:  createdBy ?? this. createdBy,
         created_at: company_code ?? this.created_at,
         updatedBy: updatedBy ?? this.updatedBy,
         updated_at: updated_at ?? this.updated_at,
-        load_category: company_code ?? this.load_category,
-        load_category_unit: company_code ?? this.load_category_unit,
+        load_capacity: load_capacity ?? this.load_capacity,
+        load_capacity_unit: load_capacity ?? this.load_capacity_unit,
+        planner_group: planner_group ?? this.planner_group,
+        main_work_center: main_work_center ?? this.main_work_center
       );
 
-  static MsEquipment fromJson(Map<String, Object?> json) => MsEquipment(
+  static MsEquipment fromJson(Map<String, dynamic> json) => MsEquipment(
     equipment_id: json[MsEquipmentFields.equipment_id] as String,
     manufacturer: json[MsEquipmentFields.manufacturer] as String,
     model_number: json[MsEquipmentFields.model_number] as String,
-    tank_capacity: json[MsEquipmentFields.tank_capacity] as double,
+    tank_capacity: json[MsEquipmentFields.tank_capacity] as String,
     category: json[MsEquipmentFields.category] as String,
     category_desc: json[MsEquipmentFields.category_desc] as String,
     auth_group: json[MsEquipmentFields.auth_group] as String,
     auth_text: json[MsEquipmentFields.auth_text] as String,
     company_code: json[MsEquipmentFields.company_code] as String,
     changed_by_system: json[MsEquipmentFields.changed_by_system] as String,
-    created_by: json[MsEquipmentFields.created_by] as String,
+     createdBy: json[MsEquipmentFields. createdBy] as String,
     created_at: json[MsEquipmentFields.created_at] as String,
     updatedBy: json[MsEquipmentFields.updatedBy] as String,
     updated_at: json[MsEquipmentFields.updated_at] as String,
-    load_category: json[MsEquipmentFields.load_category] as String,
-    load_category_unit: json[MsEquipmentFields.load_category_unit] as String,
+    load_capacity: json[MsEquipmentFields.load_capacity] as String ,
+    load_capacity_unit: json[MsEquipmentFields.load_capacity_unit] as String,
+    planner_group: json[MsEquipmentFields.planner_group] as String,
+    main_work_center: json[MsEquipmentFields.main_work_center] as String
   );
 
   Map<String, Object?> toJson() => {
@@ -142,11 +156,13 @@ class MsEquipment {
     MsEquipmentFields.auth_text: auth_text,
     MsEquipmentFields.company_code: company_code,
     MsEquipmentFields.changed_by_system: changed_by_system,
-    MsEquipmentFields.created_by: created_by,
+    MsEquipmentFields. createdBy:  createdBy,
     MsEquipmentFields.created_at: created_at,
     MsEquipmentFields.updatedBy: updatedBy,
     MsEquipmentFields.updated_at: updated_at,
-    MsEquipmentFields.load_category: load_category,
-    MsEquipmentFields.load_category_unit: load_category_unit,
+    MsEquipmentFields.load_capacity: load_capacity,
+    MsEquipmentFields.load_capacity_unit: load_capacity_unit,
+    MsEquipmentFields.planner_group: planner_group,
+    MsEquipmentFields.main_work_center: main_work_center
   };
 }

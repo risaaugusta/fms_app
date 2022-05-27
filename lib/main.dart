@@ -3,13 +3,20 @@ import 'package:fms_app/ui/pages/pages.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fms_app/bloc/blocs.dart';
+import 'package:camera/camera.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final cameras = await availableCameras();
+  final firstCamera = cameras.first;
   runApp(MyApp());
+
 }
 
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
 

@@ -33,19 +33,19 @@ class MsStorageFields {
 }
 
 class MsStorage {
-  int storageId;
+  String storageId;
   String unitId;
   String storageCode;
   String sLocDescription;
   String capacity;
-  int isAudited;
-  int isActive;
+  String isAudited;
+  String isActive;
   String dateTime;
   String createdBy;
   String createdTime;
   String modifiedBy;
   String modifiedTime;
-  String siteId;
+  String siteID;
 
   MsStorage({
     required this.storageId,
@@ -60,23 +60,23 @@ class MsStorage {
     required this.createdTime,
     required this.modifiedBy,
     required this.modifiedTime,
-    required this.siteId
+    required this.siteID
   });
 
   MsStorage copy({
-    int? storageId,
+    String? storageId,
     String? unitId,
     String? storageCode,
     String? sLocDescription,
     String? capacity,
-    int? isAudited,
-    int? isActive,
+    String? isAudited,
+    String? isActive,
     String? dateTime,
     String? createdBy,
     String? createdTime,
     String? modifiedBy,
     String? modifiedTime,
-    String? siteId,
+    String? siteID,
   }) =>
       MsStorage(
         storageId: storageId ?? this.storageId,
@@ -91,23 +91,23 @@ class MsStorage {
         createdTime: createdBy ?? this.createdTime,
         modifiedBy: createdBy ?? this.modifiedBy,
         modifiedTime: createdBy ?? this.modifiedTime,
-        siteId: createdBy ?? this.siteId,
+        siteID: createdBy ?? this.siteID,
       );
 
   static MsStorage fromJson(Map<String, Object?> json) => MsStorage(
-    storageId: json[MsStorageFields.storageId] as int,
+    storageId: json[MsStorageFields.storageId] as String,
     unitId: json[MsStorageFields.unitId] as String,
     storageCode: json[MsStorageFields.storageCode] as String,
     sLocDescription: json[MsStorageFields.sLocDescription] as String,
     capacity: json[MsStorageFields.capacity] as String,
-    isAudited: json[MsStorageFields.isAudited] as int,
-    isActive: json[MsStorageFields.isActive] as int,
+    isAudited: json[MsStorageFields.isAudited] as String,
+    isActive: json[MsStorageFields.isActive] as String,
     dateTime: json[MsStorageFields.dateTime] as String,
     createdBy: json[MsStorageFields.createdBy] as String,
     createdTime: json[MsStorageFields.createdTime] as String,
     modifiedBy: json[MsStorageFields.modifiedBy] as String,
     modifiedTime: json[MsStorageFields.modifiedTime] as String,
-    siteId: json[MsStorageFields.siteID] as String,
+    siteID: json[MsStorageFields.siteID] as String,
   );
 
   Map<String, Object?> toJson() => {
@@ -123,6 +123,6 @@ class MsStorage {
     MsStorageFields.createdTime: createdTime,
     MsStorageFields.modifiedBy: modifiedBy,
     MsStorageFields.modifiedTime: modifiedTime,
-    MsStorageFields.siteID: siteId,
+    MsStorageFields.siteID: siteID,
   };
 }

@@ -16,6 +16,7 @@ class _ScannerState extends State<Scanner> {
   ];
   Barcode? barcode;
   QRViewController? controller;
+  List selectedEquipment = [];
 
   @override
   void dispose(){
@@ -30,6 +31,28 @@ class _ScannerState extends State<Scanner> {
       await controller!.pauseCamera();
     } controller?.resumeCamera();
   }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // this.valueUnit();
+    ApiService().fetchEmployee().then((value) async {
+      List dataComputed = [];
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? barcode = await prefs.getString("barcode");
+      dataComputed = value.where((element) => element['equipment_id'] == barcode).toList();
+      print(dataComputed);
+      setState(() {
+        selectedEquipment = dataComputed;
+      });
+    });
+  }
+
+
+  // @override
+  // valueUnit() async {
+  //   return await FmsDatabase.instance.readHistoryRefueling().then((value) => print(value));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -70,18 +93,34 @@ class _ScannerState extends State<Scanner> {
       alignment: Alignment.bottomCenter,
       child: Container(
           height: MediaQuery.of(context).size.height / 1.8,
-          // child: Text(barcode != null? 'Result is ${barcode!.code}' : 'Scan a code!'));
-          child: (barcode != null) ? dialogSuccess(barcode: barcode!.code) : dialogFail()  ),
-          // child: (barcode != null) ? scanSuccess() : scanFailed()),
+          child: (barcode != null) ? dialogSuccess_(barcode: barcode!.code) : dialogFail()  ),
+          // child: (barcode != null) ? dialogSuccess(barcode: barcode!.code) : dialogFail()  ),
+
     );
 
   }
 
   void onQRViewCreated(QRViewController controller){
     setState(() => this.controller = controller);
-
     controller.scannedDataStream
-    .listen((barcode) => setState(()=>this.barcode = barcode));
+    .listen((barcode) {
+      setState(() => this.barcode = barcode);
+      // print(barcode.code);
+      FmsDatabase.instance.readLastRefueling(barcode.code).then((value) {
+        if(value.length < 1){
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => dialogFail()),
+          );
+        }else{
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => dialogSuccess_(barcode: barcode.code)),
+          // );
+          dialogSuccess(barcode: barcode.code);
+        }
+      });
+    });
   }
 
 
@@ -176,7 +215,10 @@ class selectedScanner extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                         side: BorderSide(color: Colors.grey)),
                     onPressed: () {
-                        // _dialogFailedAlert();
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => inputKodeUnit()),
+                      // );
                     },
                     color: Colors.white,
                     textColor: Colors.white,
@@ -208,9 +250,7 @@ class dialogFail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomSheet(
-        onClosing: (){
-          Scanner();
-        },
+        onClosing: (){},
         builder: (context){
           return Container(
             decoration: BoxDecoration(
@@ -225,18 +265,18 @@ class dialogFail extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(30.0),
-                    child: const Text('QR Code Tidak Cocok!',
+                    child: const Text('Unit tidak ditemukan!',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD,fontSize: 18)),
                   ),
-                  Container(
-                      height: 150,
-                      width: 150,
-                      child: new Image.asset('assets/img/man1.png')
+                  Icon(
+                    Icons.announcement,
+                    color: Colors.grey.withOpacity(0.5),
+                    size: 100.0,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(30.0),
-                    child: const Text('Pastikan QR code tidak terhalang noda, dan nyalakan lampu flash handphone Anda',
+                    child: const Text('Pastikan unit terdaftar dalam site Anda',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black, fontFamily: Fonts.REGULAR,fontSize: 14)),
                   ),
@@ -275,6 +315,7 @@ class dialogSuccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BottomSheet(
         onClosing: (){},
         builder: (context){
@@ -286,7 +327,8 @@ class dialogSuccess extends StatelessWidget {
             height: MediaQuery.of(context).size.height ,
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
@@ -321,11 +363,30 @@ class dialogSuccess extends StatelessWidget {
                                       style: TextStyle(color: Colors.grey,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
-                                  Text(
-                                      '$barcode ',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(color: Colors.black,
-                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(barcode),
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: Text(
+                                              (snapshot.data![0]['unit_code']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
                                   ),
                                 ],
                               ),
@@ -339,16 +400,35 @@ class dialogSuccess extends StatelessWidget {
                                       style: TextStyle(color: Colors.grey,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
-                                  Text(
-                                      Equipment.eModelNumber,
-                                      textAlign: TextAlign.right,
-                                      style: TextStyle(color: Colors.black,
-                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 23),
+                                          child: Text(
+                                              (snapshot.data![0]['unit_type']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
                                   ),
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
@@ -357,22 +437,83 @@ class dialogSuccess extends StatelessWidget {
                                       style: TextStyle(color: Colors.grey,
                                           fontFamily: Fonts.REGULAR,fontSize: 18)
                                   ),
-                                  Text(
-                                      Equipment.eTankCapacity.toString(),
-                                      textAlign: TextAlign.right,
-                                      style: TextStyle(color: Colors.black,
-                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 40),
+                                          child: Text(
+                                              (snapshot.data![0]['budget']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
                                   ),
                                 ],
                               ),
                             ],
                           ),
-
                         ],
                       )
                   ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text(
+                            'Last Refueling',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: Fonts.REGULAR,
+                                fontSize: 18)),
+                      ),
+                      FutureBuilder<List>(
+                        future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                          List<Widget> children;
+                          if (snapshot.hasData) {
+                            return  Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                  (snapshot.data![0]['created_at']).toString() ,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: Fonts.REGULAR,
+                                    fontSize: 14)),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Container(
+                              child: Text('Tidak ada data'),
+                            );
+                          } else {
+                            return Container(
+                                child: Text('Tidak ada data')
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                   Container(
-                      margin: EdgeInsets.only(top: 10,bottom:10),
+                      margin: EdgeInsets.only(bottom:20),
                       width: MediaQuery.of(context).size.width / 1.1,
                       height: 200,
                       decoration: BoxDecoration(
@@ -382,71 +523,155 @@ class dialogSuccess extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                  'Operator',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                              Text(
-                                  'HM Unit',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                              Text(
-                                  'Site',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                              Text(
-                                  'Last Refueling',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.grey,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                  Attendance.operator_id.toString(),
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                              Text(
-                                  Equipment.category_desc,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                              Text(
-                                  Equipment.company_code,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                              Text(
-                                  Equipment.auth_group,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(color: Colors.black,
-                                      fontFamily: Fonts.REGULAR,fontSize: 18)
-                              ),
-                            ],
-                          ),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    'Nama operator',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                    'HM Unit',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                                Text(
+                                    'Quantity refueling',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                                Text(
+                                    'Nama Fuelman',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  child: FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 0),
+                                          child: Text(
+                                              (snapshot.data![0]['nama_operator']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                                FutureBuilder<List>(
+                                  future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                                  builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                    List<Widget> children;
+                                    if (snapshot.hasData) {
+                                      return  Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text(
+                                            (snapshot.data![0]['hm_input']).toString()  ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Container(
+                                        child: Text('Tidak ada data'),
+                                      );
+                                    } else {
+                                      return Container(
+                                          child: Text('Tidak ada data')
+                                      );
+                                    }
+                                  },
+                                ),
+                                FutureBuilder<List>(
+                                  future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                                  builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                    List<Widget> children;
+                                    if (snapshot.hasData) {
+                                      return  Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text(
+                                            (snapshot.data![0]['fuel_consumption']).toString()  ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Container(
+                                        child: Text('Tidak ada data'),
+                                      );
+                                    } else {
+                                      return Container(
+                                          child: Text('Tidak ada data')
+                                      );
+                                    }
+                                  },
+                                ),
+                                FutureBuilder<List>(
+                                  future: FmsDatabase.instance.readLastRefueling(barcode), // a previously-obtained Future<String> or null
+                                  builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                    List<Widget> children;
+                                    if (snapshot.hasData) {
+                                      return  Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text(
+                                            (snapshot.data![0]['created_by']).toString()  ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Container(
+                                        child: Text('Tidak ada data'),
+                                      );
+                                    } else {
+                                      return Container(
+                                          child: Text('Tidak ada data')
+                                      );
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       )
                   ),
                   Container(
@@ -463,7 +688,9 @@ class dialogSuccess extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                               side: BorderSide(color: Coloring.mainColor)),
-                          onPressed: () {
+                          onPressed: () async {
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            await prefs.setString('barcode','${barcode}' );
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => scanRefueling(barcode_id: barcode,)),
@@ -480,11 +707,506 @@ class dialogSuccess extends StatelessWidget {
                 ],
               ),
             ),);
+
         }
     );
   }
 }
 
+///inputKodeUnit
+class inputKodeUnit extends StatelessWidget {
+  const inputKodeUnit({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20,vertical: 50),
+                width: MediaQuery.of(context).size.width ,
+                decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                child: TextFormField(
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(
+                        color: Colors.grey.shade200,
+                      ),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                    fillColor: Color(0xffFFFFFF),
+                    filled: true,
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  ),
+                  onChanged: (value)=> {
+                    // Refueling.fEquipmentId = value
+                  }, //dummy value
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: ButtonTheme(
+                  minWidth: 150,
+                  child: Container(
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          side: BorderSide(color: Coloring.mainColor)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => scanRefueling(barcode_id: '',)),
+                        );
+                      },
+                      color: Coloring.mainColor,
+                      textColor: Colors.white,
+                      child: Text("Submit",
+                          style: TextStyle(color: Colors.white, fontFamily: Fonts.REGULAR,fontSize: 24)),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+    );
+  }
+}
+
+class dialogSuccess_ extends StatefulWidget {
+  const dialogSuccess_({Key? key, required this.barcode}) : super(key: key);
+  final String barcode;
+
+  @override
+  _dialogSuccess_State createState() => _dialogSuccess_State();
+}
+
+class _dialogSuccess_State extends State<dialogSuccess_> {
+  @override
+  void initState() {
+    super.initState();
+    this.valueUnit();
+  }
+
+  @override
+  valueUnit() async {
+    return await FmsDatabase.instance.readHistoryRefueling().then((value) => print(value));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return BottomSheet(
+        onClosing: (){},
+        builder: (context){
+          return Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(20))
+            ),
+            height: MediaQuery.of(context).size.height ,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Container(
+                      width: MediaQuery.of(context).size.width / 1.1,
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color(0xffE4E4E4)
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                              height: 70,
+                              width: 50,
+                              child: new Image.asset('assets/img/truck.png')
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                      'Unit Code ',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(color: Colors.grey,
+                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  ),
+                                  FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(widget.barcode),
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: Text(
+                                              (snapshot.data![0]['unit_code']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                      'Unit Type ',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(color: Colors.grey,
+                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  ),
+                                  FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 23),
+                                          child: Text(
+                                              (snapshot.data![0]['unit_type']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                      'Budget ',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(color: Colors.grey,
+                                          fontFamily: Fonts.REGULAR,fontSize: 18)
+                                  ),
+                                  FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 40),
+                                          child: Text(
+                                              (snapshot.data![0]['budget']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text(
+                            'Last Refueling',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: Fonts.REGULAR,
+                                fontSize: 18)),
+                      ),
+                      FutureBuilder<List>(
+                        future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                          List<Widget> children;
+                          if (snapshot.hasData) {
+                            return  Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                  (snapshot.data![0]['created_at']).toString() ,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: Fonts.REGULAR,
+                                      fontSize: 14)),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Container(
+                              child: Text('Tidak ada data'),
+                            );
+                          } else {
+                            return Container(
+                                child: Text('Tidak ada data')
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                  Container(
+                      margin: EdgeInsets.only(bottom:20),
+                      width: MediaQuery.of(context).size.width / 1.1,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color(0xffE4E4E4)
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    'Nama operator',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                    'HM Unit',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                                Text(
+                                    'Quantity refueling',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                                Text(
+                                    'Nama Fuelman',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: Fonts.REGULAR,fontSize: 18)
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  child: FutureBuilder<List>(
+                                    future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                                    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                      List<Widget> children;
+                                      if (snapshot.hasData) {
+                                        return  Padding(
+                                          padding: EdgeInsets.only(left: 0),
+                                          child: Text(
+                                              (snapshot.data![0]['nama_operator']).toString()  ,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(color: Colors.black,
+                                                  fontFamily: Fonts.REGULAR,fontSize: 18)
+                                          ),
+                                        );
+                                      } else if (snapshot.hasError) {
+                                        return Container(
+                                          child: Text('Tidak ada data'),
+                                        );
+                                      } else {
+                                        return Container(
+                                            child: Text('Tidak ada data')
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                                FutureBuilder<List>(
+                                  future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                                  builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                    List<Widget> children;
+                                    if (snapshot.hasData) {
+                                      return  Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text(
+                                            (snapshot.data![0]['hm_input']).toString()  ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Container(
+                                        child: Text('Tidak ada data'),
+                                      );
+                                    } else {
+                                      return Container(
+                                          child: Text('Tidak ada data')
+                                      );
+                                    }
+                                  },
+                                ),
+                                FutureBuilder<List>(
+                                  future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                                  builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                    List<Widget> children;
+                                    if (snapshot.hasData) {
+                                      return  Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text(
+                                            (snapshot.data![0]['fuel_consumption']).toString()  ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Container(
+                                        child: Text('Tidak ada data'),
+                                      );
+                                    } else {
+                                      return Container(
+                                          child: Text('Tidak ada data')
+                                      );
+                                    }
+                                  },
+                                ),
+                                FutureBuilder<List>(
+                                  future: FmsDatabase.instance.readLastRefueling(widget.barcode), // a previously-obtained Future<String> or null
+                                  builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                                    List<Widget> children;
+                                    if (snapshot.hasData) {
+                                      return  Padding(
+                                        padding: EdgeInsets.only(left: 0),
+                                        child: Text(
+                                            (snapshot.data![0]['created_by']).toString()  ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(color: Colors.black,
+                                                fontFamily: Fonts.REGULAR,fontSize: 18)
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Container(
+                                        child: Text('Tidak ada data'),
+                                      );
+                                    } else {
+                                      return Container(
+                                          child: Text('Tidak ada data')
+                                      );
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
+                    child: ButtonTheme(
+                      minWidth: 150,
+                      child: Container(
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              side: BorderSide(color: Coloring.mainColor)),
+                          onPressed: () async {
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            await prefs.setString('barcode','${widget.barcode}' );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => scanRefueling(barcode_id: widget.barcode,)),
+                            );
+                          },
+                          color: Coloring.mainColor,
+                          textColor: Colors.white,
+                          child: Text("Selanjutnya",
+                              style: TextStyle(color: Colors.white, fontFamily: Fonts.REGULAR,fontSize: 24)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),);
+
+        }
+    );
+  }
+}
 
 
 
